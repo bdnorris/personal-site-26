@@ -1,0 +1,40 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+
+const links = [
+  { href: "/", label: "Home", match: (p: string) => p === "/" },
+  { href: "/work", label: "Work", match: (p: string) => p === "/work" || p.startsWith("/work/") },
+  { href: "/about", label: "About", match: (p: string) => p === "/about" },
+  { href: "/resume", label: "Resume", match: (p: string) => p === "/resume" },
+];
+---
+
+<div class="mast">
+  <div class="mast-bar">
+    <ThemeToggle class="theme-toggle--bar" />
+  </div>
+  <header class="mast-row">
+    <a class="wordmark" href="/">Brian Norris</a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => {
+          const on = link.match(path);
+          return (
+            <a class:list={["nav-link", { "is-on": on }]} href={link.href} aria-current={on ? "page" : undefined}>
+              {link.label}
+              <span class="rule" aria-hidden="true"></span>
+            </a>
+          );
+        })
+      }
+      <span class="nav-rule" aria-hidden="true"></span>
+      <ThemeToggle class="theme-toggle--nav" />
+    </nav>
+  </header>
+</div>

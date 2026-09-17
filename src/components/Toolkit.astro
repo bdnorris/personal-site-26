@@ -1,0 +1,34 @@
+---
+import { getSite } from "../lib/site";
+
+const tags = getSite().toolkit;
+---
+
+<section class="toolkit">
+  <span class="toolkit-label">Toolkit</span>
+  <div class="chips" data-toolkit>
+    {
+      tags.map((label, i) => (
+        <span class:list={["chip", { "is-hot": i === 5 }]} data-chip>
+          {label}
+        </span>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector("[data-toolkit]");
+  if (root && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const chips = Array.from(root.querySelectorAll("[data-chip]"));
+    let hot = chips.findIndex((el) => el.classList.contains("is-hot"));
+    if (hot < 0) hot = 0;
+    setInterval(() => {
+      let next = hot;
+      while (next === hot) next = Math.floor(Math.random() * chips.length);
+      chips[hot]?.classList.remove("is-hot");
+      chips[next]?.classList.add("is-hot");
+      hot = next;
+    }, 1500);
+  }
+</script>

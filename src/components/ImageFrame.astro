@@ -1,0 +1,19 @@
+---
+interface Props {
+  src?: string;
+  hint: string;
+  alt?: string;
+}
+
+const { src, hint, alt } = Astro.props;
+---
+
+<div class="frame">
+  {
+    src ? (
+      <img src={src} alt={alt ?? hint} />
+    ) : (
+      <div class="frame-empty">{hint}</div>
+    )
+  }
+</div>

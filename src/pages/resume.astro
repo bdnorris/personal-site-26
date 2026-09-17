@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSite } from "../lib/site";
+
+const site = getSite();
+---
+
+<BaseLayout title="Resume · Brian Norris" description="Senior front-end developer in Springfield, MO.">
+  <div class="wipe resume">
+    <div class="resume-head">
+      <div>
+        <h1>Brian Norris</h1>
+        <p>{site.role} · {site.location}</p>
+      </div>
+    </div>
+
+    <div class="resume-contacts">
+      {
+        site.contacts.map((c) => (
+          <a href={c.href}>{c.v}</a>
+        ))
+      }
+    </div>
+
+    <section class="resume-block">
+      <h2>Work experience</h2>
+      <div class="jobs">
+        {
+          site.jobs.map((j) => (
+            <div class="job">
+              <div class="job-dates">{j.dates}</div>
+              <div class="job-body">
+                <h3>{j.role}</h3>
+                <p class="org">{j.org}</p>
+                {j.body ? <p>{j.body}</p> : null}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="resume-block">
+      <h2>Professional skills</h2>
+      <div class="resume-skills">
+        {
+          site.resumeSkills.map((g) => (
+            <div>
+              <h3>{g.title}</h3>
+              <ul>
+                {g.items.map((i) => (
+                  <li>
+                    <span class="k">{i.k}</span>
+                    <span class="v">{i.v}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="resume-block">
+      <h2>Education</h2>
+      <div class="edu">
+        <div class="edu-dates">{site.education.dates}</div>
+        <div class="edu-body">
+          <h3>{site.education.degree}</h3>
+          <p class="org">{site.education.school}</p>
+          <p>{site.education.note}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

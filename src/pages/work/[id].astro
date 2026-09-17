@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ImageFrame from "../../components/ImageFrame.astro";
+import { getNextWork, getWork, getWorkById } from "../../lib/work";
+
+export function getStaticPaths() {
+  return getWork().map((item) => ({ params: { id: item.id } }));
+}
+
+const { id } = Astro.params;
+const item = getWorkById(id!);
+if (!item) throw new Error(`Unknown work id: ${id}`);
+
+const next = getNextWork(item);
+const c = item.case;
+const meta = [
+  c?.client ? { k: "Client", v: c.client } : { k: "Category", v: item.category },
+  c?.role ? { k: "Role", v: c.role } : null,
+  { k: "Stack", v: item.stack.join(", ") },
+  { k: "Year", v: item.year },
+].filter((row): row is { k: string; v: string } => row !== null);
+
+const heroSrc = c?.hero ?? item.image;
+const heroHint = item.imageHint ?? item.title;
+const rich = Boolean(c);
+---
+
+<BaseLayout title={`${item.title} · Brian Norris`} description={item.blurb}>
+  <div class="wipe">
+    <section class="case-hero">
+      <a class="link-quiet" href="/work">← All work</a>
+      <span class="case-kicker">{item.category} · {item.year}</span>
+      <h1>{item.title}</h1>
+      <p class="case-lede">{c?.lede ?? item.blurb}</p>
+      <dl class="meta-grid">
+        {
+          meta.map((m) => (
+            <div class="meta-cell">
+              <dt>{m.k}</dt>
+              <dd>{m.v}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <div class="hero-shot">
+      <div class="shot">
+        <ImageFrame src={heroSrc} hint={heroHint} alt={item.title} />
+      </div>
+    </div>
+
+    {
+      rich && (
+        <article class="case-body">
+          {c?.problem?.length ? (
+            <div class="case-split">
+              <h2>The problem</h2>
+              <div class="case-copy">
+                {c.problem.map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {c?.quote ? (
+            <blockquote class="pull">
+              <p>{c.quote}</p>
+            </blockquote>
+          ) : null}
+
+          {c?.approach ? (
+            <div class="case-split">
+              <h2>The approach</h2>
+              <div class="case-copy">
+                <p>{c.approach.body}</p>
+                {c.approach.bullets?.length ? (
+                  <ul>
+                    {c.approach.bullets.map((b) => (
+                      <li>{b}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+
+          {c?.shots?.length ? (
+            <figure class="shots">
+              <div class="shots-grid">
+                {c.shots.map((shot) => (
+                  <div class="shot">
+                    <ImageFrame src={shot.src} hint={shot.hint} />
+                  </div>
+                ))}
+              </div>
+              {c.shotsCaption ? <figcaption>{c.shotsCaption}</figcaption> : null}
+            </figure>
+          ) : null}
+
+          {c?.interesting ? (
+            <div class="case-split">
+              <h2>The interesting part</h2>
+              <div class="case-copy">
+                <p>{c.interesting.body}</p>
+                {c.interesting.code ? (
+                  <div class="code-block">
+                    <div class="code-bar">
+                      <span class="code-dot"></span>
+                      <span class="code-name">{c.interesting.code.filename}</span>
+                    </div>
+                    <pre>
+                      <code set:html={c.interesting.code.html} />
+                    </pre>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+
+          {c?.stats?.length ? (
+            <div class="case-split">
+              <h2>Outcome</h2>
+              <div class="stats">
+                {c.stats.map((s) => (
+                  <div class="stat">
+                    <div class="stat-n">{s.n}</div>
+                    <div class="stat-l">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {next && next.id !== item.id ? (
+            <div class="next-row">
+              <span class="link-quiet">Next case study</span>
+              <a href={`/work/${next.id}`}>{next.title} →</a>
+            </div>
+          ) : null}
+        </article>
+      )
+    }
+
+    {
+      !rich && item.stack.length ? (
+        <article class="case-body">
+          <div class="stack">
+            {item.stack.map((s) => (
+              <span>{s}</span>
+            ))}
+          </div>
+          {next && next.id !== item.id ? (
+            <div class="next-row">
+              <span class="link-quiet">Next case study</span>
+              <a href={`/work/${next.id}`}>{next.title} →</a>
+            </div>
+          ) : null}
+        </article>
+      ) : null
+    }
+  </div>
+</BaseLayout>

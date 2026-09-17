@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WorkGrid from "../../components/WorkGrid.astro";
+import { getWork } from "../../lib/work";
+
+const items = getWork();
+---
+
+<BaseLayout title="Work · Brian Norris" description="Client builds, freelance projects, and the experiments that keep the craft sharp.">
+  <div class="work-page">
+    <h1>Selected <span class="italic-acc">work</span></h1>
+    <p class="intro">Client builds, freelance projects, and the experiments that keep the craft sharp.</p>
+    <WorkGrid items={items} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<button class:list={["theme-toggle", className]} type="button" data-theme-toggle aria-label="Toggle dark mode">
+  <span class="theme-dot" aria-hidden="true"></span>
+  <span data-theme-label>Light</span>
+</button>
+
+<script>
+  function labelFor(theme: string) {
+    return theme === "dark" ? "Dark" : "Light";
+  }
+
+  function currentTheme() {
+    return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  }
+
+  function apply(theme: "light" | "dark") {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      /* ignore */
+    }
+    document.querySelectorAll("[data-theme-label]").forEach((el) => {
+      el.textContent = labelFor(theme);
+    });
+  }
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      apply(currentTheme() === "dark" ? "light" : "dark");
+    });
+  });
+
+  apply(currentTheme());
+</script>

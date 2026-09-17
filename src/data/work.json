@@ -1,0 +1,96 @@
+[
+  {
+    "id": "alchemedia",
+    "title": "The Alchemedia Project Website",
+    "blurb": "My first site using a headless CMS.",
+    "category": "Client",
+    "year": "2023",
+    "stack": ["Sanity", "Nuxt", "GraphQL"],
+    "featured": true,
+    "imageHint": "Alchemedia screenshot"
+  },
+  {
+    "id": "marzetti",
+    "title": "T. Marzetti Product Filters",
+    "blurb": "A product filtering app using Vue 3.",
+    "category": "Client",
+    "year": "2024",
+    "stack": ["Vue 3", "Pinia", "REST"],
+    "featured": true,
+    "imageHint": "Marzetti filters screenshot"
+  },
+  {
+    "id": "allspreads",
+    "title": "All Spreads",
+    "blurb": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
+    "category": "Client",
+    "year": "2025",
+    "stack": ["Vue 3", "CSS transforms", "WCAG 2.2"],
+    "featured": true,
+    "imageHint": "Daymaker recipe clock",
+    "case": {
+      "client": "Daymaker",
+      "role": "Lead front-end",
+      "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
+      "problem": [
+        "A conventional recipe grid treats every dish as equivalent. The client's products, however, belong to moments: breakfast spreads, an afternoon snack, something to put out before dinner. A flat list flattened that meaning and left users scrolling without a reason to stop.",
+        "The brief asked for discovery, not search. People arriving at the site did not know the recipe they wanted. They knew the time of day."
+      ],
+      "quote": "The clock became the navigation. Time of day is the only filter anyone actually uses.",
+      "approach": {
+        "body": "Recipes sit on a radial track. Rotating the dial moves through the day, and each position brings its cluster of dishes forward. The interaction is pointer, keyboard, and touch driven, with a plain list view underneath for anyone who does not want the dial.",
+        "bullets": [
+          "Radial layout computed from a single angle value, so the whole scene animates from one source of truth.",
+          "Arrow keys step recipe to recipe; Home and End jump to the start and end of the day.",
+          "Motion respects prefers-reduced-motion by swapping the rotation for a crossfade."
+        ]
+      },
+      "shots": [
+        { "hint": "Dial, morning state" },
+        { "hint": "Dial, evening state" },
+        { "hint": "List fallback view" }
+      ],
+      "shotsCaption": "Three states of the dial, plus the list fallback",
+      "interesting": {
+        "body": "Every card's position, scale, and opacity derives from its angular distance to the active slot. One function, no per-card state, and the browser gets a single composited transform per node.",
+        "code": {
+          "filename": "dial.js",
+          "html": "<div><span class=\"code-mute\">// position derives from angular distance to the active slot</span></div>\n<div><span class=\"code-acc\">const</span> place = (i, active, total) =&gt; {</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> step&nbsp; = <span class=\"code-acc2\">360</span> / total;</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> delta = shortestArc(i * step, active * step);</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> near&nbsp; = <span class=\"code-acc2\">1</span> - Math.min(Math.abs(delta) / <span class=\"code-acc2\">90</span>, <span class=\"code-acc2\">1</span>);</div>\n<div>&nbsp; <span class=\"code-acc\">return</span> {</div>\n<div>&nbsp; &nbsp; transform: <span class=\"code-acc2\">`rotate(${delta}deg) translateY(-42vmin)`</span>,</div>\n<div>&nbsp; &nbsp; scale:&nbsp; &nbsp; &nbsp; <span class=\"code-acc2\">0.72</span> + near * <span class=\"code-acc2\">0.28</span>,</div>\n<div>&nbsp; &nbsp; opacity:&nbsp; &nbsp;<span class=\"code-acc2\">0.35</span> + near * <span class=\"code-acc2\">0.65</span>,</div>\n<div>&nbsp; };</div>\n<div>};</div>"
+        }
+      },
+      "stats": [
+        { "n": "0 deps", "label": "No animation library. Transforms and one rAF loop." },
+        { "n": "AA", "label": "WCAG 2.2 AA verified with keyboard and screen reader passes." },
+        { "n": "98", "label": "Lighthouse performance on the recipe index." }
+      ],
+      "nextId": "marzetti"
+    }
+  },
+  {
+    "id": "slot-1",
+    "title": "Freelance project slot",
+    "blurb": "Add a freelance build here. Title, one line, and a screenshot.",
+    "category": "Freelance",
+    "year": "—",
+    "stack": ["Placeholder"],
+    "imageHint": "Drop a screenshot"
+  },
+  {
+    "id": "slot-2",
+    "title": "Personal project slot",
+    "blurb": "Something made for its own sake. Good place for the graphic-design side.",
+    "category": "Personal",
+    "year": "—",
+    "stack": ["Placeholder"],
+    "imageHint": "Drop a screenshot"
+  },
+  {
+    "id": "slot-3",
+    "title": "Tool or experiment slot",
+    "blurb": "A boilerplate, a design-system utility, or a motion study.",
+    "category": "Tools / Experiments",
+    "year": "—",
+    "stack": ["Placeholder"],
+    "imageHint": "Drop a screenshot"
+  }
+]

@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Toolkit from "../components/Toolkit.astro";
+import { getFeatured } from "../lib/work";
+import { getSite } from "../lib/site";
+
+const featured = getFeatured();
+const { skills } = getSite();
+---
+
+<BaseLayout title="Brian Norris" description="Front-end developer who lives in the details.">
+  <div class="wipe">
+    <section class="hero">
+      <p class="kicker">
+        typography <span class="dot">·</span> motion <span class="dot">·</span> accessibility <span class="dot">·</span> performance
+      </p>
+      <h1>
+        <span>Front-end</span>
+        <span>developer who</span>
+        <span>cares about the</span>
+        <span class="italic-acc">small stuff</span>
+      </h1>
+      <div class="hero-row">
+        <p class="lede">
+          10+ years building for agencies, clients, and classrooms. Working at the seam between design and code, and I've always been comfortable in that in-between space.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-fill" href="/work">See the work</a>
+          <a class="btn btn-ghost" href="/resume">Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <Toolkit />
+
+    <section class="section section-rule featured">
+      <div class="section-head">
+        <h2>Featured work</h2>
+        <a class="link-quiet" href="/work">All projects →</a>
+      </div>
+      <div class="cards">
+        {featured.map((item) => <ProjectCard item={item} />)}
+      </div>
+    </section>
+
+    <section class="section bring">
+      <h2>What I bring</h2>
+      <div class="skills">
+        {
+          skills.map((s) => (
+            <div class="skill">
+              <h3>{s.title}</h3>
+              <ul>
+                {s.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

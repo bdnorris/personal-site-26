@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageFrame from "../components/ImageFrame.astro";
+import { getSite } from "../lib/site";
+
+const site = getSite();
+---
+
+<BaseLayout title="About · Brian Norris" description="Hello, I'm Brian — a front-end developer in Springfield, MO.">
+  <div class="wipe">
+    <section class="about">
+      <div class="about-copy">
+        <h1>Hello, I'm<br /><span class="italic-acc">Brian</span></h1>
+        <div class="prose">
+          {site.about.intro.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+      <div class="about-side">
+        <div class="portrait">
+          <ImageFrame src={site.about.portrait} hint={site.about.portraitHint} alt="Portrait of Brian Norris" />
+        </div>
+        <div class="contact-card">
+          <div class="top">Get in touch</div>
+          {
+            site.contacts.map((c) => (
+              <a class="contact-row" href={c.href}>
+                <span class="k">{c.k}</span>
+                <span class="v">{c.v}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="band-inner">
+        <div>
+          <span class="band-kicker">How I work</span>
+          <p>Resilient stylesheets. Accessible by default. Details you only notice when they're missing.</p>
+        </div>
+        <div class="philo">
+          {
+            site.philosophy.map((p) => (
+              <div class="philo-row">
+                <span class="n">{p.n}</span>
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
