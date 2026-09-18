@@ -138,21 +138,23 @@
       "title": "Development",
       "items": [
         { "k": "CSS / Sass", "v": "Experience and passion for writing sane and resilient stylesheets" },
-        { "k": "JavaScript", "v": "ES6, frameworks (Vue, Svelte, React), templating languages (Twig)" },
+        { "k": "JavaScript / TypeScript", "v": "Frameworks (Vue, Svelte, Alpine.js)" },
         { "k": "UI development", "v": "Design system and UI kit development" },
+        { "k": "Animation", "v": "Meaningful and performant animations" },
         { "k": "Content management", "v": "WordPress, Craft, Pimcore, Umbraco, Sanity, Prismic" },
         { "k": "APIs", "v": "RESTful and GraphQL" },
         { "k": "Analytics", "v": "Setup, event tracking, testing, and analysis" },
-        { "k": "Web accessibility", "v": "WCAG implementation and site auditing" }
+        { "k": "Web accessibility", "v": "WCAG implementation and site auditing" },
+        { "k": "AI assisted development", "v": "Code generation, scaffolding, and AI-assisted code review" }
       ]
     },
     {
       "title": "Design",
       "items": [
-        { "k": "Typography", "v": "Typographic manipulation and organization" },
+        { "k": "Typography", "v": "Fluid and responsive typographic manipulation" },
         { "k": "Production", "v": "Extensive experience with graphic, image editing and page layout applications" },
-        { "k": "Information architecture", "v": "Hierarchies and taxonomy development" },
-        { "k": "User experience", "v": "User centered design approach, UX research, site audits" },
+        { "k": "Information architecture", "v": "Hierarchies, taxonomy development, and sitemapping" },
+        { "k": "User experience", "v": "User-centered design approach, UX research, site audits" },
         { "k": "Interface design", "v": "Wireframing and prototyping" }
       ]
     },
@@ -162,7 +164,8 @@
         { "k": "Standards", "v": "Documenting best practices" },
         { "k": "Scoping", "v": "Requirements definition and acceptance tests" },
         { "k": "Tooling", "v": "Creating custom project boilerplates" },
-        { "k": "Leadership", "v": "Overseeing junior designers and developers" }
+        { "k": "Leadership", "v": "Overseeing junior designers and developers" },
+        { "k": "AI workflow", "v": "AI output validation, quality control, and LLM assisted architectural planning" }
       ]
     }
   ]
