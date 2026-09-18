@@ -119,10 +119,6 @@ h1, h2, h3 {
 @keyframes vf {
   0%,
   12% {
-    font-variation-settings: "wght" 400, "GRAD" 0, "wdth" 100;
-    letter-spacing: 0;
-  }
-  50% {
     font-variation-settings: "wght" 460, "GRAD" 40, "wdth" 122;
     letter-spacing: 0.025em;
   }
@@ -181,9 +177,10 @@ h1, h2, h3 {
   line-height: 0.9;
   font-family: "Roboto Serif", Georgia, serif;
   font-style: italic;
-  font-variation-settings: "wght" 400, "GRAD" 0, "wdth" 100;
+  font-variation-settings: "wght" 460, "GRAD" 40, "wdth" 122;
+  letter-spacing: 0.025em;
   color: var(--acc);
-  animation: vf 11s ease-in-out 1.4s infinite;
+  animation: vf 4s ease-in-out 1.4s 1 forwards;
 }
 
 .wipe {
@@ -476,7 +473,7 @@ h1, h2, h3 {
 }
 
 .hero h1 .italic-acc {
-  animation: vf 11s ease-in-out 1.4s infinite;
+  animation: vf 4s ease-in-out 1.4s 1 forwards;
 }
 
 .hero-row {
