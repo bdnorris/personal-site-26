@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-18T21:56:25.000Z",
+  "title": "Design System: Brian Norris",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Teal Ink",
+        "canonical": "#12414f",
+        "tonalRamp": ["#07141a", "#0c2a33", "#12414f", "#1a5a6c", "#2d7386", "#4d8fa0", "#86b4c0", "#d5e6ea"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cream Laid",
+        "canonical": "#fef9ef",
+        "tonalRamp": ["#3d372c", "#6b6254", "#9a8f7c", "#c4bba8", "#e4dccb", "#f4ead8", "#fef9ef", "#fffdf8"]
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Mute",
+        "canonical": "#47606a",
+        "tonalRamp": ["#1c2a2f", "#31454d", "#47606a", "#5e7a85", "#7a96a0", "#9fb6bd", "#c5d4d8", "#e8eef0"]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "rgba(18, 65, 79, 0.16)",
+        "tonalRamp": ["rgba(18, 65, 79, 0.42)", "rgba(18, 65, 79, 0.28)", "rgba(18, 65, 79, 0.16)", "rgba(18, 65, 79, 0.12)", "rgba(18, 65, 79, 0.08)", "rgba(254, 249, 239, 0.12)", "rgba(254, 249, 239, 0.18)", "rgba(254, 249, 239, 0.28)"]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card",
+        "canonical": "#fffdf7",
+        "tonalRamp": ["#0d3543", "#1a4a5a", "#2d5f70", "#8aa0a8", "#d5ddd8", "#f3eee4", "#fffdf7", "#ffffff"]
+      },
+      "sea-glass": {
+        "role": "primary",
+        "displayName": "Sea Glass",
+        "canonical": "#227c9d",
+        "tonalRamp": ["#0e3d4e", "#165a73", "#1c6d8c", "#227c9d", "#2e96ba", "#5cc4d6", "#9ddce8", "#d8f3f7"]
+      },
+      "vermilion": {
+        "role": "secondary",
+        "displayName": "Vermilion Spark",
+        "canonical": "#fe6d73",
+        "tonalRamp": ["#3d0d12", "#8d2530", "#b8323c", "#d9414c", "#fe6d73", "#ff9b9f", "#ffc4c7", "#fff3f3"]
+      },
+      "on-sea-glass": {
+        "role": "neutral",
+        "displayName": "On Sea Glass",
+        "canonical": "#fef9ef",
+        "tonalRamp": ["#06232c", "#12414f", "#47606a", "#8fb3bd", "#d5e6ea", "#f4ead8", "#fef9ef", "#fffdf8"]
+      },
+      "vermilion-ink": {
+        "role": "secondary",
+        "displayName": "Vermilion Ink",
+        "canonical": "#b8323c",
+        "tonalRamp": ["#3d0d12", "#6e1a22", "#8d2530", "#b8323c", "#d9414c", "#ec4e57", "#fe6d73", "#ffc4c7"]
+      },
+      "vermilion-soft": {
+        "role": "secondary",
+        "displayName": "Vermilion Soft",
+        "canonical": "#ffe3e4",
+        "tonalRamp": ["#3a1c1e", "#6e1a22", "#b8323c", "#fe6d73", "#ff9b9f", "#ffc4c7", "#ffe3e4", "#fff3f3"]
+      },
+      "on-vermilion": {
+        "role": "neutral",
+        "displayName": "On Vermilion",
+        "canonical": "#3d0d12",
+        "tonalRamp": ["#3d0d12", "#6e1a22", "#8d2530", "#b8323c", "#fe6d73", "#ffc4c7", "#ffe3e4", "#fff3f3"]
+      },
+      "paper-night": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#06232c",
+        "tonalRamp": ["#031418", "#06232c", "#0d3543", "#12414f", "#1a5a6c", "#47606a", "#8fb3bd", "#fef9ef"]
+      },
+      "mute-night": {
+        "role": "neutral",
+        "displayName": "Night Mute",
+        "canonical": "#8fb3bd",
+        "tonalRamp": ["#0d3543", "#1a5a6c", "#2d7386", "#4d8fa0", "#8fb3bd", "#b5cdd4", "#d5e6ea", "#fef9ef"]
+      },
+      "line-night": {
+        "role": "neutral",
+        "displayName": "Night Line",
+        "canonical": "rgba(254, 249, 239, 0.18)",
+        "tonalRamp": ["rgba(254, 249, 239, 0.42)", "rgba(254, 249, 239, 0.28)", "rgba(254, 249, 239, 0.18)", "rgba(254, 249, 239, 0.12)", "rgba(254, 249, 239, 0.08)", "rgba(18, 65, 79, 0.16)", "rgba(18, 65, 79, 0.28)", "rgba(18, 65, 79, 0.42)"]
+      },
+      "card-night": {
+        "role": "neutral",
+        "displayName": "Night Card",
+        "canonical": "#0d3543",
+        "tonalRamp": ["#04181e", "#06232c", "#0d3543", "#164656", "#227c9d", "#4d8fa0", "#8fb3bd", "#fef9ef"]
+      },
+      "sea-glass-night": {
+        "role": "primary",
+        "displayName": "Night Sea Glass",
+        "canonical": "#17c3b2",
+        "tonalRamp": ["#06232c", "#0a5c55", "#0e8a7e", "#17c3b2", "#3dd4c6", "#7ae4da", "#b7f2ec", "#e6fbf8"]
+      },
+      "vermilion-ink-night": {
+        "role": "secondary",
+        "displayName": "Night Vermilion Ink",
+        "canonical": "#ff9b9f",
+        "tonalRamp": ["#3d0d12", "#8d2530", "#b8323c", "#fe6d73", "#ff9b9f", "#ffc4c7", "#ffe3e4", "#fff3f3"]
+      },
+      "vermilion-soft-night": {
+        "role": "secondary",
+        "displayName": "Night Vermilion Soft",
+        "canonical": "#3a1c1e",
+        "tonalRamp": ["#3d0d12", "#3a1c1e", "#6e1a22", "#b8323c", "#fe6d73", "#ff9b9f", "#ffc4c7", "#fff3f3"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero and inner-page titles. Termina 900 only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section architecture and sticky case-study headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card, skill, job, and contact titles. Termina 500–700."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading: lede, about, case copy, skill items. Roboto Serif only."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Desk tools: kickers, meta, footer, filters. JetBrains Mono, uppercase."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-studio",
+        "value": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Default enter, nav underline, buttons, filters."
+      },
+      {
+        "name": "ease-card",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Card hover lift and border."
+      },
+      {
+        "name": "duration-hover",
+        "value": "0.3s",
+        "purpose": "Buttons, filters, links."
+      },
+      {
+        "name": "duration-theme",
+        "value": "0.45s",
+        "purpose": "Paper/ink theme crossfade."
+      },
+      {
+        "name": "rise",
+        "value": "0.7s cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Staggered entrance; 22px translateY."
+      },
+      {
+        "name": "wipe",
+        "value": "0.5s cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Page-level enter; 10px translateY and 0.995 scale."
+      },
+      {
+        "name": "italic-settle",
+        "value": "4s ease-in-out 1.4s 1",
+        "purpose": "Variable-font accent in headlines."
+      },
+      {
+        "name": "caret-blink",
+        "value": "1.1s steps(1, end) infinite",
+        "purpose": "Footer caret."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "640px",
+        "purpose": "Theme toggle moves from nav into the mast bar below this width."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Sea Glass pill for the main action. Lifts 2px and brightens on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">See the work</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px; background: var(--acc, #227c9d); color: var(--onacc, #fef9ef); font-family: termina, system-ui, sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; border: 0; cursor: pointer; transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease; } .ds-btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); color: var(--onacc, #fef9ef); } .ds-btn-primary:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Hairline pill for the secondary action. Stroke goes to ink on hover.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Resume</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px; background: transparent; color: var(--ink, #12414f); font-family: termina, system-ui, sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); cursor: pointer; transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease; } .ds-btn-ghost:hover { transform: translateY(-2px); border-color: var(--ink, #12414f); color: var(--ink, #12414f); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--ink, #12414f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "Work-index filter. On-state is ink fill with paper type.",
+      "html": "<button class=\"ds-filter\" type=\"button\">Client <span class=\"ds-filter-n\">3</span></button> <button class=\"ds-filter ds-filter-on\" type=\"button\">All <span class=\"ds-filter-n\">6</span></button>",
+      "css": ".ds-filter { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); background: transparent; color: var(--ink, #12414f); font-size: 13px; font-family: termina, sans-serif; font-weight: 500; cursor: pointer; transition: border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-filter-n { font-family: \"JetBrains Mono\", monospace; font-size: 10px; color: var(--mute, #47606a); } .ds-filter:hover { border-color: var(--ink, #12414f); } .ds-filter:focus-visible { outline: 2px solid var(--ink, #12414f); outline-offset: 3px; } .ds-filter-on { border-color: var(--ink, #12414f); background: var(--ink, #12414f); color: var(--paper, #fef9ef); } .ds-filter-on .ds-filter-n { color: var(--paper, #fef9ef); }"
+    },
+    {
+      "name": "Primary Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Termina links at 50% opacity; current page draws a Sea Glass underline from the left.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-link ds-nav-on\" href=\"#\">Home<span class=\"ds-nav-rule\" aria-hidden=\"true\"></span></a><a class=\"ds-nav-link\" href=\"#\">Work<span class=\"ds-nav-rule\" aria-hidden=\"true\"></span></a><a class=\"ds-nav-link\" href=\"#\">About<span class=\"ds-nav-rule\" aria-hidden=\"true\"></span></a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; } .ds-nav-link { position: relative; display: flex; align-items: center; min-height: 44px; padding: 0 11px; font-size: 13.5px; font-family: termina, sans-serif; font-weight: 500; text-decoration: none; color: var(--ink, #12414f); opacity: 0.5; transition: opacity 0.25s ease; } .ds-nav-link:hover, .ds-nav-on { opacity: 1; color: var(--ink, #12414f); } .ds-nav-rule { position: absolute; left: 11px; right: 11px; bottom: 7px; height: 2px; background: var(--acc, #227c9d); transform-origin: left; transform: scaleX(0); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-nav-on .ds-nav-rule { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; opacity: 1; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Work sheet: 4px, hairline, card stock. Hover lifts 5px and the border goes to ink.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-media\"><div class=\"ds-frame-empty\">Drop a screenshot</div></div><div class=\"ds-card-body\"><span class=\"ds-card-meta\">Client · 2025</span><h3>All Spreads</h3><p>Recipe discovery arranged like a clock.</p></div></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink, #12414f); background: var(--card, #fffdf7); border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 4px; overflow: hidden; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { transform: translateY(-5px); border-color: var(--ink, #12414f); color: var(--ink, #12414f); } .ds-card:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; } .ds-card-media { position: relative; aspect-ratio: 4 / 3; background: var(--paper, #fef9ef); border-bottom: 1px solid var(--line, rgba(18, 65, 79, 0.16)); } .ds-frame-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; border: 1.5px dashed color-mix(in srgb, var(--ink, #12414f) 35%, transparent); color: var(--mute, #47606a); font-family: \"JetBrains Mono\", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; } .ds-card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 9px; } .ds-card-meta { font-family: \"JetBrains Mono\", monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--acc2ink, #b8323c); } .ds-card h3 { margin: 0; font-size: 22px; font-family: termina, sans-serif; font-weight: 500; line-height: 1.12; } .ds-card p { margin: 0; font-family: \"Roboto Serif\", Georgia, serif; font-size: 15.5px; line-height: 1.45; color: var(--mute, #47606a); }"
+    },
+    {
+      "name": "Skill Panel",
+      "kind": "card",
+      "refersTo": "skill",
+      "description": "Outlined paper panel. Same stock as the page, not a lifted card.",
+      "html": "<div class=\"ds-skill\"><h3>Development</h3><ul><li>CSS and Sass that stay sane</li><li>Design system and UI kit builds</li></ul></div>",
+      "css": ".ds-skill { border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 4px; background: var(--paper, #fef9ef); padding: 24px; display: flex; flex-direction: column; gap: 12px; } .ds-skill h3 { margin: 0; font-size: 17px; font-family: termina, sans-serif; font-weight: 500; color: var(--ink, #12414f); } .ds-skill ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; } .ds-skill li { font-family: \"Roboto Serif\", Georgia, serif; font-size: 15px; line-height: 1.45; color: var(--mute, #47606a); }"
+    },
+    {
+      "name": "Stack Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Tiny 3px mono tag for a project stack. Display only.",
+      "html": "<span class=\"ds-chip\">Vue 3</span> <span class=\"ds-chip\">WCAG 2.2</span>",
+      "css": ".ds-chip { display: inline-block; padding: 3px 8px; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 3px; font-family: \"JetBrains Mono\", monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--mute, #47606a); }"
+    },
+    {
+      "name": "Empty Image Frame",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Honest missing-asset slot. Dashed ink, uppercase mono hint. Never fake a screenshot.",
+      "html": "<div class=\"ds-empty\">Drop a portrait (4:5)</div>",
+      "css": ".ds-empty { position: relative; aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; border: 1.5px dashed color-mix(in srgb, var(--ink, #12414f) 35%, transparent); border-radius: 4px; background: color-mix(in srgb, var(--ink, #12414f) 4%, transparent); color: var(--mute, #47606a); font-family: \"JetBrains Mono\", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Italic Accent",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "One Sea Glass italic serif word inside a Termina headline.",
+      "html": "<h1 class=\"ds-display\">Selected <span class=\"ds-italic\">work</span></h1>",
+      "css": ".ds-display { margin: 0; font-family: termina, sans-serif; font-weight: 900; font-size: clamp(34px, 7vw, 72px); line-height: 0.88; color: var(--ink, #12414f); } .ds-italic { display: inline-block; font-size: 1.18em; line-height: 0.9; font-family: \"Roboto Serif\", Georgia, serif; font-style: italic; font-variation-settings: \"wght\" 460, \"GRAD\" 40, \"wdth\" 122; letter-spacing: 0.025em; color: var(--acc, #227c9d); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Typesetter's Studio",
+    "overview": "A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; JetBrains Mono is the tools left on the desk — kickers, meta, labels, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.\n\nDensity is editorial. One very large display size, hairline rules, auto-fit grids, and cream laid ground with a print-pattern grain. Personality lives in the pairing and the texture. Actions are soft pills; surfaces are quiet 4px rectangles. Hover lifts a card a few pixels and turns its border to ink. Nothing casts a shadow.\n\nVisual rejections already in the code: no drop shadows, no glass, no gradient heroes, no tech-startup chrome. Empty image frames stay dashed until a real asset exists. Dark theme inverts the stock (deep teal paper, cream ink) and brightens Sea Glass; the print grain multiplies into the night paper.",
+    "keyCharacteristics": [
+      "Cream laid paper, Deep Teal Ink, Sea Glass actions, scarce Vermilion Spark",
+      "Three type voices only (Termina, Roboto Serif, JetBrains Mono)",
+      "Flat hairline surfaces; lift-on-hover is the only physical move",
+      "Print-pattern grain as paper, not decoration layered on top",
+      "Honest dashed slots where images are missing"
+    ],
+    "rules": [
+      {
+        "name": "The Rare Vermilion Rule",
+        "body": "Vermilion stays scarce. Tiny marks are the default; occasional larger fills are allowed. Sea Glass remains the primary action fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Stock Rule",
+        "body": "Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third ground (pure white, cool gray, or black).",
+        "section": "colors"
+      },
+      {
+        "name": "The Three-Voice Rule",
+        "body": "Termina for structure and display. Roboto Serif for reading and the italic accent. JetBrains Mono for tools. Do not add a fourth family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Italic Accent Rule",
+        "body": "One italic Roboto Serif word may sit inside a Termina headline, in Sea Glass, at 1.18em, with the variable-font settle (wght 460 / GRAD 40 / wdth 122 → 400 / 0 / 100 over 4s). Use it as a stress, not a style for whole sentences.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Hairlines only. Hover may lift and darken the border to ink. Shadows are not a response to state.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Soft-Action Rule",
+        "body": "Pills for things you press. 4px for things you read. 3px for tiny chips. Do not invent a new radius.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep the three voices in their jobs: Termina structure, serif reading, mono tools.",
+      "Do set pages on Cream Laid with the print-pattern grain and the documented blend modes.",
+      "Do use Sea Glass for primary fills, links, and the italic accent.",
+      "Do leave empty frames dashed and labeled until a real asset exists.",
+      "Do honor prefers-reduced-motion (animations collapse to 0.01ms) and keep the 44px nav/filter targets.",
+      "Do section with hairline line rules (and the 2px ink rule under the resume name only)."
+    ],
+    "donts": [
+      "Don't add drop shadows, glass, gradients, or a third paper color.",
+      "Don't introduce a fourth type family.",
+      "Don't make Vermilion the default primary-button fill; rarity is the point even when a larger mark is allowed.",
+      "Don't set paragraphs in Termina or headlines in mono.",
+      "Don't hide placeholder work or missing portraits behind invented images.",
+      "Don't treat the hover lift as permission to build an elevation scale."
+    ]
+  }
+}
