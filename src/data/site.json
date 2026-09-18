@@ -6,43 +6,24 @@
     { "k": "Email", "v": "bdnorris@gmail.com", "href": "mailto:bdnorris@gmail.com" },
     { "k": "Phone", "v": "417.425.7739", "href": "tel:+14174257739" }
   ],
-  "toolkit": [
-    "Sass",
-    "Vue",
-    "Design systems",
-    "WCAG 2.2",
-    "Svelte",
-    "Typography",
-    "GraphQL",
-    "Twig",
-    "Motion",
-    "React",
-    "Craft CMS",
-    "Core Web Vitals",
-    "Sanity",
-    "Accessibility audits",
-    "ES6",
-    "Prototyping",
-    "Pimcore",
-    "UI kits"
-  ],
   "skills": [
     {
       "title": "Development",
       "items": [
         "CSS and Sass that stay sane",
-        "ES6, Vue, Svelte, React",
-        "Twig and other templating",
-        "Design system and UI kit builds"
+        "JavaScript / TypeScript: Vue, Svelte, Alpine.js",
+        "Design system and UI kit builds",
+        "Meaningful and performant animations"
       ]
     },
     {
       "title": "Design",
       "items": [
-        "Typographic manipulation",
+        "Fluid and responsive typography",
         "Interface design",
         "Wireframing and prototyping",
-        "Information architecture"
+        "Information architecture",
+        "Sitemapping"
       ]
     },
     {
@@ -60,7 +41,17 @@
         "Documenting best practices",
         "Requirements and acceptance tests",
         "Custom project boilerplates",
-        "Mentoring junior designers and devs"
+        "Mentoring junior designers and devs",
+        "LLM assisted architectural planning"
+      ]
+    },
+    {
+      "title": "AI Development",
+      "items": [
+        "Code generation and scaffolding",
+        "AI-assisted code review",
+        "AI output validation and quality control",
+        "Figma-to-code via MCP driven workflows"
       ]
     }
   ],
