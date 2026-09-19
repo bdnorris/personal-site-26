@@ -94,6 +94,12 @@ h1, h2, h3 {
   text-wrap: balance;
 }
 
+h1, h2 {
+  margin: 0;
+  font-family: "termina", sans-serif;
+  font-weight: 900;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -448,12 +454,8 @@ h1, h2, h3 {
 }
 
 .hero h1 {
-  margin: 0;
-  /* max-width: 14ch; */
   font-size: clamp(34px, 7vw, 112px);
   line-height: 1;
-  font-family: "termina", sans-serif;
-  font-weight: 900;
 }
 
 .hero h1 > span {
@@ -517,18 +519,6 @@ h1, h2, h3 {
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: clamp(22px, 3vw, 40px);
-}
-
-.section h2,
-.band h2,
-.work-page h1,
-.about-copy h1,
-.resume-head h1,
-.case-hero h1,
-.missing h1 {
-  margin: 0;
-  font-family: "termina", sans-serif;
-  font-weight: 900;
 }
 
 .section-head h2,
