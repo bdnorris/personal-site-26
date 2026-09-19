@@ -1,7 +1,14 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ImageFrame from "../../components/ImageFrame.astro";
-import { getNextWork, getWork, getWorkById } from "../../lib/work";
+import {
+  getNextWork,
+  getWork,
+  getWorkById,
+  linkDisplay,
+  yearLabel,
+  type WorkVisual,
+} from "../../lib/work";
 
 export function getStaticPaths() {
   return getWork().map((item) => ({ params: { id: item.id } }));
@@ -14,15 +21,36 @@ if (!item) throw new Error(`Unknown work id: ${id}`);
 const next = getNextWork(item);
 const c = item.case;
 const meta = [
-  c?.client ? { k: "Client", v: c.client } : { k: "Category", v: item.category },
+  { k: "Type", v: item.category },
+  c?.client ? { k: "Client", v: c.client } : null,
   c?.role ? { k: "Role", v: c.role } : null,
+  { k: yearLabel(item.year), v: item.year },
+  ...(c?.links ?? []).map((link) => ({
+    k: link.label,
+    v: linkDisplay(link.href),
+    href: link.href,
+  })),
   { k: "Stack", v: item.stack.join(", ") },
-  { k: "Year", v: item.year },
-].filter((row): row is { k: string; v: string } => row !== null);
+].filter((row): row is { k: string; v: string; href?: string } => row !== null);
 
 const heroSrc = c?.hero ?? item.image;
 const heroHint = item.imageHint ?? item.title;
 const rich = Boolean(c);
+
+function visualKey(visual: WorkVisual, index: number): string {
+  switch (visual.kind) {
+    case "shots":
+      return `shots-${index}`;
+    case "code":
+      return `code-${visual.filename}-${index}`;
+    case "compare":
+      return `compare-${index}`;
+    default: {
+      const _exhaustive: never = visual;
+      return _exhaustive;
+    }
+  }
+}
 ---
 
 <BaseLayout title={`${item.title} · Brian Norris`} description={item.blurb}>
@@ -35,9 +63,23 @@ const rich = Boolean(c);
       <dl class="meta-grid">
         {
           meta.map((m) => (
-            <div class="meta-cell">
+            <div class:list={["meta-cell", { "meta-cell--wrap": m.k === "Stack" }]}>
               <dt>{m.k}</dt>
-              <dd>{m.v}</dd>
+              <dd>
+                {m.href ? (
+                  <a href={m.href} rel="noreferrer" target="_blank">
+                    {m.v}
+                  </a>
+                ) : m.k === "Stack" ? (
+                  <div class="stack">
+                    {item.stack.map((s) => (
+                      <span>{s}</span>
+                    ))}
+                  </div>
+                ) : (
+                  m.v
+                )}
+              </dd>
             </div>
           ))
         }
@@ -53,81 +95,134 @@ const rich = Boolean(c);
     {
       rich && (
         <article class="case-body">
-          {c?.problem?.length ? (
+          {c?.context?.length ? (
             <div class="case-split">
-              <h2>The problem</h2>
+              <h2>Context</h2>
               <div class="case-copy">
-                {c.problem.map((p) => (
+                {c.context.map((p) => (
                   <p>{p}</p>
                 ))}
               </div>
             </div>
           ) : null}
 
-          {c?.quote ? (
-            <blockquote class="pull">
-              <p>{c.quote}</p>
-            </blockquote>
+          {c?.roleDetail ? (
+            <div class="case-split">
+              <h2>Role</h2>
+              <aside class="case-copy case-role">
+                <p>{c.roleDetail}</p>
+              </aside>
+            </div>
           ) : null}
 
-          {c?.approach ? (
+          {c?.decisions?.length ? (
             <div class="case-split">
-              <h2>The approach</h2>
+              <h2>Process</h2>
               <div class="case-copy">
-                <p>{c.approach.body}</p>
-                {c.approach.bullets?.length ? (
-                  <ul>
-                    {c.approach.bullets.map((b) => (
-                      <li>{b}</li>
-                    ))}
-                  </ul>
-                ) : null}
+                <ol class="case-decisions">
+                  {c.decisions.map((d, i) => (
+                    <li class="case-decision">
+                      <span class="n">{String(i + 1).padStart(2, "0")}</span>
+                      <div>
+                        <h3>{d.title}</h3>
+                        <p>{d.body}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </div>
           ) : null}
 
-          {c?.shots?.length ? (
-            <figure class="shots">
-              <div class="shots-grid">
-                {c.shots.map((shot) => (
-                  <div class="shot">
-                    <ImageFrame src={shot.src} hint={shot.hint} />
-                  </div>
-                ))}
-              </div>
-              {c.shotsCaption ? <figcaption>{c.shotsCaption}</figcaption> : null}
-            </figure>
-          ) : null}
-
-          {c?.interesting ? (
+          {c?.visuals?.length ? (
             <div class="case-split">
-              <h2>The interesting part</h2>
+              <h2>Visuals</h2>
               <div class="case-copy">
-                <p>{c.interesting.body}</p>
-                {c.interesting.code ? (
-                  <div class="code-block">
-                    <div class="code-bar">
-                      <span class="code-dot"></span>
-                      <span class="code-name">{c.interesting.code.filename}</span>
-                    </div>
-                    <pre>
-                      <code set:html={c.interesting.code.html} />
-                    </pre>
-                  </div>
-                ) : null}
+                {c.visuals.map((visual, index) => {
+                  const key = visualKey(visual, index);
+                  switch (visual.kind) {
+                    case "shots":
+                      return (
+                        <figure class="shots" data-visual={key}>
+                          <div class="shots-grid">
+                            {visual.shots.map((shot) => (
+                              <div class="shot">
+                                <ImageFrame src={shot.src} hint={shot.hint} />
+                              </div>
+                            ))}
+                          </div>
+                          {visual.caption ? <figcaption>{visual.caption}</figcaption> : null}
+                        </figure>
+                      );
+                    case "code":
+                      return (
+                        <div class="code-block" data-visual={key}>
+                          <div class="code-bar">
+                            <span class="code-dot"></span>
+                            <span class="code-name">{visual.filename}</span>
+                          </div>
+                          <pre>
+                            <code set:html={visual.html} />
+                          </pre>
+                        </div>
+                      );
+                    case "compare":
+                      return (
+                        <figure class="compare" data-visual={key}>
+                          <div class="compare-grid">
+                            <div class="compare-pane">
+                              <span class="compare-label">Before</span>
+                              <div class="shot">
+                                <ImageFrame src={visual.before.src} hint={visual.before.hint} />
+                              </div>
+                            </div>
+                            <div class="compare-pane">
+                              <span class="compare-label">After</span>
+                              <div class="shot">
+                                <ImageFrame src={visual.after.src} hint={visual.after.hint} />
+                              </div>
+                            </div>
+                          </div>
+                          {visual.caption ? <figcaption>{visual.caption}</figcaption> : null}
+                        </figure>
+                      );
+                    default: {
+                      const _exhaustive: never = visual;
+                      return _exhaustive;
+                    }
+                  }
+                })}
               </div>
             </div>
           ) : null}
 
-          {c?.stats?.length ? (
+          {c?.outcome?.length || c?.stats?.length ? (
             <div class="case-split">
               <h2>Outcome</h2>
-              <div class="stats">
-                {c.stats.map((s) => (
-                  <div class="stat">
-                    <div class="stat-n">{s.n}</div>
-                    <div class="stat-l">{s.label}</div>
+              <div class="case-copy">
+                {c?.outcome?.map((p) => (
+                  <p>{p}</p>
+                ))}
+                {c?.stats?.length ? (
+                  <div class="stats">
+                    {c.stats.map((s) => (
+                      <div class="stat">
+                        <div class="stat-n">{s.n}</div>
+                        <div class="stat-l">{s.label}</div>
+                      </div>
+                    ))}
                   </div>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+
+          {c?.reflections?.length ? (
+            <div class="case-split">
+              <h2>Reflections</h2>
+              <div class="case-copy">
+                {c.reflections.map((p) => (
+                  <p>{p}</p>
                 ))}
               </div>
             </div>
@@ -144,19 +239,12 @@ const rich = Boolean(c);
     }
 
     {
-      !rich && item.stack.length ? (
+      !rich && next && next.id !== item.id ? (
         <article class="case-body">
-          <div class="stack">
-            {item.stack.map((s) => (
-              <span>{s}</span>
-            ))}
+          <div class="next-row">
+            <span class="link-quiet">Next case study</span>
+            <a href={`/work/${next.id}`}>{next.title} →</a>
           </div>
-          {next && next.id !== item.id ? (
-            <div class="next-row">
-              <span class="link-quiet">Next case study</span>
-              <a href={`/work/${next.id}`}>{next.title} →</a>
-            </div>
-          ) : null}
         </article>
       ) : null
     }

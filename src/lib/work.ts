@@ -1,7 +1,10 @@
+import work from "../data/work.json";
+
 export type WorkCategory =
   | "Client"
   | "Freelance"
   | "Personal"
+  | "Education"
   | "Tools / Experiments";
 
 export type WorkShot = {
@@ -9,21 +12,47 @@ export type WorkShot = {
   hint: string;
 };
 
+export type WorkLink = {
+  label: string;
+  href: string;
+};
+
+export type WorkDecision = {
+  title: string;
+  body: string;
+};
+
+export type WorkVisual =
+  | {
+      kind: "shots";
+      shots: WorkShot[];
+      caption?: string;
+    }
+  | {
+      kind: "code";
+      filename: string;
+      html: string;
+    }
+  | {
+      kind: "compare";
+      before: WorkShot;
+      after: WorkShot;
+      caption?: string;
+    };
+
 export type WorkCase = {
   client?: string;
   role?: string;
+  roleDetail?: string;
   lede?: string;
   hero?: string;
-  problem?: string[];
-  quote?: string;
-  approach?: { body: string; bullets?: string[] };
-  shots?: WorkShot[];
-  shotsCaption?: string;
-  interesting?: {
-    body: string;
-    code?: { filename: string; html: string };
-  };
+  links?: WorkLink[];
+  context?: string[];
+  decisions?: WorkDecision[];
+  visuals?: WorkVisual[];
+  outcome?: string[];
   stats?: { n: string; label: string }[];
+  reflections?: string[];
   nextId?: string;
 };
 
@@ -39,8 +68,6 @@ export type WorkItem = {
   imageHint?: string;
   case?: WorkCase;
 };
-
-import work from "../data/work.json";
 
 const items = work as WorkItem[];
 
@@ -80,4 +107,19 @@ export function getNextWork(item: WorkItem): WorkItem | undefined {
   const index = items.findIndex((entry) => entry.id === item.id);
   if (index < 0) return undefined;
   return items[(index + 1) % items.length];
+}
+
+export function linkDisplay(href: string): string {
+  try {
+    const url = new URL(href);
+    const host = url.hostname.replace(/^www\./, "");
+    const path = url.pathname.replace(/\/$/, "");
+    return path ? `${host}${path}` : host;
+  } catch {
+    return href;
+  }
+}
+
+export function yearLabel(year: string): "Dates" | "Year" {
+  return /\d\s*[–-]\s*\d/.test(year) ? "Dates" : "Year";
 }

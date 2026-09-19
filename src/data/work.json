@@ -1,5 +1,15 @@
 [
   {
+    "id": "web-design-for-design-majors",
+    "title": "Web Design for Design Majors",
+    "blurb": "A course on web design for design majors.",
+    "category": "Education",
+    "year": "2019",
+    "stack": ["VuePress"],
+    "featured": false,
+    "imageHint": "Web Design for Design Majors screenshot"
+  },
+  {
     "id": "alchemedia",
     "title": "The Alchemedia Project Website",
     "blurb": "My first site using a headless CMS.",
@@ -32,36 +42,57 @@
       "client": "Daymaker",
       "role": "Lead front-end",
       "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
-      "problem": [
-        "A conventional recipe grid treats every dish as equivalent. The client's products, however, belong to moments: breakfast spreads, an afternoon snack, something to put out before dinner. A flat list flattened that meaning and left users scrolling without a reason to stop.",
-        "The brief asked for discovery, not search. People arriving at the site did not know the recipe they wanted. They knew the time of day."
+      "context": [
+        "Daymaker needed a way for people to find recipes that used their spreads. The usual pattern on brand sites like this is a grid: every recipe a card, every card a click, the products sitting in a sidebar as filters. It works if you already know what you want.",
+        "The brief was discovery, not search. Visitors would arrive with a jar in the fridge and a time of day, not a recipe name. Breakfast, an afternoon snack, something to put out before dinner. A flat list treated those moments as equivalent and left people scrolling without a reason to stop.",
+        "The products belong to the day. That was the thing to design around. If the interface could make time of day the way you move, the recipes would sort themselves."
       ],
-      "quote": "The clock became the navigation. Time of day is the only filter anyone actually uses.",
-      "approach": {
-        "body": "Recipes sit on a radial track. Rotating the dial moves through the day, and each position brings its cluster of dishes forward. The interaction is pointer, keyboard, and touch driven, with a plain list view underneath for anyone who does not want the dial.",
-        "bullets": [
-          "Radial layout computed from a single angle value, so the whole scene animates from one source of truth.",
-          "Arrow keys step recipe to recipe; Home and End jump to the start and end of the day.",
-          "Motion respects prefers-reduced-motion by swapping the rotation for a crossfade."
-        ]
-      },
-      "shots": [
-        { "hint": "Dial, morning state" },
-        { "hint": "Dial, evening state" },
-        { "hint": "List fallback view" }
+      "roleDetail": "I was lead front-end. I owned the interaction model, the radial layout, and the accessible fallback — from the first prototype through the keyboard and screen-reader pass. Design set the metaphor. I had to make a clock that was also a list, a pointer toy, and something you could use with the screen off.",
+      "decisions": [
+        {
+          "title": "The clock is the navigation",
+          "body": "I tried a conventional filter bar first: time of day as chips. It was honest and dead. People still scanned a grid. Putting recipes on a radial track meant rotating the dial moved you through the day, and each position brought its cluster forward. Time of day stopped being a filter you apply and became the way the scene is organized."
+        },
+        {
+          "title": "One angle, no per-card state",
+          "body": "The first prototype stored position, scale, and opacity on each card. It drifted. Every card's transform now derives from its angular distance to the active slot. One function, one source of truth, and the browser gets a single composited transform per node. No animation library — transforms and one rAF loop."
+        },
+        {
+          "title": "The list is not a consolation prize",
+          "body": "A radial UI is a pointer story. Keyboard users, screen reader users, and anyone who does not want the dial still need the recipes. Arrow keys step recipe to recipe; Home and End jump the day. Underneath, a plain list is the same data, not a dumbed-down view. If the clock failed, the page still had to work."
+        },
+        {
+          "title": "Motion that can be turned off",
+          "body": "Rotation explains what changed: you moved in time. If someone prefers reduced motion, that explanation has to survive without the spin. The fallback is a crossfade between clusters. Animation that cannot be turned off gracefully is not finished."
+        }
       ],
-      "shotsCaption": "Three states of the dial, plus the list fallback",
-      "interesting": {
-        "body": "Every card's position, scale, and opacity derives from its angular distance to the active slot. One function, no per-card state, and the browser gets a single composited transform per node.",
-        "code": {
+      "visuals": [
+        {
+          "kind": "shots",
+          "shots": [
+            { "hint": "Dial, morning state" },
+            { "hint": "Dial, evening state" },
+            { "hint": "List fallback view" }
+          ],
+          "caption": "Morning and evening on the dial, plus the list that carries the same recipes"
+        },
+        {
+          "kind": "code",
           "filename": "dial.js",
           "html": "<div><span class=\"code-mute\">// position derives from angular distance to the active slot</span></div>\n<div><span class=\"code-acc\">const</span> place = (i, active, total) =&gt; {</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> step&nbsp; = <span class=\"code-acc2\">360</span> / total;</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> delta = shortestArc(i * step, active * step);</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> near&nbsp; = <span class=\"code-acc2\">1</span> - Math.min(Math.abs(delta) / <span class=\"code-acc2\">90</span>, <span class=\"code-acc2\">1</span>);</div>\n<div>&nbsp; <span class=\"code-acc\">return</span> {</div>\n<div>&nbsp; &nbsp; transform: <span class=\"code-acc2\">`rotate(${delta}deg) translateY(-42vmin)`</span>,</div>\n<div>&nbsp; &nbsp; scale:&nbsp; &nbsp; &nbsp; <span class=\"code-acc2\">0.72</span> + near * <span class=\"code-acc2\">0.28</span>,</div>\n<div>&nbsp; &nbsp; opacity:&nbsp; &nbsp;<span class=\"code-acc2\">0.35</span> + near * <span class=\"code-acc2\">0.65</span>,</div>\n<div>&nbsp; };</div>\n<div>};</div>"
         }
-      },
+      ],
+      "outcome": [
+        "What shipped is a recipe index you can rotate, tap, or tab through. The dial is the face of it; the list is the contract. Keyboard and screen-reader passes cleared WCAG 2.2 AA. Lighthouse sat at 98 on the recipe index, with no animation library in the bundle.",
+        "I cannot point to a conversion lift I was given permission to publish. What I can say is the thing the brief asked for: people who know what time it is, not what they want to cook, have a reason to stop."
+      ],
       "stats": [
         { "n": "0 deps", "label": "No animation library. Transforms and one rAF loop." },
         { "n": "AA", "label": "WCAG 2.2 AA verified with keyboard and screen reader passes." },
         { "n": "98", "label": "Lighthouse performance on the recipe index." }
+      ],
+      "reflections": [
+        "If I did this again I would start with the list as the source of truth and dress the dial on top, instead of carving a fallback out of a radial prototype. I would also test earlier with an ugly number of recipes. The math is elegant at a dozen cards and mean at forty; I learned that later than I should have."
       ],
       "nextId": "marzetti"
     }

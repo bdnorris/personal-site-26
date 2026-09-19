@@ -59,7 +59,7 @@ Current homepage statement to keep: great designs do not automatically become gr
 
 - Biography, employment, education, skills, and contacts: `src/data/site.json`.
 - Named work entries: The Alchemedia Project Website (2023, Sanity / Nuxt / GraphQL), T. Marzetti Product Filters (2024, Vue 3 / Pinia / REST), All Spreads / Daymaker (2025, Vue 3 / CSS transforms / WCAG 2.2). Only All Spreads currently has a full case study.
-- All Spreads case copy in `work.json` includes authored outcome stats and an unlabeled quote. Treat as Brian’s own case writing, not third-party testimonials or independently verified press.
+- All Spreads is the only full case study. Copy follows an eight-section format: header and metadata, hero, context, role, process, visuals, outcome, optional reflections. Outcome stats are authored by Brian, not independently verified press. Do not invent live URLs, metrics, or testimonials.
 - Placeholder work slots exist for freelance, personal, and tools/experiments. They must not be presented as shipped work.
 - Portrait is not supplied. `public/favicon.svg` and `public/images/printpattern.png` exist.
 - HTML comps live under `CompV1/` as prior visual exports, not as product claims.
