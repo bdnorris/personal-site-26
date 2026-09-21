@@ -101,83 +101,92 @@
       ],
       "outcome": [
         "The app is currently live on several client sites across different brands and product catalogs, handling both product and recipe filtering. The shift from WPGraphQL to a server-side JS object resolved the performance issues and became the standard data approach for all subsequent WordPress implementations."
-      ]
+      ],
+      "reflections": [
+        "In hindsight, the volume of WordPress implementations makes a strong case for packaging this as a proper plugin with an admin interface for filter configuration, rather than manual setup. It's the natural next step for something that's become a recurring solution."
+      ],
+      "nextId": "allspreads"
     }
   },
   {
     "id": "allspreads",
-    "title": "All Spreads",
-    "blurb": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
+    "title": "All Spreads Daymaker",
+    "blurb": "A recipe discovery app for a food-service brand that arranges recipes on a programmatically generated SVG clock, organized by daypart.",
     "category": "Client",
-    "year": "2025",
-    "stack": ["Vue 3", "CSS transforms", "WCAG 2.2"],
+    "year": "2023",
+    "stack": ["Vue 3", "SVG", "REST API"],
     "links": [
-      { "label": "Live site", "href": "" },
-      { "label": "Repository", "href": "" }
+      { "label": "Live site", "href": "https://rc.smuckers-afh.marlindev.com/smuckers-inspiration" }
     ],
     "featured": true,
     "hero": {
-      "hint": "",
-      "alt": "",
-      "src": null
+      "hint": "A screenshot of the Daymaker app",
+      "alt": "Smucker’s Day Maker tool lets users spin a wheel of meal ideas with photos of dishes. On the right, a box offers options to explore recipes: Breakfasts, Entrees, or Snacks &amp; Sweets, with a red checkered border below.",
+      "src": "/images/hero_allspreads.avif"
     },
     "case": {
-      "client": "Daymaker",
+      "client": "Smucker",
       "role": "Lead front-end",
       "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
       "context": [
-        "Daymaker needed a way for people to find recipes that used their spreads. The usual pattern on brand sites like this is a grid: every recipe a card, every card a click, the products sitting in a sidebar as filters. It works if you already know what you want.",
-        "The brief was discovery, not search. Visitors would arrive with a jar in the fridge and a time of day, not a recipe name. Breakfast, an afternoon snack, something to put out before dinner. A flat list treated those moments as equivalent and left people scrolling without a reason to stop.",
-        "The products belong to the day. That was the thing to design around. If the interface could make time of day the way you move, the recipes would sort themselves."
+        "Daypart filtering is a common need in food-service recipe discovery -- a chef or menu planner looking to fill a breakfast gap thinks differently than one planning dinner. The client wanted a recipe discovery experience that made dayparts the organizing principle, presented in a way that felt distinctive and engaging rather than a standard filtered list.",
+        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable -- pulled live from a CMS API -- meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data loaded."
       ],
-      "roleDetail": "I was lead front-end. I owned the interaction model, the radial layout, and the accessible fallback — from the first prototype through the keyboard and screen-reader pass. Design set the metaphor. I had to make a clock that was also a list, a pointer toy, and something you could use with the screen off.",
+      "roleDetail": "Sole developer on the app. A separate developer built and maintained the Pimcore REST API; a designer provided complete designs for both the desktop clock and mobile pie chart views. The SVG generation, trigonometric calculations, animation, and Vue architecture were entirely my own work.",
       "decisions": [
         {
-          "title": "The clock is the navigation",
-          "body": "I tried a conventional filter bar first: time of day as chips. It was honest and dead. People still scanned a grid. Putting recipes on a radial track meant rotating the dial moved you through the day, and each position brought its cluster forward. Time of day stopped being a filter you apply and became the way the scene is organized."
+          "title": "Generating the clock as SVG",
+          "body": "The entire clock is built programmatically in Vue -- there is no static SVG base. Recipes, daypart slices, markers, labels, and color coding are all computed and rendered from the API data. Color coding is data-driven from the CMS, making it easy to update without touching the front end."
         },
         {
-          "title": "One angle, no per-card state",
-          "body": "The first prototype stored position, scale, and opacity on each card. It drifted. Every card's transform now derives from its angular distance to the active slot. One function, one source of truth, and the browser gets a single composited transform per node. No animation library — transforms and one rAF loop."
+          "title": "The trig problem",
+          "body": "Because the number of recipes per daypart varies, the angular size of each slice varies too. Placing recipe markers and daypart labels at the correct positions on the circle required trigonometric calculations after each data load. The calculations needed to handle centering each daypart's recipes within its slice, accumulating angles correctly across dayparts, and converting between degrees and radians for SVG coordinate math."
         },
         {
-          "title": "The list is not a consolation prize",
-          "body": "A radial UI is a pointer story. Keyboard users, screen reader users, and anyone who does not want the dial still need the recipes. Arrow keys step recipe to recipe; Home and End jump the day. Underneath, a plain list is the same data, not a dumbed-down view. If the clock failed, the page still had to work."
+          "title": "Trigonometry for variable item placement",
+          "body": "AI assistance was instrumental in working out the correct trigonometric functions for variable item placement -- a problem that is easy to get subtly wrong and hard to debug visually."
         },
         {
-          "title": "Motion that can be turned off",
-          "body": "Rotation explains what changed: you moved in time. If someone prefers reduced motion, that explanation has to survive without the spin. The fallback is a crossfade between clusters. Animation that cannot be turned off gracefully is not finished."
+          "title": "Animation",
+          "body": "GreenSock (GSAP) handles the fork and knife pointer animation, adding a tactile, satisfying quality to interacting with the clock that a CSS transition alone wouldn't achieve."
+        },
+        {
+          "title": "Mobile adaptation",
+          "body": "The desktop clock gives way to a simpler pie chart on mobile, letting users tap a daypart to select it. The switch was a practical design decision -- the full clock UI doesn't translate well to touch targets and narrow viewports, but the core daypart-first navigation concept carries over cleanly."
         }
       ],
       "visuals": [
         {
           "kind": "shots",
           "shots": [
-            { "hint": "Dial, morning state" },
-            { "hint": "Dial, evening state" },
-            { "hint": "List fallback view" }
-          ],
-          "caption": "Morning and evening on the dial, plus the list that carries the same recipes"
+            { "hint": "Screenshot of the Daymaker app, showing a selected recipe",
+              "src": "/images/allspreads/ss-desktop2.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
+            },
+            { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the desktop",
+              "src": "/images/allspreads/ss-desktop3.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
+            },
+            { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the mobile",
+              "src": "/images/allspreads/ss-mobile1.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected daypart on the mobile."
+            },
+            { "hint": "Screenshot of the Daymaker app, showing a selected recipe on mobile",
+              "src": "/images/allspreads/ss-mobile2.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected recipe on mobile."
+            }
+          ]
         },
         {
           "kind": "code",
-          "filename": "dial.js",
-          "html": "<div><span class=\"code-mute\">// position derives from angular distance to the active slot</span></div>\n<div><span class=\"code-acc\">const</span> place = (i, active, total) =&gt; {</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> step&nbsp; = <span class=\"code-acc2\">360</span> / total;</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> delta = shortestArc(i * step, active * step);</div>\n<div>&nbsp; <span class=\"code-acc\">const</span> near&nbsp; = <span class=\"code-acc2\">1</span> - Math.min(Math.abs(delta) / <span class=\"code-acc2\">90</span>, <span class=\"code-acc2\">1</span>);</div>\n<div>&nbsp; <span class=\"code-acc\">return</span> {</div>\n<div>&nbsp; &nbsp; transform: <span class=\"code-acc2\">`rotate(${delta}deg) translateY(-42vmin)`</span>,</div>\n<div>&nbsp; &nbsp; scale:&nbsp; &nbsp; &nbsp; <span class=\"code-acc2\">0.72</span> + near * <span class=\"code-acc2\">0.28</span>,</div>\n<div>&nbsp; &nbsp; opacity:&nbsp; &nbsp;<span class=\"code-acc2\">0.35</span> + near * <span class=\"code-acc2\">0.65</span>,</div>\n<div>&nbsp; };</div>\n<div>};</div>"
+          "filename": "clock.vue",
+          "html": "<div>dayparts.value.forEach((daypart): <span class=\"code-acc\">void</span> =&gt; {</div>\n<div>&nbsp; &nbsp; daypart.titlePieces = splitWords(daypart.title, <span class=\"code-acc2\">10</span>)</div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Calculate the angle of the daypart</span></div>\n<div>&nbsp; &nbsp; daypart.angle = (daypart.count / computedNumberOfPoints.value) * <span class=\"code-acc2\">360</span></div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Calculate the arc length of the daypart</span></div>\n<div>&nbsp; &nbsp; daypart.arc = calculateArcLength(radiusOfPieStroke, daypart.angle)</div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Base centers the pie on its daypart recipes</span></div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">let</span> base: <span class=\"code-acc\">number</span> = fullCircumferenceOfPieStroke / <span class=\"code-acc2\">4</span> + daypart.arc / daypart.count / <span class=\"code-acc2\">2</span></div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Set the dash offset of the daypart</span></div>\n<div>&nbsp; &nbsp; daypart.offset = base - offsetAccumulator</div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Calculate the angle bisector</span></div>\n<div>&nbsp; &nbsp; cumulativeAngle += daypart.angle;</div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">if</span> (cumulativeAngle &gt;= daypart.angle) {</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp; angleBisector = cumulativeAngle - daypart.angle / <span class=\"code-acc2\">2</span>;</div>\n<div>&nbsp; &nbsp; }</div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Convert base back to degrees</span></div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">const</span> angleOffset = <span class=\"code-acc2\">90</span> + (base * (Math.PI / <span class=\"code-acc2\">180</span>))</div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Convert the angle from degrees to radians</span></div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">const</span> angleRad = (angleBisector - angleOffset) * (Math.PI / <span class=\"code-acc2\">180</span>);</div>\n<div>&nbsp; &nbsp; <span class=\"code-mute\">// Calculate the coordinates of the point</span></div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">const</span> x = (centerX + <span class=\"code-acc2\">100</span>) + radiusOfPieStroke * Math.cos(angleRad);</div>\n<div>&nbsp; &nbsp; daypart.labelX = x</div>\n<div><span class=\"code-acc\">const</span> y = (centerY + <span class=\"code-acc2\">100</span>) + radiusOfPieStroke * Math.sin(angleRad);</div>\n<div>&nbsp; &nbsp; daypart.labelY = y</div>\n<div></div>\n<div>&nbsp; &nbsp; offsetAccumulator = offsetAccumulator + daypart.arc</div>\n<div>})</div>"
         }
       ],
       "outcome": [
-        "What shipped is a recipe index you can rotate, tap, or tab through. The dial is the face of it; the list is the contract. Keyboard and screen-reader passes cleared WCAG 2.2 AA. Lighthouse sat at 98 on the recipe index, with no animation library in the bundle.",
-        "I cannot point to a conversion lift I was given permission to publish. What I can say is the thing the brief asked for: people who know what time it is, not what they want to cook, have a reason to stop."
+        "The app successfully surfaces recipes organized by daypart in a distinctive, visually engaging format. The variable slice calculation handles real-world data gracefully, and the mobile pie chart provides a usable fallback without sacrificing the daypart-first concept."
       ],
-      "stats": [
-        { "n": "0 deps", "label": "No animation library. Transforms and one rAF loop." },
-        { "n": "AA", "label": "WCAG 2.2 AA verified with keyboard and screen reader passes." },
-        { "n": "98", "label": "Lighthouse performance on the recipe index." }
-      ],
-      "reflections": [
-        "If I did this again I would start with the list as the source of truth and dress the dial on top, instead of carving a fallback out of a radial prototype. I would also test earlier with an ugly number of recipes. The math is elegant at a dozen cards and mean at forty; I learned that later than I should have."
-      ],
-      "nextId": "marzetti"
+      "nextId": "web-design-for-design-majors"
     }
   },
   {
