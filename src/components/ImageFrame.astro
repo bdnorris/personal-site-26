@@ -1,19 +1,49 @@
 ---
 interface Props {
-  src?: string;
+  src?: string | null;
   hint: string;
   alt?: string;
 }
 
 const { src, hint, alt } = Astro.props;
+const srcTrimmed = src?.trim() || "";
+const label = hint.trim() || "Image forthcoming";
+const text = alt?.trim() || label;
+const hasSlot = Astro.slots.has("default");
 ---
 
-<div class="frame">
+<div class="frame" data-image-frame>
   {
-    src ? (
-      <img src={src} alt={alt ?? hint} />
-    ) : (
-      <div class="frame-empty">{hint}</div>
-    )
+    hasSlot ? (
+      <slot />
+    ) : srcTrimmed ? (
+      <img src={srcTrimmed} alt={text} />
+    ) : null
   }
+  <div class="frame-empty" data-image-fallback>{label}</div>
 </div>
+
+<script>
+  function hideBrokenImage(frame: HTMLElement, img: HTMLImageElement) {
+    img.setAttribute("hidden", "");
+    frame.classList.add("is-empty");
+  }
+
+  function bindImageFrames() {
+    document.querySelectorAll("[data-image-frame]").forEach((node) => {
+      if (!(node instanceof HTMLElement) || node.dataset.bound === "1") return;
+      node.dataset.bound = "1";
+      const img = node.querySelector("img");
+      if (!img) {
+        node.classList.add("is-empty");
+        return;
+      }
+      const fail = () => hideBrokenImage(node, img);
+      img.addEventListener("error", fail);
+      if (img.complete && img.naturalWidth === 0) fail();
+    });
+  }
+
+  bindImageFrames();
+  document.addEventListener("astro:page-load", bindImageFrames);
+</script>

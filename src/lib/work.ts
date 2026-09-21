@@ -81,8 +81,31 @@ export const CATEGORIES: Array<"All" | WorkCategory> = [
   "Client",
   "Freelance",
   "Personal",
+  "Education",
   "Tools / Experiments",
 ];
+
+const SAFE_HREF_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
+
+export function isSafeHref(href: string): boolean {
+  const value = href.trim();
+  if (!value) return false;
+  if (value.startsWith("/") && !value.startsWith("//")) return true;
+  try {
+    const url = new URL(value);
+    return SAFE_HREF_PROTOCOLS.has(url.protocol);
+  } catch {
+    return false;
+  }
+}
+
+export function workHeroHint(item: WorkItem): string {
+  return item.hero?.hint?.trim() || item.title;
+}
+
+export function workHeroAlt(item: WorkItem): string {
+  return item.hero?.alt?.trim() || item.title;
+}
 
 export function getWork(): WorkItem[] {
   return items;
@@ -107,11 +130,16 @@ export function countByCategory(category: "All" | WorkCategory): number {
 }
 
 export function getNextWork(item: WorkItem): WorkItem | undefined {
-  const nextId = item.case?.nextId;
-  if (nextId) return getWorkById(nextId);
+  const nextId = item.case?.nextId?.trim();
+  if (nextId) {
+    const named = getWorkById(nextId);
+    if (named && named.id !== item.id) return named;
+  }
   const index = items.findIndex((entry) => entry.id === item.id);
   if (index < 0) return undefined;
-  return items[(index + 1) % items.length];
+  const next = items[(index + 1) % items.length];
+  if (!next || next.id === item.id) return undefined;
+  return next;
 }
 
 export function yearLabel(year: string): "Dates" | "Year" {

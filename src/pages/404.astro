@@ -6,6 +6,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <div class="missing">
     <h1>Page not <span class="italic-acc">found</span></h1>
     <p>That URL does not map to a page on this site.</p>
-    <a class="btn btn-fill" href="/">Back home</a>
+    <div class="missing-actions">
+      <a class="btn btn-fill" href="/">Back home</a>
+      <a class="btn btn-ghost" href="/work">See the work</a>
+    </div>
   </div>
 </BaseLayout>

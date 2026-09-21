@@ -5,8 +5,10 @@ import {
   getNextWork,
   getWork,
   getWorkById,
+  isSafeHref,
+  workHeroAlt,
+  workHeroHint,
   yearLabel,
-  type WorkVisual,
 } from "../../lib/work";
 import { Image } from "astro:assets";
 
@@ -15,22 +17,29 @@ export function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const item = getWorkById(id!);
-if (!item) throw new Error(`Unknown work id: ${id}`);
+const item = getWorkById(id ?? "");
+if (!item) {
+  return Astro.rewrite("/404");
+}
 
 const next = getNextWork(item);
 const c = item.case;
-const links = (item.links ?? []).filter((link) => link.href.trim());
+const links = (item.links ?? []).filter(
+  (link) => isSafeHref(link.href) && link.label.trim(),
+);
+const stack = item.stack.filter((entry) => entry.trim());
 const meta = [
   { k: "Type", v: item.category },
   c?.client ? { k: "Client", v: c.client } : null,
   c?.role ? { k: "Role", v: c.role } : null,
   { k: yearLabel(item.year), v: item.year },
-  { k: "Stack", v: item.stack.join(", ") },
+  stack.length ? { k: "Stack", v: stack.join(", ") } : null,
 ].filter((row): row is { k: string; v: string } => row !== null);
 
 const rich = Boolean(c);
 const heroSrc = item.hero?.src?.trim() || null;
+const heroHint = workHeroHint(item);
+const heroAlt = workHeroAlt(item);
 ---
 
 <BaseLayout title={`${item.title} · Brian Norris`} description={item.blurb}>
@@ -48,7 +57,7 @@ const heroSrc = item.hero?.src?.trim() || null;
               <dd>
                 {m.k === "Stack" ? (
                   <div class="stack">
-                    {item.stack.map((s) => (
+                    {stack.map((s) => (
                       <span>{s}</span>
                     ))}
                   </div>
@@ -63,40 +72,50 @@ const heroSrc = item.hero?.src?.trim() || null;
       {
         links.length ? (
           <ul class="case-links">
-            {links.map((link) => (
-              <li>
-                <a
-                  class="btn btn-fill"
-                  href={link.href}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {link.label}
-                  <span aria-hidden="true">→</span>
-                </a>
-              </li>
-            ))}
+            {links.map((link) => {
+              const href = link.href.trim();
+              const external = /^https?:/i.test(href);
+              return (
+                <li>
+                  <a
+                    class="btn btn-fill"
+                    href={href}
+                    rel={external ? "noreferrer" : undefined}
+                    target={external ? "_blank" : undefined}
+                  >
+                    {link.label}
+                    {external ? <span aria-hidden="true">→</span> : null}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         ) : null
       }
     </section>
 
-    {
-      heroSrc ? (
-        <div class="hero-shot">
-          <div class="shot">
-            <Image
-              src={heroSrc}
-              alt={item.hero?.alt || item.title}
-              widths={[800, 1200, 1600, 2400]}
-              sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, 2400px"
-            />
-          </div>
-        </div>
-      ) : (
-        <ImageFrame hint={item.hero?.hint || item.title} />
-      )
-    }
+    <div class="hero-shot">
+      <div class="shot">
+        {
+          heroSrc ? (
+            <ImageFrame hint={heroHint} alt={heroAlt} src={heroSrc}>
+              <Image
+                src={heroSrc}
+                alt={heroAlt}
+                width={2400}
+                height={1350}
+                widths={[800, 1200, 1600, 2400]}
+                sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, 2400px"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </ImageFrame>
+          ) : (
+            <ImageFrame hint={heroHint} />
+          )
+        }
+      </div>
+    </div>
 
     {
       rich && (

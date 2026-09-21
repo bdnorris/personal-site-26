@@ -13,37 +13,65 @@ const filters = CATEGORIES.map((label) => ({
 }));
 ---
 
-<div class="filters" data-filters>
-  {
-    filters.map((f, i) => (
-      <button
-        class:list={["filter", { "is-on": i === 0 }]}
-        type="button"
-        data-filter={f.label}
-      >
-        {f.label} <span class="n">{f.count}</span>
-      </button>
-    ))
-  }
-</div>
+{
+  items.length ? (
+    <>
+      <div class="filters" data-filters role="group" aria-label="Filter work by category">
+        {filters.map((f, i) => (
+          <button
+            class:list={["filter", { "is-on": i === 0 }]}
+            type="button"
+            data-filter={f.label}
+            aria-pressed={i === 0}
+          >
+            {f.label} <span class="n">{f.count}</span>
+          </button>
+        ))}
+      </div>
 
-<div class="work-grid" data-work-grid>
-  {items.map((item) => <ProjectCard item={item} wide />)}
-</div>
+      <div class="work-grid" data-work-grid>
+        {items.map((item) => (
+          <ProjectCard item={item} wide />
+        ))}
+      </div>
+
+      <p class="work-empty" data-work-empty hidden role="status">
+        No projects in this category.
+        <button type="button" class="link-quiet" data-work-empty-reset>
+          Show all work
+        </button>
+      </p>
+    </>
+  ) : (
+    <p class="work-empty" role="status">No projects to show yet.</p>
+  )
+}
 
 <script>
   const filters = document.querySelector("[data-filters]");
   const grid = document.querySelector("[data-work-grid]");
+  const empty = document.querySelector("[data-work-empty]");
+  const reset = document.querySelector("[data-work-empty-reset]");
   if (filters && grid) {
     const buttons = Array.from(filters.querySelectorAll<HTMLButtonElement>("[data-filter]"));
     const cards = Array.from(grid.querySelectorAll<HTMLElement>("[data-category]"));
 
+    function syncEmpty() {
+      const anyVisible = cards.some((card) => !card.classList.contains("is-hidden"));
+      if (empty instanceof HTMLElement) empty.hidden = anyVisible;
+    }
+
     function apply(cat: string) {
-      buttons.forEach((btn) => btn.classList.toggle("is-on", btn.dataset.filter === cat));
+      buttons.forEach((btn) => {
+        const on = btn.dataset.filter === cat;
+        btn.classList.toggle("is-on", on);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+      });
       cards.forEach((card) => {
         const show = cat === "All" || card.dataset.category === cat;
         card.classList.toggle("is-hidden", !show);
       });
+      syncEmpty();
       const url = new URL(window.location.href);
       if (cat === "All") url.searchParams.delete("cat");
       else url.searchParams.set("cat", cat);
@@ -53,6 +81,9 @@ const filters = CATEGORIES.map((label) => ({
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => apply(btn.dataset.filter || "All"));
     });
+    if (reset instanceof HTMLButtonElement) {
+      reset.addEventListener("click", () => apply("All"));
+    }
 
     const initial = new URLSearchParams(window.location.search).get("cat");
     const known = buttons.some((btn) => btn.dataset.filter === initial);

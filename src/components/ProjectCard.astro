@@ -1,5 +1,5 @@
 ---
-import type { WorkItem } from "../lib/work";
+import { workHeroAlt, workHeroHint, type WorkItem } from "../lib/work";
 import ImageFrame from "./ImageFrame.astro";
 import { Image } from "astro:assets";
 
@@ -10,20 +10,26 @@ interface Props {
 
 const { item, wide = false } = Astro.props;
 const heroSrc = item.hero?.src?.trim() || null;
+const hint = workHeroHint(item);
+const alt = workHeroAlt(item);
 ---
 
 <a class="card" href={`/work/${item.id}`} data-category={item.category}>
   <div class:list={["card-media", { "card-media--wide": wide }]}>
     {
       heroSrc ? (
-        <Image
-          src={heroSrc}
-          alt={item.hero?.alt || item.title}
-          widths={[800, 1200]}
-          sizes="(max-width: 800px) 400px, (max-width: 1200px) 600px"
-        />
+        <ImageFrame hint={hint} alt={alt} src={heroSrc}>
+          <Image
+            src={heroSrc}
+            alt={alt}
+            width={wide ? 1200 : 800}
+            height={wide ? 750 : 600}
+            widths={[800, 1200]}
+            sizes="(max-width: 800px) 400px, 600px"
+          />
+        </ImageFrame>
       ) : (
-        <ImageFrame hint={item.hero?.hint || item.title} />
+        <ImageFrame hint={hint} />
       )
     }
   </div>
@@ -32,13 +38,13 @@ const heroSrc = item.hero?.src?.trim() || null;
     <h3>{item.title}</h3>
     <p>{item.blurb}</p>
     {
-      wide && (
+      wide && item.stack.length ? (
         <div class="stack">
           {item.stack.map((s) => (
             <span>{s}</span>
           ))}
         </div>
-      )
+      ) : null
     }
   </div>
 </a>
