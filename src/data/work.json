@@ -8,7 +8,11 @@
     "stack": ["Sanity", "Nuxt", "GraphQL"],
     "links": [],
     "featured": true,
-    "imageHint": "Alchemedia screenshot"
+    "hero": {
+      "hint": null,
+      "alt": null,
+      "src": null
+    }
   },
   {
     "id": "marzetti",
@@ -19,7 +23,11 @@
     "stack": ["Vue 3", "Pinia", "REST"],
     "links": [],
     "featured": true,
-    "imageHint": "Marzetti filters screenshot"
+    "hero": {
+      "hint": null,
+      "alt": null,
+      "src": null
+    }
   },
   {
     "id": "allspreads",
@@ -33,7 +41,11 @@
       { "label": "Repository", "href": "" }
     ],
     "featured": true,
-    "imageHint": "Daymaker recipe clock",
+    "hero": {
+      "hint": null,
+      "alt": null,
+      "src": null
+    },
     "case": {
       "client": "Daymaker",
       "role": "Lead front-end",
@@ -147,7 +159,11 @@
     "year": "—",
     "stack": ["Placeholder"],
     "links": [],
-    "imageHint": "Drop a screenshot"
+    "hero": {
+      "hint": null,
+      "alt": null,
+      "src": null
+    }
   },
   {
     "id": "slot-2",
@@ -157,7 +173,11 @@
     "year": "—",
     "stack": ["Placeholder"],
     "links": [],
-    "imageHint": "Drop a screenshot"
+    "hero": {
+      "hint": null,
+      "alt": null,
+      "src": null
+    }
   },
   {
     "id": "slot-3",
@@ -167,6 +187,10 @@
     "year": "—",
     "stack": ["Placeholder"],
     "links": [],
-    "imageHint": "Drop a screenshot"
+    "hero": {
+      "hint": null,
+      "alt": null,
+      "src": null
+    }
   }
 ]
