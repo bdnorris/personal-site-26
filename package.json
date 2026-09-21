@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "netlify": "netlify dev --port 3000"
   },
   "dependencies": {
     "astro": "^5.13.7"
