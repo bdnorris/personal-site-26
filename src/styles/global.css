@@ -1179,13 +1179,13 @@ h1, h2 {
 
 .shots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 12px;
 }
 
 .shots-grid .shot {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 1;
   border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;

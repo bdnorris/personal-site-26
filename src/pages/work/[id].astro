@@ -172,7 +172,16 @@ const heroAlt = workHeroAlt(item);
                           <div class="shots-grid">
                             {visual.shots.map((shot) => (
                               <div class="shot">
-                                <ImageFrame src={shot.src} hint={shot.hint} />
+                                <ImageFrame hint={shot.hint}>
+                                  <Image
+                                    src={shot.src ?? ""}
+                                    alt={shot.alt ?? ""}
+                                    width={1000}
+                                    height={500}
+                                    loading="lazy"
+                                    fetchpriority="low"
+                                  />
+                                </ImageFrame>
                               </div>
                             ))}
                           </div>

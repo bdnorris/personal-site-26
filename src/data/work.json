@@ -15,18 +15,93 @@
     }
   },
   {
-    "id": "marzetti",
-    "title": "T. Marzetti Product Filters",
-    "blurb": "A product filtering app using Vue 3.",
+    "id": "filters",
+    "title": "Product & Recipe Filters",
+    "blurb": "A reusable, live client-side filtering app built for food-service brands.",
     "category": "Client",
     "year": "2024",
-    "stack": ["Vue 3", "Pinia", "REST"],
+    "stack": ["Vue 3", "TypeScript", "Fuse.js"],
     "links": [],
     "featured": true,
     "hero": {
-      "hint": "",
-      "alt": "",
-      "src": null
+      "hint": "A screenshot of the filters in action",
+      "alt": "Screenshot of an online store displaying pasta products, including Marzetti frozen elbow macaroni, farfalle, penne rigati, cavatappi, and elbow macaroni, with filters on the left side.",
+      "src": "/images/hero_filters.webp"
+    },
+    "case": {
+      "client": "Multiple",
+      "role": "Lead developer",
+      "lede": "A reusable, live client-side filtering app built for food-service brands.",
+      "context": [
+        "Product and recipe catalogs are only useful if people can find what they're looking for. For a set of food-service clients, the existing approach either relied on server-side filtering — every filter selection triggered a full page reload, making the experience slow and frustrating — or apps with limited functionality, like only a single filtering option. The goal was live, client-side filtering: accurate, usable, and fast, without the page ever refreshing."
+      ],
+      "roleDetail": "Sole developer across all implementations. Each client had its own visual design handled by a designer; the filtering logic, data architecture, and front-end build were entirely my own.",
+      "decisions": [
+        {
+          "title": "Building for reuse",
+          "body": "Although the initial build was a one-off, it was soon clear that a reusable version would be valuable as the same problem kept presenting itself with new projects. The final app was architected as a base that could be adapted across sites with different product catalogs and visual designs. The filtering logic was kept separate from the presentation layer so each client's design could be applied without touching the core functionality."
+        },
+        {
+          "title": "From GraphQL to a server-side JS object",
+          "body": "The original version pulled product data from Craft CMS via its GraphQL API, which worked well. When the app was adapted for WordPress, WPGraphQL was the natural equivalent. However, it didn't perform well enough under real conditions. The solution was to shift data loading to a server-side built JavaScript object, constructed at render time and cached with typical WordPress caching strategies. This kept the client-side experience fast while avoiding the overhead of a runtime API call."
+        },
+        {
+          "title": "Dynamic filter generation",
+          "body": "When the app loads, all product data is read in and the filtering menu is generated dynamically by reading each product's tags. New filter options appear automatically as the product catalog changes with no manual menu maintenance required."
+        },
+        {
+          "title": "The filtering logic",
+          "body": "The core of the app is a computed function that handles a nuanced filtering pattern: within a group, selected filters are OR (show me items matching any of these), but between groups they are AND (show me items matching at least one from each group). This mirrors how people actually think about filtering: ‘show me chicken or beef dishes, but only the ones that are also gluten-free.’"
+        },
+        {
+          "title": "URL parameter sync",
+          "body": "Filter state and pagination are reflected in the URL as query parameters, which unlocks a few things that users take for granted but implementations often skip: the browser back and forward buttons work as expected, filtered views can be bookmarked or shared as direct links, and pre-filtered URLs can be constructed and linked to from other pages. It's a small detail that makes the app feel native to the web rather than bolted onto it."
+        },
+        {
+          "title": "Search with Fuse.js",
+          "body": "Basic string searching is handled by Fuse.js, giving users a way to search across the catalog without a server round-trip. Fuse operates against the already-loaded data, keeping the experience consistent with the live filtering approach."
+        }
+      ],
+      "visuals": [
+        {
+          "kind": "shots",
+          "shots": [
+            {
+              "hint": "Screenshot of the filters in action on the Marzetti website",
+              "src": "/images/filters/ss-marzetti.avif",
+              "alt": "Screenshot of the filters in action on the Marzetti website, showing a list of pasta products with filters on the left side."
+            },
+            {
+              "hint": "Screenshot of the filters in action on the Mission Foods website",
+              "src": "/images/filters/ss-mission.webp",
+              "alt": "Screenshot of the filters in action on the Mission Foods website, showing a list of recipes with filters on the left side."
+            },
+            {
+              "hint": "Screenshot of the filters in action on the Pilgrims Foodservice website",
+              "src": "/images/filters/ss-pilgrims-recipes.webp",
+              "alt": "Screenshot of the filters in action on the Pilgrims Foodservice website, showing a list of recipes with filters on the left side."
+            },
+            {
+              "hint": "Screenshot of the filters in action on the Pilgrim's website",
+              "src": "/images/filters/ss-pilgrims.webp",
+              "alt": "Screenshot of the filters in action on the Pilgrim's website, showing a list of products with filters on the left side."
+            },
+            {
+              "hint": "Screenshot of the filters in action on the Schrieber website",
+              "src": "/images/filters/ss-schrieber.avif",
+              "alt": "Screenshot of the filters in action on the Schrieber website, showing a list of products with filters on the left side."
+            }
+          ]
+        },
+        {
+          "kind": "code",
+          "filename": "filters.js",
+          "html": "<div><span class=\"code-mute\">// matching IDs accumulate per group, then reduce to IDs present in every group</span></div>\n<div><span class=\"code-acc\">let</span> filteredItems = computed(() =&gt; {</div>\n<div>&nbsp; <span class=\"code-acc\">if</span> (activeFilters.value.length === <span class=\"code-acc2\">0</span>) {</div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">return</span> items;</div>\n<div>&nbsp; } <span class=\"code-acc\">else</span> {</div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">let</span> itemIDAccumulator: Array&lt;any&gt; = [];</div>\n<div>&nbsp; &nbsp; filterGroups.value.forEach((group: FilterGroup) =&gt; {</div>\n<div>&nbsp; &nbsp; &nbsp; <span class=\"code-acc\">let</span> groupitemIds: Array&lt;number&gt; = [];</div>\n<div>&nbsp; &nbsp; &nbsp; group.filters.forEach((filter) =&gt; {</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp; <span class=\"code-acc\">if</span> (filter.selected) {</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; groupitemIds = groupitemIds.concat(filter.itemIds);</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp; }</div>\n<div>&nbsp; &nbsp; &nbsp; });</div>\n<div>&nbsp; &nbsp; &nbsp; <span class=\"code-acc\">if</span> (groupitemIds.length &gt; <span class=\"code-acc2\">0</span>) {</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp; itemIDAccumulator.push(groupitemIds);</div>\n<div>&nbsp; &nbsp; &nbsp; }</div>\n<div>&nbsp; &nbsp; });</div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">let</span> itemIds = itemIDAccumulator.reduce((acc, val) =&gt; {</div>\n<div>&nbsp; &nbsp; &nbsp; <span class=\"code-acc\">return</span> acc.filter((value: any) =&gt; val.includes(value));</div>\n<div>&nbsp; &nbsp; });</div>\n<div>&nbsp; &nbsp; <span class=\"code-acc\">return</span> items.filter((item) =&gt; {</div>\n<div>&nbsp; &nbsp; &nbsp; <span class=\"code-acc\">return</span> itemIds.includes(item.id);</div>\n<div>&nbsp; &nbsp; });</div>\n<div>&nbsp; }</div>\n<div>});</div>"
+        }
+      ],
+      "outcome": [
+        "The app is currently live on several client sites across different brands and product catalogs, handling both product and recipe filtering. The shift from WPGraphQL to a server-side JS object resolved the performance issues and became the standard data approach for all subsequent WordPress implementations."
+      ]
     }
   },
   {
@@ -108,7 +183,7 @@
   {
     "id": "web-design-for-design-majors",
     "title": "Web Design for Design Majors",
-    "blurb": "A course on web design for design majors.",
+    "blurb": "Course materials for a course on web design and development.",
     "category": "Education",
     "year": "2019",
     "stack": ["VuePress"],
@@ -124,9 +199,9 @@
     "case": {
       "client": "Missouri State University",
       "role": "Per-course instructor",
-      "lede": "A course on web design for design majors.",
+      "lede": "Course materials for a course on web design and development.",
       "context": [
-        "Graphic design and illustration students need to understand the web; however, most arrive with no development experience and mixed interest in ever writing code. The challenge wasn't just teaching web design and development concepts; it was teaching them in a way that respected both the students who would go deep and the ones who just needed a basic understanding of development."
+        "Graphic design and illustration students need to understand how the web works and how to design for it. However, most arrive with no development experience and mixed interest in ever writing code. The challenge wasn't just teaching web design and development concepts; it was teaching them in a way that respected both the students who would go deep and the ones who just needed a basic understanding of development."
       ],
       "roleDetail": "Sole instructor for one section of the course, which ran alongside a colleague's parallel section. Responsible for all instruction, course structure, and materials within the university's course description. Some projects were inherited from previous instructors; the course site, lectures, and overall approach were my own.",
       "decisions": [
@@ -144,7 +219,7 @@
         }
       ],
       "outcome": [
-        "All students came away with a working understanding of designing for the web. The coding component was more variable -- predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
+        "All students came away with a working understanding of designing for the web. The coding component was more variable — predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
       ],
       "reflections": [
         "The mixed coding results point to an inherent tension in the course: it serves students who want to build things and students who just need to understand the medium, and those are genuinely different courses. A future version might split the track earlier or lean harder into the design-for-web angle and treat coding as optional depth rather than a shared requirement."

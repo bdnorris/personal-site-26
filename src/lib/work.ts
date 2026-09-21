@@ -10,6 +10,7 @@ export type WorkCategory =
 export type WorkShot = {
   src?: string;
   hint: string;
+  alt: string;
 };
 
 export type WorkLink = {
