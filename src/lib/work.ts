@@ -58,7 +58,7 @@ export type WorkCase = {
 export type WorkHero = {
   hint: string;
   alt: string;
-  src: string;
+  src?: string | null;
 };
 
 export type WorkItem = {

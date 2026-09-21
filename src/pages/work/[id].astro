@@ -8,6 +8,7 @@ import {
   yearLabel,
   type WorkVisual,
 } from "../../lib/work";
+import { Image } from "astro:assets";
 
 export function getStaticPaths() {
   return getWork().map((item) => ({ params: { id: item.id } }));
@@ -29,6 +30,7 @@ const meta = [
 ].filter((row): row is { k: string; v: string } => row !== null);
 
 const rich = Boolean(c);
+const heroSrc = item.hero?.src?.trim() || null;
 ---
 
 <BaseLayout title={`${item.title} · Brian Norris`} description={item.blurb}>
@@ -79,11 +81,22 @@ const rich = Boolean(c);
       }
     </section>
 
-    <div class="hero-shot">
-      <div class="shot">
-        <ImageFrame src={'./.netlify/images?url=' + item.hero?.src + '?&w=2880'} hint={item.hero?.hint} alt={item.hero?.alt} />
-      </div>
-    </div>
+    {
+      heroSrc ? (
+        <div class="hero-shot">
+          <div class="shot">
+            <Image
+              src={heroSrc}
+              alt={item.hero?.alt || item.title}
+              widths={[800, 1200, 1600, 2400]}
+              sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, (max-width: 1600px) 33vw, 25vw"
+            />
+          </div>
+        </div>
+      ) : (
+        <ImageFrame hint={item.hero?.hint || item.title} />
+      )
+    }
 
     {
       rich && (

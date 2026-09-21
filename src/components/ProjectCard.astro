@@ -1,6 +1,7 @@
 ---
 import type { WorkItem } from "../lib/work";
 import ImageFrame from "./ImageFrame.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   item: WorkItem;
@@ -8,11 +9,23 @@ interface Props {
 }
 
 const { item, wide = false } = Astro.props;
+const heroSrc = item.hero?.src?.trim() || null;
 ---
 
 <a class="card" href={`/work/${item.id}`} data-category={item.category}>
   <div class:list={["card-media", { "card-media--wide": wide }]}>
-    <ImageFrame src={'/.netlify/images?url=' + item.hero?.src + '?&w=1200'} hint={item.hero?.hint} alt={item.hero?.alt} />
+    {
+      heroSrc ? (
+        <Image
+          src={heroSrc}
+          alt={item.hero?.alt || item.title}
+          widths={[800, 1200]}
+          sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw"
+        />
+      ) : (
+        <ImageFrame hint={item.hero?.hint || item.title} />
+      )
+    }
   </div>
   <div class="card-body">
     <span class="card-meta">{item.category} · {item.year}</span>

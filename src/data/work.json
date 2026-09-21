@@ -9,8 +9,8 @@
     "links": [],
     "featured": true,
     "hero": {
-      "hint": null,
-      "alt": null,
+      "hint": "",
+      "alt": "",
       "src": null
     }
   },
@@ -24,8 +24,8 @@
     "links": [],
     "featured": true,
     "hero": {
-      "hint": null,
-      "alt": null,
+      "hint": "",
+      "alt": "",
       "src": null
     }
   },
@@ -42,8 +42,8 @@
     ],
     "featured": true,
     "hero": {
-      "hint": null,
-      "alt": null,
+      "hint": "",
+      "alt": "",
       "src": null
     },
     "case": {
@@ -160,8 +160,8 @@
     "stack": ["Placeholder"],
     "links": [],
     "hero": {
-      "hint": null,
-      "alt": null,
+      "hint": "",
+      "alt": "",
       "src": null
     }
   },
@@ -174,8 +174,8 @@
     "stack": ["Placeholder"],
     "links": [],
     "hero": {
-      "hint": null,
-      "alt": null,
+      "hint": "",
+      "alt": "",
       "src": null
     }
   },
@@ -188,8 +188,8 @@
     "stack": ["Placeholder"],
     "links": [],
     "hero": {
-      "hint": null,
-      "alt": null,
+      "hint": "",
+      "alt": "",
       "src": null
     }
   }
