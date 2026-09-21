@@ -132,7 +132,7 @@ const rich = Boolean(c);
               <h2>Visuals</h2>
               <div class="case-copy">
                 {c.visuals.map((visual, index) => {
-                  const key = visualKey(visual, index);
+                  const key = index;
                   switch (visual.kind) {
                     case "shots":
                       return (
