@@ -1,21 +1,12 @@
 [
   {
-    "id": "web-design-for-design-majors",
-    "title": "Web Design for Design Majors",
-    "blurb": "A course on web design for design majors.",
-    "category": "Education",
-    "year": "2019",
-    "stack": ["VuePress"],
-    "featured": false,
-    "imageHint": "Web Design for Design Majors screenshot"
-  },
-  {
     "id": "alchemedia",
     "title": "The Alchemedia Project Website",
     "blurb": "My first site using a headless CMS.",
     "category": "Client",
     "year": "2023",
     "stack": ["Sanity", "Nuxt", "GraphQL"],
+    "links": [],
     "featured": true,
     "imageHint": "Alchemedia screenshot"
   },
@@ -26,6 +17,7 @@
     "category": "Client",
     "year": "2024",
     "stack": ["Vue 3", "Pinia", "REST"],
+    "links": [],
     "featured": true,
     "imageHint": "Marzetti filters screenshot"
   },
@@ -36,6 +28,10 @@
     "category": "Client",
     "year": "2025",
     "stack": ["Vue 3", "CSS transforms", "WCAG 2.2"],
+    "links": [
+      { "label": "Live site", "href": "" },
+      { "label": "Repository", "href": "" }
+    ],
     "featured": true,
     "imageHint": "Daymaker recipe clock",
     "case": {
@@ -98,12 +94,59 @@
     }
   },
   {
+    "id": "web-design-for-design-majors",
+    "title": "Web Design for Design Majors",
+    "blurb": "A course on web design for design majors.",
+    "category": "Education",
+    "year": "2019",
+    "stack": ["VuePress"],
+    "links": [
+      { "label": "Course site", "href": "https://msu.briannorris.dev" }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A sampling of styletiles from the course",
+      "alt": "A collage of various website mockups displaying different fonts, colors, layouts, and graphic elements, showcasing diverse web design styles and branding approaches.",
+      "src": "/images/hero_des340.avif"
+    },
+    "case": {
+      "client": "Missouri State University",
+      "role": "Per-course instructor",
+      "lede": "A course on web design for design majors.",
+      "context": [
+        "Graphic design and illustration students need to understand the web; however, most arrive with no development experience and mixed interest in ever writing code. The challenge wasn't just teaching web design and development concepts; it was teaching them in a way that respected both the students who would go deep and the ones who just needed a basic understanding of development."
+      ],
+      "roleDetail": "Sole instructor for one section of the course, which ran alongside a colleague's parallel section. Responsible for all instruction, course structure, and materials within the university's course description. Some projects were inherited from previous instructors; the course site, lectures, and overall approach were my own.",
+      "decisions": [
+        {
+          "title": "Isolated exercises over a single running project",
+          "body": "Coding concepts were introduced through small, self-contained CodePen exercises and pre-built boilerplates rather than one accumulating project. This lowered the stakes for students who struggled and kept the focus on the concept at hand rather than debugging something they built three weeks ago."
+        },
+        {
+          "title": "Live demonstration as preview, not instruction",
+          "body": "Coding lectures were designed to show how things work in context, not to be followed along in real time. Students watched, asked questions, then applied concepts in the exercises. This reduced the chaos of live coding sessions where half the class falls behind on a semicolon."
+        },
+        {
+          "title": "The course site as a resource",
+          "body": "Built with VuePress, the site housed all course materials and was developed live during in-class demos, giving students a real example to reference throughout the semester."
+        }
+      ],
+      "outcome": [
+        "All students came away with a working understanding of designing for the web. The coding component was more variable -- predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
+      ],
+      "reflections": [
+        "The mixed coding results point to an inherent tension in the course: it serves students who want to build things and students who just need to understand the medium, and those are genuinely different courses. A future version might split the track earlier or lean harder into the design-for-web angle and treat coding as optional depth rather than a shared requirement."
+      ]
+    }
+  },
+  {
     "id": "slot-1",
     "title": "Freelance project slot",
     "blurb": "Add a freelance build here. Title, one line, and a screenshot.",
     "category": "Freelance",
     "year": "—",
     "stack": ["Placeholder"],
+    "links": [],
     "imageHint": "Drop a screenshot"
   },
   {
@@ -113,6 +156,7 @@
     "category": "Personal",
     "year": "—",
     "stack": ["Placeholder"],
+    "links": [],
     "imageHint": "Drop a screenshot"
   },
   {
@@ -122,6 +166,7 @@
     "category": "Tools / Experiments",
     "year": "—",
     "stack": ["Placeholder"],
+    "links": [],
     "imageHint": "Drop a screenshot"
   }
 ]

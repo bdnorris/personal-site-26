@@ -912,16 +912,17 @@ h1, h2 {
   margin-top: 0;
 }
 
-.meta-cell a {
-  color: var(--acc);
-  text-decoration: none;
+.case-links {
+  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.42s both;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: clamp(16px, 2.2vw, 24px) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.meta-cell a:hover {
-  color: var(--ink);
-}
-
-.meta-cell a:focus-visible {
+.case-links .btn:focus-visible {
   outline: 2px solid var(--acc);
   outline-offset: 3px;
 }

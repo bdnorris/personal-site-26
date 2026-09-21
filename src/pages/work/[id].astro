@@ -5,7 +5,6 @@ import {
   getNextWork,
   getWork,
   getWorkById,
-  linkDisplay,
   yearLabel,
   type WorkVisual,
 } from "../../lib/work";
@@ -20,37 +19,16 @@ if (!item) throw new Error(`Unknown work id: ${id}`);
 
 const next = getNextWork(item);
 const c = item.case;
+const links = (item.links ?? []).filter((link) => link.href.trim());
 const meta = [
   { k: "Type", v: item.category },
   c?.client ? { k: "Client", v: c.client } : null,
   c?.role ? { k: "Role", v: c.role } : null,
   { k: yearLabel(item.year), v: item.year },
-  ...(c?.links ?? []).map((link) => ({
-    k: link.label,
-    v: linkDisplay(link.href),
-    href: link.href,
-  })),
   { k: "Stack", v: item.stack.join(", ") },
-].filter((row): row is { k: string; v: string; href?: string } => row !== null);
+].filter((row): row is { k: string; v: string } => row !== null);
 
-const heroSrc = c?.hero ?? item.image;
-const heroHint = item.imageHint ?? item.title;
 const rich = Boolean(c);
-
-function visualKey(visual: WorkVisual, index: number): string {
-  switch (visual.kind) {
-    case "shots":
-      return `shots-${index}`;
-    case "code":
-      return `code-${visual.filename}-${index}`;
-    case "compare":
-      return `compare-${index}`;
-    default: {
-      const _exhaustive: never = visual;
-      return _exhaustive;
-    }
-  }
-}
 ---
 
 <BaseLayout title={`${item.title} · Brian Norris`} description={item.blurb}>
@@ -66,11 +44,7 @@ function visualKey(visual: WorkVisual, index: number): string {
             <div class:list={["meta-cell", { "meta-cell--wrap": m.k === "Stack" }]}>
               <dt>{m.k}</dt>
               <dd>
-                {m.href ? (
-                  <a href={m.href} rel="noreferrer" target="_blank">
-                    {m.v}
-                  </a>
-                ) : m.k === "Stack" ? (
+                {m.k === "Stack" ? (
                   <div class="stack">
                     {item.stack.map((s) => (
                       <span>{s}</span>
@@ -84,11 +58,30 @@ function visualKey(visual: WorkVisual, index: number): string {
           ))
         }
       </dl>
+      {
+        links.length ? (
+          <ul class="case-links">
+            {links.map((link) => (
+              <li>
+                <a
+                  class="btn btn-fill"
+                  href={link.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {link.label}
+                  <span aria-hidden="true">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null
+      }
     </section>
 
     <div class="hero-shot">
       <div class="shot">
-        <ImageFrame src={heroSrc} hint={heroHint} alt={item.title} />
+        <ImageFrame src={item.hero.src} hint={item.hero.hint} alt={item.hero.alt} />
       </div>
     </div>
 

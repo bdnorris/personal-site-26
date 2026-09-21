@@ -46,7 +46,6 @@ export type WorkCase = {
   roleDetail?: string;
   lede?: string;
   hero?: string;
-  links?: WorkLink[];
   context?: string[];
   decisions?: WorkDecision[];
   visuals?: WorkVisual[];
@@ -56,6 +55,12 @@ export type WorkCase = {
   nextId?: string;
 };
 
+export type WorkHero = {
+  hint: string;
+  alt: string;
+  src: string;
+};
+
 export type WorkItem = {
   id: string;
   title: string;
@@ -63,9 +68,9 @@ export type WorkItem = {
   category: WorkCategory;
   year: string;
   stack: string[];
+  links?: WorkLink[];
   featured?: boolean;
-  image?: string;
-  imageHint?: string;
+  hero?: WorkHero;
   case?: WorkCase;
 };
 
@@ -107,17 +112,6 @@ export function getNextWork(item: WorkItem): WorkItem | undefined {
   const index = items.findIndex((entry) => entry.id === item.id);
   if (index < 0) return undefined;
   return items[(index + 1) % items.length];
-}
-
-export function linkDisplay(href: string): string {
-  try {
-    const url = new URL(href);
-    const host = url.hostname.replace(/^www\./, "");
-    const path = url.pathname.replace(/\/$/, "");
-    return path ? `${host}${path}` : host;
-  } catch {
-    return href;
-  }
 }
 
 export function yearLabel(year: string): "Dates" | "Year" {

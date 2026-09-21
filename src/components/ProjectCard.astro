@@ -12,7 +12,7 @@ const { item, wide = false } = Astro.props;
 
 <a class="card" href={`/work/${item.id}`} data-category={item.category}>
   <div class:list={["card-media", { "card-media--wide": wide }]}>
-    <ImageFrame src={item.image} hint={item.imageHint ?? item.title} alt={item.title} />
+    <ImageFrame src={'/.netlify/images?url=' + item.hero?.src + '?&w=100'} hint={item.hero?.hint} alt={item.hero?.alt} />
   </div>
   <div class="card-body">
     <span class="card-meta">{item.category} · {item.year}</span>
