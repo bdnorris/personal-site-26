@@ -602,7 +602,7 @@ h1, h2 {
 
 .card-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 11 / 6;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
   & img {
@@ -613,7 +613,7 @@ h1, h2 {
 }
 
 .card-media--wide {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 11 / 6;
 }
 
 .card-body {
@@ -892,7 +892,8 @@ h1, h2 {
 
 /* Case */
 .case-hero {
-  padding: clamp(28px, 4vw, 56px) clamp(16px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  padding-block: clamp(28px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  padding-inline: max(2rem, calc(100vw - var(--max-width)) / 2);
 }
 
 .case-hero .link-quiet {
@@ -1003,12 +1004,13 @@ h1, h2 {
 }
 
 .hero-shot {
-  padding: 0 clamp(16px, 4vw, 56px) clamp(32px, 5vw, 64px);
+  padding-block: 0 clamp(16px, 4vw, 56px);
+  padding-inline: max(2rem, calc(100vw - var(--max-width)) / 2);
 }
 
 .hero-shot .shot {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 11 / 6;
   border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;
