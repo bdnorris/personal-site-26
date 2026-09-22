@@ -235,45 +235,275 @@
     }
   },
   {
-    "id": "slot-1",
-    "title": "Freelance project slot",
-    "blurb": "Add a freelance build here. Title, one line, and a screenshot.",
-    "category": "Freelance",
-    "year": "—",
-    "stack": ["Placeholder"],
-    "links": [],
+    "id": "smuckers-fun",
+    "title": "Smucker's Fun",
+    "blurb": "A lightweight, web app for restaurant diners waiting on breakfast.",
+    "category": "Client",
+    "year": "2022",
+    "stack": ["Nuxt", "Pinia", "CSS Transforms"],
+    "links": [
+      { "label": "Live site", "href": "https://smuckersfun.com" }
+    ],
+    "featured": false,
     "hero": {
-      "hint": "",
-      "alt": "",
-      "src": null
+      "hint": "A screenshot of the Fun app",
+      "alt": "A white wooden background with berries at the top. Text reads, “Make your wait less wait-y.” Below are two green buttons labeled “Conversation Starters” and “Trivia,” with a red checkered tablecloth at the bottom.",
+      "src": "/images/hero_smuckersfun.webp"
+    },
+    "case": {
+      "client": "Smucker",
+      "role": "Lead front-end",
+      "lede": "A lightweight, web app for restaurant diners waiting on breakfast.",
+      "context": [
+        "Smucker's single-serve spread caddies sit on restaurant tables, and the wait for breakfast is dead time. The goal was to give diners something to do with that time -- something light, social, and on-brand. A QR code on the caddy leads to a simple web app with two modes: conversation starters and fill-in-the-blank trivia across several categories.",
+        "The user arrives with zero context -- they scanned a code on a condiment caddy and have no idea what they're about to see. The app needed to be immediately legible without any onboarding or explanation."
+      ],
+      "roleDetail": "Sole developer. Had brief early input into the experience before design kicked off; the designer provided complete designs and the build was entirely my own.",
+      "decisions": [
+        {
+          "title": "Letting the UI speak for itself",
+          "body": "With no onboarding and a user who may have never heard of the app, the interface had to be self-explanatory on first glance. No tutorial, no welcome screen, no instructions -- just an experience that makes its own purpose clear immediately. That constraint shaped every decision about layout, hierarchy, and interaction."
+        },
+        {
+          "title": "Performance as a baseline",
+          "body": "Restaurant wifi is unpredictable and the app needed to load fast on a cold visit from a QR code scan. Performance was a priority from the start -- Nuxt's server-side rendering and a lean stack with no heavy dependencies kept the initial load light."
+        },
+        {
+          "title": "CSS Transforms for interaction",
+          "body": "Animation and transitions are handled with CSS Transforms rather than a JavaScript animation library, keeping the bundle lean while still giving the interactions a polished, tactile feel appropriate for a casual, fun experience."
+        },
+        {
+          "title": "Content in the store",
+          "body": "Trivia content across all categories lives in the Pinia store -- a deliberate simplicity for a one-time content load with no requirement for ongoing updates. No CMS overhead, no API calls, just fast access to everything the app needs on load."
+        }
+      ],
+      "outcome": [
+        "The app is live and accessible via QR code on Smucker's branded table caddies in participating restaurants. The self-explanatory UI successfully handles a zero-context entry point, dropping users straight into the experience without instruction."
+      ],
+      "nextId": "slot-1"
     }
   },
   {
-    "id": "slot-2",
-    "title": "Personal project slot",
-    "blurb": "Something made for its own sake. Good place for the graphic-design side.",
+    "id": "jif-wheel",
+    "title": "Jif That Dish",
+    "blurb": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
+    "category": "Client",
+    "year": "2021",
+    "stack": ["Vue 3", "Greensock", "REST API"],
+    "links": [
+      { "label": "Live site", "href": "https://rc.jif-afh.marlindev.com/JifWheel" }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Wheel app",
+      "alt": "A colorful Jif peanut butter-themed game wheel with sections for different dip ideas, surrounded by images of food, and text suggesting ways to serve Jif, flavor hacks, and a PB Hummus Dip recipe.",
+      "src": "/images/hero_jifwheel.webp"
+    },
+    "case": {
+      "client": "Jif",
+      "role": "Lead front-end",
+      "lede": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
+      "context": [
+        "Food-service clients need to sell chefs and menu planners on how a product fits into their menu. For Jif Peanut Butter, the goal was a fun, engaging way to surface recipe applications randomly -- giving a user a reason to keep spinning and discovering rather than browsing a static list. Filtering and sequential browsing round out the experience for users who want more control."
+      ],
+      "roleDetail": "Sole front-end developer. A separate developer built and maintained the same Pimcore REST API used across the Marlin food-service project family. Designer provided complete designs.",
+      "decisions": [
+        {
+          "title": "Rethinking the wheel",
+          "body": "The original concept called for a Wheel of Fortune style spinning wheel -- slots, labels, the works. In a problem-solving meeting, I flagged that the trigonometric complexity of a variable-slot wheel would be significant, and proposed an alternative: a Price is Right style wheel, where a single continuous drum spins and lands on a result. Simpler to implement, just as satisfying to interact with, and the client agreed. It was a practical trade-off that kept the project on track without sacrificing the core mechanic."
+        },
+        {
+          "title": "Animation with GSAP",
+          "body": "GreenSock handles the wheel spin animation. The goal was a spin that feels physical -- building momentum, then decelerating naturally to a stop. GSAP gave fine control over easing and duration, though getting the speed curves to feel truly realistic proved harder than expected."
+        },
+        {
+          "title": "Filtering and sequential browsing",
+          "body": "Beyond the random spin, users can filter by category and walk through applications one at a time. This gave more deliberate users a way to explore the full catalog without relying on chance."
+        }
+      ],
+      "outcome": [
+        "The app successfully delivers a fun, randomized recipe discovery experience for food-service audiences, with enough structure for users who want to browse more intentionally."
+      ],
+      "reflections": [
+        "The animation was the most challenging part and the part I'm least satisfied with. Making a spinning wheel feel physically convincing requires fine-tuned speed curves that are harder to dial in than they look -- the spin works, but it lacks the weight and deceleration of something truly realistic. It was a valuable lesson in how much craft goes into motion that feels natural, and something I'd approach differently with more time or a second pass.",
+        "Additionally, the similar All Spreads Daymaker app that I later built showed that the Wheel of Fortune style wheel would have been possible and probably moreeffective."
+      ],
+      "nextId": "slot-1"
+    }
+  },
+  {
+    "id": "alchemedia",
+    "title": "Alchemedia Project Website",
+    "blurb": "An advertising agency website built with Nuxt.js and Prismic",
+    "category": "Client",
+    "year": "2019",
+    "stack": ["Nuxt", "Prismic"],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Alchemedia project website",
+      "alt": "A blue-tinted office background with bold black text saying “Hey There.” Smaller white text below reads, “If food is what you do (even part of what you do) you’ve landed in the right spot.”.",
+      "src": "/images/hero_tap.avif"
+    },
+    "case": {
+      "client": "Internal",
+      "role": "Lead front-end",
+      "lede": "An advertising agency website built with Nuxt.js and Prismic",
+      "context": [
+        "The Alchemedia Project needed a marketing site covering agency messaging, team information, and case studies. As an internal project, it presented a low-risk opportunity to try a headless CMS approach for the first time -- taking on the experimentation risk ourselves rather than on a client's time and budget."
+      ],
+      "roleDetail": "Lead developer on the project, with junior developers assisting. Ryan Baker handled all design work. Responsible for the overall technical approach, Prismic integration, and front-end build.",
+      "decisions": [
+        {
+          "title": "Choosing headless as a learning opportunity",
+          "body": "Internal projects are a good time to experiment with new ways of working -- the risk is yours to take rather than a client's. Prismic was a deliberate choice to get hands-on experience with a headless CMS in a real production context. The content modeling and API-driven approach were new territory, and working through it on an internal project meant the learning curve didn't come at anyone else's expense."
+        },
+        {
+          "title": "The manual data fetching problem",
+          "body": "One of the less glamorous realities of working with Prismic at the time was the amount of manual data fetching required -- every content type needed its own fetch logic, which added up to a lot of repetitive code. It was a real friction point, and one that modern AI tooling would make trivial today. It didn't block the project, but it shaped an appreciation for the value of good SDK abstractions."
+        },
+        {
+          "title": "CSS techniques pushed by the design",
+          "body": "Ryan's designs called for visual techniques that were outside my existing toolkit at the time: text-strokes, rotated type, SVG masks, and image masks. Implementing them required digging into CSS capabilities I didn't know existed. That kind of designer-led technical stretch is one of the better ways to expand what you know -- the design sets the bar and you figure out how to meet it."
+        }
+      ],
+      "outcome": [
+        "The site launched successfully and served The Alchemedia Project until the agency was absorbed into another company. It's no longer live, but it achieved its goals as both a functioning agency website and a genuine learning exercise -- establishing a foundation for headless CMS work that carried into future projects."
+      ],
+      "nextId": "slot-1"
+    }
+  },
+  {
+    "id": "accessibility-dev-training",
+    "title": "Accessibility Dev Training",
+    "blurb": "A living accessibility reference and training document written for a team of six developers -- covering foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
+    "category": "Internal",
+    "year": "2020",
+    "stack": ["Notion"],
+    "links": [],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Accessibility Dev Training document",
+      "alt": "A webpage section titled “Scope” explains web accessibility, quoting Heydon Pickering, and discusses making sites usable for all. A yellow-highlighted note says, “If a website isn’t accessible, it isn’t usable.”.",
+      "src": "/images/hero_accessibility.webp"
+    },
+    "case": {
+      "client": "Internal",
+      "role": "Lead writer",
+      "lede": "A living accessibility reference and training document written for a team of six developers -- covering foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
+      "context": [
+        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to raise the team's knowledge, I researched and wrote a training document aimed at developers who understood the concept of accessibility but needed practical guidance on implementation -- what it actually means to make a project accessible, where the hard problems are, and how to approach testing."
+      ],
+      "roleDetail": "Lead researcher and author. The training was a collaborative research effort across the team; I synthesized the findings into a single cohesive document and led any subsequent training sessions.",
+      "decisions": [
+        {
+          "title": "Structuring for reference, not just reading",
+          "body": "As a living document rather than a one-time presentation, the training needed to work as something developers would return to -- not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
+        },
+        {
+          "title": "Focusing on the hard problems",
+          "body": "Rather than cataloging every WCAG success criterion, the training zeroed in on the areas that cause the most trouble in practice: multimedia accessibility, keyboard navigation patterns -- including the notoriously tricky problem of accessible dropdown navigation -- and testing strategies. These are the areas where good intentions most often fall short, and where concrete guidance has the most impact."
+        },
+        {
+          "title": "Testing strategies as a practical anchor",
+          "body": "Accessibility testing is often overlooked until it's too late. Including testing strategies -- not just implementation guidance -- gave developers a way to verify their work rather than assume it was correct."
+        }
+      ],
+      "outcome": [
+        "The document became a living reference for a team of six developers. Following the training, accessible code became a baseline expectation for new work -- with the reasonable caveat that stakeholder priorities or budget constraints could affect specific features. That's an honest outcome: it shifted the default without pretending those realities don't exist."
+      ],
+      "reflections": [
+        "Not all stakeholders understand the nuts and bolts of accessibility, but the training helped raise awareness of it as a concept and why it matters -- which is its own kind of progress. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort even when individual projects fall short. Getting it right consistently is a long game."
+      ],
+      "nextId": "slot-1"
+    }
+  },
+  {
+    "id": "fluid-type-tester",
+    "title": "Fluid Type Tester",
+    "blurb": "A personal tool for testing fluid and static type scales in the browser",
     "category": "Personal",
     "year": "—",
     "stack": ["Placeholder"],
     "links": [],
     "hero": {
-      "hint": "",
-      "alt": "",
-      "src": null
+      "hint": "Screenshot of the Fluid Type Tester tool",
+      "alt": "A web tool called “Fluid Type Tester” shows adjustable sliders for font sizes and a preview area with the opening text from “Alice in Wonderland” under the heading “Down the Rabbit-Hole.”.",
+      "src": "/images/hero_fluidtype.avif"
+    },
+    "case": {
+      "client": "Personal",
+      "role": "Sole developer",
+      "lede": "A personal tool for testing fluid and static type scales in the browser",
+      "context": [
+        "Fluid typography uses CSS clamp to allow font sizes to scale smoothly with the viewport -- rather than jumping between fixed sizes at breakpoints, type grows and shrinks continuously between a defined minimum and maximum. It's a powerful technique, but visualizing how a fluid type scale actually behaves across viewport widths requires either resizing your browser constantly or guessing.",
+        "A few tools existed for this, but none had the combination of features I wanted. Rather than compromise, I built my own -- combining fluid type testing with more basic type size and font testing in a single interface."
+      ],
+      "roleDetail": "Sole developer and designer. A personal experiment built entirely for my own use and curiosity.",
+      "decisions": [
+        {
+          "title": "Combining two related problems",
+          "body": "Most fluid type tools focus exclusively on the clamp calculation. This tool combines that with broader type testing -- sizes, fonts, and basic typographic properties -- so you can evaluate a type scale holistically rather than in isolation. The goal was a single place to answer the question: does this type system actually work?"
+        },
+        {
+          "title": "Vuex for shared type state",
+          "body": "Type settings needed to be accessible and reactive across multiple parts of the interface simultaneously. Vuex handled that shared state cleanly, keeping the UI in sync as values changed."
+        },
+        {
+          "title": "Building for your own workflow",
+          "body": "There's a specific kind of clarity that comes from building a tool for yourself -- you know exactly what problem you're solving and what good looks like. No user research required. The trade-off is that the feature set reflects one person's workflow, which is fine for a personal experiment."
+        }
+      ],
+      "outcome": [
+        "A working tool that I use occasionally in my own workflow. More than the tool itself, it was a valuable exercise in building something from a personal itch -- understanding the CSS clamp technique deeply enough to build a testing interface around it."
+      ]
     }
   },
   {
-    "id": "slot-3",
-    "title": "Tool or experiment slot",
-    "blurb": "A boilerplate, a design-system utility, or a motion study.",
+    "id": "usability-heuristics-and-scoring",
+    "title": "Usability Heuristics and Scoring",
+    "blurb": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
     "category": "Tools / Experiments",
-    "year": "—",
-    "stack": ["Placeholder"],
-    "links": [],
+    "year": "2022",
+    "stack": ["Document"],
+    "links": [
+      { "label": "Notion", "href": "https://www.notion.so/norrisstuff/UX-My-Heuristics-and-Scoring-3cec4e98092241a7aeb4ce6dd0382a56" }
+    ],
     "hero": {
       "hint": "",
       "alt": "",
       "src": null
+    },
+    "case": {
+      "client": "Personal",
+      "role": "Sole writer",
+      "lede": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
+      "context": [
+        "Site audits benefit from a consistent framework -- something that turns subjective usability observations into structured, repeatable findings. Existing heuristic sets, including Nielsen/Norman's well-known 10, are solid starting points but vary in coverage and have some overlap depending on the source. Rather than adopt one wholesale, I researched several sets and synthesized my own: 12 heuristics with good coverage and minimal redundancy, paired with a 1-5 scoring system that produces actionable audit results."
+      ],
+      "roleDetail": "Sole researcher and author. Built for my own use on client and potential client site audits.",
+      "decisions": [
+        {
+          "title": "Synthesizing rather than adopting",
+          "body": "The goal wasn't to reinvent usability theory -- it was to find the gaps and overlaps between existing frameworks and arrive at a set that felt complete without being redundant. Reviewing multiple sources made it clear that different researchers emphasize different things, and that a synthesized set could draw the best from each."
+        },
+        {
+          "title": "Coverage and clarity as the design criteria",
+          "body": "Each heuristic needed to cover distinct ground and be specific enough to produce consistent scores across different auditors and different sites. The 12 heuristics cover structure and navigation, user control, feedback, predictability, error handling, learnability, aesthetic restraint, information availability, help and support, consistency, follow-through, and accessibility."
+        },
+        {
+          "title": "A scoring system that produces actionable results",
+          "body": "Scoring runs from 1 to 5, with 5 indicating no problems. The scale is designed to distinguish between failures users can't overcome, failures they can work around, functional but improvable experiences, and genuinely exceptional ones. Heuristics that don't apply to a given element are skipped rather than scored, keeping results honest."
+        }
+      ],
+      "visuals": [
+        {
+          "kind": "snippet",
+          "src": "/snippets/heuristics.md"
+        }
+      ],
+      "outcome": [
+        "A practical, repeatable framework for structured usability audits -- usable across client sites regardless of industry or complexity. The scoring system produces findings that are specific enough to prioritize and communicate to stakeholders."
+      ]
     }
   }
 ]
