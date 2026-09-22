@@ -505,5 +505,212 @@
         "A practical, repeatable framework for structured usability audits -- usable across client sites regardless of industry or complexity. The scoring system produces findings that are specific enough to prioritize and communicate to stakeholders."
       ]
     }
+  },
+  {
+    "id": "web-tools",
+    "title": "Web Tools",
+    "blurb": "A personal collection of browser-based helper tools -- built for my own workflow and kept deliberately simple and private.",
+    "category": "Tools / Experiments",
+    "year": "2025",
+    "stack": ["Vue", "@jsquash", "@squoosh-kit"],
+    "links": [
+      { "label": "Live site", "href": "https://webtools.briannorris.dev" }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Web Tools collection",
+      "alt": "Screenshot of a web tool titled “Image Converter,” prompting users to add a JPG or PNG image file. A sidebar lists other tools, such as Ratio Converter, Pixel to Em, and Text Compare.",
+      "src": "/images/hero_webtools.avif"
+    },
+    "case": {
+      "client": "Personal",
+      "role": "Sole developer",
+      "lede": "A personal collection of browser-based helper tools.",
+      "context": [
+        "Everyday development work produces small recurring needs that don't have a perfect off-the-shelf solution -- or where the available solutions require uploading files to a server. A personal toolbox made more sense than stitching together third-party services."
+      ],
+      "roleDetail": "Sole developer and designer. Built for my own use and curiosity.",
+      "decisions": [
+        {
+          "title": "Image conversion via WASM",
+          "body": "The image converter handles format conversion -- WebP, AVIF, and others -- entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also allows direct comparison between output formats and file sizes, making it useful for making informed decisions about image optimization."
+        },
+        {
+          "title": "Ratio converter",
+          "body": "A general purpose ratio math tool covering aspect ratios for images, video, and layout calculations -- the kind of small arithmetic that comes up often enough to be worth automating."
+        }
+      ],
+      "outcome": [
+        "A practical, privacy-conscious toolbox that's grown organically around real workflow needs. The image converter in particular has become a regular part of how I work."
+      ]
+    }
+  },
+  {
+    "id": "wordpress-theme-development",
+    "title": "WordPress Theme Development",
+    "blurb": "A selection of greenfield WordPress builds across a range of industries.",
+    "category": "Client",
+    "year": "2022-2026",
+    "stack": ["WordPress", "PHP", "Scss", "Typescript", "ACF Flexible Content", "Gravity Forms"],
+    "links": [
+      {
+        "label": "Mager's Management",
+        "href": "https://magersmanagement.com/"
+      },
+      {
+        "label": "Paragon Architecture",
+        "href": "https://www.paragonarchitecture.com/"
+      },
+      {
+        "label": "Pinnacle Family Advisors",
+        "href": "https://pinnaclefamilyadvisors.com/"
+      },
+      {
+        "label": "Pilgrim's Food Service",
+        "href": "https://pilgrimsfoodservice.com/"
+      },
+      {
+        "label": "Mental Health 417",
+        "href": "https://mentalhealth417.com/"
+      }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Mager's Management website",
+      "alt": "A screenshot of the Mager's Management website",
+      "src": "/images/hero_magersmanagement.avif"
+    },
+    "case": {
+      "client": "Multiple",
+      "role": "Lead developer",
+      "lede": "A selection of greenfield WordPress builds across a range of industries.",
+      "context": [
+        "WordPress remains the most widely deployed CMS in the world, and for good reason -- clients know it, editors are comfortable with it, and the ecosystem is mature. The challenge with custom WordPress builds is finding the right balance between giving content editors meaningful flexibility and maintaining enough guardrails to keep the site looking intentional. Too much freedom and editors break layouts; too little and every content change becomes a developer ticket."
+      ],
+      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and build were entirely my own.",
+      "decisions": [
+        {
+          "title": "ACF Flexible Content for pages, Gutenberg for posts", 
+          "body": "The stack makes a deliberate distinction between two kinds of content. Marketing pages -- homepages, service pages, landing pages -- are built with ACF Flexible Content blocks. This allows for highly custom, visually controlled layouts without the overhead of developing a fully refined Gutenberg editor experience. Editors can build pages from a defined set of blocks, but the guardrails are tight enough to prevent presentation issues."
+        },
+        {
+          "title": "Gutenberg for posts",
+          "body": "Blog and news content is handled with Gutenberg, which is well-suited to straightforward text and image content. It's also where editors spend most of their time -- clients are far more likely to be publishing posts regularly than redesigning their homepage -- so a familiar, standard editing experience makes sense there."
+        },
+        {
+          "title": "TypeScript and SCSS for maintainable front ends",
+          "body": "TypeScript keeps the JavaScript layer predictable and easier to maintain across projects with similar patterns. SCSS handles styling with the organizational benefits of nesting, variables, and partials -- keeping stylesheets manageable as projects grow."
+        },
+        {
+          "title": "Gravity Forms for complex form needs",
+          "body": "Gravity Forms handles contact forms, lead capture, and any more complex form requirements -- conditional logic, multi-step forms, integrations with third-party services. It's a reliable solution that clients can manage themselves without developer involvement."
+        }
+      ],
+      "outcome": [
+        "A repeatable, proven stack that delivers polished, maintainable WordPress sites across a variety of industries. The ACF/Gutenberg split in particular has held up well -- clients get the flexibility they need where they need it, without the risk of breaking carefully designed layouts."
+      ],
+      "reflections": [
+        "As the WordPress editor experience matures, it hasn't translated into editors actively wanting to use it more -- most clients are comfortable with the ACF block approach and don't feel a strong pull toward the default editor. That said, if a client has a specific desire to work in the WordPress editor or move toward full site editing, that pivot is accommodatable -- it just requires more time to develop and refine the editing experience properly.",
+        "On the styling side, CSS has matured significantly -- native nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
+      ],
+      "nextId": "slot-1"
+    }
+  },
+  {
+    "id": "think-upon-wordpress-development",
+    "title": "Think Upon WordPress Development",
+    "blurb": "A heavily animated WordPress site for business founder Mark Steiner",
+    "category": "Client",
+    "year": "2026",
+    "stack": ["WordPress", "ACF Flexible Content", "Gutenberg", "TypeScript", "SCSS", "Gravity Forms", "Lottie", "GreenSock (GSAP)"],
+    "links": [
+      {
+        "label": "Think Upon",
+        "href": "https://thinkupon.com/"
+      }
+    ],
+    "featured": true,
+    "hero": {
+      "hint": "A screenshot of the Think Upon website",
+      "alt": "Screenshot of a colorful website homepage featuring a collage of eyes, flowers, an open book, and various shapes, with bold text reading “A website. Allegedly.” and navigation links at the top.",
+      "src": "/images/hero_thinkupon.webp"
+    },
+    "case": {
+      "client": "Internal",
+      "role": "Lead developer",
+      "lede": "A heavily animated WordPress site for business founder Mark Steiner",
+      "context": [
+        "Think Upon is Mark Steiner's personal site and blog -- a platform for his ideas and writing as a business founder. The design called for a higher than usual level of animation, with Lottie files playing a central role in how the content is experienced rather than serving as decorative accents. The challenge was finding a scalable, editor-friendly way to integrate those animations into WordPress without making the process brittle or hard to maintain."
+      ],
+      "roleDetail": "Sole developer. The designer provided complete designs and all finished Lottie animation files as assets for integration.",
+      "decisions": [
+        {
+          "title": "A custom post type for Lottie management",
+          "body": "Rather than embedding Lottie files directly into blocks or hardcoding them, a custom post type was created for each animation. Each entry holds the Lottie JSON file and its associated assets via an ACF Gallery field. When building pages with custom blocks, editors can select which Lottie animation to use from this library. This keeps animations organized, reusable across the site, and easy to update without touching block code."
+        },
+        {
+          "title": "Performance and asset management",
+          "body": "Lottie files can carry significant overhead, particularly when they embed images. A custom bash script handles pre-processing before files are added to WordPress -- rewriting asset links within the JSON and renaming those assets to avoid naming conflicts between different Lottie files. From there, stripping down files where possible and ensuring embedded images were properly compressed was a deliberate part of the integration process -- keeping animation quality while managing the performance cost."
+        },
+        {
+          "title": "Scroll-triggered animations",
+          "body": "A custom library was built to trigger animations during scroll using the Intersection Observer API, giving fine control over when animations fire without the overhead of a full scroll animation framework."
+        },
+        {
+          "title": "GreenSock for specific animation needs",
+          "body": "GSAP handled a scrolling marquee animation and more complex effects including the Motion Path Plugin for path-based animation and the SplitText Plugin for animated headline treatments -- effects that would have been significantly more difficult to achieve with CSS alone."
+        }
+      ],
+      "outcome": [
+        "A polished, animation-rich site that uses motion as a storytelling tool rather than decoration. The Lottie management system makes animations maintainable and reusable without requiring developer involvement for every content update."
+      ]
+    }
+  },
+  {
+    "id": "campus-sgf",
+    "title": "CampuSGF",
+    "blurb": "A Google Maps-driven city guide for college students new to Springfield, MO",
+    "category": "Client",
+    "year": "2026",
+    "stack": ["Vue", "WordPress", "ACF Flexible Content", "Google Maps", "Google Places API"],
+    "links": [
+      {
+        "label": "Campus SGF",
+        "href": "https://sgfcampusguide.com"
+      }
+    ],
+    "featured": true,
+    "hero": {
+      "hint": "A screenshot of the Campus SGF website",
+      "alt": "Screenshot of the CampusGF website showing options for downtown dining and shopping, a testimonial quote from a student, and an aerial photo of Springfield’s downtown area under a clear sky.",
+      "src": "/images/hero_campusgf.avif"
+    },
+    "case": {
+      "client": "Revel Advertising",
+      "role": "Sole developer",
+      "lede": "A Google Maps-driven city guide for college students new to Springfield, MO",
+      "context": [
+        "College students moving to Springfield for the first time need a way to get familiar with the city -- where to eat, shop, and spend time, organized around the neighborhoods and areas most relevant to campus life. The site needed Google Maps as a primary feature, with pins filterable by category, pulling real business data from Google Places.",
+        "The challenge was cost and performance. Google Places API calls add up quickly, and a naive implementation would make a live API call every time the map loaded. The goal was to serve accurate, useful data while keeping Google Cloud costs under control and the front-end experience fast."
+      ],
+      "roleDetail": "Sole developer. A designer provided complete designs; the technical architecture, WordPress build, custom plugin, and Google Maps integration were entirely my own.",
+      "decisions": [
+        {
+          "title": "A caching strategy built on API policy research",
+          "body": "Not all Google Places data can be cached, and for how long varies by data type. Rather than guess, I used Claude to research and interpret Google's API usage policies -- determining precisely what could be cached, what couldn't, and for how long. That research became the foundation of the caching strategy. Place IDs and coordinates are cached in WordPress, giving the front end everything it needs to load and render the map without a live API call. Website URLs, which Google's terms require to be fetched live, are handled separately. The result is a snappier map load and significantly fewer API calls."
+        },
+        {
+          "title": "A custom WordPress plugin for place management",
+          "body": "A custom plugin handles the editor experience for adding new locations. Editors search Google Places directly from within WordPress, select a result, and the plugin caches the permitted data at the point of input -- place IDs, coordinates, and other allowable fields. This keeps the data fresh from the moment a place is added without requiring manual data entry."
+        },
+        {
+          "title": "Automated verification with a scheduled webhook",
+          "body": "Places close, move, and change. A scheduled webhook triggers a recurring recheck of all cached locations, verifying that each place is still in business and flagging any that appear to have moved or closed for editorial review. This keeps the guide accurate over time without requiring constant manual maintenance."
+        }
+      ],
+      "outcome": [
+        "A live, actively maintained city guide built around a Google Maps experience that loads fast and stays accurate. The caching strategy meaningfully reduced Google Cloud API costs while improving front-end performance, and the automated verification system keeps the data reliable without ongoing developer involvement."
+      ]
+    }
   }
 ]
