@@ -23,6 +23,19 @@
   --onacc2: var(--coral-950);
   --texblend: normal;
   --max-width: 1280px;
+  --syntax-comment: var(--mute);
+  --syntax-keyword: var(--acc);
+  --syntax-operator: var(--ink);
+  --syntax-string: var(--acc2ink);
+  --syntax-constant: var(--acc2);
+  --syntax-function: var(--acc);
+  --syntax-type: var(--acc);
+  --syntax-variable: var(--ink);
+  --syntax-property: var(--acc);
+  --syntax-tag: var(--acc2);
+  --syntax-selector: var(--acc);
+  --syntax-inserted: var(--acc);
+  --syntax-deleted: var(--acc2ink);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1235,7 +1248,7 @@ h1, h2 {
   margin: 0;
   padding: 16px 18px;
   overflow-x: auto;
-  white-space: normal;
+  white-space: pre;
   font-family: "JetBrains Mono", monospace;
   font-size: 12.5px;
   line-height: 1.7;
@@ -1248,16 +1261,79 @@ h1, h2 {
   word-break: break-word;
 }
 
-.code-mute {
-  color: var(--mute);
+::highlight(comment),
+::highlight(quote) {
+  color: var(--syntax-comment);
 }
 
-.code-acc {
-  color: var(--acc);
+::highlight(keyword),
+::highlight(storage),
+::highlight(at-rule),
+::highlight(doctype),
+::highlight(important),
+::highlight(section) {
+  color: var(--syntax-keyword);
 }
 
-.code-acc2 {
-  color: var(--acc2);
+::highlight(operator),
+::highlight(punctuation) {
+  color: var(--syntax-operator);
+}
+
+::highlight(string),
+::highlight(regexp),
+::highlight(attribute-value),
+::highlight(link),
+::highlight(raw) {
+  color: var(--syntax-string);
+}
+
+::highlight(numeric),
+::highlight(boolean),
+::highlight(constant),
+::highlight(symbol),
+::highlight(character-entity),
+::highlight(anchor),
+::highlight(entity) {
+  color: var(--syntax-constant);
+}
+
+::highlight(function),
+::highlight(decorator),
+::highlight(animation) {
+  color: var(--syntax-function);
+}
+
+::highlight(type),
+::highlight(support) {
+  color: var(--syntax-type);
+}
+
+::highlight(variable),
+::highlight(interpolation) {
+  color: var(--syntax-variable);
+}
+
+::highlight(property),
+::highlight(key),
+::highlight(attribute-name) {
+  color: var(--syntax-property);
+}
+
+::highlight(tag) {
+  color: var(--syntax-tag);
+}
+
+::highlight(selector) {
+  color: var(--syntax-selector);
+}
+
+::highlight(inserted) {
+  color: var(--syntax-inserted);
+}
+
+::highlight(deleted) {
+  color: var(--syntax-deleted);
 }
 
 .stats {

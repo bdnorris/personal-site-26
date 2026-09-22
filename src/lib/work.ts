@@ -31,8 +31,8 @@ export type WorkVisual =
     }
   | {
       kind: "code";
-      filename: string;
-      html: string;
+      file: string;
+      language?: string;
     }
   | {
       kind: "compare";
@@ -145,4 +145,53 @@ export function getNextWork(item: WorkItem): WorkItem | undefined {
 
 export function yearLabel(year: string): "Dates" | "Year" {
   return /\d\s*[–-]\s*\d/.test(year) ? "Dates" : "Year";
+}
+
+const snippetModules = import.meta.glob("../snippets/**/*", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+const snippetsByFile = Object.fromEntries(
+  Object.entries(snippetModules).map(([path, source]) => {
+    const marker = "/snippets/";
+    const index = path.lastIndexOf(marker);
+    const file =
+      index >= 0 ? path.slice(index + marker.length) : path.replace(/^\.\.\/snippets\//, "");
+    return [file, source];
+  }),
+);
+
+const LANGUAGE_BY_EXT: Record<string, string> = {
+  astro: "astro",
+  css: "css",
+  html: "html",
+  js: "javascript",
+  json: "json",
+  jsx: "javascript",
+  md: "markdown",
+  scss: "scss",
+  ts: "typescript",
+  tsx: "tsx",
+  vue: "vue",
+};
+
+export function getSnippet(file: string): string {
+  const source = snippetsByFile[file];
+  if (typeof source !== "string") {
+    throw new Error(`Missing snippet: ${file}`);
+  }
+  return source;
+}
+
+export function snippetFilename(file: string): string {
+  const slash = file.lastIndexOf("/");
+  return slash < 0 ? file : file.slice(slash + 1);
+}
+
+export function snippetLanguage(file: string): string {
+  const dot = file.lastIndexOf(".");
+  const ext = dot < 0 ? "" : file.slice(dot + 1).toLowerCase();
+  return LANGUAGE_BY_EXT[ext] ?? ext;
 }

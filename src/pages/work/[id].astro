@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 import ImageFrame from "../../components/ImageFrame.astro";
 import {
   getNextWork,
@@ -190,14 +191,8 @@ const heroAlt = workHeroAlt(item);
                       );
                     case "code":
                       return (
-                        <div class="code-block" data-visual={key}>
-                          <div class="code-bar">
-                            <span class="code-dot"></span>
-                            <span class="code-name">{visual.filename}</span>
-                          </div>
-                          <pre>
-                            <code set:html={visual.html} />
-                          </pre>
+                        <div data-visual={key}>
+                          <CodeBlock file={visual.file} language={visual.language} />
                         </div>
                       );
                     case "compare":
