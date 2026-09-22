@@ -1,10 +1,8 @@
 import work from "../data/work.json";
 
 export type WorkCategory =
-  | "Client"
-  | "Freelance"
-  | "Personal"
-  | "Education"
+  | "Work"
+  | "Education / Research"
   | "Tools / Experiments";
 
 export type WorkShot = {
@@ -79,10 +77,8 @@ const items = work as WorkItem[];
 
 export const CATEGORIES: Array<"All" | WorkCategory> = [
   "All",
-  "Client",
-  "Freelance",
-  "Personal",
-  "Education",
+  "Work",
+  "Education / Research",
   "Tools / Experiments",
 ];
 
