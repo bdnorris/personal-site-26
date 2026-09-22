@@ -1,17 +1,377 @@
 [
   {
-    "id": "alchemedia",
-    "title": "The Alchemedia Project Website",
-    "blurb": "My first site using a headless CMS.",
+    "id": "campus-sgf",
+    "title": "CampuSGF",
+    "blurb": "A Google Maps-driven city guide for college students new to Springfield, MO",
     "category": "Client",
-    "year": "2023",
-    "stack": ["Sanity", "Nuxt", "GraphQL"],
-    "links": [],
+    "year": "2026",
+    "stack": ["Vue", "WordPress", "ACF Flexible Content", "Google Maps", "Google Places API"],
+    "links": [
+      {
+        "label": "Campus SGF",
+        "href": "https://sgfcampusguide.com"
+      }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Campus SGF website",
+      "alt": "Screenshot of the CampusGF website showing options for downtown dining and shopping, a testimonial quote from a student, and an aerial photo of Springfield’s downtown area under a clear sky.",
+      "src": "/images/hero_campusgf.avif"
+    },
+    "case": {
+      "client": "Revel Advertising",
+      "role": "Sole developer",
+      "lede": "A Google Maps-driven city guide for college students new to Springfield, MO",
+      "context": [
+        "College students moving to Springfield for the first time need a way to get familiar with the city -- where to eat, shop, and spend time, organized around the neighborhoods and areas most relevant to campus life. The site needed Google Maps as a primary feature, with pins filterable by category, pulling real business data from Google Places.",
+        "The challenge was cost and performance. Google Places API calls add up quickly, and a naive implementation would make a live API call every time the map loaded. The goal was to serve accurate, useful data while keeping Google Cloud costs under control and the front-end experience fast."
+      ],
+      "roleDetail": "Sole developer. A designer provided complete designs; the technical architecture, WordPress build, custom plugin, and Google Maps integration were entirely my own.",
+      "decisions": [
+        {
+          "title": "A caching strategy built on API policy research",
+          "body": "Not all Google Places data can be cached, and for how long varies by data type. Rather than guess, I used Claude to research and interpret Google's API usage policies -- determining precisely what could be cached, what couldn't, and for how long. That research became the foundation of the caching strategy. Place IDs and coordinates are cached in WordPress, giving the front end everything it needs to load and render the map without a live API call. Website URLs, which Google's terms require to be fetched live, are handled separately. The result is a snappier map load and significantly fewer API calls."
+        },
+        {
+          "title": "A custom WordPress plugin for place management",
+          "body": "A custom plugin handles the editor experience for adding new locations. Editors search Google Places directly from within WordPress, select a result, and the plugin caches the permitted data at the point of input -- place IDs, coordinates, and other allowable fields. This keeps the data fresh from the moment a place is added without requiring manual data entry."
+        },
+        {
+          "title": "Automated verification with a scheduled webhook",
+          "body": "Places close, move, and change. A scheduled webhook triggers a recurring recheck of all cached locations, verifying that each place is still in business and flagging any that appear to have moved or closed for editorial review. This keeps the guide accurate over time without requiring constant manual maintenance."
+        }
+      ],
+      "outcome": [
+        "A live, actively maintained city guide built around a Google Maps experience that loads fast and stays accurate. The caching strategy meaningfully reduced Google Cloud API costs while improving front-end performance, and the automated verification system keeps the data reliable without ongoing developer involvement."
+      ]
+    }
+  },
+  {
+    "id": "think-upon-wordpress-development",
+    "title": "Think Upon WordPress Development",
+    "blurb": "A heavily animated WordPress site for business founder Mark Steiner",
+    "category": "Client",
+    "year": "2026",
+    "stack": ["WordPress", "ACF Flexible Content", "Gutenberg", "TypeScript", "SCSS", "Gravity Forms", "Lottie", "GreenSock (GSAP)"],
+    "links": [
+      {
+        "label": "Think Upon",
+        "href": "https://thinkupon.com/"
+      }
+    ],
     "featured": true,
+    "hero": {
+      "hint": "A screenshot of the Think Upon website",
+      "alt": "Screenshot of a colorful website homepage featuring a collage of eyes, flowers, an open book, and various shapes, with bold text reading “A website. Allegedly.” and navigation links at the top.",
+      "src": "/images/hero_thinkupon.webp"
+    },
+    "case": {
+      "client": "Internal",
+      "role": "Lead developer",
+      "lede": "A heavily animated WordPress site for business founder Mark Steiner",
+      "context": [
+        "Think Upon is Mark Steiner's personal site and blog -- a platform for his ideas and writing as a business founder. The design called for a higher than usual level of animation, with Lottie files playing a central role in how the content is experienced rather than serving as decorative accents. The challenge was finding a scalable, editor-friendly way to integrate those animations into WordPress without making the process brittle or hard to maintain."
+      ],
+      "roleDetail": "Sole developer. The designer provided complete designs and all finished Lottie animation files as assets for integration.",
+      "decisions": [
+        {
+          "title": "A custom post type for Lottie management",
+          "body": "Rather than embedding Lottie files directly into blocks or hardcoding them, a custom post type was created for each animation. Each entry holds the Lottie JSON file and its associated assets via an ACF Gallery field. When building pages with custom blocks, editors can select which Lottie animation to use from this library. This keeps animations organized, reusable across the site, and easy to update without touching block code."
+        },
+        {
+          "title": "Performance and asset management",
+          "body": "Lottie files can carry significant overhead, particularly when they embed images. A custom bash script handles pre-processing before files are added to WordPress -- rewriting asset links within the JSON and renaming those assets to avoid naming conflicts between different Lottie files. From there, stripping down files where possible and ensuring embedded images were properly compressed was a deliberate part of the integration process -- keeping animation quality while managing the performance cost."
+        },
+        {
+          "title": "Scroll-triggered animations",
+          "body": "A custom library was built to trigger animations during scroll using the Intersection Observer API, giving fine control over when animations fire without the overhead of a full scroll animation framework."
+        },
+        {
+          "title": "GreenSock for specific animation needs",
+          "body": "GSAP handled a scrolling marquee animation and more complex effects including the Motion Path Plugin for path-based animation and the SplitText Plugin for animated headline treatments -- effects that would have been significantly more difficult to achieve with CSS alone."
+        }
+      ],
+      "outcome": [
+        "A polished, animation-rich site that uses motion as a storytelling tool rather than decoration. The Lottie management system makes animations maintainable and reusable without requiring developer involvement for every content update."
+      ]
+    }
+  },
+  {
+    "id": "web-tools",
+    "title": "Web Tools",
+    "blurb": "A personal collection of browser-based helper tools.",
+    "category": "Tools / Experiments",
+    "year": "2025",
+    "stack": ["Vue", "@jsquash", "@squoosh-kit"],
+    "links": [
+      { "label": "Live site", "href": "https://webtools.briannorris.dev" }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Web Tools collection",
+      "alt": "Screenshot of a web tool titled “Image Converter,” prompting users to add a JPG or PNG image file. A sidebar lists other tools, such as Ratio Converter, Pixel to Em, and Text Compare.",
+      "src": "/images/hero_webdevtools.avif"
+    },
+    "case": {
+      "client": "Personal",
+      "role": "Sole developer",
+      "lede": "A personal collection of browser-based helper tools.",
+      "context": [
+        "Everyday development work produces small recurring needs that don't have a perfect off-the-shelf solution -- or where the available solutions require uploading files to a server. A personal toolbox made more sense than stitching together third-party services."
+      ],
+      "roleDetail": "Sole developer and designer. Built for my own use and curiosity.",
+      "decisions": [
+        {
+          "title": "Image conversion via WASM",
+          "body": "The image converter handles format conversion -- WebP, AVIF, and others -- entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also allows direct comparison between output formats and file sizes, making it useful for making informed decisions about image optimization."
+        },
+        {
+          "title": "Ratio converter",
+          "body": "A general purpose ratio math tool covering aspect ratios for images, video, and layout calculations -- the kind of small arithmetic that comes up often enough to be worth automating."
+        }
+      ],
+      "outcome": [
+        "A practical, privacy-conscious toolbox that's grown organically around real workflow needs. The image converter in particular has become a regular part of how I work."
+      ]
+    }
+  },
+  {
+    "id": "wordpress-theme-development",
+    "title": "WordPress Theme Development",
+    "blurb": "A selection of greenfield WordPress builds across a range of industries.",
+    "category": "Client",
+    "year": "2022-2026",
+    "stack": ["WordPress", "PHP", "Scss", "Typescript", "ACF Flexible Content", "Gravity Forms"],
+    "links": [
+      {
+        "label": "Mager's Management",
+        "href": "https://magersmanagement.com/"
+      },
+      {
+        "label": "Paragon Architecture",
+        "href": "https://www.paragonarchitecture.com/"
+      },
+      {
+        "label": "Pinnacle Family Advisors",
+        "href": "https://pinnaclefamilyadvisors.com/"
+      },
+      {
+        "label": "Pilgrim's Food Service",
+        "href": "https://pilgrimsfoodservice.com/"
+      },
+      {
+        "label": "Mental Health 417",
+        "href": "https://mentalhealth417.com/"
+      }
+    ],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the WordPress builds",
+      "alt": "Four website homepages are partially visible, each representing different companies: Pinnacle Family Advisors, Paragon Architecture, Magers Management, and Pilgrim’s Foodservice. Each section displays distinct branding and colors.",
+      "src": "/images/hero_wordpress.avif"
+    },
+    "case": {
+      "client": "Multiple",
+      "role": "Lead developer",
+      "lede": "A selection of greenfield WordPress builds across a range of industries.",
+      "context": [
+        "WordPress remains the most widely deployed CMS in the world, and for good reason -- clients know it, editors are comfortable with it, and the ecosystem is mature. The challenge with custom WordPress builds is finding the right balance between giving content editors meaningful flexibility and maintaining enough guardrails to keep the site looking intentional. Too much freedom and editors break layouts; too little and every content change becomes a developer ticket."
+      ],
+      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and build were entirely my own.",
+      "decisions": [
+        {
+          "title": "ACF Flexible Content for pages, Gutenberg for posts", 
+          "body": "The stack makes a deliberate distinction between two kinds of content. Marketing pages -- homepages, service pages, landing pages -- are built with ACF Flexible Content blocks. This allows for highly custom, visually controlled layouts without the overhead of developing a fully refined Gutenberg editor experience. Editors can build pages from a defined set of blocks, but the guardrails are tight enough to prevent presentation issues."
+        },
+        {
+          "title": "Gutenberg for posts",
+          "body": "Blog and news content is handled with Gutenberg, which is well-suited to straightforward text and image content. It's also where editors spend most of their time -- clients are far more likely to be publishing posts regularly than redesigning their homepage -- so a familiar, standard editing experience makes sense there."
+        },
+        {
+          "title": "TypeScript and SCSS for maintainable front ends",
+          "body": "TypeScript keeps the JavaScript layer predictable and easier to maintain across projects with similar patterns. SCSS handles styling with the organizational benefits of nesting, variables, and partials -- keeping stylesheets manageable as projects grow."
+        },
+        {
+          "title": "Gravity Forms for complex form needs",
+          "body": "Gravity Forms handles contact forms, lead capture, and any more complex form requirements -- conditional logic, multi-step forms, integrations with third-party services. It's a reliable solution that clients can manage themselves without developer involvement."
+        }
+      ],
+      "outcome": [
+        "A repeatable, proven stack that delivers polished, maintainable WordPress sites across a variety of industries. The ACF/Gutenberg split in particular has held up well -- clients get the flexibility they need where they need it, without the risk of breaking carefully designed layouts."
+      ],
+      "reflections": [
+        "As the WordPress editor experience matures, it hasn't translated into editors actively wanting to use it more -- most clients are comfortable with the ACF block approach and don't feel a strong pull toward the default editor. That said, if a client has a specific desire to work in the WordPress editor or move toward full site editing, that pivot is accommodatable -- it just requires more time to develop and refine the editing experience properly.",
+        "On the styling side, CSS has matured significantly -- native nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
+      ]
+    }
+  },
+  {
+    "id": "fluid-type-tester",
+    "title": "Fluid Type Tester",
+    "blurb": "A personal tool for testing fluid and static type scales in the browser",
+    "category": "Personal",
+    "year": "—",
+    "stack": ["Placeholder"],
+    "links": [],
+    "hero": {
+      "hint": "Screenshot of the Fluid Type Tester tool",
+      "alt": "A web tool called “Fluid Type Tester” shows adjustable sliders for font sizes and a preview area with the opening text from “Alice in Wonderland” under the heading “Down the Rabbit-Hole.”.",
+      "src": "/images/hero_fluidtype.avif"
+    },
+    "case": {
+      "client": "Personal",
+      "role": "Sole developer",
+      "lede": "A personal tool for testing fluid and static type scales in the browser",
+      "context": [
+        "Fluid typography uses CSS clamp to allow font sizes to scale smoothly with the viewport -- rather than jumping between fixed sizes at breakpoints, type grows and shrinks continuously between a defined minimum and maximum. It's a powerful technique, but visualizing how a fluid type scale actually behaves across viewport widths requires either resizing your browser constantly or guessing.",
+        "A few tools existed for this, but none had the combination of features I wanted. Rather than compromise, I built my own -- combining fluid type testing with more basic type size and font testing in a single interface."
+      ],
+      "roleDetail": "Sole developer and designer. A personal experiment built entirely for my own use and curiosity.",
+      "decisions": [
+        {
+          "title": "Combining two related problems",
+          "body": "Most fluid type tools focus exclusively on the clamp calculation. This tool combines that with broader type testing -- sizes, fonts, and basic typographic properties -- so you can evaluate a type scale holistically rather than in isolation. The goal was a single place to answer the question: does this type system actually work?"
+        },
+        {
+          "title": "Vuex for shared type state",
+          "body": "Type settings needed to be accessible and reactive across multiple parts of the interface simultaneously. Vuex handled that shared state cleanly, keeping the UI in sync as values changed."
+        },
+        {
+          "title": "Building for your own workflow",
+          "body": "There's a specific kind of clarity that comes from building a tool for yourself -- you know exactly what problem you're solving and what good looks like. No user research required. The trade-off is that the feature set reflects one person's workflow, which is fine for a personal experiment."
+        }
+      ],
+      "outcome": [
+        "A working tool that I use occasionally in my own workflow. More than the tool itself, it was a valuable exercise in building something from a personal itch -- understanding the CSS clamp technique deeply enough to build a testing interface around it."
+      ]
+    }
+  },
+  {
+    "id": "usability-heuristics-and-scoring",
+    "title": "Usability Heuristics and Scoring",
+    "blurb": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
+    "category": "Tools / Experiments",
+    "year": "2022",
+    "stack": ["Document"],
+    "links": [
+      { "label": "Notion", "href": "https://www.notion.so/norrisstuff/UX-My-Heuristics-and-Scoring-3cec4e98092241a7aeb4ce6dd0382a56" }
+    ],
     "hero": {
       "hint": "",
       "alt": "",
-      "src": null
+      "src": "/images/hero_heuritics.webp"
+    },
+    "case": {
+      "client": "Personal",
+      "role": "Sole writer",
+      "lede": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
+      "context": [
+        "Site audits benefit from a consistent framework -- something that turns subjective usability observations into structured, repeatable findings. Existing heuristic sets, including Nielsen/Norman's well-known 10, are solid starting points but vary in coverage and have some overlap depending on the source. Rather than adopt one wholesale, I researched several sets and synthesized my own: 12 heuristics with good coverage and minimal redundancy, paired with a 1-5 scoring system that produces actionable audit results."
+      ],
+      "roleDetail": "Sole researcher and author. Built for my own use on client and potential client site audits.",
+      "decisions": [
+        {
+          "title": "Synthesizing rather than adopting",
+          "body": "The goal wasn't to reinvent usability theory -- it was to find the gaps and overlaps between existing frameworks and arrive at a set that felt complete without being redundant. Reviewing multiple sources made it clear that different researchers emphasize different things, and that a synthesized set could draw the best from each."
+        },
+        {
+          "title": "Coverage and clarity as the design criteria",
+          "body": "Each heuristic needed to cover distinct ground and be specific enough to produce consistent scores across different auditors and different sites. The 12 heuristics cover structure and navigation, user control, feedback, predictability, error handling, learnability, aesthetic restraint, information availability, help and support, consistency, follow-through, and accessibility."
+        },
+        {
+          "title": "A scoring system that produces actionable results",
+          "body": "Scoring runs from 1 to 5, with 5 indicating no problems. The scale is designed to distinguish between failures users can't overcome, failures they can work around, functional but improvable experiences, and genuinely exceptional ones. Heuristics that don't apply to a given element are skipped rather than scored, keeping results honest."
+        }
+      ],
+      "visuals": [
+        {
+          "kind": "snippet",
+          "src": "/snippets/heuristics.md"
+        }
+      ],
+      "outcome": [
+        "A practical, repeatable framework for structured usability audits -- usable across client sites regardless of industry or complexity. The scoring system produces findings that are specific enough to prioritize and communicate to stakeholders."
+      ]
+    }
+  },
+  {
+    "id": "allspreads",
+    "title": "All Spreads Daymaker",
+    "blurb": "A recipe discovery app for a food-service brand that arranges recipes on a programmatically generated SVG clock, organized by daypart.",
+    "category": "Client",
+    "year": "2023",
+    "stack": ["Vue 3", "SVG", "REST API"],
+    "links": [
+      { "label": "Live site", "href": "https://rc.smuckers-afh.marlindev.com/smuckers-inspiration" }
+    ],
+    "featured": true,
+    "hero": {
+      "hint": "A screenshot of the Daymaker app",
+      "alt": "Smucker’s Day Maker tool lets users spin a wheel of meal ideas with photos of dishes. On the right, a box offers options to explore recipes: Breakfasts, Entrees, or Snacks &amp; Sweets, with a red checkered border below.",
+      "src": "/images/hero_allspreads.avif"
+    },
+    "case": {
+      "client": "Smucker",
+      "role": "Lead front-end",
+      "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
+      "context": [
+        "Daypart filtering is a common need in food-service recipe discovery -- a chef or menu planner looking to fill a breakfast gap thinks differently than one planning dinner. The client wanted a recipe discovery experience that made dayparts the organizing principle, presented in a way that felt distinctive and engaging rather than a standard filtered list.",
+        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable -- pulled live from a CMS API -- meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data loaded."
+      ],
+      "roleDetail": "Sole developer on the app. A separate developer built and maintained the Pimcore REST API; a designer provided complete designs for both the desktop clock and mobile pie chart views. The SVG generation, trigonometric calculations, animation, and Vue architecture were entirely my own work.",
+      "decisions": [
+        {
+          "title": "Generating the clock as SVG",
+          "body": "The entire clock is built programmatically in Vue -- there is no static SVG base. Recipes, daypart slices, markers, labels, and color coding are all computed and rendered from the API data. Color coding is data-driven from the CMS, making it easy to update without touching the front end."
+        },
+        {
+          "title": "The trig problem",
+          "body": "Because the number of recipes per daypart varies, the angular size of each slice varies too. Placing recipe markers and daypart labels at the correct positions on the circle required trigonometric calculations after each data load. The calculations needed to handle centering each daypart's recipes within its slice, accumulating angles correctly across dayparts, and converting between degrees and radians for SVG coordinate math."
+        },
+        {
+          "title": "Trigonometry for variable item placement",
+          "body": "AI assistance was instrumental in working out the correct trigonometric functions for variable item placement -- a problem that is easy to get subtly wrong and hard to debug visually."
+        },
+        {
+          "title": "Animation",
+          "body": "GreenSock (GSAP) handles the fork and knife pointer animation, adding a tactile, satisfying quality to interacting with the clock that a CSS transition alone wouldn't achieve."
+        },
+        {
+          "title": "Mobile adaptation",
+          "body": "The desktop clock gives way to a simpler pie chart on mobile, letting users tap a daypart to select it. The switch was a practical design decision -- the full clock UI doesn't translate well to touch targets and narrow viewports, but the core daypart-first navigation concept carries over cleanly."
+        }
+      ],
+      "visuals": [
+        {
+          "kind": "shots",
+          "shots": [
+            { "hint": "Screenshot of the Daymaker app, showing a selected recipe",
+              "src": "/images/allspreads/ss-desktop2.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
+            },
+            { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the desktop",
+              "src": "/images/allspreads/ss-desktop3.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
+            },
+            { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the mobile",
+              "src": "/images/allspreads/ss-mobile1.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected daypart on the mobile."
+            },
+            { "hint": "Screenshot of the Daymaker app, showing a selected recipe on mobile",
+              "src": "/images/allspreads/ss-mobile2.webp",
+              "alt": "Screenshot of the Daymaker app, showing a selected recipe on mobile."
+            }
+          ]
+        },
+        {
+          "kind": "code",
+          "file": "allspreads/clock.vue",
+          "language": "typescript"
+        }
+      ],
+      "outcome": [
+        "The app successfully surfaces recipes organized by daypart in a distinctive, visually engaging format. The variable slice calculation handles real-world data gracefully, and the mobile pie chart provides a usable fallback without sacrificing the daypart-first concept."
+      ]
     }
   },
   {
@@ -22,7 +382,7 @@
     "year": "2024",
     "stack": ["Vue 3", "TypeScript", "Fuse.js"],
     "links": [],
-    "featured": true,
+    "featured": false,
     "hero": {
       "hint": "A screenshot of the filters in action",
       "alt": "Screenshot of an online store displaying pasta products, including Marzetti frozen elbow macaroni, farfalle, penne rigati, cavatappi, and elbow macaroni, with filters on the left side.",
@@ -103,134 +463,137 @@
       ],
       "reflections": [
         "In hindsight, the volume of WordPress implementations makes a strong case for packaging this as a proper plugin with an admin interface for filter configuration, rather than manual setup. It's the natural next step for something that's become a recurring solution."
-      ],
-      "nextId": "allspreads"
+      ]
     }
   },
   {
-    "id": "allspreads",
-    "title": "All Spreads Daymaker",
-    "blurb": "A recipe discovery app for a food-service brand that arranges recipes on a programmatically generated SVG clock, organized by daypart.",
-    "category": "Client",
-    "year": "2023",
-    "stack": ["Vue 3", "SVG", "REST API"],
-    "links": [
-      { "label": "Live site", "href": "https://rc.smuckers-afh.marlindev.com/smuckers-inspiration" }
-    ],
-    "featured": true,
+    "id": "accessibility-dev-training",
+    "title": "Accessibility Dev Training",
+    "blurb": "A living accessibility reference and training document written for a team of six developers.",
+    "category": "Internal",
+    "year": "2020",
+    "stack": ["Notion"],
+    "links": [],
+    "featured": false,
     "hero": {
-      "hint": "A screenshot of the Daymaker app",
-      "alt": "Smucker’s Day Maker tool lets users spin a wheel of meal ideas with photos of dishes. On the right, a box offers options to explore recipes: Breakfasts, Entrees, or Snacks &amp; Sweets, with a red checkered border below.",
-      "src": "/images/hero_allspreads.avif"
+      "hint": "A screenshot of the Accessibility Dev Training document",
+      "alt": "A webpage section titled “Scope” explains web accessibility, quoting Heydon Pickering, and discusses making sites usable for all. A yellow-highlighted note says, “If a website isn’t accessible, it isn’t usable.”.",
+      "src": "/images/hero_accessibility.webp"
     },
     "case": {
-      "client": "Smucker",
-      "role": "Lead front-end",
-      "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
+      "client": "Internal",
+      "role": "Lead writer",
+      "lede": "A living accessibility reference and training document written for a team of six developers -- covering foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
       "context": [
-        "Daypart filtering is a common need in food-service recipe discovery -- a chef or menu planner looking to fill a breakfast gap thinks differently than one planning dinner. The client wanted a recipe discovery experience that made dayparts the organizing principle, presented in a way that felt distinctive and engaging rather than a standard filtered list.",
-        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable -- pulled live from a CMS API -- meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data loaded."
+        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to raise the team's knowledge, I researched and wrote a training document aimed at developers who understood the concept of accessibility but needed practical guidance on implementation -- what it actually means to make a project accessible, where the hard problems are, and how to approach testing."
       ],
-      "roleDetail": "Sole developer on the app. A separate developer built and maintained the Pimcore REST API; a designer provided complete designs for both the desktop clock and mobile pie chart views. The SVG generation, trigonometric calculations, animation, and Vue architecture were entirely my own work.",
+      "roleDetail": "Lead researcher and author. The training was a collaborative research effort across the team; I synthesized the findings into a single cohesive document and led any subsequent training sessions.",
       "decisions": [
         {
-          "title": "Generating the clock as SVG",
-          "body": "The entire clock is built programmatically in Vue -- there is no static SVG base. Recipes, daypart slices, markers, labels, and color coding are all computed and rendered from the API data. Color coding is data-driven from the CMS, making it easy to update without touching the front end."
+          "title": "Structuring for reference, not just reading",
+          "body": "As a living document rather than a one-time presentation, the training needed to work as something developers would return to -- not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
         },
         {
-          "title": "The trig problem",
-          "body": "Because the number of recipes per daypart varies, the angular size of each slice varies too. Placing recipe markers and daypart labels at the correct positions on the circle required trigonometric calculations after each data load. The calculations needed to handle centering each daypart's recipes within its slice, accumulating angles correctly across dayparts, and converting between degrees and radians for SVG coordinate math."
+          "title": "Focusing on the hard problems",
+          "body": "Rather than cataloging every WCAG success criterion, the training zeroed in on the areas that cause the most trouble in practice: multimedia accessibility, keyboard navigation patterns -- including the notoriously tricky problem of accessible dropdown navigation -- and testing strategies. These are the areas where good intentions most often fall short, and where concrete guidance has the most impact."
         },
         {
-          "title": "Trigonometry for variable item placement",
-          "body": "AI assistance was instrumental in working out the correct trigonometric functions for variable item placement -- a problem that is easy to get subtly wrong and hard to debug visually."
-        },
-        {
-          "title": "Animation",
-          "body": "GreenSock (GSAP) handles the fork and knife pointer animation, adding a tactile, satisfying quality to interacting with the clock that a CSS transition alone wouldn't achieve."
-        },
-        {
-          "title": "Mobile adaptation",
-          "body": "The desktop clock gives way to a simpler pie chart on mobile, letting users tap a daypart to select it. The switch was a practical design decision -- the full clock UI doesn't translate well to touch targets and narrow viewports, but the core daypart-first navigation concept carries over cleanly."
-        }
-      ],
-      "visuals": [
-        {
-          "kind": "shots",
-          "shots": [
-            { "hint": "Screenshot of the Daymaker app, showing a selected recipe",
-              "src": "/images/allspreads/ss-desktop2.webp",
-              "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
-            },
-            { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the desktop",
-              "src": "/images/allspreads/ss-desktop3.webp",
-              "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
-            },
-            { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the mobile",
-              "src": "/images/allspreads/ss-mobile1.webp",
-              "alt": "Screenshot of the Daymaker app, showing a selected daypart on the mobile."
-            },
-            { "hint": "Screenshot of the Daymaker app, showing a selected recipe on mobile",
-              "src": "/images/allspreads/ss-mobile2.webp",
-              "alt": "Screenshot of the Daymaker app, showing a selected recipe on mobile."
-            }
-          ]
-        },
-        {
-          "kind": "code",
-          "file": "allspreads/clock.vue",
-          "language": "typescript"
+          "title": "Testing strategies as a practical anchor",
+          "body": "Accessibility testing is often overlooked until it's too late. Including testing strategies -- not just implementation guidance -- gave developers a way to verify their work rather than assume it was correct."
         }
       ],
       "outcome": [
-        "The app successfully surfaces recipes organized by daypart in a distinctive, visually engaging format. The variable slice calculation handles real-world data gracefully, and the mobile pie chart provides a usable fallback without sacrificing the daypart-first concept."
+        "The document became a living reference for a team of six developers. Following the training, accessible code became a baseline expectation for new work -- with the reasonable caveat that stakeholder priorities or budget constraints could affect specific features. That's an honest outcome: it shifted the default without pretending those realities don't exist."
       ],
-      "nextId": "web-design-for-design-majors"
+      "reflections": [
+        "Not all stakeholders understand the nuts and bolts of accessibility, but the training helped raise awareness of it as a concept and why it matters -- which is its own kind of progress. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort even when individual projects fall short. Getting it right consistently is a long game."
+      ]
     }
   },
   {
-    "id": "web-design-for-design-majors",
-    "title": "Web Design for Design Majors",
-    "blurb": "Course materials for a course on web design and development.",
-    "category": "Education",
+    "id": "alchemedia",
+    "title": "Alchemedia Project Website",
+    "blurb": "An advertising agency website built with Nuxt.js and Prismic",
+    "category": "Client",
     "year": "2019",
-    "stack": ["VuePress"],
+    "stack": ["Nuxt", "Prismic"],
+    "featured": false,
+    "hero": {
+      "hint": "A screenshot of the Alchemedia project website",
+      "alt": "A blue-tinted office background with bold black text saying “Hey There.” Smaller white text below reads, “If food is what you do (even part of what you do) you’ve landed in the right spot.”.",
+      "src": "/images/hero_tap.avif"
+    },
+    "case": {
+      "client": "Internal",
+      "role": "Lead front-end",
+      "lede": "An advertising agency website built with Nuxt.js and Prismic",
+      "context": [
+        "The Alchemedia Project needed a marketing site covering agency messaging, team information, and case studies. As an internal project, it presented a low-risk opportunity to try a headless CMS approach for the first time -- taking on the experimentation risk ourselves rather than on a client's time and budget."
+      ],
+      "roleDetail": "Lead developer on the project, with junior developers assisting. Ryan Baker handled all design work. Responsible for the overall technical approach, Prismic integration, and front-end build.",
+      "decisions": [
+        {
+          "title": "Choosing headless as a learning opportunity",
+          "body": "Internal projects are a good time to experiment with new ways of working -- the risk is yours to take rather than a client's. Prismic was a deliberate choice to get hands-on experience with a headless CMS in a real production context. The content modeling and API-driven approach were new territory, and working through it on an internal project meant the learning curve didn't come at anyone else's expense."
+        },
+        {
+          "title": "The manual data fetching problem",
+          "body": "One of the less glamorous realities of working with Prismic at the time was the amount of manual data fetching required -- every content type needed its own fetch logic, which added up to a lot of repetitive code. It was a real friction point, and one that modern AI tooling would make trivial today. It didn't block the project, but it shaped an appreciation for the value of good SDK abstractions."
+        },
+        {
+          "title": "CSS techniques pushed by the design",
+          "body": "Ryan's designs called for visual techniques that were outside my existing toolkit at the time: text-strokes, rotated type, SVG masks, and image masks. Implementing them required digging into CSS capabilities I didn't know existed. That kind of designer-led technical stretch is one of the better ways to expand what you know -- the design sets the bar and you figure out how to meet it."
+        }
+      ],
+      "outcome": [
+        "The site launched successfully and served The Alchemedia Project until the agency was absorbed into another company. It's no longer live, but it achieved its goals as both a functioning agency website and a genuine learning exercise -- establishing a foundation for headless CMS work that carried into future projects."
+      ]
+    }
+  },
+  {
+    "id": "jif-wheel",
+    "title": "Jif That Dish",
+    "blurb": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
+    "category": "Client",
+    "year": "2021",
+    "stack": ["Vue 3", "Greensock", "REST API"],
     "links": [
-      { "label": "Course site", "href": "https://msu.briannorris.dev" }
+      { "label": "Live site", "href": "https://rc.jif-afh.marlindev.com/JifWheel" }
     ],
     "featured": false,
     "hero": {
-      "hint": "A sampling of styletiles from the course",
-      "alt": "A collage of various website mockups displaying different fonts, colors, layouts, and graphic elements, showcasing diverse web design styles and branding approaches.",
-      "src": "/images/hero_des340.avif"
+      "hint": "A screenshot of the Wheel app",
+      "alt": "A colorful Jif peanut butter-themed game wheel with sections for different dip ideas, surrounded by images of food, and text suggesting ways to serve Jif, flavor hacks, and a PB Hummus Dip recipe.",
+      "src": "/images/hero_jifwheel.webp"
     },
     "case": {
-      "client": "Missouri State University",
-      "role": "Per-course instructor",
-      "lede": "Course materials for a course on web design and development.",
+      "client": "Jif",
+      "role": "Lead front-end",
+      "lede": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
       "context": [
-        "Graphic design and illustration students need to understand how the web works and how to design for it. However, most arrive with no development experience and mixed interest in ever writing code. The challenge wasn't just teaching web design and development concepts; it was teaching them in a way that respected both the students who would go deep and the ones who just needed a basic understanding of development."
+        "Food-service clients need to sell chefs and menu planners on how a product fits into their menu. For Jif Peanut Butter, the goal was a fun, engaging way to surface recipe applications randomly -- giving a user a reason to keep spinning and discovering rather than browsing a static list. Filtering and sequential browsing round out the experience for users who want more control."
       ],
-      "roleDetail": "Sole instructor for one section of the course, which ran alongside a colleague's parallel section. Responsible for all instruction, course structure, and materials within the university's course description. Some projects were inherited from previous instructors; the course site, lectures, and overall approach were my own.",
+      "roleDetail": "Sole front-end developer. A separate developer built and maintained the same Pimcore REST API used across the Marlin food-service project family. Designer provided complete designs.",
       "decisions": [
         {
-          "title": "Isolated exercises over a single running project",
-          "body": "Coding concepts were introduced through small, self-contained CodePen exercises and pre-built boilerplates rather than one accumulating project. This lowered the stakes for students who struggled and kept the focus on the concept at hand rather than debugging something they built three weeks ago."
+          "title": "Rethinking the wheel",
+          "body": "The original concept called for a Wheel of Fortune style spinning wheel -- slots, labels, the works. In a problem-solving meeting, I flagged that the trigonometric complexity of a variable-slot wheel would be significant, and proposed an alternative: a Price is Right style wheel, where a single continuous drum spins and lands on a result. Simpler to implement, just as satisfying to interact with, and the client agreed. It was a practical trade-off that kept the project on track without sacrificing the core mechanic."
         },
         {
-          "title": "Live demonstration as preview, not instruction",
-          "body": "Coding lectures were designed to show how things work in context, not to be followed along in real time. Students watched, asked questions, then applied concepts in the exercises. This reduced the chaos of live coding sessions where half the class falls behind on a semicolon."
+          "title": "Animation with GSAP",
+          "body": "GreenSock handles the wheel spin animation. The goal was a spin that feels physical -- building momentum, then decelerating naturally to a stop. GSAP gave fine control over easing and duration, though getting the speed curves to feel truly realistic proved harder than expected."
         },
         {
-          "title": "The course site as a resource",
-          "body": "Built with VuePress, the site housed all course materials and was developed live during in-class demos, giving students a real example to reference throughout the semester."
+          "title": "Filtering and sequential browsing",
+          "body": "Beyond the random spin, users can filter by category and walk through applications one at a time. This gave more deliberate users a way to explore the full catalog without relying on chance."
         }
       ],
       "outcome": [
-        "All students came away with a working understanding of designing for the web. The coding component was more variable — predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
+        "The app successfully delivers a fun, randomized recipe discovery experience for food-service audiences, with enough structure for users who want to browse more intentionally."
       ],
       "reflections": [
-        "The mixed coding results point to an inherent tension in the course: it serves students who want to build things and students who just need to understand the medium, and those are genuinely different courses. A future version might split the track earlier or lean harder into the design-for-web angle and treat coding as optional depth rather than a shared requirement."
+        "The animation was the most challenging part and the part I'm least satisfied with. Making a spinning wheel feel physically convincing requires fine-tuned speed curves that are harder to dial in than they look -- the spin works, but it lacks the weight and deceleration of something truly realistic. It was a valuable lesson in how much craft goes into motion that feels natural, and something I'd approach differently with more time or a second pass.",
+        "Additionally, the similar All Spreads Daymaker app that I later built showed that the Wheel of Fortune style wheel would have been possible and probably moreeffective."
       ]
     }
   },
@@ -279,437 +642,52 @@
       ],
       "outcome": [
         "The app is live and accessible via QR code on Smucker's branded table caddies in participating restaurants. The self-explanatory UI successfully handles a zero-context entry point, dropping users straight into the experience without instruction."
-      ],
-      "nextId": "slot-1"
+      ]
     }
   },
   {
-    "id": "jif-wheel",
-    "title": "Jif That Dish",
-    "blurb": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
-    "category": "Client",
-    "year": "2021",
-    "stack": ["Vue 3", "Greensock", "REST API"],
-    "links": [
-      { "label": "Live site", "href": "https://rc.jif-afh.marlindev.com/JifWheel" }
-    ],
-    "featured": false,
-    "hero": {
-      "hint": "A screenshot of the Wheel app",
-      "alt": "A colorful Jif peanut butter-themed game wheel with sections for different dip ideas, surrounded by images of food, and text suggesting ways to serve Jif, flavor hacks, and a PB Hummus Dip recipe.",
-      "src": "/images/hero_jifwheel.webp"
-    },
-    "case": {
-      "client": "Jif",
-      "role": "Lead front-end",
-      "lede": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
-      "context": [
-        "Food-service clients need to sell chefs and menu planners on how a product fits into their menu. For Jif Peanut Butter, the goal was a fun, engaging way to surface recipe applications randomly -- giving a user a reason to keep spinning and discovering rather than browsing a static list. Filtering and sequential browsing round out the experience for users who want more control."
-      ],
-      "roleDetail": "Sole front-end developer. A separate developer built and maintained the same Pimcore REST API used across the Marlin food-service project family. Designer provided complete designs.",
-      "decisions": [
-        {
-          "title": "Rethinking the wheel",
-          "body": "The original concept called for a Wheel of Fortune style spinning wheel -- slots, labels, the works. In a problem-solving meeting, I flagged that the trigonometric complexity of a variable-slot wheel would be significant, and proposed an alternative: a Price is Right style wheel, where a single continuous drum spins and lands on a result. Simpler to implement, just as satisfying to interact with, and the client agreed. It was a practical trade-off that kept the project on track without sacrificing the core mechanic."
-        },
-        {
-          "title": "Animation with GSAP",
-          "body": "GreenSock handles the wheel spin animation. The goal was a spin that feels physical -- building momentum, then decelerating naturally to a stop. GSAP gave fine control over easing and duration, though getting the speed curves to feel truly realistic proved harder than expected."
-        },
-        {
-          "title": "Filtering and sequential browsing",
-          "body": "Beyond the random spin, users can filter by category and walk through applications one at a time. This gave more deliberate users a way to explore the full catalog without relying on chance."
-        }
-      ],
-      "outcome": [
-        "The app successfully delivers a fun, randomized recipe discovery experience for food-service audiences, with enough structure for users who want to browse more intentionally."
-      ],
-      "reflections": [
-        "The animation was the most challenging part and the part I'm least satisfied with. Making a spinning wheel feel physically convincing requires fine-tuned speed curves that are harder to dial in than they look -- the spin works, but it lacks the weight and deceleration of something truly realistic. It was a valuable lesson in how much craft goes into motion that feels natural, and something I'd approach differently with more time or a second pass.",
-        "Additionally, the similar All Spreads Daymaker app that I later built showed that the Wheel of Fortune style wheel would have been possible and probably moreeffective."
-      ],
-      "nextId": "slot-1"
-    }
-  },
-  {
-    "id": "alchemedia",
-    "title": "Alchemedia Project Website",
-    "blurb": "An advertising agency website built with Nuxt.js and Prismic",
-    "category": "Client",
+    "id": "web-design-for-design-majors",
+    "title": "Web Design for Design Majors",
+    "blurb": "Course materials for a course on web design and development.",
+    "category": "Education",
     "year": "2019",
-    "stack": ["Nuxt", "Prismic"],
-    "featured": false,
-    "hero": {
-      "hint": "A screenshot of the Alchemedia project website",
-      "alt": "A blue-tinted office background with bold black text saying “Hey There.” Smaller white text below reads, “If food is what you do (even part of what you do) you’ve landed in the right spot.”.",
-      "src": "/images/hero_tap.avif"
-    },
-    "case": {
-      "client": "Internal",
-      "role": "Lead front-end",
-      "lede": "An advertising agency website built with Nuxt.js and Prismic",
-      "context": [
-        "The Alchemedia Project needed a marketing site covering agency messaging, team information, and case studies. As an internal project, it presented a low-risk opportunity to try a headless CMS approach for the first time -- taking on the experimentation risk ourselves rather than on a client's time and budget."
-      ],
-      "roleDetail": "Lead developer on the project, with junior developers assisting. Ryan Baker handled all design work. Responsible for the overall technical approach, Prismic integration, and front-end build.",
-      "decisions": [
-        {
-          "title": "Choosing headless as a learning opportunity",
-          "body": "Internal projects are a good time to experiment with new ways of working -- the risk is yours to take rather than a client's. Prismic was a deliberate choice to get hands-on experience with a headless CMS in a real production context. The content modeling and API-driven approach were new territory, and working through it on an internal project meant the learning curve didn't come at anyone else's expense."
-        },
-        {
-          "title": "The manual data fetching problem",
-          "body": "One of the less glamorous realities of working with Prismic at the time was the amount of manual data fetching required -- every content type needed its own fetch logic, which added up to a lot of repetitive code. It was a real friction point, and one that modern AI tooling would make trivial today. It didn't block the project, but it shaped an appreciation for the value of good SDK abstractions."
-        },
-        {
-          "title": "CSS techniques pushed by the design",
-          "body": "Ryan's designs called for visual techniques that were outside my existing toolkit at the time: text-strokes, rotated type, SVG masks, and image masks. Implementing them required digging into CSS capabilities I didn't know existed. That kind of designer-led technical stretch is one of the better ways to expand what you know -- the design sets the bar and you figure out how to meet it."
-        }
-      ],
-      "outcome": [
-        "The site launched successfully and served The Alchemedia Project until the agency was absorbed into another company. It's no longer live, but it achieved its goals as both a functioning agency website and a genuine learning exercise -- establishing a foundation for headless CMS work that carried into future projects."
-      ],
-      "nextId": "slot-1"
-    }
-  },
-  {
-    "id": "accessibility-dev-training",
-    "title": "Accessibility Dev Training",
-    "blurb": "A living accessibility reference and training document written for a team of six developers -- covering foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
-    "category": "Internal",
-    "year": "2020",
-    "stack": ["Notion"],
-    "links": [],
-    "featured": false,
-    "hero": {
-      "hint": "A screenshot of the Accessibility Dev Training document",
-      "alt": "A webpage section titled “Scope” explains web accessibility, quoting Heydon Pickering, and discusses making sites usable for all. A yellow-highlighted note says, “If a website isn’t accessible, it isn’t usable.”.",
-      "src": "/images/hero_accessibility.webp"
-    },
-    "case": {
-      "client": "Internal",
-      "role": "Lead writer",
-      "lede": "A living accessibility reference and training document written for a team of six developers -- covering foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
-      "context": [
-        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to raise the team's knowledge, I researched and wrote a training document aimed at developers who understood the concept of accessibility but needed practical guidance on implementation -- what it actually means to make a project accessible, where the hard problems are, and how to approach testing."
-      ],
-      "roleDetail": "Lead researcher and author. The training was a collaborative research effort across the team; I synthesized the findings into a single cohesive document and led any subsequent training sessions.",
-      "decisions": [
-        {
-          "title": "Structuring for reference, not just reading",
-          "body": "As a living document rather than a one-time presentation, the training needed to work as something developers would return to -- not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
-        },
-        {
-          "title": "Focusing on the hard problems",
-          "body": "Rather than cataloging every WCAG success criterion, the training zeroed in on the areas that cause the most trouble in practice: multimedia accessibility, keyboard navigation patterns -- including the notoriously tricky problem of accessible dropdown navigation -- and testing strategies. These are the areas where good intentions most often fall short, and where concrete guidance has the most impact."
-        },
-        {
-          "title": "Testing strategies as a practical anchor",
-          "body": "Accessibility testing is often overlooked until it's too late. Including testing strategies -- not just implementation guidance -- gave developers a way to verify their work rather than assume it was correct."
-        }
-      ],
-      "outcome": [
-        "The document became a living reference for a team of six developers. Following the training, accessible code became a baseline expectation for new work -- with the reasonable caveat that stakeholder priorities or budget constraints could affect specific features. That's an honest outcome: it shifted the default without pretending those realities don't exist."
-      ],
-      "reflections": [
-        "Not all stakeholders understand the nuts and bolts of accessibility, but the training helped raise awareness of it as a concept and why it matters -- which is its own kind of progress. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort even when individual projects fall short. Getting it right consistently is a long game."
-      ],
-      "nextId": "slot-1"
-    }
-  },
-  {
-    "id": "fluid-type-tester",
-    "title": "Fluid Type Tester",
-    "blurb": "A personal tool for testing fluid and static type scales in the browser",
-    "category": "Personal",
-    "year": "—",
-    "stack": ["Placeholder"],
-    "links": [],
-    "hero": {
-      "hint": "Screenshot of the Fluid Type Tester tool",
-      "alt": "A web tool called “Fluid Type Tester” shows adjustable sliders for font sizes and a preview area with the opening text from “Alice in Wonderland” under the heading “Down the Rabbit-Hole.”.",
-      "src": "/images/hero_fluidtype.avif"
-    },
-    "case": {
-      "client": "Personal",
-      "role": "Sole developer",
-      "lede": "A personal tool for testing fluid and static type scales in the browser",
-      "context": [
-        "Fluid typography uses CSS clamp to allow font sizes to scale smoothly with the viewport -- rather than jumping between fixed sizes at breakpoints, type grows and shrinks continuously between a defined minimum and maximum. It's a powerful technique, but visualizing how a fluid type scale actually behaves across viewport widths requires either resizing your browser constantly or guessing.",
-        "A few tools existed for this, but none had the combination of features I wanted. Rather than compromise, I built my own -- combining fluid type testing with more basic type size and font testing in a single interface."
-      ],
-      "roleDetail": "Sole developer and designer. A personal experiment built entirely for my own use and curiosity.",
-      "decisions": [
-        {
-          "title": "Combining two related problems",
-          "body": "Most fluid type tools focus exclusively on the clamp calculation. This tool combines that with broader type testing -- sizes, fonts, and basic typographic properties -- so you can evaluate a type scale holistically rather than in isolation. The goal was a single place to answer the question: does this type system actually work?"
-        },
-        {
-          "title": "Vuex for shared type state",
-          "body": "Type settings needed to be accessible and reactive across multiple parts of the interface simultaneously. Vuex handled that shared state cleanly, keeping the UI in sync as values changed."
-        },
-        {
-          "title": "Building for your own workflow",
-          "body": "There's a specific kind of clarity that comes from building a tool for yourself -- you know exactly what problem you're solving and what good looks like. No user research required. The trade-off is that the feature set reflects one person's workflow, which is fine for a personal experiment."
-        }
-      ],
-      "outcome": [
-        "A working tool that I use occasionally in my own workflow. More than the tool itself, it was a valuable exercise in building something from a personal itch -- understanding the CSS clamp technique deeply enough to build a testing interface around it."
-      ]
-    }
-  },
-  {
-    "id": "usability-heuristics-and-scoring",
-    "title": "Usability Heuristics and Scoring",
-    "blurb": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
-    "category": "Tools / Experiments",
-    "year": "2022",
-    "stack": ["Document"],
+    "stack": ["VuePress"],
     "links": [
-      { "label": "Notion", "href": "https://www.notion.so/norrisstuff/UX-My-Heuristics-and-Scoring-3cec4e98092241a7aeb4ce6dd0382a56" }
-    ],
-    "hero": {
-      "hint": "",
-      "alt": "",
-      "src": null
-    },
-    "case": {
-      "client": "Personal",
-      "role": "Sole writer",
-      "lede": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
-      "context": [
-        "Site audits benefit from a consistent framework -- something that turns subjective usability observations into structured, repeatable findings. Existing heuristic sets, including Nielsen/Norman's well-known 10, are solid starting points but vary in coverage and have some overlap depending on the source. Rather than adopt one wholesale, I researched several sets and synthesized my own: 12 heuristics with good coverage and minimal redundancy, paired with a 1-5 scoring system that produces actionable audit results."
-      ],
-      "roleDetail": "Sole researcher and author. Built for my own use on client and potential client site audits.",
-      "decisions": [
-        {
-          "title": "Synthesizing rather than adopting",
-          "body": "The goal wasn't to reinvent usability theory -- it was to find the gaps and overlaps between existing frameworks and arrive at a set that felt complete without being redundant. Reviewing multiple sources made it clear that different researchers emphasize different things, and that a synthesized set could draw the best from each."
-        },
-        {
-          "title": "Coverage and clarity as the design criteria",
-          "body": "Each heuristic needed to cover distinct ground and be specific enough to produce consistent scores across different auditors and different sites. The 12 heuristics cover structure and navigation, user control, feedback, predictability, error handling, learnability, aesthetic restraint, information availability, help and support, consistency, follow-through, and accessibility."
-        },
-        {
-          "title": "A scoring system that produces actionable results",
-          "body": "Scoring runs from 1 to 5, with 5 indicating no problems. The scale is designed to distinguish between failures users can't overcome, failures they can work around, functional but improvable experiences, and genuinely exceptional ones. Heuristics that don't apply to a given element are skipped rather than scored, keeping results honest."
-        }
-      ],
-      "visuals": [
-        {
-          "kind": "snippet",
-          "src": "/snippets/heuristics.md"
-        }
-      ],
-      "outcome": [
-        "A practical, repeatable framework for structured usability audits -- usable across client sites regardless of industry or complexity. The scoring system produces findings that are specific enough to prioritize and communicate to stakeholders."
-      ]
-    }
-  },
-  {
-    "id": "web-tools",
-    "title": "Web Tools",
-    "blurb": "A personal collection of browser-based helper tools -- built for my own workflow and kept deliberately simple and private.",
-    "category": "Tools / Experiments",
-    "year": "2025",
-    "stack": ["Vue", "@jsquash", "@squoosh-kit"],
-    "links": [
-      { "label": "Live site", "href": "https://webtools.briannorris.dev" }
-    ],
-    "featured": false,
-    "hero": {
-      "hint": "A screenshot of the Web Tools collection",
-      "alt": "Screenshot of a web tool titled “Image Converter,” prompting users to add a JPG or PNG image file. A sidebar lists other tools, such as Ratio Converter, Pixel to Em, and Text Compare.",
-      "src": "/images/hero_webtools.avif"
-    },
-    "case": {
-      "client": "Personal",
-      "role": "Sole developer",
-      "lede": "A personal collection of browser-based helper tools.",
-      "context": [
-        "Everyday development work produces small recurring needs that don't have a perfect off-the-shelf solution -- or where the available solutions require uploading files to a server. A personal toolbox made more sense than stitching together third-party services."
-      ],
-      "roleDetail": "Sole developer and designer. Built for my own use and curiosity.",
-      "decisions": [
-        {
-          "title": "Image conversion via WASM",
-          "body": "The image converter handles format conversion -- WebP, AVIF, and others -- entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also allows direct comparison between output formats and file sizes, making it useful for making informed decisions about image optimization."
-        },
-        {
-          "title": "Ratio converter",
-          "body": "A general purpose ratio math tool covering aspect ratios for images, video, and layout calculations -- the kind of small arithmetic that comes up often enough to be worth automating."
-        }
-      ],
-      "outcome": [
-        "A practical, privacy-conscious toolbox that's grown organically around real workflow needs. The image converter in particular has become a regular part of how I work."
-      ]
-    }
-  },
-  {
-    "id": "wordpress-theme-development",
-    "title": "WordPress Theme Development",
-    "blurb": "A selection of greenfield WordPress builds across a range of industries.",
-    "category": "Client",
-    "year": "2022-2026",
-    "stack": ["WordPress", "PHP", "Scss", "Typescript", "ACF Flexible Content", "Gravity Forms"],
-    "links": [
-      {
-        "label": "Mager's Management",
-        "href": "https://magersmanagement.com/"
-      },
-      {
-        "label": "Paragon Architecture",
-        "href": "https://www.paragonarchitecture.com/"
-      },
-      {
-        "label": "Pinnacle Family Advisors",
-        "href": "https://pinnaclefamilyadvisors.com/"
-      },
-      {
-        "label": "Pilgrim's Food Service",
-        "href": "https://pilgrimsfoodservice.com/"
-      },
-      {
-        "label": "Mental Health 417",
-        "href": "https://mentalhealth417.com/"
-      }
-    ],
-    "featured": false,
-    "hero": {
-      "hint": "A screenshot of the Mager's Management website",
-      "alt": "A screenshot of the Mager's Management website",
-      "src": "/images/hero_magersmanagement.avif"
-    },
-    "case": {
-      "client": "Multiple",
-      "role": "Lead developer",
-      "lede": "A selection of greenfield WordPress builds across a range of industries.",
-      "context": [
-        "WordPress remains the most widely deployed CMS in the world, and for good reason -- clients know it, editors are comfortable with it, and the ecosystem is mature. The challenge with custom WordPress builds is finding the right balance between giving content editors meaningful flexibility and maintaining enough guardrails to keep the site looking intentional. Too much freedom and editors break layouts; too little and every content change becomes a developer ticket."
-      ],
-      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and build were entirely my own.",
-      "decisions": [
-        {
-          "title": "ACF Flexible Content for pages, Gutenberg for posts", 
-          "body": "The stack makes a deliberate distinction between two kinds of content. Marketing pages -- homepages, service pages, landing pages -- are built with ACF Flexible Content blocks. This allows for highly custom, visually controlled layouts without the overhead of developing a fully refined Gutenberg editor experience. Editors can build pages from a defined set of blocks, but the guardrails are tight enough to prevent presentation issues."
-        },
-        {
-          "title": "Gutenberg for posts",
-          "body": "Blog and news content is handled with Gutenberg, which is well-suited to straightforward text and image content. It's also where editors spend most of their time -- clients are far more likely to be publishing posts regularly than redesigning their homepage -- so a familiar, standard editing experience makes sense there."
-        },
-        {
-          "title": "TypeScript and SCSS for maintainable front ends",
-          "body": "TypeScript keeps the JavaScript layer predictable and easier to maintain across projects with similar patterns. SCSS handles styling with the organizational benefits of nesting, variables, and partials -- keeping stylesheets manageable as projects grow."
-        },
-        {
-          "title": "Gravity Forms for complex form needs",
-          "body": "Gravity Forms handles contact forms, lead capture, and any more complex form requirements -- conditional logic, multi-step forms, integrations with third-party services. It's a reliable solution that clients can manage themselves without developer involvement."
-        }
-      ],
-      "outcome": [
-        "A repeatable, proven stack that delivers polished, maintainable WordPress sites across a variety of industries. The ACF/Gutenberg split in particular has held up well -- clients get the flexibility they need where they need it, without the risk of breaking carefully designed layouts."
-      ],
-      "reflections": [
-        "As the WordPress editor experience matures, it hasn't translated into editors actively wanting to use it more -- most clients are comfortable with the ACF block approach and don't feel a strong pull toward the default editor. That said, if a client has a specific desire to work in the WordPress editor or move toward full site editing, that pivot is accommodatable -- it just requires more time to develop and refine the editing experience properly.",
-        "On the styling side, CSS has matured significantly -- native nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
-      ],
-      "nextId": "slot-1"
-    }
-  },
-  {
-    "id": "think-upon-wordpress-development",
-    "title": "Think Upon WordPress Development",
-    "blurb": "A heavily animated WordPress site for business founder Mark Steiner",
-    "category": "Client",
-    "year": "2026",
-    "stack": ["WordPress", "ACF Flexible Content", "Gutenberg", "TypeScript", "SCSS", "Gravity Forms", "Lottie", "GreenSock (GSAP)"],
-    "links": [
-      {
-        "label": "Think Upon",
-        "href": "https://thinkupon.com/"
-      }
+      { "label": "Course site", "href": "https://msu.briannorris.dev" }
     ],
     "featured": true,
     "hero": {
-      "hint": "A screenshot of the Think Upon website",
-      "alt": "Screenshot of a colorful website homepage featuring a collage of eyes, flowers, an open book, and various shapes, with bold text reading “A website. Allegedly.” and navigation links at the top.",
-      "src": "/images/hero_thinkupon.webp"
+      "hint": "A sampling of styletiles from the course",
+      "alt": "A collage of various website mockups displaying different fonts, colors, layouts, and graphic elements, showcasing diverse web design styles and branding approaches.",
+      "src": "/images/hero_des340.avif"
     },
     "case": {
-      "client": "Internal",
-      "role": "Lead developer",
-      "lede": "A heavily animated WordPress site for business founder Mark Steiner",
+      "client": "Missouri State University",
+      "role": "Per-course instructor",
+      "lede": "Course materials for a course on web design and development.",
       "context": [
-        "Think Upon is Mark Steiner's personal site and blog -- a platform for his ideas and writing as a business founder. The design called for a higher than usual level of animation, with Lottie files playing a central role in how the content is experienced rather than serving as decorative accents. The challenge was finding a scalable, editor-friendly way to integrate those animations into WordPress without making the process brittle or hard to maintain."
+        "Graphic design and illustration students need to understand how the web works and how to design for it. However, most arrive with no development experience and mixed interest in ever writing code. The challenge wasn't just teaching web design and development concepts; it was teaching them in a way that respected both the students who would go deep and the ones who just needed a basic understanding of development."
       ],
-      "roleDetail": "Sole developer. The designer provided complete designs and all finished Lottie animation files as assets for integration.",
+      "roleDetail": "Sole instructor for one section of the course, which ran alongside a colleague's parallel section. Responsible for all instruction, course structure, and materials within the university's course description. Some projects were inherited from previous instructors; the course site, lectures, and overall approach were my own.",
       "decisions": [
         {
-          "title": "A custom post type for Lottie management",
-          "body": "Rather than embedding Lottie files directly into blocks or hardcoding them, a custom post type was created for each animation. Each entry holds the Lottie JSON file and its associated assets via an ACF Gallery field. When building pages with custom blocks, editors can select which Lottie animation to use from this library. This keeps animations organized, reusable across the site, and easy to update without touching block code."
+          "title": "Isolated exercises over a single running project",
+          "body": "Coding concepts were introduced through small, self-contained CodePen exercises and pre-built boilerplates rather than one accumulating project. This lowered the stakes for students who struggled and kept the focus on the concept at hand rather than debugging something they built three weeks ago."
         },
         {
-          "title": "Performance and asset management",
-          "body": "Lottie files can carry significant overhead, particularly when they embed images. A custom bash script handles pre-processing before files are added to WordPress -- rewriting asset links within the JSON and renaming those assets to avoid naming conflicts between different Lottie files. From there, stripping down files where possible and ensuring embedded images were properly compressed was a deliberate part of the integration process -- keeping animation quality while managing the performance cost."
+          "title": "Live demonstration as preview, not instruction",
+          "body": "Coding lectures were designed to show how things work in context, not to be followed along in real time. Students watched, asked questions, then applied concepts in the exercises. This reduced the chaos of live coding sessions where half the class falls behind on a semicolon."
         },
         {
-          "title": "Scroll-triggered animations",
-          "body": "A custom library was built to trigger animations during scroll using the Intersection Observer API, giving fine control over when animations fire without the overhead of a full scroll animation framework."
-        },
-        {
-          "title": "GreenSock for specific animation needs",
-          "body": "GSAP handled a scrolling marquee animation and more complex effects including the Motion Path Plugin for path-based animation and the SplitText Plugin for animated headline treatments -- effects that would have been significantly more difficult to achieve with CSS alone."
+          "title": "The course site as a resource",
+          "body": "Built with VuePress, the site housed all course materials and was developed live during in-class demos, giving students a real example to reference throughout the semester."
         }
       ],
       "outcome": [
-        "A polished, animation-rich site that uses motion as a storytelling tool rather than decoration. The Lottie management system makes animations maintainable and reusable without requiring developer involvement for every content update."
-      ]
-    }
-  },
-  {
-    "id": "campus-sgf",
-    "title": "CampuSGF",
-    "blurb": "A Google Maps-driven city guide for college students new to Springfield, MO",
-    "category": "Client",
-    "year": "2026",
-    "stack": ["Vue", "WordPress", "ACF Flexible Content", "Google Maps", "Google Places API"],
-    "links": [
-      {
-        "label": "Campus SGF",
-        "href": "https://sgfcampusguide.com"
-      }
-    ],
-    "featured": true,
-    "hero": {
-      "hint": "A screenshot of the Campus SGF website",
-      "alt": "Screenshot of the CampusGF website showing options for downtown dining and shopping, a testimonial quote from a student, and an aerial photo of Springfield’s downtown area under a clear sky.",
-      "src": "/images/hero_campusgf.avif"
-    },
-    "case": {
-      "client": "Revel Advertising",
-      "role": "Sole developer",
-      "lede": "A Google Maps-driven city guide for college students new to Springfield, MO",
-      "context": [
-        "College students moving to Springfield for the first time need a way to get familiar with the city -- where to eat, shop, and spend time, organized around the neighborhoods and areas most relevant to campus life. The site needed Google Maps as a primary feature, with pins filterable by category, pulling real business data from Google Places.",
-        "The challenge was cost and performance. Google Places API calls add up quickly, and a naive implementation would make a live API call every time the map loaded. The goal was to serve accurate, useful data while keeping Google Cloud costs under control and the front-end experience fast."
+        "All students came away with a working understanding of designing for the web. The coding component was more variable — predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
       ],
-      "roleDetail": "Sole developer. A designer provided complete designs; the technical architecture, WordPress build, custom plugin, and Google Maps integration were entirely my own.",
-      "decisions": [
-        {
-          "title": "A caching strategy built on API policy research",
-          "body": "Not all Google Places data can be cached, and for how long varies by data type. Rather than guess, I used Claude to research and interpret Google's API usage policies -- determining precisely what could be cached, what couldn't, and for how long. That research became the foundation of the caching strategy. Place IDs and coordinates are cached in WordPress, giving the front end everything it needs to load and render the map without a live API call. Website URLs, which Google's terms require to be fetched live, are handled separately. The result is a snappier map load and significantly fewer API calls."
-        },
-        {
-          "title": "A custom WordPress plugin for place management",
-          "body": "A custom plugin handles the editor experience for adding new locations. Editors search Google Places directly from within WordPress, select a result, and the plugin caches the permitted data at the point of input -- place IDs, coordinates, and other allowable fields. This keeps the data fresh from the moment a place is added without requiring manual data entry."
-        },
-        {
-          "title": "Automated verification with a scheduled webhook",
-          "body": "Places close, move, and change. A scheduled webhook triggers a recurring recheck of all cached locations, verifying that each place is still in business and flagging any that appear to have moved or closed for editorial review. This keeps the guide accurate over time without requiring constant manual maintenance."
-        }
-      ],
-      "outcome": [
-        "A live, actively maintained city guide built around a Google Maps experience that loads fast and stays accurate. The caching strategy meaningfully reduced Google Cloud API costs while improving front-end performance, and the automated verification system keeps the data reliable without ongoing developer involvement."
+      "reflections": [
+        "The mixed coding results point to an inherent tension in the course: it serves students who want to build things and students who just need to understand the medium, and those are genuinely different courses. A future version might split the track earlier or lean harder into the design-for-web angle and treat coding as optional depth rather than a shared requirement."
       ]
     }
   }
