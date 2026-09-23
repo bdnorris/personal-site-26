@@ -175,33 +175,33 @@
       "role": "Lead developer",
       "lede": "A selection of greenfield WordPress builds across a range of industries.",
       "context": [
-        "WordPress remains the most widely deployed CMS in the world, and for good reason -- clients know it, editors are comfortable with it, and the ecosystem is mature. The challenge with custom WordPress builds is finding the right balance between giving content editors meaningful flexibility and maintaining enough guardrails to keep the site looking intentional. Too much freedom and editors break layouts; too little and every content change becomes a developer ticket."
+        "WordPress remains the most widely deployed CMS in the world. Clients know it, editors are comfortable with it, and the ecosystem is mature. The challenge with custom WordPress builds is finding the right balance between giving content editors meaningful flexibility and maintaining enough guardrails to keep the site looking intentional. Too much freedom and editors break layouts; too little and every content change becomes a developer request."
       ],
-      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and build were entirely my own.",
+      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and builds were entirely my own.",
       "decisions": [
         {
           "title": "ACF Flexible Content for pages, Gutenberg for posts", 
-          "body": "The stack makes a deliberate distinction between two kinds of content. Marketing pages -- homepages, service pages, landing pages -- are built with ACF Flexible Content blocks. This allows for highly custom, visually controlled layouts without the overhead of developing a fully refined Gutenberg editor experience. Editors can build pages from a defined set of blocks, but the guardrails are tight enough to prevent presentation issues."
+          "body": "The stack makes a deliberate distinction between two kinds of content. Marketing pages like homepages, service pages, and landing pages are built with ACF Flexible Content blocks. This allows for highly custom, visually controlled layouts without the overhead of developing a fully refined native Editor experience. Editors can build pages from a defined set of blocks, but the guardrails are tight enough to prevent presentation issues."
         },
         {
-          "title": "Gutenberg for posts",
-          "body": "Blog and news content is handled with Gutenberg, which is well-suited to straightforward text and image content. It's also where editors spend most of their time -- clients are far more likely to be publishing posts regularly than redesigning their homepage -- so a familiar, standard editing experience makes sense there."
+          "title": "Native Editor for posts",
+          "body": "Blog and news content is handled with the native Editor, which is well-suited to straightforward text and image content. It's also where editors spend most of their time. Clients are far more likely to be publishing posts regularly than redesigning their homepage."
         },
         {
           "title": "TypeScript and SCSS for maintainable front ends",
-          "body": "TypeScript keeps the JavaScript layer predictable and easier to maintain across projects with similar patterns. SCSS handles styling with the organizational benefits of nesting, variables, and partials -- keeping stylesheets manageable as projects grow."
+          "body": "TypeScript keeps the JavaScript layer predictable and easier to maintain across projects with similar patterns. SCSS handles styling with the organizational benefits of partials, variables, and mixins, keeping stylesheets manageable as projects grow."
         },
         {
           "title": "Gravity Forms for complex form needs",
-          "body": "Gravity Forms handles contact forms, lead capture, and any more complex form requirements -- conditional logic, multi-step forms, integrations with third-party services. It's a reliable solution that clients can manage themselves without developer involvement."
+          "body": "Gravity Forms handles contact forms, lead capture, and any more complex form requirements. Conditional logic, multi-step forms, third-partyintegrations and more. It's a reliable solution that clients can manage themselves without developer involvement."
         }
       ],
       "outcome": [
-        "A repeatable, proven stack that delivers polished, maintainable WordPress sites across a variety of industries. The ACF/Gutenberg split in particular has held up well -- clients get the flexibility they need where they need it, without the risk of breaking carefully designed layouts."
+        "A repeatable, proven stack that delivers polished, maintainable WordPress sites across a variety of industries. The ACF/Native Editor split in particular has held up well -- clients get the flexibility they need where they need it, without the risk of breaking carefully designed layouts."
       ],
       "reflections": [
-        "As the WordPress editor experience matures, it hasn't translated into editors actively wanting to use it more -- most clients are comfortable with the ACF block approach and don't feel a strong pull toward the default editor. That said, if a client has a specific desire to work in the WordPress editor or move toward full site editing, that pivot is accommodatable -- it just requires more time to develop and refine the editing experience properly.",
-        "On the styling side, CSS has matured significantly -- native nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
+        "As the WordPress editor experience matures, it hasn't seemed to translate into editors actively wanting to use it more. Most clients are comfortable with the ACF block approach and don't feel a strong pull toward the default editor. That said, if a client has a specific desire to work in the WordPress editor or move toward full site editing, that pivot can be accommodated. It just requires more time to develop and refine the editing experience properly.",
+        "On the styling side, CSS has matured significantly — nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
       ]
     }
   },
@@ -210,9 +210,11 @@
     "title": "Fluid Type Tester",
     "blurb": "A personal tool for testing fluid and static type scales in the browser",
     "category": "Tools / Experiments",
-    "year": "—",
-    "stack": ["Placeholder"],
-    "links": [],
+    "year": "2025",
+    "stack": ["Vue", "Vuex"],
+    "links": [
+      { "label": "Live project", "href": "https://fluidtype.briannorris.dev" }
+    ],
     "hero": {
       "hint": "Screenshot of the Fluid Type Tester tool",
       "alt": "A web tool called “Fluid Type Tester” shows adjustable sliders for font sizes and a preview area with the opening text from “Alice in Wonderland” under the heading “Down the Rabbit-Hole.”.",
@@ -223,26 +225,22 @@
       "role": "Sole developer",
       "lede": "A personal tool for testing fluid and static type scales in the browser",
       "context": [
-        "Fluid typography uses CSS clamp to allow font sizes to scale smoothly with the viewport -- rather than jumping between fixed sizes at breakpoints, type grows and shrinks continuously between a defined minimum and maximum. It's a powerful technique, but visualizing how a fluid type scale actually behaves across viewport widths requires either resizing your browser constantly or guessing.",
-        "A few tools existed for this, but none had the combination of features I wanted. Rather than compromise, I built my own -- combining fluid type testing with more basic type size and font testing in a single interface."
+        "Fluid typography using the CSS clamp function allows font sizes to scale smoothly with the viewport rather than jumping between fixed sizes at breakpoints. Type grows and shrinks continuously between a defined minimum and maximum. It's a powerful technique, but visualizing how a fluid type scale actually behaves across viewport widths requires either resizing your browser constantly or guessing.",
+        "A few tools existed for this, but none had the combination of features I wanted. Rather than compromise, I built my own, combining fluid type testing with basic type size and font testing in a single interface."
       ],
       "roleDetail": "Sole developer and designer. A personal experiment built entirely for my own use and curiosity.",
       "decisions": [
         {
           "title": "Combining two related problems",
-          "body": "Most fluid type tools focus exclusively on the clamp calculation. This tool combines that with broader type testing -- sizes, fonts, and basic typographic properties -- so you can evaluate a type scale holistically rather than in isolation. The goal was a single place to answer the question: does this type system actually work?"
+          "body": "There are great fluid type tools out there, but they tend to focus on the clamp calculation. This tool combines that with broader type testing: sizes, fonts, and basic typographic properties. The goal was a single place to evaluate a combination of type choices holistically, with just enough tools."
         },
         {
-          "title": "Vuex for shared type state",
-          "body": "Type settings needed to be accessible and reactive across multiple parts of the interface simultaneously. Vuex handled that shared state cleanly, keeping the UI in sync as values changed."
-        },
-        {
-          "title": "Building for your own workflow",
-          "body": "There's a specific kind of clarity that comes from building a tool for yourself -- you know exactly what problem you're solving and what good looks like. No user research required. The trade-off is that the feature set reflects one person's workflow, which is fine for a personal experiment."
+          "title": "Vuex for shared state",
+          "body": "Type settings needed to be accessible and reactive across multiple parts of the interface simultaneously. Vuex handled that cleanly, keeping the UI in sync as values changed."
         }
       ],
       "outcome": [
-        "A working tool that I use occasionally in my own workflow. More than the tool itself, it was a valuable exercise in building something from a personal itch -- understanding the CSS clamp technique deeply enough to build a testing interface around it."
+        "A working tool that I use occasionally in my own workflow. More than the tool itself, it was a valuable exercise in building something from a personal itch... understanding the CSS clamp technique and type scales deeply enough to build a testing interface around it."
       ]
     }
   },
@@ -257,30 +255,26 @@
       { "label": "Notion", "href": "https://www.notion.so/norrisstuff/UX-My-Heuristics-and-Scoring-3cec4e98092241a7aeb4ce6dd0382a56" }
     ],
     "hero": {
-      "hint": "",
-      "alt": "",
-      "src": "/images/hero_heuritics.webp"
+      "hint": "Illustration of a hand holding the handle of a cup",
+      "alt": "A halftone-style illustration of a hand holding the handle of a cup, rendered in red and blue dots on a light background.",
+      "src": "/images/hero_heuritics.avif"
     },
     "case": {
       "client": "Personal",
-      "role": "Sole writer",
+      "role": "Writer and researcher",
       "lede": "A custom set of 12 usability heuristics and a 1-5 scoring system.",
       "context": [
-        "Site audits benefit from a consistent framework -- something that turns subjective usability observations into structured, repeatable findings. Existing heuristic sets, including Nielsen/Norman's well-known 10, are solid starting points but vary in coverage and have some overlap depending on the source. Rather than adopt one wholesale, I researched several sets and synthesized my own: 12 heuristics with good coverage and minimal redundancy, paired with a 1-5 scoring system that produces actionable audit results."
+        "Site audits benefit from a consistent framework: something that turns subjective usability observations into structured, repeatable findings. Existing heuristic sets, including Nielsen/Norman's well-known 10, are solid starting points but vary in coverage and have some overlap depending on the source. Rather than adopt one wholesale, I researched several sets and synthesized my own: 12 heuristics with good coverage and minimal redundancy, paired with a 1-5 scoring system that produces actionable audit results. These are not wholly original... some may be word-for-word from other sources, but the goal was to create a set that felt complete without being redundant."
       ],
       "roleDetail": "Sole researcher and author. Built for my own use on client and potential client site audits.",
       "decisions": [
         {
           "title": "Synthesizing rather than adopting",
-          "body": "The goal wasn't to reinvent usability theory -- it was to find the gaps and overlaps between existing frameworks and arrive at a set that felt complete without being redundant. Reviewing multiple sources made it clear that different researchers emphasize different things, and that a synthesized set could draw the best from each."
-        },
-        {
-          "title": "Coverage and clarity as the design criteria",
-          "body": "Each heuristic needed to cover distinct ground and be specific enough to produce consistent scores across different auditors and different sites. The 12 heuristics cover structure and navigation, user control, feedback, predictability, error handling, learnability, aesthetic restraint, information availability, help and support, consistency, follow-through, and accessibility."
+          "body": "The goal was to arrive at a set that felt complete without being redundant. Reviewing multiple sources made it clear that different researchers emphasize different things, and that a synthesized set could draw the best from each and feel like they would fit with my own approach and voice."
         },
         {
           "title": "A scoring system that produces actionable results",
-          "body": "Scoring runs from 1 to 5, with 5 indicating no problems. The scale is designed to distinguish between failures users can't overcome, failures they can work around, functional but improvable experiences, and genuinely exceptional ones. Heuristics that don't apply to a given element are skipped rather than scored, keeping results honest."
+          "body": "Scoring runs from 1 to 5, with 5 indicating excellence. The scale is designed to distinguish between failures users can't overcome, failures they can work around, functional but improvable experiences, and genuinely exceptional ones. Heuristics that don't apply to a given element are skipped rather than scored."
         }
       ],
       "visuals": [
