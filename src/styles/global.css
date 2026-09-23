@@ -573,8 +573,8 @@ h1, h2 {
   text-decoration: none;
   color: var(--ink);
   background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  /* border: 1px solid var(--line); */
+  /* border-radius: 4px; */
   overflow: hidden;
   /* Independent `translate` so hover lift composes with entrance `transform` animations. */
   transition: translate 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -603,8 +603,11 @@ h1, h2 {
 .card-media {
   position: relative;
   aspect-ratio: 11 / 6;
-  background: var(--paper);
+  /* background: var(--paper); */
   border-bottom: 1px solid var(--line);
+  background: var(--mute);
+  padding: 0.666rem 0.666rem 0 0.666rem;
+  border-radius: calc(0.666rem + 2px) calc(0.666rem + 2px) 0 0;
   & img {
     width: 100%;
     height: 100%;
@@ -673,7 +676,7 @@ h1, h2 {
   height: 100%;
   min-height: 100%;
   overflow: hidden;
-  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  /* background: color-mix(in srgb, var(--ink) 33%, transparent); */
 }
 
 .frame img {
@@ -681,6 +684,7 @@ h1, h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 4px 4px 0 0;
 }
 
 .frame img[hidden] {
@@ -1011,10 +1015,12 @@ h1, h2 {
 .hero-shot .shot {
   position: relative;
   aspect-ratio: 11 / 6;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--card);
+  /* border: 1px solid var(--line); */
+  /* border-radius: 4px; */
+  background: var(--mute);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1rem 0 1rem;
+  border-radius: calc(0.666rem + 2px) calc(0.666rem + 2px) 0 0;
   & img {
     width: 100%;
     height: 100%;
