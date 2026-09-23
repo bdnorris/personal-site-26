@@ -548,7 +548,16 @@
           "kind": "shots",
           "orientation": "horizontal",
           "shots": [
-            { "hint": "Screenshot of the Alchemedia Project website", "src": "/images/alchemedia/ss-alchemedia.webp", "alt": "Screenshot of the Alchemedia Project website" }
+            { "hint": "Screenshot of the Alchemedia Project website", "src": "/images/tap/ss-casestudy-desktop.png", "alt": "A website page highlights Brew City Brand Refresh, featuring beer, fries, and video thumbnails with play buttons. Text describes the brand’s passion. Icons show categories: video, digital, culinary, insights, strategy, and branding." },
+            { "hint": "Screenshot of the Alchemedia Project website", "src": "/images/tap/ss-work-desktop.png", "alt": "A webpage showcases creative projects, featuring a blue “Slay the Dragon” campaign image, more project thumbnails below, and categories such as “Breakfast, Interrupted” and “Brew City Brand Refresh.”." }
+          ]
+        },
+        {
+          "kind": "shots",
+          "orientation": "vertical",
+          "shots": [
+            { "hint": "Screenshot of the Alchemedia Project website", "src": "/images/tap/ss-homepage-mobile.png", "alt": "Mobile webpage with bold text “Hey There,” smaller text about food professionals, a “LET’S TALK” button, and “The Alchemedia Project” logo at the top on a blue and white blurred background." },
+            { "hint": "Screenshot of the Alchemedia Project website", "src": "/images/tap/ss-work-mobile.png", "alt": "A mobile screen shows a project called “SLAY THE DRAGGIN’” for International Delight, featuring a blue dragon and iced coffee social media promotion by The Alchemeia Project." }
           ]
         }
       ],
