@@ -381,7 +381,7 @@
     "title": "Product & Recipe Filters",
     "blurb": "A reusable, live client-side filtering app built for food-service brands.",
     "category": "Work",
-    "year": "2024",
+    "year": "2023-2026",
     "stack": ["Vue 3", "TypeScript", "Fuse.js"],
     "links": [],
     "featured": false,
@@ -395,7 +395,7 @@
       "role": "Lead developer",
       "lede": "A reusable, live client-side filtering app built for food-service brands.",
       "context": [
-        "Product and recipe catalogs are only useful if people can find what they're looking for. For a set of food-service clients, the existing approach either relied on server-side filtering — every filter selection triggered a full page reload, making the experience slow and frustrating — or apps with limited functionality, like only a single filtering option. The goal was live, client-side filtering: accurate, usable, and fast, without the page ever refreshing."
+        "Product and recipe catalogs are only useful if people can find what they're looking for. For a set of food-service clients, the existing approach either relied on server-side filtering where every filter selection triggered a full page reload, or apps with limited functionality, like only a single filtering option. The goal was live, client-side filtering: accurate, usable, and fast, without the page ever refreshing."
       ],
       "roleDetail": "Sole developer across all implementations. Each client had its own visual design handled by a designer; the filtering logic, data architecture, and front-end build were entirely my own.",
       "decisions": [
@@ -417,7 +417,7 @@
         },
         {
           "title": "URL parameter sync",
-          "body": "Filter state and pagination are reflected in the URL as query parameters, which unlocks a few things that users take for granted but implementations often skip: the browser back and forward buttons work as expected, filtered views can be bookmarked or shared as direct links, and pre-filtered URLs can be constructed and linked to from other pages. It's a small detail that makes the app feel native to the web rather than bolted onto it."
+          "body": "Filter state and pagination are reflected in the URL as query parameters, which unlocks a few things that users take for granted but some implementations sometimes skip: the browser back and forward buttons work as expected, filtered views can be bookmarked or shared as direct links, and pre-filtered URLs can be constructed and linked to from other pages."
         },
         {
           "title": "Search with Fuse.js",
@@ -484,31 +484,27 @@
     },
     "case": {
       "client": "Internal",
-      "role": "Lead writer",
-      "lede": "A living accessibility reference and training document written for a team of six developers -- covering foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
+      "role": "Lead writer / researcher",
+      "lede": "A living accessibility reference and training document written for a small team of developers. It covers foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
       "context": [
-        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to raise the team's knowledge, I researched and wrote a training document aimed at developers who understood the concept of accessibility but needed practical guidance on implementation -- what it actually means to make a project accessible, where the hard problems are, and how to approach testing."
+        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to raise the team's knowledge, I researched and wrote a training document aimed at developers who understood the concept of accessibility but needed practical guidance on implementation: what it actually means to make a project accessible, where the hard problems are, and how to approach testing."
       ],
       "roleDetail": "Lead researcher and author. The training was a collaborative research effort across the team; I synthesized the findings into a single cohesive document and led any subsequent training sessions.",
       "decisions": [
         {
           "title": "Structuring for reference, not just reading",
-          "body": "As a living document rather than a one-time presentation, the training needed to work as something developers would return to -- not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
+          "body": "As a living document rather than a one-time presentation, the training needed to work as something developers could return to and not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
         },
         {
           "title": "Focusing on the hard problems",
-          "body": "Rather than cataloging every WCAG success criterion, the training zeroed in on the areas that cause the most trouble in practice: multimedia accessibility, keyboard navigation patterns -- including the notoriously tricky problem of accessible dropdown navigation -- and testing strategies. These are the areas where good intentions most often fall short, and where concrete guidance has the most impact."
-        },
-        {
-          "title": "Testing strategies as a practical anchor",
-          "body": "Accessibility testing is often overlooked until it's too late. Including testing strategies -- not just implementation guidance -- gave developers a way to verify their work rather than assume it was correct."
+          "body": "Rather than cataloging every WCAG success criterion, the training zeroed in on the areas that cause the most trouble in practice: multimedia accessibility, keyboard navigation patterns, drop-down navigation, and testing strategies."
         }
       ],
       "outcome": [
-        "The document became a living reference for a team of six developers. Following the training, accessible code became a baseline expectation for new work -- with the reasonable caveat that stakeholder priorities or budget constraints could affect specific features. That's an honest outcome: it shifted the default without pretending those realities don't exist."
+        "The document became a living reference for a small team of developers. Following the training, accessible code became a baseline expectation for new work, including the defense of accessibility from stakeholders when possible."
       ],
       "reflections": [
-        "Not all stakeholders understand the nuts and bolts of accessibility, but the training helped raise awareness of it as a concept and why it matters -- which is its own kind of progress. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort even when individual projects fall short. Getting it right consistently is a long game."
+        "Not all stakeholders understand the nuts and bolts of accessibility, but the training helped raise awareness of it as a concept and why it matters. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort even when individual projects fall short. Getting it right consistently is a long game."
       ]
     }
   },
@@ -518,7 +514,7 @@
     "blurb": "An advertising agency website built with Nuxt.js and Prismic",
     "category": "Work",
     "year": "2019",
-    "stack": ["Nuxt", "Prismic"],
+    "stack": ["Nuxt (static generation)", "Prismic"],
     "featured": false,
     "hero": {
       "hint": "A screenshot of the Alchemedia project website",
@@ -530,25 +526,34 @@
       "role": "Lead front-end",
       "lede": "An advertising agency website built with Nuxt.js and Prismic",
       "context": [
-        "The Alchemedia Project needed a marketing site covering agency messaging, team information, and case studies. As an internal project, it presented a low-risk opportunity to try a headless CMS approach for the first time -- taking on the experimentation risk ourselves rather than on a client's time and budget."
+        "The Alchemedia Project needed a marketing site covering agency messaging, team information, and case studies. As an internal project, it presented a low-risk opportunity to try a headless CMS approach for the first time. We took on the experimentation risk ourselves rather than on a client's time and budget."
       ],
-      "roleDetail": "Lead developer on the project, with junior developers assisting. Ryan Baker handled all design work. Responsible for the overall technical approach, Prismic integration, and front-end build.",
+      "roleDetail": "Lead developer on the project, with junior developers assisting. Ryan Baker handled all design work. Responsible for the overall technical approach and Prismic integration.",
       "decisions": [
         {
           "title": "Choosing headless as a learning opportunity",
-          "body": "Internal projects are a good time to experiment with new ways of working -- the risk is yours to take rather than a client's. Prismic was a deliberate choice to get hands-on experience with a headless CMS in a real production context. The content modeling and API-driven approach were new territory, and working through it on an internal project meant the learning curve didn't come at anyone else's expense."
+          "body": "Internal projects are a good time to experiment with new ways of working. Prismic was a deliberate choice to get hands-on experience with a headless CMS that was designed for content editing in a real production context. The content modeling and API-driven approach were new territory, and working through it on an internal project meant the learning curve didn't come at anyone else's expense."
         },
         {
           "title": "The manual data fetching problem",
-          "body": "One of the less glamorous realities of working with Prismic at the time was the amount of manual data fetching required -- every content type needed its own fetch logic, which added up to a lot of repetitive code. It was a real friction point, and one that modern AI tooling would make trivial today. It didn't block the project, but it shaped an appreciation for the value of good SDK abstractions."
+          "body": "One of the less glamorous realities of working with Prismic at the time was the amount of manual data fetching required, every content type needed its own fetch logic, which added up to a lot of repetitive, but not quite identical code. It was a real friction point, and one that modern AI tooling would make trivial today. It didn't block the project, but it shaped an appreciation for the value of good SDK abstractions."
         },
         {
           "title": "CSS techniques pushed by the design",
-          "body": "Ryan's designs called for visual techniques that were outside my existing toolkit at the time: text-strokes, rotated type, SVG masks, and image masks. Implementing them required digging into CSS capabilities I didn't know existed. That kind of designer-led technical stretch is one of the better ways to expand what you know -- the design sets the bar and you figure out how to meet it."
+          "body": "Ryan's designs called for visual techniques that were outside my existing toolkit at the time: text-strokes, rotated type, SVG masks, and image masks. Implementing them required digging into CSS capabilities I didn't know existed. That kind of designer-led technical stretch is one of the better ways to expand what you know."
+        }
+      ],
+      "visuals": [
+        {
+          "kind": "shots",
+          "orientation": "horizontal",
+          "shots": [
+            { "hint": "Screenshot of the Alchemedia Project website", "src": "/images/alchemedia/ss-alchemedia.webp", "alt": "Screenshot of the Alchemedia Project website" }
+          ]
         }
       ],
       "outcome": [
-        "The site launched successfully and served The Alchemedia Project until the agency was absorbed into another company. It's no longer live, but it achieved its goals as both a functioning agency website and a genuine learning exercise -- establishing a foundation for headless CMS work that carried into future projects."
+        "The site launched successfully and served The Alchemedia Project until the agency was absorbed into another company. It's no longer live, but it achieved its goals as both a functioning agency website and a genuine learning exercise."
       ]
     }
   },
