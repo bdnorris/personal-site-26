@@ -87,40 +87,34 @@
   },
   "jobs": [
     {
+      "dates": "2019–present",
+      "role": "Freelance Web Development",
+      "org": "Freelance",
+      "body": "Developing custom websites and applications for agencies and direct clients."
+    },
+    {
       "dates": "1.2016–9.2026",
       "role": "Senior Web Developer and Front-end Team Leader",
       "org": "Marlin Connections",
-      "body": "Using front-end web technologies to develop user-facing features for new and existing web-based products in the food-service industry. Working with designers and other developers to ensure technical feasibility while maintaining user-experience and application architecture best practices."
+      "body": "Led front-end development for web products serving the food-service industry. Worked closely with designers and developers to build user-facing features that balanced good UX with sound technical decisions. Guided front-end standards and helped set direction for the team."
     },
     {
       "dates": "Fall '10, '16 & '17, Spring '11, '12, '17 & '19",
       "role": "Per-Course Instructor",
       "org": "Missouri State University",
-      "body": "Instructed five courses for design students from sophomores to seniors. Topics included an introduction to design software, various aspects of production, communication concepts in graphic design, and basic and advanced web design concepts and coding. All courses were structured around hands-on projects."
+      "body": "Taught five courses for design students at the sophomore through senior level, covering design software, production, graphic design concepts, and web design and development. All courses were project-based. Responsible for curriculum structure, instruction, and assessment within a defined range of topics."
     },
     {
       "dates": "1.2012–12.2015",
       "role": "Graphic Designer and Web Developer",
       "org": "Schilling/Sellmeyer & Associates",
-      "body": "Created and maintained a variety of print and web design projects for local and regional clients in a wide range of industries. Managed the design and development of websites from concept to completion, as well as the hosting and maintenance of those websites."
+      "body": "Designed and developed print and web projects for local and regional clients across a range of industries. Owned the full lifecycle of client websites from concept through launch, including hosting and ongoing maintenance."
     },
     {
       "dates": "1.2006–12.2012",
       "role": "Lead Designer and Web Developer",
       "org": "Image Works, Inc.",
-      "body": ""
-    },
-    {
-      "dates": "12.2004–12.2005",
-      "role": "Designer",
-      "org": "Marine Grade Marketing, L.L.C.",
-      "body": ""
-    },
-    {
-      "dates": "3.2003–12.2004",
-      "role": "Web Developer",
-      "org": "Airlink Communications, QuikDine.com",
-      "body": ""
+      "body": "Led design across a wide range of print and web projects, including a quarterly magazine. Assigned work to and directed other designers and interns."
     }
   ],
   "resumeSkills": [
@@ -131,7 +125,7 @@
         { "k": "JavaScript / TypeScript", "v": "Frameworks (Vue, Svelte, Alpine.js)" },
         { "k": "UI development", "v": "Design system and UI kit development" },
         { "k": "Animation", "v": "Meaningful and performant animations" },
-        { "k": "Content management", "v": "WordPress, Craft, Pimcore, Umbraco, Sanity, Prismic" },
+        { "k": "Content management", "v": "WordPress, Statamic, Craft, Pimcore, Umbraco, Sanity" },
         { "k": "APIs", "v": "RESTful and GraphQL" },
         { "k": "Analytics", "v": "Setup, event tracking, testing, and analysis" },
         { "k": "Web accessibility", "v": "WCAG implementation and site auditing" },
