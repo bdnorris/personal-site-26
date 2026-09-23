@@ -1204,7 +1204,7 @@ h1, h2 {
 
 .shots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
   gap: 12px;
 }
 
@@ -1214,6 +1214,15 @@ h1, h2 {
   border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;
+}
+
+.shots-grid[data-orientation="vertical"] {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 220px));
+  justify-content: start;
+}
+
+.shots-grid[data-orientation="vertical"] .shot {
+  aspect-ratio: 9 / 16;
 }
 
 .shots figcaption {

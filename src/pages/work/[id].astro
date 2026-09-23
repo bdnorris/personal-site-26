@@ -8,6 +8,8 @@ import {
   getWork,
   getWorkById,
   isSafeHref,
+  shotImageSize,
+  shotOrientation,
   workHeroAlt,
   workHeroHint,
   yearLabel,
@@ -168,18 +170,20 @@ const heroAlt = workHeroAlt(item);
                 {c.visuals.map((visual, index) => {
                   const key = index;
                   switch (visual.kind) {
-                    case "shots":
+                    case "shots": {
+                      const orientation = shotOrientation(visual.orientation);
+                      const size = shotImageSize(orientation);
                       return (
                         <figure class="shots" data-visual={key}>
-                          <div class="shots-grid">
+                          <div class="shots-grid" data-orientation={orientation}>
                             {visual.shots.map((shot) => (
                               <div class="shot">
                                 <ImageFrame hint={shot.hint}>
                                   <Image
                                     src={shot.src ?? ""}
                                     alt={shot.alt ?? ""}
-                                    width={1000}
-                                    height={500}
+                                    width={size.width}
+                                    height={size.height}
                                     loading="lazy"
                                     fetchpriority="low"
                                   />
@@ -190,6 +194,7 @@ const heroAlt = workHeroAlt(item);
                           {visual.caption ? <figcaption>{visual.caption}</figcaption> : null}
                         </figure>
                       );
+                    }
                     case "code":
                       return (
                         <div data-visual={key}>

@@ -339,6 +339,7 @@
       "visuals": [
         {
           "kind": "shots",
+          "orientation": "horizontal",
           "shots": [
             { "hint": "Screenshot of the Daymaker app, showing a selected recipe",
               "src": "/images/allspreads/ss-desktop2.webp",
@@ -347,7 +348,13 @@
             { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the desktop",
               "src": "/images/allspreads/ss-desktop3.webp",
               "alt": "Screenshot of the Daymaker app, showing a selected recipe on the desktop."
-            },
+            }
+          ]
+        },
+        {
+          "kind": "shots",
+          "orientation": "vertical",
+          "shots": [
             { "hint": "Screenshot of the Daymaker app, showing a selected daypart on the mobile",
               "src": "/images/allspreads/ss-mobile1.webp",
               "alt": "Screenshot of the Daymaker app, showing a selected daypart on the mobile."

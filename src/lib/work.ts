@@ -11,6 +11,8 @@ export type WorkShot = {
   alt: string;
 };
 
+export type ShotOrientation = "horizontal" | "vertical";
+
 export type WorkLink = {
   label: string;
   href: string;
@@ -26,6 +28,7 @@ export type WorkVisual =
       kind: "shots";
       shots: WorkShot[];
       caption?: string;
+      orientation?: ShotOrientation;
     }
   | {
       kind: "code";
@@ -146,6 +149,28 @@ export function getNextWork(item: WorkItem): WorkItem | undefined {
 
 export function yearLabel(year: string): "Dates" | "Year" {
   return /\d\s*[–-]\s*\d/.test(year) ? "Dates" : "Year";
+}
+
+export function shotOrientation(
+  value: ShotOrientation | undefined,
+): ShotOrientation {
+  return value === "vertical" ? "vertical" : "horizontal";
+}
+
+export function shotImageSize(orientation: ShotOrientation): {
+  width: number;
+  height: number;
+} {
+  switch (orientation) {
+    case "vertical":
+      return { width: 750, height: 1334 };
+    case "horizontal":
+      return { width: 1000, height: 500 };
+    default: {
+      const _exhaustive: never = orientation;
+      return _exhaustive;
+    }
+  }
 }
 
 const snippetModules = import.meta.glob("../snippets/**/*", {
