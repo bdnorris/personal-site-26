@@ -9,30 +9,26 @@ const site = getSite();
 <BaseLayout title="About · Brian Norris" description="Hello, I'm Brian — a front-end developer in Springfield, MO.">
   <div class="wipe">
     <section class="about">
-      <div class="about-copy">
-        <h1>Hello, I'm<br /><span class="acc">Brian</span></h1>
-        <div class="prose">
-          {site.about.intro.map((p) => <p>{p}</p>)}
-        </div>
-      </div>
-      <div class="about-side">
+      <h1>Hello, I'm<br /><span class="acc">Brian</span></h1>
+      <div class="prose">
         <div class="portrait">
           <ImageFrame src={site.about.portrait} hint={site.about.portraitHint} alt="Portrait of Brian Norris" />
         </div>
-        <div class="contact-card">
-          <div class="top">Get in touch</div>
-          {
-            site.contacts.map((c) => (
-              <a class="contact-row" href={c.href}>
-                <span class="k">{c.k}</span>
-                <span class="v">{c.v}</span>
-              </a>
-            ))
-          }
-        </div>
+        {site.about.intro.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="contact-bar">
+        <div class="top">Get in touch</div>
+        {
+          site.contacts.map((c) => (
+            <a class="contact-row" href={c.href}>
+              <span class="k">{c.k}</span>
+              <span class="v">{c.v}</span>
+            </a>
+          ))
+        }
       </div>
     </section>
-
+    <!-- still working on this copy
     <section class="band">
       <div class="band-inner">
         <div>
@@ -54,5 +50,6 @@ const site = getSite();
         </div>
       </div>
     </section>
+  still working on this copy -->
   </div>
 </BaseLayout>

@@ -1465,49 +1465,48 @@ h1, h2 {
 
 /* About */
 .about {
-  padding: clamp(34px, 5vw, 72px) clamp(16px, 4vw, 56px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: clamp(24px, 4vw, 56px);
-  align-items: start;
+  padding-block: clamp(34px, 5vw, 72px) clamp(44px, 6vw, 80px);
+  padding-inline: max(2rem, calc(100vw - var(--max-width)) / 2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(28px, 4vw, 48px);
 }
 
-.about-copy h1 {
+.about h1 {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.04s both;
-  font-size: clamp(40px, 7vw, 100px);
+  margin: 0;
+  font-size: clamp(34px, 7vw, 112px);
   line-height: 0.88;
 }
 
-.about-copy .prose {
+.about .prose {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.14s both;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: clamp(22px, 3vw, 36px);
-  max-width: 56ch;
+  display: flow-root;
+  max-width: 98ch;
+  font-family: "Roboto Serif", Georgia, serif;
 }
 
-.about-copy p {
-  margin: 0;
+.about .prose p {
+  margin: 0 0 16px;
   font-family: "Roboto Serif", Georgia, serif;
   font-size: 17px;
   line-height: 1.58;
 }
 
-.about-copy p:first-child {
-  font-size: clamp(17px, 1.5vw, 20px);
+.about .prose p:last-child {
+  margin-bottom: 0;
 }
 
-.about-side {
-  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.24s both;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(16px, 2vw, 24px);
-  min-width: 0;
+.about .prose p:first-of-type {
+  font-size: clamp(17px, 1.5vw, 20px);
 }
 
 .portrait {
   position: relative;
+  float: left;
+  width: clamp(112px, 34%, 160px);
+  margin: 0.35em 16px 8px 0;
   aspect-ratio: 4 / 5;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -1515,20 +1514,48 @@ h1, h2 {
   background: var(--card);
 }
 
-.contact-card {
+.contact-bar {
+  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.24s both;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: min(100%, 68ch);
+  font-family: "Roboto Serif", Georgia, serif;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--card);
 }
 
-.contact-card .top {
-  padding: 13px 16px;
-  border-bottom: 1px solid var(--line);
+.contact-bar .top {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  min-height: 44px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
+  font-size: 10.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mute);
+}
+
+.contact-bar .contact-row {
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 44px;
+  border-bottom: 0;
+  border-inline-start: 1px solid var(--line);
+}
+
+.portrait .frame-empty {
+  color: var(--mute);
+  padding: 8px;
+  letter-spacing: 0.04em;
+  overflow-wrap: normal;
+}
+
+.contact-bar .contact-row .v {
+  text-align: start;
 }
 
 .contact-row {
@@ -1544,6 +1571,31 @@ h1, h2 {
 
 .contact-row:last-child {
   border-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .portrait {
+    float: none;
+    width: 132px;
+    margin: 0 0 16px;
+  }
+
+  .contact-bar {
+    flex-direction: column;
+  }
+
+  .contact-bar .top {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-bar .contact-row {
+    border-inline-start: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-bar .contact-row:last-child {
+    border-bottom: 0;
+  }
 }
 
 .contact-row:hover {
