@@ -1540,7 +1540,6 @@ h1, h2 {
   border-bottom: 1px solid var(--line);
   text-decoration: none;
   color: var(--ink);
-  transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .contact-row:last-child {
@@ -1549,7 +1548,6 @@ h1, h2 {
 
 .contact-row:hover {
   background: var(--paper);
-  transform: translateX(9px);
   color: var(--ink);
 }
 
