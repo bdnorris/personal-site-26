@@ -26,7 +26,7 @@
         "College students moving to Springfield for the first time need a way to get familiar with the city and where to eat, shop, and spend time. The site needed Google Maps as a primary feature, with pins filterable by category, pulling real business data from Google Places.",
         "The challenge was cost and performance. Google Places API calls add up quickly, and a naive implementation would make a live API call every time the map loaded and everytime a pin was selected. The goal was to serve accurate, useful data while keeping Google Cloud costs under control and the front-end experience fast."
       ],
-      "roleDetail": "Sole developer. A designer provided complete designs; the technical architecture, WordPress build, custom plugin, and Google Maps integration were entirely my own.",
+      "roleDetail": "Sole developer. A designer provided complete designs; the technical architecture, WordPress build, custom plugin, and Google Maps integration were my own.",
       "decisions": [
         {
           "title": "A caching strategy built on API policy research",
@@ -39,6 +39,18 @@
         {
           "title": "Automated verification with a scheduled webhook",
           "body": "Places close, move, and change. A scheduled webhook triggers a recurring recheck of all cached locations, verifying that each place is still in business and flagging any that appear to have moved or closed for editorial review. This keeps the guide accurate over time without requiring constant manual maintenance."
+        }
+      ],
+      "visuals": [
+        {
+          "kind": "shots",
+          "orientation": "horizontal",
+          "shots": [
+            { "hint": "A screenshot of the Campus SGF website",
+              "src": "/images/ss-campusgf-map.webp",
+              "alt": "Map of downtown Springfield highlighting locations for drinks, dining, shopping, and arcades. Colored icons represent different types of businesses, with a legend on the left listing venues and categories."
+            }
+          ]
         }
       ],
       "outcome": [
@@ -177,7 +189,7 @@
       "context": [
         "WordPress remains the most widely deployed CMS in the world. Clients know it, editors are comfortable with it, and the ecosystem is mature. The challenge with custom WordPress builds is finding the right balance between giving content editors meaningful flexibility and maintaining enough guardrails to keep the site looking intentional. Too much freedom and editors break layouts; too little and every content change becomes a developer request."
       ],
-      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and builds were entirely my own.",
+      "roleDetail": "Sole developer across all builds shown here. Each project had its own designer; the technical architecture, theme development, and builds were my own.",
       "decisions": [
         {
           "title": "ACF Flexible Content for pages, Gutenberg for posts", 
@@ -228,7 +240,7 @@
         "Fluid typography using the CSS clamp function allows font sizes to scale smoothly with the viewport rather than jumping between fixed sizes at breakpoints. Type grows and shrinks continuously between a defined minimum and maximum. It's a powerful technique, but visualizing how a fluid type scale actually behaves across viewport widths requires either resizing your browser constantly or guessing.",
         "A few tools existed for this, but none had the combination of features I wanted. Rather than compromise, I built my own, combining fluid type testing with basic type size and font testing in a single interface."
       ],
-      "roleDetail": "Sole developer and designer. A personal experiment built entirely for my own use and curiosity.",
+      "roleDetail": "Sole developer and designer. A personal experiment built for my own use and curiosity.",
       "decisions": [
         {
           "title": "Combining two related problems",
@@ -397,7 +409,7 @@
       "context": [
         "Product and recipe catalogs are only useful if people can find what they're looking for. For a set of food-service clients, the existing approach either relied on server-side filtering where every filter selection triggered a full page reload, or apps with limited functionality, like only a single filtering option. The goal was live, client-side filtering: accurate, usable, and fast, without the page ever refreshing."
       ],
-      "roleDetail": "Sole developer across all implementations. Each client had its own visual design handled by a designer; the filtering logic, data architecture, and front-end build were entirely my own.",
+      "roleDetail": "Sole developer across all implementations. Each client had its own visual design handled by a designer; the filtering logic, data architecture, and front-end build were my own.",
       "decisions": [
         {
           "title": "Building for reuse",
@@ -574,7 +586,7 @@
     "year": "2021",
     "stack": ["Vue 3", "Greensock", "REST API"],
     "links": [
-      { "label": "Live site", "href": "https://rc.jif-afh.marlindev.com/JifWheel" }
+      { "label": "Archive site", "href": "https://rc.smuckers-afh.marlindev.com/JifWheel" }
     ],
     "featured": false,
     "hero": {
@@ -587,17 +599,17 @@
       "role": "Lead front-end",
       "lede": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
       "context": [
-        "Food-service clients need to sell chefs and menu planners on how a product fits into their menu. For Jif Peanut Butter, the goal was a fun, engaging way to surface recipe applications randomly -- giving a user a reason to keep spinning and discovering rather than browsing a static list. Filtering and sequential browsing round out the experience for users who want more control."
+        "Food-service clients need to sell chefs and menu planners on how a product fits into their menu. For Jif Peanut Butter, the goal was a fun, engaging way to surface recipe applications randomly, giving a user a reason to keep spinning and discovering rather than browsing a static list. Filtering and sequential browsing round out the experience for users who want more control."
       ],
-      "roleDetail": "Sole front-end developer. A separate developer built and maintained the same Pimcore REST API used across the Marlin food-service project family. Designer provided complete designs.",
+      "roleDetail": "Sole front-end developer. Another developer built and maintained the Pimcore REST API. A designer provided complete designs.",
       "decisions": [
         {
           "title": "Rethinking the wheel",
-          "body": "The original concept called for a Wheel of Fortune style spinning wheel -- slots, labels, the works. In a problem-solving meeting, I flagged that the trigonometric complexity of a variable-slot wheel would be significant, and proposed an alternative: a Price is Right style wheel, where a single continuous drum spins and lands on a result. Simpler to implement, just as satisfying to interact with, and the client agreed. It was a practical trade-off that kept the project on track without sacrificing the core mechanic."
+          "body": "The original concept called for a Wheel of Fortune, top-down, style spinning wheel. In a problem-solving meeting, I flagged that the trigonometric complexity of a variable-slot wheel would be significant, and proposed an alternative: a Price is Right style wheel, where a single continuous drum spins and lands on a result. It was a practical trade-off that kept the project on track without sacrificing the core mechanic."
         },
         {
           "title": "Animation with GSAP",
-          "body": "GreenSock handles the wheel spin animation. The goal was a spin that feels physical -- building momentum, then decelerating naturally to a stop. GSAP gave fine control over easing and duration, though getting the speed curves to feel truly realistic proved harder than expected."
+          "body": "GreenSock handles the animations. The goal was a spin that feels physical,  building momentum, then decelerating naturally to a stop. However, getting the speed curves to feel truly realistic proved harder than expected."
         },
         {
           "title": "Filtering and sequential browsing",
@@ -608,14 +620,14 @@
         "The app successfully delivers a fun, randomized recipe discovery experience for food-service audiences, with enough structure for users who want to browse more intentionally."
       ],
       "reflections": [
-        "The animation was the most challenging part and the part I'm least satisfied with. Making a spinning wheel feel physically convincing requires fine-tuned speed curves that are harder to dial in than they look -- the spin works, but it lacks the weight and deceleration of something truly realistic. It was a valuable lesson in how much craft goes into motion that feels natural, and something I'd approach differently with more time or a second pass.",
-        "Additionally, the similar All Spreads Daymaker app that I later built showed that the Wheel of Fortune style wheel would have been possible and probably moreeffective."
+        "The animation was the most challenging part and the part I'm least satisfied with. Making a spinning wheel feel physically convincing requires fine-tuned speed curves that are hard to dial in. The spin works, but it lacks the weight and deceleration of something truly realistic. It was a valuable lesson in how much craft goes into motion that feels natural, and something I'd approach differently with more time or a second pass.",
+        "Additionally, the similar All Spreads Daymaker app that I later built showed that the Wheel of Fortune style wheel would have been possible and probably more effective."
       ]
     }
   },
   {
     "id": "smuckers-fun",
-    "title": "Smucker's Fun",
+    "title": "Smucker’s Fun",
     "blurb": "A lightweight, web app for restaurant diners waiting on breakfast.",
     "category": "Work",
     "year": "2022",
@@ -634,18 +646,14 @@
       "role": "Lead front-end",
       "lede": "A lightweight, web app for restaurant diners waiting on breakfast.",
       "context": [
-        "Smucker's single-serve spread caddies sit on restaurant tables, and the wait for breakfast is dead time. The goal was to give diners something to do with that time -- something light, social, and on-brand. A QR code on the caddy leads to a simple web app with two modes: conversation starters and fill-in-the-blank trivia across several categories.",
-        "The user arrives with zero context -- they scanned a code on a condiment caddy and have no idea what they're about to see. The app needed to be immediately legible without any onboarding or explanation."
+        "The goal was to give diners something to do with the time between ordering and waiting for their breakfast to arrive — something light, social, and on-brand. A QR code on the single-serve spread caddy leads to a simple web app with two modes: conversation starters and fill-in-the-blank trivia across several categories.",
+        "The user arrives with zero context so the app needed to be immediately legible without any onboarding or explanation."
       ],
-      "roleDetail": "Sole developer. Had brief early input into the experience before design kicked off; the designer provided complete designs and the build was entirely my own.",
+      "roleDetail": "Sole developer. Had brief early input into the experience before design kicked off; the designer provided complete designs and the build was my own.",
       "decisions": [
         {
-          "title": "Letting the UI speak for itself",
-          "body": "With no onboarding and a user who may have never heard of the app, the interface had to be self-explanatory on first glance. No tutorial, no welcome screen, no instructions -- just an experience that makes its own purpose clear immediately. That constraint shaped every decision about layout, hierarchy, and interaction."
-        },
-        {
           "title": "Performance as a baseline",
-          "body": "Restaurant wifi is unpredictable and the app needed to load fast on a cold visit from a QR code scan. Performance was a priority from the start -- Nuxt's server-side rendering and a lean stack with no heavy dependencies kept the initial load light."
+          "body": "Restaurant wifi is unpredictable and the app needed to load fast on a cold visit from a QR code scan. Performance was a priority from the start. Nuxt's static site generation and a lean stack with no heavy dependencies kept the initial load light."
         },
         {
           "title": "CSS Transforms for interaction",
@@ -653,7 +661,7 @@
         },
         {
           "title": "Content in the store",
-          "body": "Trivia content across all categories lives in the Pinia store -- a deliberate simplicity for a one-time content load with no requirement for ongoing updates. No CMS overhead, no API calls, just fast access to everything the app needs on load."
+          "body": "Trivia content across all categories lives in the Pinia store. This is a deliberate simplicity for a one-time content load with no requirement for ongoing updates. No CMS overhead, no API calls, just fast access to everything the app needs on load."
         }
       ],
       "outcome": [

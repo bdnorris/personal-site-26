@@ -3,7 +3,7 @@
   "location": "Springfield, MO",
   "role": "Senior front-end developer",
   "contacts": [
-    { "k": "Email", "v": "bdnorris@gmail.com", "href": "mailto:bdnorris@gmail.com" },
+    { "k": "Email", "v": "hi@briannorris.dev", "href": "mailto:hi@briannorris.dev" },
     { "k": "Phone", "v": "417.425.7739", "href": "tel:+14174257739" }
   ],
   "skills": [
@@ -75,9 +75,8 @@
   "about": {
     "portraitHint": "Drop a portrait (4:5)",
     "intro": [
-      "I came to the web through graphic design. A BFA at Missouri State, then years of print and identity work, before the browser became the more interesting canvas. That order matters: I still think about a page as a composition first and a component tree second.",
-      "Since 2016 I have led front-end at Marlin Connections, building user-facing features for products in the food-service industry and keeping the technical and the experiential in the same conversation. Before that, agency work, in-house design, and eight semesters teaching design students at Missouri State, from software fundamentals to advanced web coding.",
-      "Teaching changed how I write code. If you cannot explain a stylesheet to a sophomore, it is probably not a good stylesheet."
+      "My interest in the web started in high school, messing around on Geocities. I pursued graphic design, earned a BFA from Missouri State, and spent years doing print and identity work while building websites as part of that work along the way. Eventually I found I was enjoying the web work more, and pivoted to focus on development full time so I could go deeper.",
+      "For over a decade I led front-end at Marlin Connections, building user-facing features for products in the food-service industry. Alongside that, I spent eight semesters teaching design students at Missouri State, from graphic design to basic web coding."
     ]
   },
   "education": {
