@@ -1,0 +1,29 @@
+---
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import {
+  getSnippet,
+  snippetFileFromSrc,
+  snippetFilename,
+} from "../lib/work";
+
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+const file = snippetFileFromSrc(src);
+const source = getSnippet(file);
+const filename = snippetFilename(file);
+const processor = await createMarkdownProcessor({
+  syntaxHighlight: false,
+});
+const { code } = await processor.render(source);
+---
+
+<div class="code-block snippet-block">
+  <div class="code-bar">
+    <span class="code-dot"></span>
+    <span class="code-name">{filename}</span>
+  </div>
+  <div class="snippet-body" set:html={code} />
+</div>

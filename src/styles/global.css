@@ -1061,6 +1061,7 @@ h1, h2 {
 
 .case-copy:has(.shots),
 .case-copy:has(.code-block),
+.case-copy:has(.snippet-block),
 .case-copy:has(.compare),
 .case-copy:has(.stats) {
   gap: 22px;
@@ -1270,6 +1271,51 @@ h1, h2 {
   display: block;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.snippet-body {
+  padding: 16px 18px 18px;
+  color: var(--ink);
+}
+
+.snippet-body > :first-child {
+  margin-top: 0;
+}
+
+.snippet-body > :last-child {
+  margin-bottom: 0;
+}
+
+.snippet-body p,
+.snippet-body li {
+  margin: 0;
+  font-family: "Roboto Serif", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.snippet-body ol,
+.snippet-body ul {
+  margin: 0;
+  padding-inline-start: 1.35em;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.snippet-body a {
+  color: var(--acc);
+}
+
+.snippet-body strong {
+  font-weight: 600;
+}
+
+.snippet-body code {
+  display: inline;
+  white-space: nowrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88em;
 }
 
 ::highlight(comment),

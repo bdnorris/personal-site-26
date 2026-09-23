@@ -33,6 +33,10 @@ export type WorkVisual =
       language?: string;
     }
   | {
+      kind: "snippet";
+      src: string;
+    }
+  | {
       kind: "compare";
       before: WorkShot;
       after: WorkShot;
@@ -172,6 +176,22 @@ const LANGUAGE_BY_EXT: Record<string, string> = {
   tsx: "tsx",
   vue: "vue",
 };
+
+export function snippetFileFromSrc(src: string): string {
+  const file = src
+    .trim()
+    .replace(/\\/g, "/")
+    .replace(/^\.\//, "")
+    .replace(/^\/+/, "")
+    .replace(/^src\/snippets\//, "")
+    .replace(/^snippets\//, "");
+
+  if (!file || file.includes("..")) {
+    throw new Error(`Invalid snippet src: ${src}`);
+  }
+
+  return file;
+}
 
 export function getSnippet(file: string): string {
   const source = snippetsByFile[file];
