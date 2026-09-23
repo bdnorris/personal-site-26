@@ -23,18 +23,18 @@
       "role": "Sole developer",
       "lede": "A Google Maps-driven city guide for college students new to Springfield, MO",
       "context": [
-        "College students moving to Springfield for the first time need a way to get familiar with the city -- where to eat, shop, and spend time, organized around the neighborhoods and areas most relevant to campus life. The site needed Google Maps as a primary feature, with pins filterable by category, pulling real business data from Google Places.",
-        "The challenge was cost and performance. Google Places API calls add up quickly, and a naive implementation would make a live API call every time the map loaded. The goal was to serve accurate, useful data while keeping Google Cloud costs under control and the front-end experience fast."
+        "College students moving to Springfield for the first time need a way to get familiar with the city and where to eat, shop, and spend time. The site needed Google Maps as a primary feature, with pins filterable by category, pulling real business data from Google Places.",
+        "The challenge was cost and performance. Google Places API calls add up quickly, and a naive implementation would make a live API call every time the map loaded and everytime a pin was selected. The goal was to serve accurate, useful data while keeping Google Cloud costs under control and the front-end experience fast."
       ],
       "roleDetail": "Sole developer. A designer provided complete designs; the technical architecture, WordPress build, custom plugin, and Google Maps integration were entirely my own.",
       "decisions": [
         {
           "title": "A caching strategy built on API policy research",
-          "body": "Not all Google Places data can be cached, and for how long varies by data type. Rather than guess, I used Claude to research and interpret Google's API usage policies -- determining precisely what could be cached, what couldn't, and for how long. That research became the foundation of the caching strategy. Place IDs and coordinates are cached in WordPress, giving the front end everything it needs to load and render the map without a live API call. Website URLs, which Google's terms require to be fetched live, are handled separately. The result is a snappier map load and significantly fewer API calls."
+          "body": "Not all Google Places data can be cached, according to Google's API usage policies, and how long any of it can be cached varies by data type. Rather than guess, I used Claude to research and interpret Google's API usage policies, determining precisely what could be cached, what couldn't, and for how long. Place IDs and coordinates are cached in WordPress, giving the front end everything it needs to load and render the map without a live API call. Website URLs, which Google's terms require to be fetched live, are handled separately. The result is a snappier map load and significantly fewer API calls."
         },
         {
           "title": "A custom WordPress plugin for place management",
-          "body": "A custom plugin handles the editor experience for adding new locations. Editors search Google Places directly from within WordPress, select a result, and the plugin caches the permitted data at the point of input -- place IDs, coordinates, and other allowable fields. This keeps the data fresh from the moment a place is added without requiring manual data entry."
+          "body": "A custom plugin handles the editor experience for adding new locations. Editors search Google Places directly from within WordPress, select a result, and the plugin caches the permitted data at the point of input: place IDs, coordinates, and other allowable fields. This let's you start out with fresh data from the moment a place is added without requiring manual data entry."
         },
         {
           "title": "Automated verification with a scheduled webhook",
@@ -66,21 +66,21 @@
       "src": "/images/hero_thinkupon.webp"
     },
     "case": {
-      "client": "Internal",
+      "client": "Revel Advertising",
       "role": "Lead developer",
       "lede": "A heavily animated WordPress site for business founder Mark Steiner",
       "context": [
-        "Think Upon is Mark Steiner's personal site and blog -- a platform for his ideas and writing as a business founder. The design called for a higher than usual level of animation, with Lottie files playing a central role in how the content is experienced rather than serving as decorative accents. The challenge was finding a scalable, editor-friendly way to integrate those animations into WordPress without making the process brittle or hard to maintain."
+        "Think Upon is Mark Steiner's personal site and blog: a platform for his ideas and writing and media projects. The design called for a higher than usual level of animation, with Lottie files playing a central role in how the content is experienced rather than serving as decorative accents. The challenge was finding a scalable, editor-friendly way to integrate those animations into WordPress without making the process brittle or hard to maintain."
       ],
-      "roleDetail": "Sole developer. The designer provided complete designs and all finished Lottie animation files as assets for integration.",
+      "roleDetail": "Sole developer. Complete designs and finished Lottie animation files provided as assets for integration.",
       "decisions": [
         {
           "title": "A custom post type for Lottie management",
-          "body": "Rather than embedding Lottie files directly into blocks or hardcoding them, a custom post type was created for each animation. Each entry holds the Lottie JSON file and its associated assets via an ACF Gallery field. When building pages with custom blocks, editors can select which Lottie animation to use from this library. This keeps animations organized, reusable across the site, and easy to update without touching block code."
+          "body": "Rather than embedding Lottie files directly into blocks or hardcoding them, a custom post type was created for each animation. Each entry holds the Lottie JSON file and its associated assets via an ACF Gallery field. When building pages with custom blocks, editors can select which Lottie animation to use from this library. This keeps animations organized and reusable across the site."
         },
         {
           "title": "Performance and asset management",
-          "body": "Lottie files can carry significant overhead, particularly when they embed images. A custom bash script handles pre-processing before files are added to WordPress -- rewriting asset links within the JSON and renaming those assets to avoid naming conflicts between different Lottie files. From there, stripping down files where possible and ensuring embedded images were properly compressed was a deliberate part of the integration process -- keeping animation quality while managing the performance cost."
+          "body": "Lottie files can carry significant overhead, particularly when they embed images. A custom bash script handles pre-processing before files are added to WordPress. It rewrites asset links within the JSON and renames those assets to avoid naming conflicts between different Lottie files. From there, stripping down files where possible and ensuring embedded images were properly compressed was a deliberate part of the integration process. This keeps animation quality while managing the performance cost."
         },
         {
           "title": "Scroll-triggered animations",
@@ -88,11 +88,11 @@
         },
         {
           "title": "GreenSock for specific animation needs",
-          "body": "GSAP handled a scrolling marquee animation and more complex effects including the Motion Path Plugin for path-based animation and the SplitText Plugin for animated headline treatments -- effects that would have been significantly more difficult to achieve with CSS alone."
+          "body": "GSAP handled a scrolling marquee animation and more complex effects including the Motion Path Plugin for path-based animation and the SplitText Plugin for animated headline treatments."
         }
       ],
       "outcome": [
-        "A polished, animation-rich site that uses motion as a storytelling tool rather than decoration. The Lottie management system makes animations maintainable and reusable without requiring developer involvement for every content update."
+        "A polished, animation-rich site that uses motion as a storytelling tool rather than decoration. The Lottie management system makes animations maintainable and reusable."
       ]
     }
   },
@@ -117,17 +117,17 @@
       "role": "Sole developer",
       "lede": "A personal collection of browser-based helper tools.",
       "context": [
-        "Everyday development work produces small recurring needs that don't have a perfect off-the-shelf solution -- or where the available solutions require uploading files to a server. A personal toolbox made more sense than stitching together third-party services."
+        "Everyday development work produces small recurring needs that don't have a perfect off-the-shelf solution or the available solutions require uploading files to a server. A personal toolbox made more sense than stitching together third-party services."
       ],
       "roleDetail": "Sole developer and designer. Built for my own use and curiosity.",
       "decisions": [
         {
           "title": "Image conversion via WASM",
-          "body": "The image converter handles format conversion -- WebP, AVIF, and others -- entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also allows direct comparison between output formats and file sizes, making it useful for making informed decisions about image optimization."
+          "body": "The image converter handles format conversion — WebP, AVIF, and others — entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also allows direct comparison between output formats and file sizes, making it useful for making informed decisions about image optimization."
         },
         {
           "title": "Ratio converter",
-          "body": "A general purpose ratio math tool covering aspect ratios for images, video, and layout calculations -- the kind of small arithmetic that comes up often enough to be worth automating."
+          "body": "A general purpose ratio math tool covering aspect ratios for images, video, and layout calculations. It's the kind of small arithmetic that comes up often enough to be worth automating."
         }
       ],
       "outcome": [
