@@ -257,7 +257,7 @@
     "hero": {
       "hint": "Illustration of a hand holding the handle of a cup",
       "alt": "A halftone-style illustration of a hand holding the handle of a cup, rendered in red and blue dots on a light background.",
-      "src": "/images/hero_heuritics.avif"
+      "src": "/images/hero_heuristics.avif"
     },
     "case": {
       "client": "Personal",
@@ -277,6 +277,7 @@
           "body": "Scoring runs from 1 to 5, with 5 indicating excellence. The scale is designed to distinguish between failures users can't overcome, failures they can work around, functional but improvable experiences, and genuinely exceptional ones. Heuristics that don't apply to a given element are skipped rather than scored."
         }
       ],
+      "visualsHeading": "Heuristics",
       "visuals": [
         {
           "kind": "snippet",
@@ -284,7 +285,7 @@
         }
       ],
       "outcome": [
-        "A practical, repeatable framework for structured usability audits -- usable across client sites regardless of industry or complexity. The scoring system produces findings that are specific enough to prioritize and communicate to stakeholders."
+        "A practical, repeatable framework for structured usability audits that is usable across client sites regardless of industry or complexity. The scoring system produces findings that are specific enough to prioritize and communicate to stakeholders."
       ]
     }
   },
@@ -309,14 +310,14 @@
       "role": "Lead front-end",
       "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
       "context": [
-        "Daypart filtering is a common need in food-service recipe discovery -- a chef or menu planner looking to fill a breakfast gap thinks differently than one planning dinner. The client wanted a recipe discovery experience that made dayparts the organizing principle, presented in a way that felt distinctive and engaging rather than a standard filtered list.",
-        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable -- pulled live from a CMS API -- meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data loaded."
+        "The client wanted a recipe discovery experience that made dayparts the organizing principle, presented in a way that felt distinctive and engaging rather than a standard filtered list.",
+        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable — pulled live from a Pimcore CMS API — meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data was loaded."
       ],
-      "roleDetail": "Sole developer on the app. A separate developer built and maintained the Pimcore REST API; a designer provided complete designs for both the desktop clock and mobile pie chart views. The SVG generation, trigonometric calculations, animation, and Vue architecture were entirely my own work.",
+      "roleDetail": "Sole developer on the app. A separate developer built and maintained the Pimcore REST API; a designer provided complete designs for both the desktop clock and mobile pie chart views. I handled the SVG generation, trigonometric calculations, animation, and Vue architecture.",
       "decisions": [
         {
           "title": "Generating the clock as SVG",
-          "body": "The entire clock is built programmatically in Vue -- there is no static SVG base. Recipes, daypart slices, markers, labels, and color coding are all computed and rendered from the API data. Color coding is data-driven from the CMS, making it easy to update without touching the front end."
+          "body": "The entire clock is built programmatically in Vue. Recipes, daypart slices, markers, labels, and color coding are all computed and rendered from the API data. Color coding is data-driven from the CMS, making it easy to update without touching the front end."
         },
         {
           "title": "The trig problem",
@@ -324,15 +325,15 @@
         },
         {
           "title": "Trigonometry for variable item placement",
-          "body": "AI assistance was instrumental in working out the correct trigonometric functions for variable item placement -- a problem that is easy to get subtly wrong and hard to debug visually."
+          "body": "AI assistance was instrumental in working out the correct trigonometric functions for variable item placement. This is a problem that is easy to get subtly wrong and hard to debug visually."
         },
         {
           "title": "Animation",
-          "body": "GreenSock (GSAP) handles the fork and knife pointer animation, adding a tactile, satisfying quality to interacting with the clock that a CSS transition alone wouldn't achieve."
+          "body": "GreenSock (GSAP) handles the fork and knife pointer animation, adding a tactile, satisfying quality to interacting with the clock."
         },
         {
           "title": "Mobile adaptation",
-          "body": "The desktop clock gives way to a simpler pie chart on mobile, letting users tap a daypart to select it. The switch was a practical design decision -- the full clock UI doesn't translate well to touch targets and narrow viewports, but the core daypart-first navigation concept carries over cleanly."
+          "body": "The desktop clock gives way to a simpler pie chart on mobile, letting users tap a daypart to select it. The switch was a practical design decision: the full clock UI doesn't translate well to touch targets and narrow viewports, but the core daypart-first navigation concept carries over cleanly."
         }
       ],
       "visuals": [

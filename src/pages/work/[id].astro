@@ -163,7 +163,7 @@ const heroAlt = workHeroAlt(item);
 
           {c?.visuals?.length ? (
             <div class="case-split">
-              <h2>Visuals</h2>
+              <h2>{c.visualsHeading?.trim() || "Visuals"}</h2>
               <div class="case-copy">
                 {c.visuals.map((visual, index) => {
                   const key = index;

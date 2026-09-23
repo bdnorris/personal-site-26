@@ -51,6 +51,7 @@ export type WorkCase = {
   hero?: string;
   context?: string[];
   decisions?: WorkDecision[];
+  visualsHeading?: string;
   visuals?: WorkVisual[];
   outcome?: string[];
   stats?: { n: string; label: string }[];
