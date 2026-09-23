@@ -199,12 +199,12 @@ h1, h2 {
   padding-inline: clamp(16px, 4vw, 56px);
 }
 
-.italic-acc {
+.acc {
   display: inline-block;
   font-size: 1.18em;
   line-height: 0.9;
   font-family: "Roboto Serif", Georgia, serif;
-  font-style: italic;
+  /* font-style: italic; */
   font-variation-settings: "wght" 460, "GRAD" 40, "wdth" 122;
   letter-spacing: 0.025em;
   color: var(--acc);
@@ -496,7 +496,7 @@ h1, h2 {
   animation-delay: 0.22s;
 }
 
-.hero h1 .italic-acc {
+.hero h1 .acc {
   animation: vf 4s ease-in-out 1.4s 1 forwards;
 }
 
