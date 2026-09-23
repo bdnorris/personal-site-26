@@ -1507,11 +1507,13 @@ h1, h2 {
   float: left;
   width: clamp(112px, 34%, 160px);
   margin: 0.35em 16px 8px 0;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 100vw;
   overflow: hidden;
   background: var(--card);
+  shape-outside: circle(50%);
+  shape-margin: 0.666rem;
 }
 
 .contact-bar {
