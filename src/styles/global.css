@@ -705,7 +705,7 @@ h1, h2 {
   text-align: center;
   overflow-wrap: anywhere;
   border: 1.5px dashed color-mix(in srgb, var(--ink) 35%, transparent);
-  color: var(--mute);
+  color: var(--card);
   font-family: "JetBrains Mono", monospace;
   font-size: 10.5px;
   letter-spacing: 0.08em;
