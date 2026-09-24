@@ -310,7 +310,7 @@ h1, h2 {
   background: transparent;
   color: var(--mute);
   font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
@@ -379,7 +379,7 @@ h1, h2 {
 
 .mono-label {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--mute);
@@ -397,7 +397,7 @@ h1, h2 {
   align-items: center;
   gap: 8px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--mute);
@@ -452,7 +452,7 @@ h1, h2 {
 .kicker {
   margin: 0 0 clamp(18px, 3vw, 30px);
   font-family: "JetBrains Mono", monospace;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--mute);
@@ -538,7 +538,7 @@ h1, h2 {
 
 .link-quiet {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
@@ -606,11 +606,14 @@ h1, h2 {
   flex-direction: column;
   gap: 9px;
   flex: 1;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: var(--line);
 }
 
 .card-meta {
   font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--acc2ink);
@@ -646,7 +649,7 @@ h1, h2 {
   border: 1px solid var(--line);
   border-radius: 3px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   color: var(--mute);
 }
@@ -689,7 +692,7 @@ h1, h2 {
   border: 1.5px dashed color-mix(in srgb, var(--ink) 35%, transparent);
   color: var(--card);
   font-family: "JetBrains Mono", monospace;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -807,7 +810,7 @@ h1, h2 {
 
 .filter .n {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--mute);
 }
 
@@ -892,7 +895,7 @@ h1, h2 {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.11s both;
   display: block;
   font-family: "JetBrains Mono", monospace;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--acc);
@@ -946,7 +949,7 @@ h1, h2 {
 
 .meta-cell dt {
   font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1115,7 +1118,7 @@ h1, h2 {
 
 .case-decision .n {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--acc2);
   font-variant-numeric: tabular-nums;
@@ -1156,7 +1159,7 @@ h1, h2 {
 
 .compare-label {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1172,7 +1175,7 @@ h1, h2 {
 
 .compare figcaption {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1214,7 +1217,7 @@ h1, h2 {
 
 .shots figcaption {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1247,7 +1250,7 @@ h1, h2 {
   min-width: 0;
   overflow-wrap: anywhere;
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--mute);
 }
@@ -1514,7 +1517,7 @@ h1, h2 {
   padding: 0 16px;
   min-height: 44px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1587,7 +1590,7 @@ h1, h2 {
 
 .contact-row .k {
   font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1617,7 +1620,7 @@ h1, h2 {
 .band-kicker {
   display: block;
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   opacity: 0.55;
@@ -1650,7 +1653,7 @@ h1, h2 {
 
 .philo-row .n {
   font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--acc2);
   flex: none;
@@ -1697,7 +1700,7 @@ h1, h2 {
 .resume-head p {
   margin: 10px 0 0;
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--mute);
@@ -1740,7 +1743,7 @@ h1, h2 {
   margin: 0 0 clamp(18px, 2.4vw, 28px);
   font-family: "JetBrains Mono", monospace;
   font-weight: 400;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--acc);
@@ -1762,7 +1765,7 @@ h1, h2 {
 .job-dates,
 .edu-dates {
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   color: var(--mute);
   line-height: 1.5;

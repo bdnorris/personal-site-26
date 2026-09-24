@@ -47,7 +47,7 @@ typography:
     letterSpacing: "normal"
   label:
     fontFamily: "JetBrains Mono, monospace"
-    fontSize: "10.5px"
+    fontSize: "12px"
     fontWeight: 400
     lineHeight: 1.3
     letterSpacing: "0.16em"
@@ -171,7 +171,7 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 - **Headline** (900, section titles `clamp(26px, 3.4vw, 44px)`; case splits `clamp(22px, 2.4vw, 32px)`): Section architecture. Sticky on case-study left columns.
 - **Title** (500–700, 17–23px, line-height ~1.12): Card titles, skill headings, job titles, contact values. Weight 500 at rest; 700 when the line has to hold a resume job.
 - **Body** (400, 15–17.5px, line-height 1.45–1.62, measure ~46–70ch): Lede, about prose, case copy, skill items, job blurbs. Serif only — never Termina for paragraphs.
-- **Label** (400, 9.5–11px, letter-spacing 0.12–0.24em, uppercase): Kickers, nav-adjacent tools, card meta, footer, filter counts, resume section heads. Mono only.
+- **Label** (400, 12px, letter-spacing 0.12–0.24em, uppercase): Kickers, nav-adjacent tools, card meta, footer, filter counts, resume section heads. Mono only.
 
 ### Named Rules
 
@@ -222,7 +222,7 @@ Refined and restrained: soft actions, square surfaces. Chrome stays quiet so typ
 
 ### Chips
 
-- **Stack tags:** 3px radius, 1px `line`, mono 9.5px, padding 3px 8px, mute text. Not selectable.
+- **Stack tags:** 3px radius, 1px `line`, mono 12px, padding 3px 8px, mute text. Not selectable.
 - **Filters:** Pill, 1px `line`, Termina 500 13px, padding 9px 16px. On-state is ink fill with paper text (including the mono count). Hover only darkens the border.
 
 ### Cards / Containers
@@ -242,7 +242,7 @@ None in the shipped UI. Contact is mailto/tel rows, not a form. Do not invent a 
 
 - Wordmark: Termina 900, `clamp(17px, 4.4vw, 19px)`, ink, no underline.
 - Links: Termina 500, ~13.5px, min-height 44px, padding 0 11px. Rest color is mute; hover and current are ink. Do not fade the link with opacity. Current page draws a 2px Sea Glass underline that scales in from the left.
-- Theme toggle: transparent, mono 9.5px uppercase tracking, min-height 44px, mute → ink on hover. Visible label is the current theme (`Light` or `Dark`); the accessible name is that word plus “theme”, and `aria-pressed` is true in dark. Vermilion 8px dot; inset paper ring in light so it reads hollow.
+- Theme toggle: transparent, mono 12px uppercase tracking, min-height 44px, mute → ink on hover. Visible label is the current theme (`Light` or `Dark`); the accessible name is that word plus “theme”, and `aria-pressed` is true in dark. Vermilion 8px dot; inset paper ring in light so it reads hollow.
 
 ### Empty image frame (signature)
 
