@@ -222,7 +222,7 @@ Refined and restrained: soft actions, square surfaces. Chrome stays quiet so typ
 
 ### Chips
 
-- **Stack tags:** 3px radius, 1px `line`, mono 12px, padding 3px 8px, mute text. Not selectable.
+- **Stack tags:** 3px radius, 1px `line`, mono 12px, padding 3px 8px, mute text. Not selectable. The work index shows the first three. The project page lists the full stack.
 - **Filters:** Pill, 1px `line`, Termina 500 13px, padding 9px 16px. On-state is ink fill with paper text (including the mono count). Hover only darkens the border.
 
 ### Cards / Containers

@@ -10,6 +10,7 @@ interface Props {
 
 const { item, wide = false } = Astro.props;
 const heroSrc = item.hero?.src?.trim() || null;
+const indexStack = item.stack.filter((entry) => entry.trim()).slice(0, 3);
 const hint = workHeroHint(item);
 const alt = workHeroAlt(item);
 ---
@@ -38,9 +39,9 @@ const alt = workHeroAlt(item);
     <h3>{item.title}</h3>
     <p>{item.blurb}</p>
     {
-      wide && item.stack.length ? (
+      wide && indexStack.length ? (
         <div class="stack">
-          {item.stack.map((s) => (
+          {indexStack.map((s) => (
             <span>{s}</span>
           ))}
         </div>
