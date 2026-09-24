@@ -153,7 +153,7 @@
     "blurb": "A selection of greenfield WordPress builds across a range of industries.",
     "category": "Work",
     "year": "2022-2026",
-    "stack": ["WordPress", "PHP", "Scss", "Typescript", "ACF Flexible Content", "Gravity Forms"],
+    "stack": ["WordPress", "PHP", "SCSS", "TypeScript", "ACF Flexible Content", "Gravity Forms"],
     "links": [
       {
         "label": "Mager's Management",
@@ -584,7 +584,7 @@
     "blurb": "A Vue app that randomly surfaces menu applications for Jif Peanut Butter recipes, with filtering and sequential browsing",
     "category": "Work",
     "year": "2021",
-    "stack": ["Vue 3", "Greensock", "REST API"],
+    "stack": ["Vue 3", "GreenSock (GSAP)", "REST API"],
     "links": [
       { "label": "Archive site", "href": "https://rc.smuckers-afh.marlindev.com/JifWheel" }
     ],

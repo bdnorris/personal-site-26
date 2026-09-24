@@ -663,7 +663,8 @@ h1, h2 {
   border-bottom: 1px solid var(--line);
   background: var(--mute);
   padding: 0.666rem 0.666rem 0 0.666rem;
-  border-radius: calc(0.666rem + 2px) calc(0.666rem + 2px) 0 0;
+  border-radius: 4px 4px 0 0;
+  transition: border-color 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
   & img {
     width: 100%;
     height: 100%;
@@ -672,8 +673,11 @@ h1, h2 {
   }
 }
 
-.card-media--wide {
-  aspect-ratio: 11 / 6;
+.card:hover .card-media,
+.card:focus-visible .card-media,
+.card:hover .card-body,
+.card:focus-visible .card-body {
+  border-color: var(--ink);
 }
 
 .card-body {
@@ -685,6 +689,7 @@ h1, h2 {
   border-width: 0 1px 1px 1px;
   border-style: solid;
   border-color: var(--line);
+  transition: border-color 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card-meta {
@@ -1001,6 +1006,18 @@ h1, h2 {
   color: var(--paper);
 }
 
+.work-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .work-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
@@ -1223,7 +1240,7 @@ h1, h2 {
   background: var(--mute);
   border-bottom: 1px solid var(--line);
   padding: 1rem 1rem 0 1rem;
-  border-radius: calc(0.666rem + 2px) calc(0.666rem + 2px) 0 0;
+  border-radius: 4px 4px 0 0;
   & img {
     width: 100%;
     height: 100%;

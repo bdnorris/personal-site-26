@@ -29,6 +29,8 @@ const filters = CATEGORIES.map((label) => ({
         ))}
       </div>
 
+      <p class="work-status" data-work-status role="status"></p>
+
       <div class="work-grid" data-work-grid>
         {items.map((item) => (
           <ProjectCard item={item} wide heading="h2" />
@@ -56,9 +58,19 @@ const filters = CATEGORIES.map((label) => ({
     const buttons = Array.from(filters.querySelectorAll<HTMLButtonElement>("[data-filter]"));
     const cards = Array.from(grid.querySelectorAll<HTMLElement>("[data-category]"));
 
+    const status = document.querySelector("[data-work-status]");
+
+    function visibleCount(): number {
+      return cards.filter((card) => !card.classList.contains("is-hidden")).length;
+    }
+
     function syncEmpty() {
-      const anyVisible = cards.some((card) => !card.classList.contains("is-hidden"));
-      if (empty instanceof HTMLElement) empty.hidden = anyVisible;
+      const count = visibleCount();
+      if (empty instanceof HTMLElement) empty.hidden = count > 0;
+      if (status instanceof HTMLElement) {
+        status.textContent =
+          count === 0 ? "" : `${count} ${count === 1 ? "project" : "projects"}.`;
+      }
     }
 
     function apply(cat: string) {
@@ -86,8 +98,7 @@ const filters = CATEGORIES.map((label) => ({
     }
 
     const initial = new URLSearchParams(window.location.search).get("cat");
-    const known = buttons.some((btn) => btn.dataset.filter === initial);
-    if (initial && known) apply(initial);
+    if (initial != null && initial !== "") apply(initial);
 
     const mast = document.querySelector(".mast");
     const syncMastHeight = () => {
