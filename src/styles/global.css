@@ -1007,6 +1007,40 @@ h1, h2 {
   margin-top: clamp(22px, 3vw, 36px);
 }
 
+@media (max-width: 640px) {
+  .work-page {
+    padding-top: 16px;
+  }
+
+  .work-page h1 {
+    font-size: 34px;
+  }
+
+  .work-page .intro {
+    margin: 10px 0 14px;
+  }
+
+  .filters {
+    position: sticky;
+    top: var(--mast-h, 108px);
+    z-index: 40;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    background: var(--paper);
+    margin-inline: calc(clamp(16px, 4vw, 56px) * -1);
+    padding: 8px clamp(16px, 4vw, 56px) 12px;
+  }
+
+  .filter {
+    flex: 0 0 auto;
+  }
+
+  .work-grid {
+    margin-top: 16px;
+  }
+}
+
 .work-grid .card {
   animation: wipe 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }

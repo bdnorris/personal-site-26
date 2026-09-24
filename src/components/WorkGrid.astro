@@ -88,5 +88,14 @@ const filters = CATEGORIES.map((label) => ({
     const initial = new URLSearchParams(window.location.search).get("cat");
     const known = buttons.some((btn) => btn.dataset.filter === initial);
     if (initial && known) apply(initial);
+
+    const mast = document.querySelector(".mast");
+    const syncMastHeight = () => {
+      if (!(mast instanceof HTMLElement)) return;
+      const height = Math.ceil(mast.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--mast-h", `${height}px`);
+    };
+    syncMastHeight();
+    window.addEventListener("resize", syncMastHeight);
   }
 </script>
