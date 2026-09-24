@@ -224,7 +224,7 @@ h1, h2 {
   align-items: center;
   justify-content: flex-end;
   gap: 14px;
-  padding: 5px clamp(16px, 4vw, 56px);
+  padding: 5px max(2rem, calc(100vw - var(--max-width)) / 2);
   border-bottom: 1px solid var(--line);
 }
 
@@ -234,7 +234,7 @@ h1, h2 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 4px 16px;
-  padding: 10px clamp(16px, 4vw, 56px) 4px;
+  padding: 10px max(2rem, calc(100vw - var(--max-width)) / 2) 4px;
 }
 
 .wordmark {
@@ -534,7 +534,7 @@ h1, h2 {
 .section-head {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: clamp(22px, 3vw, 40px);
@@ -543,6 +543,16 @@ h1, h2 {
 .section-head h2,
 .bring h2 {
   font-size: clamp(26px, 3.4vw, 44px);
+}
+
+.bring h2 {
+  margin-bottom: clamp(22px, 3vw, 40px);
+}
+
+.section-head .link-quiet {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .link-quiet {
@@ -560,8 +570,14 @@ h1, h2 {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: 1fr;
   gap: clamp(16px, 2vw, 28px);
+}
+
+@media (min-width: 760px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .card {
@@ -708,8 +724,34 @@ h1, h2 {
 
 .skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  grid-template-columns: 1fr;
   gap: clamp(12px, 1.4vw, 18px);
+}
+
+/* Five peers: one column, then a full 3+2, then five once they fit. */
+@media (min-width: 760px) {
+  .skills {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .skill:nth-child(-n + 3) {
+    grid-column: span 2;
+  }
+
+  .skill:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .skills {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .skill:nth-child(-n + 3),
+  .skill:nth-child(n + 4) {
+    grid-column: auto;
+  }
 }
 
 .skill {
