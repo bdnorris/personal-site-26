@@ -6,23 +6,25 @@ import { getFeatured } from "../lib/work";
 import { getSite } from "../lib/site";
 
 const featured = getFeatured();
-const { skills } = getSite();
+const { skills, contacts } = getSite();
 ---
 
 <BaseLayout title="Brian Norris" description="Front-end developer who lives in the details.">
   <div class="wipe">
     <section class="hero">
       <p class="kicker">
-        user experience <span class="dot">·</span> accessibility <span class="dot">·</span> performance
+        <span class="kicker-phrase">user experience<span class="dot"> ·</span></span>
+        <span class="kicker-phrase">accessibility<span class="dot"> ·</span></span>
+        <span class="kicker-phrase">performance</span>
       </p>
       <h1>
         <span>Where design meets code, </span><br>
         <span>I close </span>
-        <span><span class="acc">the gap</span>.</span>
+        <span class="hero-phrase"><span class="acc">the gap</span>.</span>
       </h1>
       <div class="hero-row">
         <p class="lede">
-          Great designs don't automatically become great websites. That's where I come in. With 10+ years building for agencies, clients, and the classroom, I close the gap between design intent and technical execution.
+          Great designs don't automatically become great websites. That's where I come in. I've spent 10+ years building for agencies, clients, and the classroom.
         </p>
         <div class="hero-actions">
           <a class="btn btn-fill" href="/work">See the work</a>
@@ -54,6 +56,20 @@ const { skills } = getSite();
                 ))}
               </ul>
             </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section invite" aria-label="Contact">
+      <p class="invite-line">If you want to talk, write or call.</p>
+      <div class="invite-links">
+        {
+          contacts.map((c) => (
+            <a href={c.href}>
+              <span class="k">{c.k}</span>
+              <span class="v">{c.v}</span>
+            </a>
           ))
         }
       </div>
