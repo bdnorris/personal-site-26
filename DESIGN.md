@@ -169,7 +169,7 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 - **Display** (900, `clamp(34px, 7vw, 112px)`, line-height 1 / 0.88 on inner pages): Home hero, work/about/case/404 titles. One size family, not a cluster of competing heroes.
 - **Headline** (900, section titles `clamp(26px, 3.4vw, 44px)`; case splits `clamp(22px, 2.4vw, 32px)`): Section architecture. Sticky on case-study left columns.
-- **Title** (500–700, 17–23px, line-height ~1.12): Card titles, skill headings, job titles, contact values. Weight 500 at rest; 700 when the line has to hold a resume job.
+- **Title** (500–700, 17–23px, line-height ~1.12): Card titles, skill headings, job titles, contact values. Weight 500 at rest; 700 when the line has to hold — resume jobs, the home skill titles (on a full-bleed 1px ink rule), and the home invite values (on a 1px ink underline).
 - **Body** (400, 15–17.5px, line-height 1.45–1.62, measure ~46–70ch): Lede, about prose, case copy, skill items, job blurbs. Serif only — never Termina for paragraphs.
 - **Label** (400, 12px, letter-spacing 0.12–0.24em, uppercase): Kickers, nav-adjacent tools, card meta, footer, filter counts, resume section heads. Mono only.
 
