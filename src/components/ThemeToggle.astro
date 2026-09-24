@@ -6,7 +6,7 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<button class:list={["theme-toggle", className]} type="button" data-theme-toggle aria-label="Toggle dark mode">
+<button class:list={["theme-toggle", className]} type="button" data-theme-toggle aria-pressed="false" aria-label="Light theme">
   <span class="theme-dot" aria-hidden="true"></span>
   <span data-theme-label>Light</span>
 </button>
@@ -27,8 +27,12 @@ const { class: className } = Astro.props;
     } catch {
       /* ignore */
     }
-    document.querySelectorAll("[data-theme-label]").forEach((el) => {
-      el.textContent = labelFor(theme);
+    const label = labelFor(theme);
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      const text = button.querySelector("[data-theme-label]");
+      if (text) text.textContent = label;
+      button.setAttribute("aria-label", `${label} theme`);
+      button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     });
   }
 

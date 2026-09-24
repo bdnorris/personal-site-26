@@ -51,7 +51,7 @@
     --acc2ink: var(--coral-300);
     --acc2soft: #3a1c1e;
     --onacc2: var(--coral-950);
-    --texblend: multiply;
+    --texblend: soft-light;
   }
 }
 
@@ -67,7 +67,7 @@
   --acc2ink: var(--coral-300);
   --acc2soft: #3a1c1e;
   --onacc2: var(--coral-950);
-  --texblend: multiply;
+  --texblend: soft-light;
 }
 
 html {
@@ -165,16 +165,6 @@ h1, h2 {
   50%,
   100% {
     opacity: 0.15;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
 
@@ -276,14 +266,12 @@ h1, h2 {
   font-family: "termina", sans-serif;
   font-weight: 500;
   text-decoration: none;
-  color: var(--ink);
-  opacity: 0.5;
-  transition: opacity 0.25s ease;
+  color: var(--mute);
+  transition: color 0.25s ease;
 }
 
 .nav-link:hover,
 .nav-link.is-on {
-  opacity: 1;
   color: var(--ink);
 }
 
@@ -315,7 +303,7 @@ h1, h2 {
   display: flex;
   align-items: center;
   gap: 7px;
-  min-height: 32px;
+  min-height: 44px;
   padding: 4px 10px;
   margin-right: -10px;
   border: 0;
@@ -590,14 +578,6 @@ h1, h2 {
 
 .card:active {
   translate: 0 -2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card:hover,
-  .card:focus-visible,
-  .card:active {
-    translate: none;
-  }
 }
 
 .card-media {
@@ -1892,5 +1872,44 @@ h1, h2 {
   .skill,
   .featured .card {
     animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* `animation: none` also resets scroll timelines. Duration hacks do not. */
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .acc {
+    font-variation-settings: "wght" 400, "GRAD" 0, "wdth" 100;
+    letter-spacing: 0;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .card:hover,
+  .card:focus-visible,
+  .card:active {
+    translate: none;
+  }
+
+  .nav-link .rule {
+    transition: none;
+  }
+}
+
+@media print {
+  .nav {
+    display: none;
+  }
+
+  .resume-head a[download] {
+    display: none;
   }
 }

@@ -241,8 +241,8 @@ None in the shipped UI. Contact is mailto/tel rows, not a form. Do not invent a 
 ### Navigation
 
 - Wordmark: Termina 900, `clamp(17px, 4.4vw, 19px)`, ink, no underline.
-- Links: Termina 500, ~13.5px, min-height 44px, padding 0 11px. Rest opacity 0.5; hover and current go to 1. Current page draws a 2px Sea Glass underline that scales in from the left.
-- Theme toggle: transparent, mono 9.5px uppercase tracking, mute → ink on hover. Vermilion 8px dot; inset paper ring in light so it reads hollow.
+- Links: Termina 500, ~13.5px, min-height 44px, padding 0 11px. Rest color is mute; hover and current are ink. Do not fade the link with opacity. Current page draws a 2px Sea Glass underline that scales in from the left.
+- Theme toggle: transparent, mono 9.5px uppercase tracking, min-height 44px, mute → ink on hover. Visible label is the current theme (`Light` or `Dark`); the accessible name is that word plus “theme”, and `aria-pressed` is true in dark. Vermilion 8px dot; inset paper ring in light so it reads hollow.
 
 ### Empty image frame (signature)
 
@@ -250,7 +250,7 @@ When `src` is missing, the frame is a dashed 1.5px ink mix, centered uppercase m
 
 ### Italic accent (signature)
 
-Inline Roboto Serif italic in Sea Glass, 1.18em, tight line-height 0.9, one-shot variable-font settle after 1.4s. Reduced-motion kills it.
+Inline Roboto Serif italic in Sea Glass, 1.18em, tight line-height 0.9, one-shot variable-font settle after 1.4s. Reduced motion shows the settled variation immediately.
 
 ### Inverted band / pull (signature)
 
@@ -264,7 +264,7 @@ Ink ground, paper type, 4px radius. Philosophy band and case pull quotes. Vermil
 - **Do** set pages on Cream Laid with the print-pattern grain and the documented blend modes.
 - **Do** use Sea Glass for primary fills, links, and the italic accent.
 - **Do** leave empty frames dashed and labeled until a real asset exists.
-- **Do** honor `prefers-reduced-motion` (animations collapse to 0.01ms) and keep the 44px nav/filter targets.
+- **Do** honor `prefers-reduced-motion`: drop spatial animation (entrances, lifts, the caret, scroll-linked rises) and keep color and border transitions that show state. Keep the 44px nav/filter targets.
 - **Do** section with hairline `line` rules (and the 2px ink rule under the resume name only).
 
 ### Don't:
