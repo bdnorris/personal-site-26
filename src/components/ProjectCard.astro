@@ -22,10 +22,10 @@ const alt = workHeroAlt(item);
           <Image
             src={heroSrc}
             alt={alt}
-            width={1100}
-            height={600}
-            widths={[550, 1100]}
-            sizes="(max-width: 550px) 768px, 1100px"
+            width={1280}
+            height={698}
+            widths={[480, 720, 960, 1280]}
+            sizes="(max-width: 720px) calc(100vw - 2rem), (max-width: 1040px) calc(50vw - 2.5rem), (max-width: 1200px) 320px, 400px"
           />
         </ImageFrame>
       ) : (
