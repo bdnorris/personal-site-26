@@ -6,14 +6,14 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<button class:list={["theme-toggle", className]} type="button" data-theme-toggle aria-pressed="false" aria-label="Light theme">
+<button class:list={["theme-toggle", className]} type="button" data-theme-toggle>
   <span class="theme-dot" aria-hidden="true"></span>
-  <span data-theme-label>Light</span>
+  <span data-theme-label>Switch to dark</span>
 </button>
 
 <script>
   function labelFor(theme: string) {
-    return theme === "dark" ? "Dark" : "Light";
+    return theme === "dark" ? "Switch to light" : "Switch to dark";
   }
 
   function currentTheme() {
@@ -31,8 +31,8 @@ const { class: className } = Astro.props;
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
       const text = button.querySelector("[data-theme-label]");
       if (text) text.textContent = label;
-      button.setAttribute("aria-label", `${label} theme`);
-      button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      button.removeAttribute("aria-label");
+      button.removeAttribute("aria-pressed");
     });
   }
 

@@ -16,7 +16,7 @@ const path = Astro.url.pathname;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,8 +62,9 @@ const path = Astro.url.pathname;
   </head>
   <body>
     <div class="page">
+      <a class="skip" href="#main">Skip to content</a>
       <Header path={path} />
-      <main class="main">
+      <main class="main" id="main">
         <slot />
       </main>
       <Footer />

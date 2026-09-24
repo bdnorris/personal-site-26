@@ -16,11 +16,11 @@ const links = [
 ---
 
 <div class="mast">
-  <div class="mast-bar">
-    <ThemeToggle class="theme-toggle--bar" />
-  </div>
   <header class="mast-row">
-    <a class="wordmark" href="/">Brian Norris</a>
+    <div class="mast-id">
+      <a class="wordmark" href="/">Brian Norris</a>
+      <ThemeToggle class="theme-toggle--bar" />
+    </div>
     <nav class="nav" aria-label="Primary">
       {
         links.map((link) => {
