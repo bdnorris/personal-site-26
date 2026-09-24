@@ -31,6 +31,16 @@ const { skills } = getSite();
       </div>
     </section>
 
+    <section class="section section-rule featured">
+      <div class="section-head">
+        <h2>Featured work</h2>
+        <a class="link-quiet" href="/work">All projects →</a>
+      </div>
+      <div class="cards">
+        {featured.map((item) => <ProjectCard item={item} />)}
+      </div>
+    </section>
+
     <section class="section bring">
       <h2>What I bring</h2>
       <div class="skills">
@@ -46,16 +56,6 @@ const { skills } = getSite();
             </div>
           ))
         }
-      </div>
-    </section>
-
-    <section class="section section-rule featured">
-      <div class="section-head">
-        <h2>Featured work</h2>
-        <a class="link-quiet" href="/work">All projects →</a>
-      </div>
-      <div class="cards">
-        {featured.map((item) => <ProjectCard item={item} />)}
       </div>
     </section>
 
