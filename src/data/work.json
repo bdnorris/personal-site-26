@@ -333,11 +333,7 @@
         },
         {
           "title": "The trig problem",
-          "body": "Because the number of recipes per daypart varies, the angular size of each slice varies too. Placing recipe markers and daypart labels at the correct positions on the circle required trigonometric calculations after each data load. The calculations needed to handle centering each daypart's recipes within its slice, accumulating angles correctly across dayparts, and converting between degrees and radians for SVG coordinate math."
-        },
-        {
-          "title": "Trigonometry for variable item placement",
-          "body": "AI assistance was instrumental in working out the correct trigonometric functions for variable item placement. This is a problem that is easy to get subtly wrong and hard to debug visually."
+          "body": "Because the number of recipes per daypart varies, the angular size of each slice varies too. Placing recipe markers and daypart labels at the correct positions on the circle required trigonometric calculations after each data load. The calculations needed to handle centering each daypart's recipes within its slice, accumulating angles correctly across dayparts, and converting between degrees and radians for SVG coordinate math. AI assistance was instrumental in working out the correct trigonometric functions for variable item placement."
         },
         {
           "title": "Animation",
