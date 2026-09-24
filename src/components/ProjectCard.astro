@@ -6,9 +6,24 @@ import { Image } from "astro:assets";
 interface Props {
   item: WorkItem;
   wide?: boolean;
+  heading?: "h2" | "h3";
 }
 
-const { item, wide = false } = Astro.props;
+const { item, wide = false, heading = "h3" } = Astro.props;
+
+const titleTag = (level: "h2" | "h3"): "h2" | "h3" => {
+  switch (level) {
+    case "h2":
+    case "h3":
+      return level;
+    default: {
+      const unexpected: never = level;
+      return unexpected;
+    }
+  }
+};
+
+const Title = titleTag(heading);
 const heroSrc = item.hero?.src?.trim() || null;
 const indexStack = item.stack.filter((entry) => entry.trim()).slice(0, 3);
 const hint = workHeroHint(item);
@@ -37,7 +52,7 @@ const alt = workHeroAlt(item);
   </div>
   <div class="card-body">
     <span class="card-meta">{item.category} · {item.year}</span>
-    <h3>{item.title}</h3>
+    <Title>{item.title}</Title>
     <p>{item.blurb}</p>
     {
       wide && indexStack.length ? (
