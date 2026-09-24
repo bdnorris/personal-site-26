@@ -28,7 +28,7 @@
   --syntax-keyword: var(--acc);
   --syntax-operator: var(--ink);
   --syntax-string: var(--acc2ink);
-  --syntax-constant: var(--acc2);
+  --syntax-constant: var(--acc2ink);
   --syntax-function: var(--acc);
   --syntax-type: var(--acc);
   --syntax-variable: var(--ink);
@@ -1355,7 +1355,7 @@ h1, h2 {
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
   letter-spacing: 0.14em;
-  color: var(--acc2);
+  color: var(--acc2ink);
   font-variant-numeric: tabular-nums;
   flex: none;
 }
