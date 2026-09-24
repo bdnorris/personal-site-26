@@ -1641,7 +1641,7 @@ h1, h2 {
 .about h1 {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.04s both;
   margin: 0;
-  font-size: clamp(34px, 7vw, 112px);
+  font-size: clamp(34px, 5.4vw, 76px);
   line-height: 0.88;
 }
 
@@ -1684,9 +1684,10 @@ h1, h2 {
 .contact-bar {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.24s both;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row nowrap;
   align-items: stretch;
-  width: min(100%, 68ch);
+  width: max-content;
+  max-width: 100%;
   font-family: "Roboto Serif", Georgia, serif;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -1696,17 +1697,20 @@ h1, h2 {
 .contact-bar .top {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
   padding: 0 16px;
   min-height: 44px;
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mute);
 }
 
 .contact-bar .contact-row {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: flex-start;
   min-height: 44px;
@@ -1749,6 +1753,7 @@ h1, h2 {
 
   .contact-bar {
     flex-direction: column;
+    width: min(100%, 65ch);
   }
 
   .contact-bar .top {
