@@ -16,6 +16,7 @@
   --coral-900: #6e1a22;
   --coral-950: #3d0d12;
   --acc: #227c9d;
+  --acc-fill: #1b6680;
   --acc2: var(--coral-400);
   --onacc: #fef9ef;
   --acc2ink: var(--coral-700);
@@ -46,6 +47,7 @@
     --line: rgba(254, 249, 239, 0.18);
     --card: #0d3543;
     --acc: #17c3b2;
+    --acc-fill: #17c3b2;
     --acc2: var(--coral-400);
     --onacc: #06232c;
     --acc2ink: var(--coral-300);
@@ -61,9 +63,10 @@
   --mute: #8fb3bd;
   --line: rgba(254, 249, 239, 0.18);
   --card: #0d3543;
-  --acc: #17c3b2;
-  --acc2: var(--coral-400);
-  --onacc: #06232c;
+    --acc: #17c3b2;
+    --acc-fill: #17c3b2;
+    --acc2: var(--coral-400);
+    --onacc: #06232c;
   --acc2ink: var(--coral-300);
   --acc2soft: #3a1c1e;
   --onacc2: var(--coral-950);
@@ -472,7 +475,7 @@ h1, h2 {
 }
 
 .btn-fill {
-  background: var(--acc);
+  background: var(--acc-fill);
   color: var(--onacc);
 }
 
@@ -482,7 +485,7 @@ h1, h2 {
 }
 
 .btn-ghost {
-  border: 2px solid var(--acc);
+  border: 1px solid var(--acc);
   color: var(--ink);
 }
 

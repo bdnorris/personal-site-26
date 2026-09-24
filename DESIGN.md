@@ -185,7 +185,7 @@ The page is a spread with a 1280px max (`--max-width`). Horizontal padding is `c
 
 Grids are `auto-fit` with mins around 230px (skills), 290–300px (work cards), 150px (meta cells). No 12-column overlay. Hairline rules (`1px solid line`, or `2px solid ink` under the resume name) do the sectioning.
 
-The mast is sticky. Below 640px the theme toggle moves into a slim top bar; at 641px it sits in the nav after a 1px vertical rule. Case-study headings stick below the mast (`top: 78px`).
+The mast is sticky. The wordmark returns home, so the nav is Work, About, and Resume. Below 640px the theme control shares the wordmark row; from 641px it sits in the nav after a 1px vertical rule. Case-study headings stick below the mast (`top: 78px`).
 
 Resume is a narrower measure (max 980px). Case body maxes at 1100px. About is a two-column auto-fit (copy + portrait/contact).
 
@@ -216,7 +216,7 @@ Refined and restrained: soft actions, square surfaces. Chrome stays quiet so typ
 ### Buttons
 
 - **Shape:** Full pill (999px). Termina 500, 14px, padding 13px 22px, gap 10px.
-- **Primary:** Sea Glass fill, on-sea-glass text. Hover brightens (`filter: brightness(1.1)`) and lifts 2px. Do not default this fill to Vermilion.
+- **Primary:** Sea Glass fill, on-sea-glass text. The light fill is `#1b6680` so the 14px label stays above 4.5:1, including the brightened hover. Night keeps `#17c3b2`. Hover brightens (`filter: brightness(1.1)`) and lifts 2px. Do not default this fill to Vermilion.
 - **Ghost:** Transparent, 1px `line` stroke, ink text. Hover stroke goes to ink.
 - **Hover / Focus:** Shared 0.3s `cubic-bezier(0.2, 0.8, 0.2, 1)` lift. Production has no custom `:focus-visible` yet; add a 2px Sea Glass or Ink ring (offset ~3px) before inventing any other focus language. No shadow on focus.
 
