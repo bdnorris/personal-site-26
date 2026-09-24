@@ -3,6 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSite } from "../lib/site";
 
 const site = getSite();
+const email = site.contacts.find((contact) => contact.k === "Email");
+const phone = site.contacts.find((contact) => contact.k === "Phone");
+const roleParts = site.role.trim().split(/\s+/);
+const roleTail = roleParts.length > 0 ? roleParts[roleParts.length - 1] : site.role;
+const roleLead = roleParts.slice(0, -1);
 ---
 
 <BaseLayout title="Resume · Brian Norris" description="Senior front-end developer in Springfield, MO.">
@@ -10,19 +15,35 @@ const site = getSite();
     <div class="resume-head">
       <div>
         <h1>Brian Norris</h1>
-        <p>{site.role} · {site.location}</p>
+        <p>
+          {
+            roleLead.map((word) => (
+              <span class="resume-keep">{word}</span>
+            ))
+          }
+          <span class="resume-keep">{roleTail} · {site.location}</span>
+        </p>
       </div>
-      <a class="btn btn-fill" href="/brian-norris-resume.pdf" download>
-        Download PDF
-      </a>
     </div>
 
-    <div class="resume-contacts">
+    <div class="resume-actions">
       {
-        site.contacts.map((c) => (
-          <a href={c.href}>{c.v}</a>
-        ))
+        email ? (
+          <a class="btn btn-fill" href={email.href} aria-label={`${email.k} ${email.v}`}>
+            {email.v}
+          </a>
+        ) : null
       }
+      {
+        phone ? (
+          <a class="btn btn-ghost" href={phone.href} aria-label={`${phone.k} ${phone.v}`}>
+            {phone.v}
+          </a>
+        ) : null
+      }
+      <a class="btn btn-ghost" href="/brian-norris-resume.pdf" download>
+        Download PDF
+      </a>
     </div>
 
     <section class="resume-block">
@@ -75,5 +96,22 @@ const site = getSite();
         </div>
       </div>
     </section>
+
+    <div class="resume-actions resume-actions--end">
+      {
+        email ? (
+          <a class="btn btn-fill" href={email.href} aria-label={`${email.k} ${email.v}`}>
+            {email.v}
+          </a>
+        ) : null
+      }
+      {
+        phone ? (
+          <a class="btn btn-ghost" href={phone.href} aria-label={`${phone.k} ${phone.v}`}>
+            {phone.v}
+          </a>
+        ) : null
+      }
+    </div>
   </div>
 </BaseLayout>

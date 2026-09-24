@@ -278,7 +278,10 @@ h1, h2 {
 }
 
 .wordmark {
+  display: flex;
+  align-items: center;
   flex: 0 0 auto;
+  min-height: 44px;
   font-size: clamp(17px, 4.4vw, 19px);
   line-height: 1;
   font-family: "termina", sans-serif;
@@ -1938,6 +1941,10 @@ h1, h2 {
 }
 
 .resume-head p {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.7em;
+  row-gap: 0.2em;
   margin: 10px 0 0;
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
@@ -1946,27 +1953,33 @@ h1, h2 {
   color: var(--mute);
 }
 
-.resume-contacts {
+.resume-keep {
+  white-space: nowrap;
+}
+
+.resume-actions {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.13s both;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 26px;
+  gap: 8px;
+  align-items: center;
   padding: 16px 0;
   border-bottom: 1px solid var(--line);
 }
 
-.resume-contacts a {
-  font-size: 14px;
-  font-family: "termina", sans-serif;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--ink);
-  border-bottom: 1px solid var(--line);
+.resume-actions .btn {
+  min-height: 44px;
 }
 
-.resume-contacts a:hover {
-  border-color: var(--acc);
-  color: var(--acc);
+.resume-actions .btn-fill {
+  border: 1px solid transparent;
+}
+
+.resume-actions--end {
+  animation: none;
+  margin-top: 0;
+  padding: 16px 0 0;
+  border-bottom: 0;
 }
 
 .resume-block {
@@ -2006,7 +2019,6 @@ h1, h2 {
 .edu-dates {
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
-  letter-spacing: 0.06em;
   color: var(--mute);
   line-height: 1.5;
   padding-top: 4px;
@@ -2154,7 +2166,7 @@ h1, h2 {
     display: none;
   }
 
-  .resume-head a[download] {
+  .resume a[download] {
     display: none;
   }
 }
