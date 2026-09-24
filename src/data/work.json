@@ -179,8 +179,8 @@
     "featured": false,
     "hero": {
       "hint": "A screenshot of the WordPress builds",
-      "alt": "Four website homepages are partially visible, each representing different companies: Pinnacle Family Advisors, Paragon Architecture, Magers Management, and Pilgrim’s Foodservice. Each section displays distinct branding and colors.",
-      "src": "/images/hero_wordpress.avif"
+      "alt": "A collage of four website homepages, each with distinct logos, text, and color schemes arranged in vertical strips, partially overlaying each other.",
+      "src": "/images/hero_wordpress02.avif"
     },
     "case": {
       "client": "Multiple",

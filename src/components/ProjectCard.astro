@@ -26,7 +26,8 @@ const alt = workHeroAlt(item);
             width={1280}
             height={698}
             widths={[480, 720, 960, 1280]}
-            sizes="(max-width: 720px) calc(100vw - 2rem), (max-width: 1040px) calc(50vw - 2.5rem), (max-width: 1200px) 320px, 400px"
+            sizes="auto, (max-width: 720px) calc(100vw - 2rem), calc(50vw - 2.5rem)"
+            loading="lazy"
           />
         </ImageFrame>
       ) : (
