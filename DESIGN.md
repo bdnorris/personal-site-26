@@ -46,7 +46,7 @@ typography:
     lineHeight: 1.58
     letterSpacing: "normal"
   label:
-    fontFamily: "JetBrains Mono, monospace"
+    fontFamily: "Roboto Mono, monospace"
     fontSize: "12px"
     fontWeight: 400
     lineHeight: 1.3
@@ -117,7 +117,7 @@ components:
 
 **Creative North Star: "The Typesetter's Studio"**
 
-A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; JetBrains Mono is the tools left on the desk — kickers, meta, labels, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.
+A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; Roboto Mono is the tools left on the desk — kickers, meta, labels, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.
 
 Density is editorial. One very large display size, hairline rules, auto-fit grids, and cream laid ground with a print-pattern grain. Personality lives in the pairing and the texture. Actions are soft pills; surfaces are quiet 4px rectangles. Hover lifts a card a few pixels and turns its border to ink. Nothing casts a shadow.
 
@@ -126,7 +126,7 @@ Visual rejections already in the code: no drop shadows, no glass, no gradient he
 **Key Characteristics:**
 
 - Cream laid paper, Deep Teal Ink, Sea Glass actions, scarce Vermilion Spark
-- Three type voices only (Termina, Roboto Serif, JetBrains Mono)
+- Three type voices only (Termina, Roboto Serif, Roboto Mono)
 - Flat hairline surfaces; lift-on-hover is the only physical move
 - Print-pattern grain as paper, not decoration layered on top
 - Honest dashed slots where images are missing
@@ -161,7 +161,7 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 **Display Font:** Termina (with system-ui, sans-serif)
 **Body Font:** Roboto Serif (with Georgia, serif)
-**Label/Mono Font:** JetBrains Mono (monospace)
+**Label/Mono Font:** Roboto Mono (monospace)
 
 **Character:** A typesetter's pairing. Geometric display that can go black (900) without looking like a logo font; a literary serif for sentences; a working mono for the desk tools. The italic serif, in Sea Glass, is the only flourish inside a Termina headline.
 
@@ -175,7 +175,7 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 ### Named Rules
 
-**The Three-Voice Rule.** Termina for structure and display. Roboto Serif for reading and the italic accent. JetBrains Mono for tools. Do not add a fourth family.
+**The Three-Voice Rule.** Termina for structure and display. Roboto Serif for reading and the italic accent. Roboto Mono for tools. Do not add a fourth family.
 
 **The Italic Accent Rule.** One italic Roboto Serif word may sit inside a Termina headline, in Sea Glass, at 1.18em, with the variable-font settle (`wght` 460 / `GRAD` 40 / `wdth` 122 → 400 / 0 / 100 over 4s). Use it as a stress, not a style for whole sentences.
 
