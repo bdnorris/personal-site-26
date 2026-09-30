@@ -123,6 +123,7 @@
         { "k": "CSS / Sass", "v": "Experience and passion for writing sane and resilient stylesheets" },
         { "k": "JavaScript / TypeScript", "v": "Frameworks (Vue, Svelte, Alpine.js)" },
         { "k": "UI development", "v": "Design system and UI kit development" },
+        { "k": "Performance", "v": "Performance optimization and Core Web Vitals" },
         { "k": "Animation", "v": "Meaningful and performant animations" },
         { "k": "Content management", "v": "WordPress, Statamic, Craft, Pimcore, Umbraco, Sanity" },
         { "k": "APIs", "v": "RESTful and GraphQL" },
