@@ -12,8 +12,8 @@
       "items": [
         "CSS and Sass that stay sane",
         "JavaScript / TypeScript: Vue, Svelte, Alpine.js",
-        "Design system and UI kit builds",
-        "Meaningful and performant animations"
+        "Meaningful and performant animations",
+        "Performance optimization and Core Web Vitals"
       ]
     },
     {
