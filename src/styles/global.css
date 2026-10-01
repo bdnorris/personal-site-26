@@ -1686,6 +1686,7 @@ h1, h2 {
 
 /* About */
 .about {
+  container-type: inline-size;
   padding-block: clamp(34px, 5vw, 72px) clamp(44px, 6vw, 80px);
   padding-inline: max(2rem, calc(100vw - var(--max-width)) / 2);
   display: flex;
@@ -1798,6 +1799,26 @@ h1, h2 {
 
 .contact-row:last-child {
   border-bottom: 0;
+}
+
+@container (width < 1040px) {
+  .contact-bar {
+    flex-direction: column;
+    width: min(100%, 65ch);
+  }
+
+  .contact-bar .top {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-bar .contact-row {
+    border-inline-start: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-bar .contact-row:last-child {
+    border-bottom: 0;
+  }
 }
 
 @media (max-width: 640px) {

@@ -32,6 +32,7 @@ export type SiteData = {
   location: string;
   role: string;
   contacts: Contact[];
+  profiles: Contact[];
   toolkit: string[];
   skills: SkillGroup[];
   philosophy: Philosophy[];

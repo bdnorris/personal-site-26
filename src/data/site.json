@@ -6,6 +6,10 @@
     { "k": "Email", "v": "hi@briannorris.dev", "href": "mailto:hi@briannorris.dev" },
     { "k": "Phone", "v": "417.425.7739", "href": "tel:+14174257739" }
   ],
+  "profiles": [
+    { "k": "GitHub", "v": "bdnorris", "href": "https://github.com/bdnorris" },
+    { "k": "LinkedIn", "v": "brian-norris", "href": "https://www.linkedin.com/in/brian-norris-b401ab37/" }
+  ],
   "skills": [
     {
       "title": "Development",

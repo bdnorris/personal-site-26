@@ -19,7 +19,7 @@ const site = getSite();
       <div class="contact-bar">
         <h2 class="top">Get in touch</h2>
         {
-          site.contacts.map((c) => (
+          [...site.contacts, ...site.profiles].map((c) => (
             <a class="contact-row" href={c.href}>
               <span class="k">{c.k}</span>
               <span class="v">{c.v}</span>
