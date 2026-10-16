@@ -407,25 +407,25 @@
       "role": "Lead developer",
       "lede": "A reusable, live client-side filtering app built for food-service brands.",
       "context": [
-        "Product and recipe catalogs are only useful if people can find what they're looking for. For a set of food-service clients, the existing approach either relied on server-side filtering where every filter selection triggered a full page reload, or apps with limited functionality, like only a single filtering option. The goal was live, client-side filtering: accurate, usable, and fast, without the page ever refreshing."
+        "Product and recipe catalogs are only useful if people can find what they're looking for. For a set of food-service clients, the existing approach either relied on server-side filtering, where every filter selection triggered a full page reload, or on apps with limited functionality, such as a single filtering option. The goal was live, client-side filtering: accurate, usable, and fast, without the page ever refreshing."
       ],
-      "roleDetail": "Sole developer across all implementations. Each client had its own visual design handled by a designer; the filtering logic, data architecture, and front-end build were my own.",
+      "roleDetail": "Sole developer across all implementations. Each client had its own visual design handled by a designer; I handled the filtering logic, data architecture, and front-end build.",
       "decisions": [
         {
           "title": "Building for reuse",
-          "body": "Although the initial build was a one-off, it was soon clear that a reusable version would be valuable as the same problem kept presenting itself with new projects. The final app was architected as a base that could be adapted across sites with different product catalogs and visual designs. The filtering logic was kept separate from the presentation layer so each client's design could be applied without touching the core functionality."
+          "body": "Although the initial build was a one-off, it soon became clear that a reusable version would be valuable, as the same problem kept recurring across new projects. The final app was architected as a base that could be adapted across sites with different product catalogs and visual designs. I kept the filtering logic separate from the presentation layer so each client could apply their design without touching the core functionality."
         },
         {
           "title": "From GraphQL to a server-side JS object",
-          "body": "The original version pulled product data from Craft CMS via its GraphQL API, which worked well. When the app was adapted for WordPress, WPGraphQL was the natural equivalent. However, it didn't perform well enough under real conditions. The solution was to shift data loading to a server-side built JavaScript object, constructed at render time and cached with typical WordPress caching strategies. This kept the client-side experience fast while avoiding the overhead of a runtime API call."
+          "body": "The original version pulled product data from Craft CMS via its GraphQL API, which worked well. When the app was adapted for WordPress, WPGraphQL was the natural equivalent. However, it didn't perform well enough under real conditions. The solution was to shift data loading to a server-side-built JavaScript object, constructed at render time and cached with typical WordPress caching strategies. This kept the client-side experience fast while avoiding the overhead of a runtime API call."
         },
         {
           "title": "Dynamic filter generation",
-          "body": "When the app loads, all product data is read in and the filtering menu is generated dynamically by reading each product's tags. New filter options appear automatically as the product catalog changes with no manual menu maintenance required."
+          "body": "When the app loads, it reads all product data and dynamically generates the filtering menu from each product's tags. New filter options appear automatically as the product catalog changes, with no manual menu maintenance required."
         },
         {
           "title": "The filtering logic",
-          "body": "The core of the app is a computed function that handles a nuanced filtering pattern: within a group, selected filters are OR (show me items matching any of these), but between groups they are AND (show me items matching at least one from each group). This mirrors how people actually think about filtering: ‘show me chicken or beef dishes, but only the ones that are also gluten-free.’"
+          "body": "The core of the app is a computed function that handles a nuanced filtering pattern: within a group, selected filters are OR (show me items matching any of these), but between groups they are AND (show me items matching at least one from each group). This mirrors how people actually think about filtering: ‘show me chicken or beef dishes, but only the ones that are also gluten-free.'"
         },
         {
           "title": "URL parameter sync",
@@ -476,7 +476,7 @@
         "The app is currently live on several client sites across different brands and product catalogs, handling both product and recipe filtering. The shift from WPGraphQL to a server-side JS object resolved the performance issues and became the standard data approach for all subsequent WordPress implementations."
       ],
       "reflections": [
-        "In hindsight, the volume of WordPress implementations makes a strong case for packaging this as a proper plugin with an admin interface for filter configuration, rather than manual setup. It's the natural next step for something that's become a recurring solution."
+        "In hindsight, the number of WordPress implementations makes a strong case for packaging this as a proper plugin with an admin interface for configuring filters, rather than setting it up manually. It's the natural next step for something that's become a recurring solution."
       ]
     }
   },
