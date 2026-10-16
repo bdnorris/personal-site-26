@@ -491,7 +491,7 @@
     "featured": false,
     "hero": {
       "hint": "A screenshot of the Accessibility Dev Training document",
-      "alt": "A webpage section titled “Scope” explains web accessibility, quoting Heydon Pickering, and discusses making sites usable for all. A yellow-highlighted note says, “If a website isn’t accessible, it isn’t usable.”.",
+      "alt": "A webpage section titled “Scope” explains web accessibility, quoting Heydon Pickering, and discusses making sites usable for all. A yellow-highlighted note says, “If a website isn’t accessible, it isn’t usable.”",
       "src": "/images/hero_accessibility.webp"
     },
     "case": {
@@ -499,13 +499,13 @@
       "role": "Lead writer / researcher",
       "lede": "A living accessibility reference and training document written for a small team of developers. It covers foundational concepts, common problem areas, and practical solutions to raise the baseline across new work.",
       "context": [
-        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to raise the team's knowledge, I researched and wrote a training document aimed at developers who understood the concept of accessibility but needed practical guidance on implementation: what it actually means to make a project accessible, where the hard problems are, and how to approach testing."
+        "Web accessibility is easy to deprioritize and hard to retrofit. As part of a company-driven effort to build the team's knowledge, I researched and wrote a training document for developers who understood accessibility but needed practical guidance on implementation: what it really means to make a project accessible, where the hard problems lie, and how to test."
       ],
-      "roleDetail": "Lead researcher and author. The training was a collaborative research effort across the team; I synthesized the findings into a single cohesive document and led any subsequent training sessions.",
+      "roleDetail": "Lead researcher and author. The team collaborated on the training; I synthesized the findings into a single cohesive document and led subsequent training sessions.",
       "decisions": [
         {
           "title": "Structuring for reference, not just reading",
-          "body": "As a living document rather than a one-time presentation, the training needed to work as something developers could return to and not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
+          "body": "As a living document rather than a one-time presentation, the training needed to be something developers could return to, not just read once and forget. That shaped how it was organized: high-level concepts up front, with deeper dives into specific problem areas that developers could jump to as needed."
         },
         {
           "title": "Focusing on the hard problems",
@@ -513,10 +513,10 @@
         }
       ],
       "outcome": [
-        "The document became a living reference for a small team of developers. Following the training, accessible code became a baseline expectation for new work, including the defense of accessibility from stakeholders when possible."
+        "The document became a living reference for a small team of developers. Following the training, accessible code became a baseline expectation for new work, including defending accessibility to stakeholders when possible."
       ],
       "reflections": [
-        "Not all stakeholders understand the nuts and bolts of accessibility, but the training helped raise awareness of it as a concept and why it matters. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort even when individual projects fall short. Getting it right consistently is a long game."
+        "Not all stakeholders understand the nuts and bolts of accessibility, but the training raised awareness of the concept and why it matters. Accessibility techniques also take practice, and taking the time to go deep on the subject was worth the effort, even when individual projects fall short. Getting it right consistently is a long game."
       ]
     }
   },
