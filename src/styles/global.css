@@ -76,6 +76,23 @@
   --texblend: soft-light;
 }
 
+:root[data-holiday] {
+  color-scheme: dark;
+  --ink: #f4ead5;
+  --paper: #17120f;
+  --mute: #c3aa90;
+  --line: rgba(244, 234, 213, 0.2);
+  --card: #241b16;
+  --acc: #ff8a1f;
+  --acc-fill: #ff9a3c;
+  --acc2: #a6d854;
+  --onacc: #17120f;
+  --acc2ink: #c9ee78;
+  --acc2soft: #263316;
+  --onacc2: #17120f;
+  --texblend: soft-light;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
 }
@@ -267,9 +284,20 @@ h1, h2 {
   min-width: 0;
 }
 
-.theme-toggle--bar {
-  margin-left: auto;
+.theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
   flex: 0 0 auto;
+}
+
+.theme-controls--bar {
+  margin-inline-start: auto;
+  flex: 0 0 auto;
+}
+
+.theme-controls--nav {
+  display: none;
 }
 
 .nav {
@@ -340,7 +368,8 @@ h1, h2 {
   background: var(--line);
 }
 
-.theme-toggle {
+.theme-toggle,
+.holiday-toggle {
   display: flex;
   align-items: center;
   gap: 7px;
@@ -357,16 +386,10 @@ h1, h2 {
   transition: color 0.25s ease;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.holiday-toggle:hover,
+.holiday-toggle[aria-pressed="true"] {
   color: var(--ink);
-}
-
-@media (max-width: 370px) {
-  .theme-toggle.theme-toggle--bar {
-    padding-inline: 0;
-    font-size: 9.5px;
-    letter-spacing: 0.04em;
-  }
 }
 
 .theme-dot {
@@ -388,14 +411,42 @@ h1, h2 {
   }
 }
 
+.holiday-dot {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--acc);
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.holiday-toggle[aria-pressed="true"] .holiday-dot {
+  border-color: var(--acc2);
+  background: var(--acc2);
+}
+
+@media (max-width: 370px) {
+  .mast-id {
+    gap: 8px;
+  }
+
+  .theme-toggle,
+  .holiday-toggle {
+    gap: 4px;
+    padding-inline: 2px;
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+  }
+}
+
 @media (min-width: 641px) {
   .nav {
     flex: 0 1 auto;
-    margin-left: auto;
+    margin-inline-start: auto;
   }
 
   .nav-rule,
-  .theme-toggle--nav {
+  .theme-controls--nav {
     display: flex;
   }
 
@@ -403,11 +454,11 @@ h1, h2 {
     display: block;
   }
 
-  .theme-toggle--nav {
-    margin-right: -10px;
+  .theme-controls--nav {
+    margin-inline-end: -10px;
   }
 
-  .theme-toggle--bar {
+  .theme-controls--bar {
     display: none;
   }
 }
@@ -417,7 +468,6 @@ h1, h2 {
     flex: 1 0 100%;
   }
 
-  .theme-toggle--nav,
   .nav-rule {
     display: none;
   }
@@ -2186,7 +2236,7 @@ h1, h2 {
 @media print {
   .nav,
   .skip,
-  .theme-toggle {
+  .theme-controls {
     display: none;
   }
 

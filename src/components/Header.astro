@@ -1,4 +1,5 @@
 ---
+import HolidayToggle from "./HolidayToggle.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 interface Props {
@@ -18,7 +19,10 @@ const links = [
   <header class="mast-row">
     <div class="mast-id">
       <a class="wordmark" href="/">Brian Norris</a>
-      <ThemeToggle class="theme-toggle--bar" />
+      <div class="theme-controls theme-controls--bar">
+        <HolidayToggle />
+        <ThemeToggle />
+      </div>
     </div>
     <nav class="nav" aria-label="Primary">
       {
@@ -33,7 +37,10 @@ const links = [
         })
       }
       <span class="nav-rule" aria-hidden="true"></span>
-      <ThemeToggle class="theme-toggle--nav" />
+      <div class="theme-controls theme-controls--nav">
+        <HolidayToggle />
+        <ThemeToggle />
+      </div>
     </nav>
   </header>
 </div>

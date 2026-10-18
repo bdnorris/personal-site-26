@@ -1,0 +1,68 @@
+---
+import { HOLIDAY_THEME } from "../lib/holiday";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<button
+  class:list={["holiday-toggle", className]}
+  type="button"
+  data-holiday-toggle
+  data-holiday-id={HOLIDAY_THEME.id}
+  aria-label={`Enable ${HOLIDAY_THEME.label} theme`}
+  aria-pressed="false"
+>
+  <span class="holiday-dot" aria-hidden="true"></span>
+  <span>{HOLIDAY_THEME.label}</span>
+</button>
+
+<script>
+  function isActive(holidayId: string) {
+    return document.documentElement.dataset.holiday === holidayId;
+  }
+
+  function apply(holidayId: string, active: boolean) {
+    if (active) {
+      document.documentElement.dataset.holiday = holidayId;
+    } else {
+      delete document.documentElement.dataset.holiday;
+    }
+
+    try {
+      if (active) {
+        localStorage.setItem("holidayTheme", holidayId);
+      } else {
+        localStorage.removeItem("holidayTheme");
+      }
+    } catch {
+      /* ignore */
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-holiday-toggle]").forEach((button) => {
+      const id = button.dataset.holidayId;
+      const pressed = id === holidayId && active;
+      const label = button.textContent?.trim() || "holiday";
+      button.setAttribute("aria-pressed", String(pressed));
+      button.setAttribute("aria-label", `${pressed ? "Disable" : "Enable"} ${label} theme`);
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-holiday-toggle]").forEach((button) => {
+    const holidayId = button.dataset.holidayId;
+    if (!holidayId) return;
+
+    button.addEventListener("click", () => {
+      apply(holidayId, !isActive(holidayId));
+    });
+  });
+
+  const initialToggle = document.querySelector<HTMLElement>("[data-holiday-toggle]");
+  const initialHolidayId = initialToggle?.dataset.holidayId;
+  if (initialHolidayId) {
+    apply(initialHolidayId, isActive(initialHolidayId));
+  }
+</script>
