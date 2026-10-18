@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-18T21:56:25.000Z",
+  "generatedAt": "2026-10-18T01:20:00.000Z",
   "title": "Design System: Brian Norris",
   "extensions": {
     "colorMeta": {
@@ -111,6 +111,90 @@
         "displayName": "Night Vermilion Soft",
         "canonical": "#3a1c1e",
         "tonalRamp": ["#3d0d12", "#3a1c1e", "#6e1a22", "#b8323c", "#fe6d73", "#ff9b9f", "#ffc4c7", "#fff3f3"]
+      },
+      "halloween-ink": {
+        "role": "neutral",
+        "displayName": "Halloween Brown Ink",
+        "canonical": "#3a2418",
+        "tonalRamp": ["#160c08", "#28160e", "#3a2418", "#61422f", "#8d6950", "#b99579", "#dbc5ac", "#f4ead5"]
+      },
+      "halloween-paper": {
+        "role": "neutral",
+        "displayName": "Halloween Candle Paper",
+        "canonical": "#fff4d6",
+        "tonalRamp": ["#3a2418", "#61422f", "#8d6950", "#b99579", "#dbc5ac", "#f0dfbd", "#fff4d6", "#fffaf0"]
+      },
+      "halloween-mute": {
+        "role": "neutral",
+        "displayName": "Halloween Muted Brown",
+        "canonical": "#765640",
+        "tonalRamp": ["#28160e", "#3a2418", "#543725", "#765640", "#99765d", "#b99579", "#dbc5ac", "#f4ead5"]
+      },
+      "halloween-card": {
+        "role": "neutral",
+        "displayName": "Halloween Candle Card",
+        "canonical": "#fffaf0",
+        "tonalRamp": ["#3a2418", "#61422f", "#8d6950", "#b99579", "#dbc5ac", "#f0dfbd", "#fff4d6", "#fffaf0"]
+      },
+      "halloween-orange": {
+        "role": "primary",
+        "displayName": "Halloween Burnt Pumpkin",
+        "canonical": "#b84700",
+        "tonalRamp": ["#351604", "#632602", "#8a3500", "#b84700", "#dc650e", "#f58a31", "#ffb16a", "#ffddb7"]
+      },
+      "halloween-orange-fill": {
+        "role": "primary",
+        "displayName": "Halloween Burnt Pumpkin Fill",
+        "canonical": "#9c3d00",
+        "tonalRamp": ["#351604", "#632602", "#7e3000", "#9c3d00", "#c65308", "#e87822", "#ffa65b", "#ffd9ad"]
+      },
+      "halloween-green": {
+        "role": "secondary",
+        "displayName": "Halloween Moss",
+        "canonical": "#7fae28",
+        "tonalRamp": ["#182507", "#30480e", "#4c701a", "#638d20", "#7fae28", "#a6ce55", "#c9e58b", "#eaf5cf"]
+      },
+      "halloween-ink-night": {
+        "role": "neutral",
+        "displayName": "Halloween Night Bone",
+        "canonical": "#f4ead5",
+        "tonalRamp": ["#231c16", "#493b2f", "#705e4c", "#9a836c", "#c3aa90", "#ddcbb0", "#f4ead5", "#fffaf0"]
+      },
+      "halloween-paper-night": {
+        "role": "neutral",
+        "displayName": "Halloween Night Charcoal",
+        "canonical": "#17120f",
+        "tonalRamp": ["#0b0908", "#17120f", "#241b16", "#3a2a22", "#634638", "#96715a", "#c3aa90", "#f4ead5"]
+      },
+      "halloween-mute-night": {
+        "role": "neutral",
+        "displayName": "Halloween Night Mute",
+        "canonical": "#c3aa90",
+        "tonalRamp": ["#241b16", "#49382d", "#705744", "#96765e", "#c3aa90", "#d3bfa9", "#e5d7c4", "#f8f1e5"]
+      },
+      "halloween-card-night": {
+        "role": "neutral",
+        "displayName": "Halloween Night Card",
+        "canonical": "#241b16",
+        "tonalRamp": ["#0b0908", "#17120f", "#241b16", "#3a2a22", "#634638", "#96715a", "#c3aa90", "#f4ead5"]
+      },
+      "halloween-orange-night": {
+        "role": "primary",
+        "displayName": "Halloween Night Pumpkin",
+        "canonical": "#ff8a1f",
+        "tonalRamp": ["#351604", "#6b2f08", "#a6460c", "#d85e0e", "#ff8a1f", "#ffa94f", "#ffc57f", "#ffe3be"]
+      },
+      "halloween-orange-fill-night": {
+        "role": "primary",
+        "displayName": "Halloween Night Pumpkin Fill",
+        "canonical": "#ff9a3c",
+        "tonalRamp": ["#351604", "#6b2f08", "#a6460c", "#d86618", "#ff9a3c", "#ffb465", "#ffce91", "#ffe8c8"]
+      },
+      "halloween-green-night": {
+        "role": "secondary",
+        "displayName": "Halloween Night Acid Green",
+        "canonical": "#a6d854",
+        "tonalRamp": ["#182507", "#30480e", "#4c701a", "#6e9d2b", "#a6d854", "#bde57a", "#d5efa5", "#edf8d5"]
       }
     },
     "typographyMeta": {
@@ -132,7 +216,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Desk tools: kickers, meta, footer, filters. JetBrains Mono, uppercase."
+        "purpose": "Desk tools: kickers, meta, footer, filters. Roboto Mono, uppercase."
       }
     },
     "shadows": [],
@@ -182,7 +266,7 @@
       {
         "name": "compact",
         "value": "640px",
-        "purpose": "Theme toggle moves from nav into the mast bar below this width."
+        "purpose": "Theme controls move from the nav into the mast bar below this width."
       }
     ]
   },
@@ -209,15 +293,23 @@
       "refersTo": "filter",
       "description": "Work-index filter. On-state is ink fill with paper type.",
       "html": "<button class=\"ds-filter\" type=\"button\">Client <span class=\"ds-filter-n\">3</span></button> <button class=\"ds-filter ds-filter-on\" type=\"button\">All <span class=\"ds-filter-n\">6</span></button>",
-      "css": ".ds-filter { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); background: transparent; color: var(--ink, #12414f); font-size: 13px; font-family: termina, sans-serif; font-weight: 500; cursor: pointer; transition: border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-filter-n { font-family: \"JetBrains Mono\", monospace; font-size: 10px; color: var(--mute, #47606a); } .ds-filter:hover { border-color: var(--ink, #12414f); } .ds-filter:focus-visible { outline: 2px solid var(--ink, #12414f); outline-offset: 3px; } .ds-filter-on { border-color: var(--ink, #12414f); background: var(--ink, #12414f); color: var(--paper, #fef9ef); } .ds-filter-on .ds-filter-n { color: var(--paper, #fef9ef); }"
+      "css": ".ds-filter { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); background: transparent; color: var(--ink, #12414f); font-size: 13px; font-family: termina, sans-serif; font-weight: 500; cursor: pointer; transition: border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-filter-n { font-family: \"Roboto Mono\", monospace; font-size: 10px; color: var(--mute, #47606a); } .ds-filter:hover { border-color: var(--ink, #12414f); } .ds-filter:focus-visible { outline: 2px solid var(--ink, #12414f); outline-offset: 3px; } .ds-filter-on { border-color: var(--ink, #12414f); background: var(--ink, #12414f); color: var(--paper, #fef9ef); } .ds-filter-on .ds-filter-n { color: var(--paper, #fef9ef); }"
     },
     {
       "name": "Primary Nav",
       "kind": "nav",
       "refersTo": "nav-link",
-      "description": "Termina links at 50% opacity; current page draws a Sea Glass underline from the left.",
+      "description": "Termina links rest in Mute; the current page draws a Sea Glass underline from the left.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-link ds-nav-on\" href=\"#\">Home<span class=\"ds-nav-rule\" aria-hidden=\"true\"></span></a><a class=\"ds-nav-link\" href=\"#\">Work<span class=\"ds-nav-rule\" aria-hidden=\"true\"></span></a><a class=\"ds-nav-link\" href=\"#\">About<span class=\"ds-nav-rule\" aria-hidden=\"true\"></span></a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; } .ds-nav-link { position: relative; display: flex; align-items: center; min-height: 44px; padding: 0 11px; font-size: 13.5px; font-family: termina, sans-serif; font-weight: 500; text-decoration: none; color: var(--ink, #12414f); opacity: 0.5; transition: opacity 0.25s ease; } .ds-nav-link:hover, .ds-nav-on { opacity: 1; color: var(--ink, #12414f); } .ds-nav-rule { position: absolute; left: 11px; right: 11px; bottom: 7px; height: 2px; background: var(--acc, #227c9d); transform-origin: left; transform: scaleX(0); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-nav-on .ds-nav-rule { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; opacity: 1; }"
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; } .ds-nav-link { position: relative; display: flex; align-items: center; min-height: 44px; padding: 0 11px; font-size: 13.5px; font-family: termina, sans-serif; font-weight: 500; text-decoration: none; color: var(--mute, #47606a); transition: color 0.25s ease; } .ds-nav-link:hover, .ds-nav-on { color: var(--ink, #12414f); } .ds-nav-rule { position: absolute; inset-inline: 11px; inset-block-end: 7px; height: 2px; background: var(--acc, #227c9d); transform-origin: left; transform: scaleX(0); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-nav-on .ds-nav-rule { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; color: var(--ink, #12414f); }"
+    },
+    {
+      "name": "Theme Controls",
+      "kind": "custom",
+      "refersTo": "nav-link",
+      "description": "Paired controls: holiday enables the seasonal layer, while light/dark switches between its two stocks. The holiday crescent moon turns to the secondary accent when active.",
+      "html": "<div class=\"ds-theme-controls\"><button class=\"ds-theme-toggle\" type=\"button\"><span class=\"ds-theme-dot\" aria-hidden=\"true\"></span>Switch to dark</button><button class=\"ds-holiday-toggle\" type=\"button\" aria-pressed=\"true\"><svg class=\"ds-holiday-moon\" aria-hidden=\"true\" width=\"10\" height=\"10\" viewBox=\"0 0 10 10\"><path d=\"M6.7 1.15A4.1 4.1 0 1 0 6.7 8.85 3.25 3.25 0 0 1 6.7 1.15Z\" fill=\"currentColor\"></path></svg>Halloween</button></div>",
+      "css": ".ds-theme-controls { display: flex; align-items: center; gap: 2px; } .ds-theme-toggle, .ds-holiday-toggle { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 4px 10px; border: 0; background: transparent; color: var(--mute, #47606a); font-family: \"Roboto Mono\", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: color 0.25s ease; } .ds-theme-toggle:hover, .ds-holiday-toggle:hover, .ds-holiday-toggle[aria-pressed=\"true\"] { color: var(--ink, #12414f); } .ds-theme-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc2, #fe6d73); box-shadow: inset 0 0 0 3px var(--paper, #fef9ef); } .ds-holiday-moon { display: block; color: var(--acc, #227c9d); } .ds-holiday-toggle[aria-pressed=\"true\"] .ds-holiday-moon { color: var(--acc2, #fe6d73); } .ds-theme-toggle:focus-visible, .ds-holiday-toggle:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; }"
     },
     {
       "name": "Project Card",
@@ -225,7 +317,7 @@
       "refersTo": "card",
       "description": "Work sheet: 4px, hairline, card stock. Hover lifts 5px and the border goes to ink.",
       "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-media\"><div class=\"ds-frame-empty\">Drop a screenshot</div></div><div class=\"ds-card-body\"><span class=\"ds-card-meta\">Client · 2025</span><h3>All Spreads</h3><p>Recipe discovery arranged like a clock.</p></div></a>",
-      "css": ".ds-card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink, #12414f); background: var(--card, #fffdf7); border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 4px; overflow: hidden; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { transform: translateY(-5px); border-color: var(--ink, #12414f); color: var(--ink, #12414f); } .ds-card:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; } .ds-card-media { position: relative; aspect-ratio: 4 / 3; background: var(--paper, #fef9ef); border-bottom: 1px solid var(--line, rgba(18, 65, 79, 0.16)); } .ds-frame-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; border: 1.5px dashed color-mix(in srgb, var(--ink, #12414f) 35%, transparent); color: var(--mute, #47606a); font-family: \"JetBrains Mono\", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; } .ds-card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 9px; } .ds-card-meta { font-family: \"JetBrains Mono\", monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--acc2ink, #b8323c); } .ds-card h3 { margin: 0; font-size: 22px; font-family: termina, sans-serif; font-weight: 500; line-height: 1.12; } .ds-card p { margin: 0; font-family: \"Roboto Serif\", Georgia, serif; font-size: 15.5px; line-height: 1.45; color: var(--mute, #47606a); }"
+      "css": ".ds-card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink, #12414f); background: var(--card, #fffdf7); border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 4px; overflow: hidden; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { transform: translateY(-5px); border-color: var(--ink, #12414f); color: var(--ink, #12414f); } .ds-card:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; } .ds-card-media { position: relative; aspect-ratio: 4 / 3; background: var(--paper, #fef9ef); border-bottom: 1px solid var(--line, rgba(18, 65, 79, 0.16)); } .ds-frame-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; border: 1.5px dashed color-mix(in srgb, var(--ink, #12414f) 35%, transparent); color: var(--mute, #47606a); font-family: \"Roboto Mono\", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; } .ds-card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 9px; } .ds-card-meta { font-family: \"Roboto Mono\", monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--acc2ink, #b8323c); } .ds-card h3 { margin: 0; font-size: 22px; font-family: termina, sans-serif; font-weight: 500; line-height: 1.12; } .ds-card p { margin: 0; font-family: \"Roboto Serif\", Georgia, serif; font-size: 15.5px; line-height: 1.45; color: var(--mute, #47606a); }"
     },
     {
       "name": "Skill Panel",
@@ -241,7 +333,7 @@
       "refersTo": "chip",
       "description": "Tiny 3px mono tag for a project stack. Display only.",
       "html": "<span class=\"ds-chip\">Vue 3</span> <span class=\"ds-chip\">WCAG 2.2</span>",
-      "css": ".ds-chip { display: inline-block; padding: 3px 8px; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 3px; font-family: \"JetBrains Mono\", monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--mute, #47606a); }"
+      "css": ".ds-chip { display: inline-block; padding: 3px 8px; border: 1px solid var(--line, rgba(18, 65, 79, 0.16)); border-radius: 3px; font-family: \"Roboto Mono\", monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--mute, #47606a); }"
     },
     {
       "name": "Empty Image Frame",
@@ -249,7 +341,7 @@
       "refersTo": "card",
       "description": "Honest missing-asset slot. Dashed ink, uppercase mono hint. Never fake a screenshot.",
       "html": "<div class=\"ds-empty\">Drop a portrait (4:5)</div>",
-      "css": ".ds-empty { position: relative; aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; border: 1.5px dashed color-mix(in srgb, var(--ink, #12414f) 35%, transparent); border-radius: 4px; background: color-mix(in srgb, var(--ink, #12414f) 4%, transparent); color: var(--mute, #47606a); font-family: \"JetBrains Mono\", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }"
+      "css": ".ds-empty { position: relative; aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; border: 1.5px dashed color-mix(in srgb, var(--ink, #12414f) 35%, transparent); border-radius: 4px; background: color-mix(in srgb, var(--ink, #12414f) 4%, transparent); color: var(--mute, #47606a); font-family: \"Roboto Mono\", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }"
     },
     {
       "name": "Italic Accent",
@@ -262,10 +354,10 @@
   ],
   "narrative": {
     "northStar": "The Typesetter's Studio",
-    "overview": "A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; JetBrains Mono is the tools left on the desk — kickers, meta, labels, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.\n\nDensity is editorial. One very large display size, hairline rules, auto-fit grids, and cream laid ground with a print-pattern grain. Personality lives in the pairing and the texture. Actions are soft pills; surfaces are quiet 4px rectangles. Hover lifts a card a few pixels and turns its border to ink. Nothing casts a shadow.\n\nVisual rejections already in the code: no drop shadows, no glass, no gradient heroes, no tech-startup chrome. Empty image frames stay dashed until a real asset exists. Dark theme inverts the stock (deep teal paper, cream ink) and brightens Sea Glass; the print grain multiplies into the night paper.",
+    "overview": "A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; Roboto Mono is the tools left on the desk — kickers, meta, labels, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.\n\nDensity is editorial. One very large display size, hairline rules, auto-fit grids, and cream laid ground with a print-pattern grain. Personality lives in the pairing and the texture. Actions are soft pills; surfaces are quiet 4px rectangles. Hover lifts a card a few pixels and turns its border to ink. Nothing casts a shadow.\n\nVisual rejections already in the code: no drop shadows, no glass, no gradient heroes, no tech-startup chrome. Empty image frames stay dashed until a real asset exists. Dark theme inverts the stock (deep teal paper, cream ink) and brightens Sea Glass; the print grain multiplies into the night paper.",
     "keyCharacteristics": [
       "Cream laid paper, Deep Teal Ink, Sea Glass actions, scarce Vermilion Spark",
-      "Three type voices only (Termina, Roboto Serif, JetBrains Mono)",
+      "Three type voices only (Termina, Roboto Serif, Roboto Mono)",
       "Flat hairline surfaces; lift-on-hover is the only physical move",
       "Print-pattern grain as paper, not decoration layered on top",
       "Honest dashed slots where images are missing"
@@ -278,12 +370,12 @@
       },
       {
         "name": "The Two-Stock Rule",
-        "body": "Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third ground (pure white, cool gray, or black).",
+        "body": "Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third permanent ground (pure white, cool gray, or black). A documented, temporary holiday palette may replace both stocks while its explicit toggle is active.",
         "section": "colors"
       },
       {
         "name": "The Three-Voice Rule",
-        "body": "Termina for structure and display. Roboto Serif for reading and the italic accent. JetBrains Mono for tools. Do not add a fourth family.",
+        "body": "Termina for structure and display. Roboto Serif for reading and the italic accent. Roboto Mono for tools. Do not add a fourth family.",
         "section": "typography"
       },
       {
@@ -307,7 +399,7 @@
       "Do set pages on Cream Laid with the print-pattern grain and the documented blend modes.",
       "Do use Sea Glass for primary fills, links, and the italic accent.",
       "Do leave empty frames dashed and labeled until a real asset exists.",
-      "Do honor prefers-reduced-motion (animations collapse to 0.01ms) and keep the 44px nav/filter targets.",
+      "Do honor prefers-reduced-motion: drop spatial animation (entrances, lifts, the caret, scroll-linked rises) and keep color and border transitions that show state. Keep the 44px nav/filter targets.",
       "Do section with hairline line rules (and the 2px ink rule under the resume name only)."
     ],
     "donts": [

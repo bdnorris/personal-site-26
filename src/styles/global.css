@@ -76,7 +76,24 @@
   --texblend: soft-light;
 }
 
-:root[data-holiday] {
+:root[data-holiday][data-theme="light"] {
+  color-scheme: light;
+  --ink: #3a2418;
+  --paper: #fff4d6;
+  --mute: #765640;
+  --line: rgba(58, 36, 24, 0.18);
+  --card: #fffaf0;
+  --acc: #b84700;
+  --acc-fill: #9c3d00;
+  --acc2: #7fae28;
+  --onacc: #fff4d6;
+  --acc2ink: #4f7012;
+  --acc2soft: #e4efc4;
+  --onacc2: #1f2b08;
+  --texblend: normal;
+}
+
+:root[data-holiday][data-theme="dark"] {
   color-scheme: dark;
   --ink: #f4ead5;
   --paper: #17120f;
@@ -411,18 +428,15 @@ h1, h2 {
   }
 }
 
-.holiday-dot {
-  width: 8px;
-  height: 8px;
-  border: 1px solid var(--acc);
-  border-radius: 50%;
-  background: transparent;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+.holiday-moon {
+  flex: 0 0 auto;
+  display: block;
+  color: var(--acc);
+  transition: color 0.25s ease;
 }
 
-.holiday-toggle[aria-pressed="true"] .holiday-dot {
-  border-color: var(--acc2);
-  background: var(--acc2);
+.holiday-toggle[aria-pressed="true"] .holiday-moon {
+  color: var(--acc2);
 }
 
 @media (max-width: 370px) {

@@ -16,7 +16,12 @@ const { class: className } = Astro.props;
   aria-label={`Enable ${HOLIDAY_THEME.label} theme`}
   aria-pressed="false"
 >
-  <span class="holiday-dot" aria-hidden="true"></span>
+  <svg class="holiday-moon" aria-hidden="true" width="10" height="10" viewBox="0 0 10 10">
+    <path
+      d="M6.7 1.15A4.1 4.1 0 1 0 6.7 8.85 3.25 3.25 0 0 1 6.7 1.15Z"
+      fill="currentColor"
+    ></path>
+  </svg>
   <span>{HOLIDAY_THEME.label}</span>
 </button>
 

@@ -20,13 +20,20 @@ colors:
   sea-glass-night: "#17c3b2"
   vermilion-ink-night: "#ff9b9f"
   vermilion-soft-night: "#3a1c1e"
-  halloween-ink: "#f4ead5"
-  halloween-paper: "#17120f"
-  halloween-mute: "#c3aa90"
-  halloween-card: "#241b16"
-  halloween-orange: "#ff8a1f"
-  halloween-orange-fill: "#ff9a3c"
-  halloween-green: "#a6d854"
+  halloween-ink: "#3a2418"
+  halloween-paper: "#fff4d6"
+  halloween-mute: "#765640"
+  halloween-card: "#fffaf0"
+  halloween-orange: "#b84700"
+  halloween-orange-fill: "#9c3d00"
+  halloween-green: "#7fae28"
+  halloween-ink-night: "#f4ead5"
+  halloween-paper-night: "#17120f"
+  halloween-mute-night: "#c3aa90"
+  halloween-card-night: "#241b16"
+  halloween-orange-night: "#ff8a1f"
+  halloween-orange-fill-night: "#ff9a3c"
+  halloween-green-night: "#a6d854"
 typography:
   display:
     fontFamily: "termina, system-ui, sans-serif"
@@ -166,9 +173,9 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 ### Seasonal Variant
 
-Halloween is a visitor-controlled seasonal overprint: Bone (`#f4ead5`) on warm Charcoal (`#17120f`), with Pumpkin (`#ff8a1f`) for primary accents and Acid Green (`#a6d854`) for the scarce spark. It changes semantic color tokens only; typography, spacing, texture, shape, and motion remain the Typesetter's Studio.
+Halloween is a visitor-controlled seasonal overprint with two stocks. Light uses Brown Ink (`halloween-ink`) on Candle Paper (`halloween-paper`), with Burnt Pumpkin (`halloween-orange`) and Moss (`halloween-green`). Dark uses Bone (`halloween-ink-night`) on warm Charcoal (`halloween-paper-night`), with bright Pumpkin (`halloween-orange-night`) and Acid Green (`halloween-green-night`). It changes semantic color tokens only; typography, spacing, texture, shape, and motion remain the Typesetter's Studio.
 
-The Halloween palette is one fixed appearance, independent of light/dark. While it is active, the saved light/dark selection remains intact underneath and returns when Halloween is disabled. The holiday control persists only the current configured holiday ID, so an old seasonal choice cannot silently enable a future theme.
+The light/dark control switches between the two Halloween stocks while the holiday is active. Disabling Halloween returns to the matching standard light or dark palette. The holiday control persists only the current configured holiday ID, so an old seasonal choice cannot silently enable a future theme.
 
 **Manual holiday swap:** Update the ID and label in `src/lib/holiday.ts`, replace the `[data-holiday]` semantic token values in `src/styles/global.css`, and revise this section. Keep the control generic and preserve WCAG 2.2 AA contrast.
 
@@ -257,7 +264,7 @@ None in the shipped UI. Contact is mailto/tel rows, not a form. Do not invent a 
 
 - Wordmark: Termina 900, `clamp(17px, 4.4vw, 19px)`, ink, no underline.
 - Links: Termina 500, ~13.5px, min-height 44px, padding 0 11px. Rest color is mute; hover and current are ink. Do not fade the link with opacity. Current page draws a 2px Sea Glass underline that scales in from the left.
-- Theme controls: paired transparent, mono 12px uppercase controls with 44px minimum targets and mute → ink hover. Light/dark retains its Vermilion 8px dot. The holiday control sits directly beside it, exposes `aria-pressed`, and uses a hollow primary-accent dot that fills with the seasonal secondary accent when active.
+- Theme controls: paired transparent, mono 12px uppercase controls with 44px minimum targets and mute → ink hover. Light/dark retains its Vermilion 8px dot. The holiday control sits directly beside it, exposes `aria-pressed`, and uses a 10px crescent moon in the primary accent that turns to the seasonal secondary accent when active.
 
 ### Empty image frame (signature)
 
