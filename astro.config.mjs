@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import netlify from '@astrojs/netlify';
 import { fileURLToPath } from "node:url";
+import { netlifyDenoEvalCompat } from "./src/lib/netlify-deno-eval-compat.ts";
 
 const netlifyImageService = fileURLToPath(
   new URL("./src/lib/netlify-image-service.ts", import.meta.url),
@@ -12,6 +13,7 @@ export default defineConfig({
   adapter: netlify(),
   vite: {
     plugins: [
+      netlifyDenoEvalCompat(),
       {
         name: "netlify-image-fit-position",
         enforce: "pre",

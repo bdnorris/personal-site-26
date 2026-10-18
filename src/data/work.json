@@ -469,7 +469,7 @@
         },
         {
           "kind": "code",
-          "file": "filters/filters.ts"
+          "file": "filters/filter-app.vue"
         }
       ],
       "outcome": [
