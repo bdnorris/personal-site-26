@@ -20,20 +20,20 @@ colors:
   sea-glass-night: "#17c3b2"
   vermilion-ink-night: "#ff9b9f"
   vermilion-soft-night: "#3a1c1e"
-  halloween-ink: "#3a2418"
-  halloween-paper: "#fff4d6"
-  halloween-mute: "#765640"
-  halloween-card: "#fffaf0"
-  halloween-orange: "#b84700"
-  halloween-orange-fill: "#9c3d00"
-  halloween-green: "#7fae28"
-  halloween-ink-night: "#f4ead5"
-  halloween-paper-night: "#17120f"
-  halloween-mute-night: "#c3aa90"
-  halloween-card-night: "#241b16"
-  halloween-orange-night: "#ff8a1f"
-  halloween-orange-fill-night: "#ff9a3c"
-  halloween-green-night: "#a6d854"
+  halloween-ink: "#2f1a10"
+  halloween-paper: "#fbefd9"
+  halloween-mute: "#6e4a34"
+  halloween-card: "#fff8ea"
+  halloween-orange: "#b34200"
+  halloween-orange-fill: "#9a3800"
+  halloween-gold: "#c96f00"
+  halloween-gold-ink: "#7a4a00"
+  halloween-ink-night: "#ece6d8"
+  halloween-paper-night: "#0d1220"
+  halloween-mute-night: "#a9b0c4"
+  halloween-card-night: "#161d30"
+  halloween-orange-night: "#ff9238"
+  halloween-gold-night: "#f5d06b"
 typography:
   display:
     fontFamily: "termina, system-ui, sans-serif"
@@ -173,11 +173,13 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 ### Seasonal Variant
 
-Halloween is a visitor-controlled seasonal overprint with two stocks. Light uses Brown Ink (`halloween-ink`) on Candle Paper (`halloween-paper`), with Burnt Pumpkin (`halloween-orange`) and Moss (`halloween-green`). Dark uses Bone (`halloween-ink-night`) on warm Charcoal (`halloween-paper-night`), with bright Pumpkin (`halloween-orange-night`) and Acid Green (`halloween-green-night`). It changes semantic color tokens only; typography, spacing, texture, shape, and motion remain the Typesetter's Studio.
+Halloween is a visitor-controlled seasonal overprint with two stocks. Light is **Jack-o'-Lantern**: Umber Ink (`halloween-ink`) on Lantern Paper (`halloween-paper`), with Carved Pumpkin (`halloween-orange`, filled as `halloween-orange-fill`) and Candle Flame (`halloween-gold`, labels in `halloween-gold-ink`). Dark is **Midnight**: Moonlight (`halloween-ink-night`) on Night Sky navy (`halloween-paper-night`), with bright Pumpkin (`halloween-orange-night`, also the fill) and Harvest Moon gold (`halloween-gold-night`). Orange stays the primary in both stocks so the light/dark switch reads as one theme; only the night around it changes. It changes semantic color tokens only; typography, spacing, shape, and motion remain the Typesetter's Studio.
+
+Two holiday-specific token behaviors: `--band-acc` sets the numerals on the inverted philosophy band (gold on umber in light, deep pumpkin `#9a3800` on moonlight in dark), because the band inverts and `--acc2` cannot pass on both grounds. In light, the print grain blends with `luminosity` so it takes the paper's hue instead of staying teal. Text selection uses the primary fill while the holiday is active.
 
 The light/dark control switches between the two Halloween stocks while the holiday is active. Disabling Halloween returns to the matching standard light or dark palette. The holiday control persists only the current configured holiday ID, so an old seasonal choice cannot silently enable a future theme.
 
-**Manual holiday swap:** Update the ID and label in `src/lib/holiday.ts`, replace the `[data-holiday]` semantic token values in `src/styles/global.css`, and revise this section. Keep the control generic and preserve WCAG 2.2 AA contrast.
+**Manual holiday swap:** Update the ID and label in `src/lib/holiday.ts`, replace the `[data-holiday]` semantic token values (including `--band-acc` and `--texblend`) in `src/styles/global.css`, and revise this section. Keep the control generic and preserve WCAG 2.2 AA contrast.
 
 ## Typography
 

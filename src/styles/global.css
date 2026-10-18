@@ -22,6 +22,7 @@
   --acc2ink: var(--coral-700);
   --acc2soft: var(--coral-100);
   --onacc2: var(--coral-950);
+  --band-acc: var(--acc2);
   --texblend: normal;
   --font-sans: "termina", system-ui, sans-serif;
   --font-serif: "Roboto Serif", Georgia, serif;
@@ -76,38 +77,47 @@
   --texblend: soft-light;
 }
 
+/* Halloween light — Jack-o'-Lantern: carved pumpkin and candle flame. */
 :root[data-holiday][data-theme="light"] {
   color-scheme: light;
-  --ink: #3a2418;
-  --paper: #fff4d6;
-  --mute: #765640;
-  --line: rgba(58, 36, 24, 0.18);
-  --card: #fffaf0;
-  --acc: #b84700;
-  --acc-fill: #9c3d00;
-  --acc2: #7fae28;
-  --onacc: #fff4d6;
-  --acc2ink: #4f7012;
-  --acc2soft: #e4efc4;
-  --onacc2: #1f2b08;
-  --texblend: normal;
+  --ink: #2f1a10;
+  --paper: #fbefd9;
+  --mute: #6e4a34;
+  --line: rgba(47, 26, 16, 0.18);
+  --card: #fff8ea;
+  --acc: #b34200;
+  --acc-fill: #9a3800;
+  --acc2: #c96f00;
+  --onacc: #fff3dc;
+  --acc2ink: #7a4a00;
+  --acc2soft: #fde3b0;
+  --onacc2: #2f1a10;
+  --band-acc: #ffc94a;
+  --texblend: luminosity;
 }
 
+/* Halloween dark — Midnight: pumpkin and harvest moon against a night sky. */
 :root[data-holiday][data-theme="dark"] {
   color-scheme: dark;
-  --ink: #f4ead5;
-  --paper: #17120f;
-  --mute: #c3aa90;
-  --line: rgba(244, 234, 213, 0.2);
-  --card: #241b16;
-  --acc: #ff8a1f;
-  --acc-fill: #ff9a3c;
-  --acc2: #a6d854;
-  --onacc: #17120f;
-  --acc2ink: #c9ee78;
-  --acc2soft: #263316;
-  --onacc2: #17120f;
+  --ink: #ece6d8;
+  --paper: #0d1220;
+  --mute: #a9b0c4;
+  --line: rgba(236, 230, 216, 0.18);
+  --card: #161d30;
+  --acc: #ff9238;
+  --acc-fill: #ff9238;
+  --acc2: #f5d06b;
+  --onacc: #0d1220;
+  --acc2ink: #f8dc8c;
+  --acc2soft: #2a2614;
+  --onacc2: #0d1220;
+  --band-acc: #9a3800;
   --texblend: soft-light;
+}
+
+:root[data-holiday] ::selection {
+  background: var(--acc-fill);
+  color: var(--onacc);
 }
 
 html {
@@ -1987,14 +1997,14 @@ h1, h2 {
   gap: 14px;
   align-items: baseline;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
 }
 
 .philo-row .n {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
-  color: var(--acc2);
+  color: var(--band-acc);
   flex: none;
 }
 

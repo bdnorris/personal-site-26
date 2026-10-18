@@ -114,87 +114,87 @@
       },
       "halloween-ink": {
         "role": "neutral",
-        "displayName": "Halloween Brown Ink",
-        "canonical": "#3a2418",
-        "tonalRamp": ["#160c08", "#28160e", "#3a2418", "#61422f", "#8d6950", "#b99579", "#dbc5ac", "#f4ead5"]
+        "displayName": "Halloween Umber Ink",
+        "canonical": "#2f1a10",
+        "tonalRamp": ["#070402", "#2f1a10", "#4e3c34", "#6d5f58", "#8d817c", "#aca39f", "#cbc6c3", "#eae8e7"]
       },
       "halloween-paper": {
         "role": "neutral",
-        "displayName": "Halloween Candle Paper",
-        "canonical": "#fff4d6",
-        "tonalRamp": ["#3a2418", "#61422f", "#8d6950", "#b99579", "#dbc5ac", "#f0dfbd", "#fff4d6", "#fffaf0"]
+        "displayName": "Halloween Lantern Paper",
+        "canonical": "#fbefd9",
+        "tonalRamp": ["#262421", "#49463f", "#6d685e", "#90897d", "#b4ab9c", "#d7cdba", "#fbefd9", "#fffdfb"]
       },
       "halloween-mute": {
         "role": "neutral",
-        "displayName": "Halloween Muted Brown",
-        "canonical": "#765640",
-        "tonalRamp": ["#28160e", "#3a2418", "#543725", "#765640", "#99765d", "#b99579", "#dbc5ac", "#f4ead5"]
+        "displayName": "Halloween Muted Umber",
+        "canonical": "#6e4a34",
+        "tonalRamp": ["#110b08", "#3f2b1e", "#6e4a34", "#886b59", "#a28b7d", "#bcaca2", "#d6ccc6", "#f0edeb"]
       },
       "halloween-card": {
         "role": "neutral",
-        "displayName": "Halloween Candle Card",
-        "canonical": "#fffaf0",
-        "tonalRamp": ["#3a2418", "#61422f", "#8d6950", "#b99579", "#dbc5ac", "#f0dfbd", "#fff4d6", "#fffaf0"]
+        "displayName": "Halloween Lantern Card",
+        "canonical": "#fff8ea",
+        "tonalRamp": ["#262523", "#454340", "#64615c", "#838078", "#a29e95", "#c1bcb1", "#e0dace", "#fff8ea"]
       },
       "halloween-orange": {
         "role": "primary",
-        "displayName": "Halloween Burnt Pumpkin",
-        "canonical": "#b84700",
-        "tonalRamp": ["#351604", "#632602", "#8a3500", "#b84700", "#dc650e", "#f58a31", "#ffb16a", "#ffddb7"]
+        "displayName": "Halloween Carved Pumpkin",
+        "canonical": "#b34200",
+        "tonalRamp": ["#1b0a00", "#672600", "#b34200", "#c1642e", "#ce865c", "#dca88a", "#eacab8", "#f7ece6"]
       },
       "halloween-orange-fill": {
         "role": "primary",
-        "displayName": "Halloween Burnt Pumpkin Fill",
-        "canonical": "#9c3d00",
-        "tonalRamp": ["#351604", "#632602", "#7e3000", "#9c3d00", "#c65308", "#e87822", "#ffa65b", "#ffd9ad"]
+        "displayName": "Halloween Carved Pumpkin Fill",
+        "canonical": "#9a3800",
+        "tonalRamp": ["#170800", "#592000", "#9a3800", "#ac5c2e", "#be805c", "#d1a38a", "#e3c7b8", "#f5ebe6"]
       },
-      "halloween-green": {
+      "halloween-gold": {
         "role": "secondary",
-        "displayName": "Halloween Moss",
-        "canonical": "#7fae28",
-        "tonalRamp": ["#182507", "#30480e", "#4c701a", "#638d20", "#7fae28", "#a6ce55", "#c9e58b", "#eaf5cf"]
+        "displayName": "Halloween Candle Flame",
+        "canonical": "#c96f00",
+        "tonalRamp": ["#1e1100", "#573000", "#905000", "#c96f00", "#d58f39", "#e1b073", "#edd0ac", "#faf1e6"]
+      },
+      "halloween-gold-ink": {
+        "role": "secondary",
+        "displayName": "Halloween Candle Ink",
+        "canonical": "#7a4a00",
+        "tonalRamp": ["#120b00", "#462b00", "#7a4a00", "#926b2e", "#aa8b5c", "#c2ac8a", "#daccb8", "#f2ede6"]
       },
       "halloween-ink-night": {
         "role": "neutral",
-        "displayName": "Halloween Night Bone",
-        "canonical": "#f4ead5",
-        "tonalRamp": ["#231c16", "#493b2f", "#705e4c", "#9a836c", "#c3aa90", "#ddcbb0", "#f4ead5", "#fffaf0"]
+        "displayName": "Halloween Moonlight",
+        "canonical": "#ece6d8",
+        "tonalRamp": ["#232320", "#45433f", "#66645e", "#88847c", "#a9a59b", "#cbc5b9", "#ece6d8", "#fdfcfb"]
       },
       "halloween-paper-night": {
         "role": "neutral",
-        "displayName": "Halloween Night Charcoal",
-        "canonical": "#17120f",
-        "tonalRamp": ["#0b0908", "#17120f", "#241b16", "#3a2a22", "#634638", "#96715a", "#c3aa90", "#f4ead5"]
+        "displayName": "Halloween Night Sky",
+        "canonical": "#0d1220",
+        "tonalRamp": ["#020305", "#0d1220", "#313641", "#565963", "#7a7d84", "#9ea0a6", "#c2c4c7", "#e7e7e9"]
       },
       "halloween-mute-night": {
         "role": "neutral",
         "displayName": "Halloween Night Mute",
-        "canonical": "#c3aa90",
-        "tonalRamp": ["#241b16", "#49382d", "#705744", "#96765e", "#c3aa90", "#d3bfa9", "#e5d7c4", "#f8f1e5"]
+        "canonical": "#a9b0c4",
+        "tonalRamp": ["#191a1d", "#36383f", "#535660", "#707481", "#8c92a3", "#a9b0c4", "#d0d4df", "#f6f7f9"]
       },
       "halloween-card-night": {
         "role": "neutral",
         "displayName": "Halloween Night Card",
-        "canonical": "#241b16",
-        "tonalRamp": ["#0b0908", "#17120f", "#241b16", "#3a2a22", "#634638", "#96715a", "#c3aa90", "#f4ead5"]
+        "canonical": "#161d30",
+        "tonalRamp": ["#030407", "#161d30", "#393f4f", "#5c616e", "#7f838d", "#a2a5ac", "#c5c6cb", "#e8e8ea"]
       },
       "halloween-orange-night": {
         "role": "primary",
         "displayName": "Halloween Night Pumpkin",
-        "canonical": "#ff8a1f",
-        "tonalRamp": ["#351604", "#6b2f08", "#a6460c", "#d85e0e", "#ff8a1f", "#ffa94f", "#ffc57f", "#ffe3be"]
+        "canonical": "#ff9238",
+        "tonalRamp": ["#261608", "#5c3514", "#935420", "#c9732c", "#ff9238", "#ffb374", "#ffd3af", "#fff4eb"]
       },
-      "halloween-orange-fill-night": {
-        "role": "primary",
-        "displayName": "Halloween Night Pumpkin Fill",
-        "canonical": "#ff9a3c",
-        "tonalRamp": ["#351604", "#6b2f08", "#a6460c", "#d86618", "#ff9a3c", "#ffb465", "#ffce91", "#ffe8c8"]
-      },
-      "halloween-green-night": {
+      "halloween-gold-night": {
         "role": "secondary",
-        "displayName": "Halloween Night Acid Green",
-        "canonical": "#a6d854",
-        "tonalRamp": ["#182507", "#30480e", "#4c701a", "#6e9d2b", "#a6d854", "#bde57a", "#d5efa5", "#edf8d5"]
+        "displayName": "Halloween Harvest Moon",
+        "canonical": "#f5d06b",
+        "tonalRamp": ["#251f10", "#4e4322", "#786634", "#a28947", "#cbad59", "#f5d06b", "#fae5ae", "#fefaf0"]
       }
     },
     "typographyMeta": {
