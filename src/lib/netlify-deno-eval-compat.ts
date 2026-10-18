@@ -18,19 +18,21 @@ export function netlifyDenoEvalCompat(): Plugin {
 
       try {
         const { DenoBridge } = await import("@netlify/edge-bundler");
-        const original = DenoBridge.prototype.runInBackground;
+        const proto = DenoBridge.prototype as {
+          runInBackground: (args: string[], ...rest: unknown[]) => unknown;
+        };
+        const original = proto.runInBackground;
 
-        DenoBridge.prototype.runInBackground = function runInBackground(
-          this: InstanceType<typeof DenoBridge>,
+        proto.runInBackground = function runInBackground(
+          this: unknown,
           args: string[],
-          ref?: { ps?: unknown },
-          options?: Parameters<typeof original>[2],
+          ...rest: unknown[]
         ) {
           const nextArgs =
             args[0] === "eval"
               ? args.filter((arg) => arg !== "--allow-scripts")
               : args;
-          return original.call(this, nextArgs, ref, options);
+          return original.call(this, nextArgs, ...rest);
         };
       } catch {
         /* Package layout can change; leave Netlify's default behavior alone. */

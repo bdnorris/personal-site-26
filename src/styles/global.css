@@ -428,15 +428,23 @@ h1, h2 {
   }
 }
 
-.holiday-moon {
+.holiday-toggle-icon {
   flex: 0 0 auto;
-  display: block;
-  color: var(--acc);
-  transition: color 0.25s ease;
+  display: none;
+  font-size: 11px;
+  line-height: 1;
 }
 
-.holiday-toggle[aria-pressed="true"] .holiday-moon {
-  color: var(--acc2);
+.holiday-toggle .holiday-toggle-icon--crescent {
+  display: inline;
+}
+
+.holiday-toggle[aria-pressed="true"] .holiday-toggle-icon--crescent {
+  display: none;
+}
+
+.holiday-toggle[aria-pressed="true"] .holiday-toggle-icon--full {
+  display: inline;
 }
 
 @media (max-width: 370px) {
