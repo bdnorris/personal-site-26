@@ -15,15 +15,13 @@ const links = [
 ];
 ---
 
+<div class="theme-controls theme-controls--bar">
+  <HolidayToggle />
+  <ThemeToggle />
+</div>
 <div class="mast">
   <header class="mast-row">
-    <div class="mast-id">
-      <a class="wordmark" href="/">Brian Norris</a>
-      <div class="theme-controls theme-controls--bar">
-        <HolidayToggle />
-        <ThemeToggle />
-      </div>
-    </div>
+    <a class="wordmark" href="/">Brian Norris</a>
     <nav class="nav" aria-label="Primary">
       {
         links.map((link) => {
@@ -44,3 +42,14 @@ const links = [
     </nav>
   </header>
 </div>
+
+<script>
+  const mast = document.querySelector(".mast");
+  const syncMastHeight = () => {
+    if (!(mast instanceof HTMLElement)) return;
+    const height = Math.ceil(mast.getBoundingClientRect().height);
+    document.documentElement.style.setProperty("--mast-h", `${height}px`);
+  };
+  syncMastHeight();
+  window.addEventListener("resize", syncMastHeight);
+</script>
