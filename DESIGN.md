@@ -71,7 +71,7 @@ rounded:
   pill: "999px"
   full: "50%"
 spacing:
-  page-inline: "clamp(16px, 4vw, 56px)"
+  page-inline: "max(1.5rem, calc((100vw - 1280px) / 2))"
   section-y: "clamp(40px, 6vw, 88px)"
   sm: "8px"
   md: "16px"
@@ -205,11 +205,11 @@ The light/dark control switches between the two Halloween stocks while the holid
 
 ## Layout
 
-The page is a spread with a 1280px max (`--max-width`). Horizontal padding is `clamp(16px, 4vw, 56px)`; home sections also center with `max(2rem, calc(100vw - 1280px) / 2)`. Vertical rhythm is `clamp(40px, 6–8vw, 88–96px)` between major blocks.
+The page is a spread with a 1280px max (`--max-width`). Horizontal padding is `--page-inline`: `max(1.5rem, calc((100vw - 1280px) / 2))`, so the viewport never gets closer than 1.5rem and wider screens center the column. Resume and case body keep a narrower measure and use `clamp(1.5rem, 4vw, 56px)`. Vertical rhythm is `clamp(40px, 6–8vw, 88–96px)` between major blocks.
 
 Grids are `auto-fit` with mins around 230px (skills), 290–300px (work cards), 150px (meta cells). No 12-column overlay. Hairline rules (`1px solid line`, or `2px solid ink` under the resume name) do the sectioning.
 
-The mast is sticky. The wordmark returns home, so the nav is Work, About, and Resume. Below 640px the theme control shares the wordmark row; from 641px it sits in the nav after a 1px vertical rule. Case-study headings stick below the mast (`top: 78px`).
+The mast is sticky. The wordmark returns home, so the nav is Work, About, and Resume. Below 640px the color controls sit above the mast and scroll away; the wordmark and nav stay fixed. From 641px the controls sit in the nav after a 1px vertical rule. Case-study headings stick below the mast.
 
 Resume is a narrower measure (max 980px). Case body maxes at 1100px. About is a two-column auto-fit (copy + portrait/contact).
 
