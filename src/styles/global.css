@@ -241,7 +241,7 @@ h1, h2 {
   position: fixed;
   z-index: 80;
   top: max(8px, env(safe-area-inset-top));
-  left: max(2rem, calc(100vw - var(--max-width)) / 2);
+  left: max(1.5em, calc(100vw - var(--max-width)) / 2);
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -307,7 +307,7 @@ h1, h2 {
 .mast-id {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
 }
 
@@ -321,6 +321,7 @@ h1, h2 {
 .theme-controls--bar {
   margin-inline-start: auto;
   flex: 0 0 auto;
+  border-bottom: 1px solid var(--line);
 }
 
 .theme-controls--nav {
@@ -340,7 +341,7 @@ h1, h2 {
   align-items: center;
   flex: 0 0 auto;
   min-height: 44px;
-  font-size: clamp(17px, 4.4vw, 19px);
+  font-size: clamp(19px, 4.4vw, 19px);
   line-height: 1;
   font-family: var(--font-sans);
   font-weight: 900;
@@ -459,7 +460,7 @@ h1, h2 {
 
 @media (max-width: 370px) {
   .mast-id {
-    gap: 8px;
+    gap: 0;
   }
 
   .theme-toggle,
@@ -1043,7 +1044,7 @@ h1, h2 {
 /* Work index */
 .work-page {
   animation: wipe 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  padding: clamp(34px, 5vw, 72px) clamp(16px, 4vw, 56px);
+  padding: clamp(34px, 5vw, 72px) clamp(1.5rem, 4vw, 56px);
 }
 
 .work-page h1 {
