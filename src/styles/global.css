@@ -497,7 +497,24 @@ h1, h2 {
 
 @media (max-width: 640px) {
   .mast-id {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+  }
+
+  .theme-controls--bar {
+    order: -1;
     flex: 1 0 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-inline-start: 0;
+  }
+
+  .theme-controls--bar > :first-child {
+    padding-inline-start: 0;
+  }
+
+  .nav {
+    margin-right: 0;
   }
 
   .nav-rule {
