@@ -15,7 +15,6 @@ const { class: className } = Astro.props;
       type="button"
       data-season-toggle
       data-season-id={ACTIVE_SEASON.id}
-      aria-label={`Enable ${ACTIVE_SEASON.label} theme`}
       aria-pressed="false"
     >
       <span class="season-toggle-icon season-toggle-icon--on" aria-hidden="true">
@@ -24,7 +23,7 @@ const { class: className } = Astro.props;
       <span class="season-toggle-icon season-toggle-icon--off" aria-hidden="true">
         {ACTIVE_SEASON.icon.off}
       </span>
-      <span data-season-label>{ACTIVE_SEASON.label}</span>
+      <span>{ACTIVE_SEASON.label}</span>
     </button>
   )
 }
@@ -53,10 +52,7 @@ const { class: className } = Astro.props;
 
     document.querySelectorAll<HTMLElement>("[data-season-toggle]").forEach((button) => {
       const pressed = button.dataset.seasonId === seasonId && active;
-      const label =
-        button.querySelector("[data-season-label]")?.textContent?.trim() || "seasonal";
       button.setAttribute("aria-pressed", String(pressed));
-      button.setAttribute("aria-label", `${pressed ? "Disable" : "Enable"} ${label} theme`);
     });
   }
 
