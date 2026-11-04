@@ -34,6 +34,22 @@ colors:
   halloween-card-night: "#161d30"
   halloween-orange-night: "#ff9238"
   halloween-gold-night: "#f5d06b"
+  autumn-ink: "#2b2118"
+  autumn-paper: "#f6eedd"
+  autumn-mute: "#5f4f3f"
+  autumn-card: "#fbf6ea"
+  autumn-maple: "#a3361a"
+  autumn-maple-fill: "#8c2d15"
+  autumn-moss: "#6f7d2c"
+  autumn-moss-ink: "#4f5a1c"
+  autumn-straw: "#e0b04a"
+  autumn-ink-night: "#efe6d4"
+  autumn-paper-night: "#16140f"
+  autumn-mute-night: "#b2a58f"
+  autumn-card-night: "#221e17"
+  autumn-maple-night: "#e57a43"
+  autumn-moss-night: "#bcc56c"
+  autumn-moss-ink-night: "#cfd68e"
 typography:
   display:
     fontFamily: "termina, system-ui, sans-serif"
@@ -169,17 +185,23 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 **The Rare Vermilion Rule.** Vermilion stays scarce. Tiny marks are the default; occasional larger fills are allowed. Sea Glass remains the primary action fill.
 
-**The Two-Stock Rule.** Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third permanent ground (pure white, cool gray, or black). A documented, temporary holiday palette may replace both stocks while its explicit toggle is active.
+**The Two-Stock Rule.** Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third permanent ground (pure white, cool gray, or black). A documented, temporary seasonal palette may replace both stocks while its explicit toggle is active.
 
-### Seasonal Variant
+### Seasonal Variants
 
-Halloween is a visitor-controlled seasonal overprint with two stocks. Light is **Jack-o'-Lantern**: Umber Ink (`halloween-ink`) on Lantern Paper (`halloween-paper`), with Carved Pumpkin (`halloween-orange`, filled as `halloween-orange-fill`) and Candle Flame (`halloween-gold`, labels in `halloween-gold-ink`). Dark is **Midnight**: Moonlight (`halloween-ink-night`) on Night Sky navy (`halloween-paper-night`), with bright Pumpkin (`halloween-orange-night`, also the fill) and Harvest Moon gold (`halloween-gold-night`). Orange stays the primary in both stocks so the light/dark switch reads as one theme; only the night around it changes. It changes semantic color tokens only; typography, spacing, shape, and motion remain the Typesetter's Studio.
+Seasons are visitor-controlled overprints with two stocks each. One season is live at a time, chosen manually by `ACTIVE_SEASON_ID` in `src/lib/seasons.ts`; the toggle is off by default. A season changes semantic color tokens only; typography, spacing, shape, and motion remain the Typesetter's Studio. The light/dark control switches between the active season's two stocks, and disabling the season returns to the matching standard palette. Only the live season's ID is honored from storage, so an old seasonal choice cannot silently enable a different theme.
 
-Two holiday-specific token behaviors: `--band-acc` sets the numerals on the inverted philosophy band (gold on umber in light, deep pumpkin `#9a3800` on moonlight in dark), because the band inverts and `--acc2` cannot pass on both grounds. In light, the print grain blends with `luminosity` so it takes the paper's hue instead of staying teal. Text selection uses the primary fill while the holiday is active.
+Every season sets the same tokens for both stocks: `color-scheme`, `--ink`, `--paper`, `--mute`, `--line`, `--card`, `--acc`, `--acc-fill`, `--acc2`, `--onacc`, `--acc2ink`, `--acc2soft`, `--onacc2`, `--band-acc`, `--texblend`. `--band-acc` sets the numerals on the inverted philosophy band, which needs its own value because the band inverts and `--acc2` cannot pass on both grounds. In light stocks the print grain blends with `luminosity` so it takes the paper's hue instead of staying teal. Text selection uses the primary fill while any season is active.
 
-The light/dark control switches between the two Halloween stocks while the holiday is active. Disabling Halloween returns to the matching standard light or dark palette. The holiday control persists only the current configured holiday ID, so an old seasonal choice cannot silently enable a future theme.
+**Autumn (live).** Light is **Harvest**: Bark Ink (`autumn-ink`) on Oat Paper (`autumn-paper`), with Maple (`autumn-maple`, filled as `autumn-maple-fill`) and Moss (`autumn-moss`, labels in `autumn-moss-ink`); band numerals in Straw (`autumn-straw`). Dark is **Woodsmoke**: Linen (`autumn-ink-night`) on Bark (`autumn-paper-night`), with Ember Maple (`autumn-maple-night`, also the fill) and Lichen (`autumn-moss-night`, labels in `autumn-moss-ink-night`); band numerals in Maple Fill. Maple and moss deliberately avoid Halloween's pumpkin/gold/navy so the two seasons read as distinct.
 
-**Manual holiday swap:** Update the ID and label in `src/lib/holiday.ts`, replace the `[data-holiday]` semantic token values (including `--band-acc` and `--texblend`) in `src/styles/global.css`, and revise this section. Keep the control generic and preserve WCAG 2.2 AA contrast.
+**Halloween (archived).** Light is **Jack-o'-Lantern**: Umber Ink (`halloween-ink`) on Lantern Paper (`halloween-paper`), with Carved Pumpkin (`halloween-orange`, filled as `halloween-orange-fill`) and Candle Flame (`halloween-gold`, labels in `halloween-gold-ink`); band numerals in gold. Dark is **Midnight**: Moonlight (`halloween-ink-night`) on Night Sky navy (`halloween-paper-night`), with bright Pumpkin (`halloween-orange-night`, also the fill) and Harvest Moon gold (`halloween-gold-night`); band numerals in deep pumpkin `#9a3800`. Orange stays the primary in both stocks so the light/dark switch reads as one theme.
+
+**Adding or switching a season:**
+1. Create `src/styles/seasons/<id>.css` with `:root[data-season="<id>"][data-theme="light"|"dark"]` blocks setting every token above, and `@import` it at the top of `src/styles/global.css`.
+2. Add `<id>: { label, icon: { off, on } }` to `SEASONS` in `src/lib/seasons.ts`.
+3. Set `ACTIVE_SEASON_ID` to the season to go live (or `null` to hide the toggle).
+4. Document the palette in this section and add its tokens to the front matter. Preserve WCAG 2.2 AA contrast.
 
 ## Typography
 
@@ -266,7 +288,7 @@ None in the shipped UI. Contact is mailto/tel rows, not a form. Do not invent a 
 
 - Wordmark: Termina 900, `clamp(17px, 4.4vw, 19px)`, ink, no underline.
 - Links: Termina 500, ~13.5px, min-height 44px, padding 0 11px. Rest color is mute; hover and current are ink. Do not fade the link with opacity. Current page draws a 2px Sea Glass underline that scales in from the left.
-- Theme controls: paired transparent, mono 12px uppercase controls with 44px minimum targets and mute → ink hover. Light/dark retains its Vermilion 8px dot. The holiday control sits directly beside it, exposes `aria-pressed`, and uses a 10px crescent moon in the primary accent that turns to the seasonal secondary accent when active.
+- Theme controls: paired transparent, mono 12px uppercase controls with 44px minimum targets and mute → ink hover. Light/dark retains its Vermilion 8px dot. The season control sits directly beside it, exposes `aria-pressed`, and shows the active season's 11px emoji icon pair from the registry ("off" at rest, "on" when pressed, e.g. 🍂 → 🍁). It renders nothing when no season is live.
 
 ### Empty image frame (signature)
 

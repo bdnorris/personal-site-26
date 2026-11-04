@@ -1,5 +1,5 @@
 ---
-import HolidayToggle from "./HolidayToggle.astro";
+import SeasonToggle from "./SeasonToggle.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 interface Props {
@@ -16,7 +16,7 @@ const links = [
 ---
 
 <div class="theme-controls theme-controls--bar">
-  <HolidayToggle />
+  <SeasonToggle />
   <ThemeToggle />
 </div>
 <div class="mast">
@@ -37,7 +37,7 @@ const links = [
       <span class="nav-rule" aria-hidden="true"></span>
       <div class="theme-controls theme-controls--nav">
         <ThemeToggle />
-        <HolidayToggle />
+        <SeasonToggle />
       </div>
     </nav>
   </header>

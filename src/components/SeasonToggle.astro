@@ -1,0 +1,77 @@
+---
+import { ACTIVE_SEASON } from "../lib/seasons";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+{
+  ACTIVE_SEASON && (
+    <button
+      class:list={["season-toggle", className]}
+      type="button"
+      data-season-toggle
+      data-season-id={ACTIVE_SEASON.id}
+      aria-label={`Enable ${ACTIVE_SEASON.label} theme`}
+      aria-pressed="false"
+    >
+      <span class="season-toggle-icon season-toggle-icon--on" aria-hidden="true">
+        {ACTIVE_SEASON.icon.on}
+      </span>
+      <span class="season-toggle-icon season-toggle-icon--off" aria-hidden="true">
+        {ACTIVE_SEASON.icon.off}
+      </span>
+      <span data-season-label>{ACTIVE_SEASON.label}</span>
+    </button>
+  )
+}
+
+<script>
+  function isActive(seasonId: string) {
+    return document.documentElement.dataset.season === seasonId;
+  }
+
+  function apply(seasonId: string, active: boolean) {
+    if (active) {
+      document.documentElement.dataset.season = seasonId;
+    } else {
+      delete document.documentElement.dataset.season;
+    }
+
+    try {
+      if (active) {
+        localStorage.setItem("seasonTheme", seasonId);
+      } else {
+        localStorage.removeItem("seasonTheme");
+      }
+    } catch {
+      /* ignore */
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-season-toggle]").forEach((button) => {
+      const pressed = button.dataset.seasonId === seasonId && active;
+      const label =
+        button.querySelector("[data-season-label]")?.textContent?.trim() || "seasonal";
+      button.setAttribute("aria-pressed", String(pressed));
+      button.setAttribute("aria-label", `${pressed ? "Disable" : "Enable"} ${label} theme`);
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-season-toggle]").forEach((button) => {
+    const seasonId = button.dataset.seasonId;
+    if (!seasonId) return;
+
+    button.addEventListener("click", () => {
+      apply(seasonId, !isActive(seasonId));
+    });
+  });
+
+  const initialToggle = document.querySelector<HTMLElement>("[data-season-toggle]");
+  const initialSeasonId = initialToggle?.dataset.seasonId;
+  if (initialSeasonId) {
+    apply(initialSeasonId, isActive(initialSeasonId));
+  }
+</script>

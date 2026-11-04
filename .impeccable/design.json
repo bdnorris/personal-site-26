@@ -195,6 +195,86 @@
         "displayName": "Halloween Harvest Moon",
         "canonical": "#f5d06b",
         "tonalRamp": ["#251f10", "#4e4322", "#786634", "#a28947", "#cbad59", "#f5d06b", "#fae5ae", "#fefaf0"]
+      },
+      "autumn-ink": {
+        "role": "neutral",
+        "displayName": "Autumn Bark Ink",
+        "canonical": "#2b2118"
+      },
+      "autumn-paper": {
+        "role": "neutral",
+        "displayName": "Autumn Oat Paper",
+        "canonical": "#f6eedd"
+      },
+      "autumn-mute": {
+        "role": "neutral",
+        "displayName": "Autumn Muted Bark",
+        "canonical": "#5f4f3f"
+      },
+      "autumn-card": {
+        "role": "neutral",
+        "displayName": "Autumn Oat Card",
+        "canonical": "#fbf6ea"
+      },
+      "autumn-maple": {
+        "role": "primary",
+        "displayName": "Autumn Maple",
+        "canonical": "#a3361a"
+      },
+      "autumn-maple-fill": {
+        "role": "primary",
+        "displayName": "Autumn Maple Fill",
+        "canonical": "#8c2d15"
+      },
+      "autumn-moss": {
+        "role": "secondary",
+        "displayName": "Autumn Moss",
+        "canonical": "#6f7d2c"
+      },
+      "autumn-moss-ink": {
+        "role": "secondary",
+        "displayName": "Autumn Moss Ink",
+        "canonical": "#4f5a1c"
+      },
+      "autumn-straw": {
+        "role": "secondary",
+        "displayName": "Autumn Straw",
+        "canonical": "#e0b04a"
+      },
+      "autumn-ink-night": {
+        "role": "neutral",
+        "displayName": "Autumn Linen",
+        "canonical": "#efe6d4"
+      },
+      "autumn-paper-night": {
+        "role": "neutral",
+        "displayName": "Autumn Bark",
+        "canonical": "#16140f"
+      },
+      "autumn-mute-night": {
+        "role": "neutral",
+        "displayName": "Autumn Night Mute",
+        "canonical": "#b2a58f"
+      },
+      "autumn-card-night": {
+        "role": "neutral",
+        "displayName": "Autumn Night Card",
+        "canonical": "#221e17"
+      },
+      "autumn-maple-night": {
+        "role": "primary",
+        "displayName": "Autumn Ember Maple",
+        "canonical": "#e57a43"
+      },
+      "autumn-moss-night": {
+        "role": "secondary",
+        "displayName": "Autumn Lichen",
+        "canonical": "#bcc56c"
+      },
+      "autumn-moss-ink-night": {
+        "role": "secondary",
+        "displayName": "Autumn Lichen Ink",
+        "canonical": "#cfd68e"
       }
     },
     "typographyMeta": {
@@ -307,9 +387,9 @@
       "name": "Theme Controls",
       "kind": "custom",
       "refersTo": "nav-link",
-      "description": "Paired controls: holiday enables the seasonal layer, while light/dark switches between its two stocks. The holiday crescent moon turns to the secondary accent when active.",
-      "html": "<div class=\"ds-theme-controls\"><button class=\"ds-theme-toggle\" type=\"button\"><span class=\"ds-theme-dot\" aria-hidden=\"true\"></span>Switch to dark</button><button class=\"ds-holiday-toggle\" type=\"button\" aria-pressed=\"true\"><svg class=\"ds-holiday-moon\" aria-hidden=\"true\" width=\"10\" height=\"10\" viewBox=\"0 0 10 10\"><path d=\"M6.7 1.15A4.1 4.1 0 1 0 6.7 8.85 3.25 3.25 0 0 1 6.7 1.15Z\" fill=\"currentColor\"></path></svg>Halloween</button></div>",
-      "css": ".ds-theme-controls { display: flex; align-items: center; gap: 2px; } .ds-theme-toggle, .ds-holiday-toggle { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 4px 10px; border: 0; background: transparent; color: var(--mute, #47606a); font-family: \"Roboto Mono\", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: color 0.25s ease; } .ds-theme-toggle:hover, .ds-holiday-toggle:hover, .ds-holiday-toggle[aria-pressed=\"true\"] { color: var(--ink, #12414f); } .ds-theme-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc2, #fe6d73); box-shadow: inset 0 0 0 3px var(--paper, #fef9ef); } .ds-holiday-moon { display: block; color: var(--acc, #227c9d); } .ds-holiday-toggle[aria-pressed=\"true\"] .ds-holiday-moon { color: var(--acc2, #fe6d73); } .ds-theme-toggle:focus-visible, .ds-holiday-toggle:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; }"
+      "description": "Paired controls: the season toggle enables the live seasonal layer (set in src/lib/seasons.ts), while light/dark switches between its two stocks. The season icon swaps from its off to on emoji when active.",
+      "html": "<div class=\"ds-theme-controls\"><button class=\"ds-theme-toggle\" type=\"button\"><span class=\"ds-theme-dot\" aria-hidden=\"true\"></span>Switch to dark</button><button class=\"ds-season-toggle\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-season-icon\" aria-hidden=\"true\">🍁</span>Autumn</button></div>",
+      "css": ".ds-theme-controls { display: flex; align-items: center; gap: 2px; } .ds-theme-toggle, .ds-season-toggle { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 4px 10px; border: 0; background: transparent; color: var(--mute, #47606a); font-family: \"Roboto Mono\", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: color 0.25s ease; } .ds-theme-toggle:hover, .ds-season-toggle:hover, .ds-season-toggle[aria-pressed=\"true\"] { color: var(--ink, #12414f); } .ds-theme-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc2, #fe6d73); box-shadow: inset 0 0 0 3px var(--paper, #fef9ef); } .ds-season-icon { display: block; color: var(--acc, #227c9d); } .ds-season-toggle[aria-pressed=\"true\"] .ds-season-icon { color: var(--acc2, #fe6d73); } .ds-theme-toggle:focus-visible, .ds-season-toggle:focus-visible { outline: 2px solid var(--acc, #227c9d); outline-offset: 3px; }"
     },
     {
       "name": "Project Card",
@@ -370,7 +450,7 @@
       },
       {
         "name": "The Two-Stock Rule",
-        "body": "Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third permanent ground (pure white, cool gray, or black). A documented, temporary holiday palette may replace both stocks while its explicit toggle is active.",
+        "body": "Light is teal ink on cream laid. Dark is cream ink on deep teal paper. Do not introduce a third permanent ground (pure white, cool gray, or black). A documented, temporary seasonal palette may replace both stocks while its explicit toggle is active.",
         "section": "colors"
       },
       {
