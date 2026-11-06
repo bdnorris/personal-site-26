@@ -135,7 +135,7 @@
       "decisions": [
         {
           "title": "Image conversion via WASM",
-          "body": "The image converter handles format conversion — WebP, AVIF, and others — entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also lets you compare output formats and file sizes directly, making it useful for informed decisions about image optimization."
+          "body": "The image converter handles format conversion (WebP, AVIF, and others) entirely in the browser via WebAssembly, using the jsquash and @squoosh-kit libraries. Files never leave the user's system, which matters when working with client assets. The tool also lets you compare output formats and file sizes directly, making it useful for informed decisions about image optimization."
         },
         {
           "title": "Ratio converter",
@@ -217,7 +217,7 @@
       ],
       "reflections": [
         "As the WordPress editor experience matures, it hasn't seemed to translate into editors actively wanting to use it more. Most clients are comfortable with the ACF block approach and don't feel a strong pull toward the default editor. That said, if a client has a specific desire to work in the WordPress editor or move toward full site editing, that pivot can be accommodated. It just requires more time to develop and refine the editing experience properly.",
-        "On the styling side, CSS has matured significantly — nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
+        "On the styling side, CSS has matured significantly: nesting, custom properties, and other modern features have closed much of the gap that made SCSS essential. For newer projects, a CSS-only approach is increasingly viable and worth the reduced tooling overhead."
       ]
     }
   },
@@ -327,7 +327,7 @@
       "lede": "To facilitate recipe discovery using the client's products, the Daymaker app arranges recipes in a circular manner, resembling a clock.",
       "context": [
         "The client wanted a recipe discovery experience that made dayparts the organizing principle, presented in a way that felt distinctive and engaging rather than a standard filtered list.",
-        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable — pulled live from a Pimcore CMS API — meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data was loaded."
+        "The design called for a clock UI: recipes arranged in a circle, color-coded by daypart, with a fork and knife pointer. The challenge was that the number of recipes per daypart is variable, pulled live from a Pimcore CMS API, meaning the size of each slice, and the position of every element on the clock, had to be calculated programmatically after the data was loaded."
       ],
       "roleDetail": "Sole developer on the app. A separate developer built and maintained the Pimcore REST API; a designer provided complete designs for both the desktop clock and mobile pie chart views. I handled the SVG generation, trigonometric calculations, animation, and Vue architecture.",
       "decisions": [
@@ -646,7 +646,7 @@
       "role": "Lead front-end",
       "lede": "A lightweight, web app for restaurant diners waiting on breakfast.",
       "context": [
-        "The goal was to give diners something to do with the time between ordering and waiting for their breakfast to arrive — something light, social, and on-brand. A QR code on the single-serve spread caddy leads to a simple web app with two modes: conversation starters and fill-in-the-blank trivia across several categories.",
+        "The goal was to give diners something to do with the time between ordering and waiting for their breakfast to arrive: something light, social, and on-brand. A QR code on the single-serve spread caddy leads to a simple web app with two modes: conversation starters and fill-in-the-blank trivia across several categories.",
         "The user arrives with zero context so the app needed to be immediately legible without any onboarding or explanation."
       ],
       "roleDetail": "Sole developer. Had brief early input into the experience before design kicked off; the designer provided complete designs and the build was my own.",
@@ -708,7 +708,7 @@
         }
       ],
       "outcome": [
-        "All students came away with a working understanding of designing for the web. The coding component was more variable — predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
+        "All students came away with a working understanding of designing for the web. The coding component was more variable, predictably so, as it tracked closely with individual student interest. That's an honest outcome for a design-first audience where web development is a supporting skill, not the primary focus."
       ],
       "reflections": [
         "The mixed coding results point to an inherent tension in the course: it serves students who want to build things and students who just need to understand the medium, and those are genuinely different courses. A future version might split the track earlier or lean harder into the design-for-web angle and treat coding as optional depth rather than a shared requirement."

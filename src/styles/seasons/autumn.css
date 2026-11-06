@@ -7,40 +7,70 @@
  * Keep all text pairs at WCAG 2.2 AA.
  */
 
+/* Autumn primitives. The stock blocks below map them onto the semantic tokens. */
+:root {
+  --autumn-ink: #2b2118;
+  --autumn-paper: #f6eedd;
+  --autumn-mute: #5f4f3f;
+  --autumn-line: rgba(43, 33, 24, 0.18);
+  --autumn-card: #fbf6ea;
+  --autumn-acc: #a3361a;
+  --autumn-acc-fill: #8c2d15;
+  --autumn-acc2: #6f7d2c;
+  --autumn-onacc: #fbf6ea;
+  --autumn-acc2ink: #4f5a1c;
+  --autumn-acc2soft: #e6e8c8;
+  --autumn-onacc2: #2b2118;
+  --autumn-band-acc: #e0b04a;
+  --autumn-ink-night: #efe6d4;
+  --autumn-paper-night: #16140f;
+  --autumn-mute-night: #b2a58f;
+  --autumn-line-night: rgba(239, 230, 212, 0.18);
+  --autumn-card-night: #221e17;
+  --autumn-acc-night: #e57a43;
+  --autumn-acc-fill-night: #e57a43;
+  --autumn-acc2-night: #bcc56c;
+  --autumn-onacc-night: #16140f;
+  --autumn-acc2ink-night: #cfd68e;
+  --autumn-acc2soft-night: #262a16;
+  --autumn-onacc2-night: #16140f;
+  --autumn-band-acc-night: #8c2d15;
+}
+
 /* Autumn light — Harvest: maple and moss on oat paper. */
 :root[data-season="autumn"][data-theme="light"] {
   color-scheme: light;
-  --ink: #2b2118;
-  --paper: #f6eedd;
-  --mute: #5f4f3f;
-  --line: rgba(43, 33, 24, 0.18);
-  --card: #fbf6ea;
-  --acc: #a3361a;
-  --acc-fill: #8c2d15;
-  --acc2: #6f7d2c;
-  --onacc: #fbf6ea;
-  --acc2ink: #4f5a1c;
-  --acc2soft: #e6e8c8;
-  --onacc2: #2b2118;
-  --band-acc: #e0b04a;
+  --ink: var(--autumn-ink);
+  --paper: var(--autumn-paper);
+  --mute: var(--autumn-mute);
+  --line: var(--autumn-line);
+  --card: var(--autumn-card);
+  --acc: var(--autumn-acc);
+  --acc-fill: var(--autumn-acc-fill);
+  --acc2: var(--autumn-acc2);
+  --onacc: var(--autumn-onacc);
+  --acc2ink: var(--autumn-acc2ink);
+  --acc2soft: var(--autumn-acc2soft);
+  --onacc2: var(--autumn-onacc2);
+  --band-acc: var(--autumn-band-acc);
   --texblend: luminosity;
 }
 
 /* Autumn dark — Woodsmoke: ember maple and lichen against bark. */
 :root[data-season="autumn"][data-theme="dark"] {
   color-scheme: dark;
-  --ink: #efe6d4;
-  --paper: #16140f;
-  --mute: #b2a58f;
-  --line: rgba(239, 230, 212, 0.18);
-  --card: #221e17;
-  --acc: #e57a43;
-  --acc-fill: #e57a43;
-  --acc2: #bcc56c;
-  --onacc: #16140f;
-  --acc2ink: #cfd68e;
-  --acc2soft: #262a16;
-  --onacc2: #16140f;
-  --band-acc: #8c2d15;
+  --ink: var(--autumn-ink-night);
+  --paper: var(--autumn-paper-night);
+  --mute: var(--autumn-mute-night);
+  --line: var(--autumn-line-night);
+  --card: var(--autumn-card-night);
+  --acc: var(--autumn-acc-night);
+  --acc-fill: var(--autumn-acc-fill-night);
+  --acc2: var(--autumn-acc2-night);
+  --onacc: var(--autumn-onacc-night);
+  --acc2ink: var(--autumn-acc2ink-night);
+  --acc2soft: var(--autumn-acc2soft-night);
+  --onacc2: var(--autumn-onacc2-night);
+  --band-acc: var(--autumn-band-acc-night);
   --texblend: soft-light;
 }

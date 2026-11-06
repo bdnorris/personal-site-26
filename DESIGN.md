@@ -80,7 +80,7 @@ typography:
     fontSize: "12px"
     fontWeight: 400
     lineHeight: 1.3
-    letterSpacing: "0.16em"
+    letterSpacing: "normal"
 rounded:
   sm: "3px"
   md: "4px"
@@ -147,7 +147,7 @@ components:
 
 **Creative North Star: "The Typesetter's Studio"**
 
-A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; Roboto Mono is the tools left on the desk — kickers, meta, labels, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.
+A personal site set like a composed spread. Termina builds the architecture of the page; Roboto Serif does the reading; Roboto Mono is the tools left on the desk: meta, labels, code names, the blinking caret. It is paper, not a product UI. The implements annotate the work rather than chrome it.
 
 Density is editorial. One very large display size, hairline rules, auto-fit grids, and cream laid ground with a print-pattern grain. Personality lives in the pairing and the texture. Actions are soft pills; surfaces are quiet 4px rectangles. Hover lifts a card a few pixels and turns its border to ink. Nothing casts a shadow.
 
@@ -167,11 +167,11 @@ Warm stock with teal ink. Sea Glass is the working accent. Vermilion is a spark 
 
 ### Primary
 
-- **Sea Glass** (`sea-glass` / `sea-glass-night`): Filled primary actions, in-headline italic accents, default links, work-grid meta, case kickers, resume section labels, and hover on next-case links. Light value is the coastal teal; night value is the brighter tide-pool teal so it still reads on deep paper. On-color is cream in light and night paper in dark (`on-sea-glass` / `paper-night`).
+- **Sea Glass** (`sea-glass` / `sea-glass-night`): Filled primary actions, the home hero's serif accent, default links, work-grid meta, case back links, resume section labels, and hover on next-case links. Light value is the coastal teal; night value is the brighter tide-pool teal so it still reads on deep paper. On-color is cream in light and night paper in dark (`on-sea-glass` / `paper-night`).
 
 ### Secondary
 
-- **Vermilion Spark** (`vermilion`): Theme-toggle dot, footer caret, kicker dots, code highlights, philosophy numerals. Tiny marks are the default. Occasional larger fills are allowed if they stay scarce. Not the default primary-action fill.
+- **Vermilion Spark** (`vermilion`): Theme-toggle dot, footer caret, code highlights, philosophy numerals. Its ink value (`vermilion-ink`) draws the season-toggle icon. Tiny marks are the default. Occasional larger fills are allowed if they stay scarce. Not the default primary-action fill.
 
 - **Vermilion Ink** (`vermilion-ink` / `vermilion-ink-night`): Home card meta and other small labels that need warmth without a fill. Softer wash (`vermilion-soft`) exists for rare tinted grounds.
 
@@ -198,8 +198,8 @@ Every season sets the same tokens for both stocks: `color-scheme`, `--ink`, `--p
 **Halloween (archived).** Light is **Jack-o'-Lantern**: Umber Ink (`halloween-ink`) on Lantern Paper (`halloween-paper`), with Carved Pumpkin (`halloween-orange`, filled as `halloween-orange-fill`) and Candle Flame (`halloween-gold`, labels in `halloween-gold-ink`); band numerals in gold. Dark is **Midnight**: Moonlight (`halloween-ink-night`) on Night Sky navy (`halloween-paper-night`), with bright Pumpkin (`halloween-orange-night`, also the fill) and Harvest Moon gold (`halloween-gold-night`); band numerals in deep pumpkin `#9a3800`. Orange stays the primary in both stocks so the light/dark switch reads as one theme.
 
 **Adding or switching a season:**
-1. Create `src/styles/seasons/<id>.css` with `:root[data-season="<id>"][data-theme="light"|"dark"]` blocks setting every token above, and `@import` it at the top of `src/styles/global.css`.
-2. Add `<id>: { label, icon: { off, on } }` to `SEASONS` in `src/lib/seasons.ts`.
+1. Create `src/styles/seasons/<id>.css`. Declare the palette as primitives in a `:root` block (`--<id>-<role>` for the light stock, `--<id>-<role>-night` for the dark), then add `:root[data-season="<id>"][data-theme="light"|"dark"]` blocks that set every token above from those primitives with `var()`, never a literal colour. `@import` it after the stamp at the top of `src/styles/global.css`.
+2. Add `<id>: { label, icon: { shape, detail } }` to `SEASONS` in `src/lib/seasons.ts`: `shape` is a closed 16×16 SVG path (outlined at rest, filled when on) and `detail` an optional open stroke path. No emoji.
 3. Set `ACTIVE_SEASON_ID` to the season to go live (or `null` to hide the toggle).
 4. Document the palette in this section and add its tokens to the front matter. Preserve WCAG 2.2 AA contrast.
 
@@ -209,21 +209,25 @@ Every season sets the same tokens for both stocks: `color-scheme`, `--ink`, `--p
 **Body Font:** Roboto Serif (with Georgia, serif)
 **Label/Mono Font:** Roboto Mono (monospace)
 
-**Character:** A typesetter's pairing. Geometric display that can go black (900) without looking like a logo font; a literary serif for sentences; a working mono for the desk tools. The italic serif, in Sea Glass, is the only flourish inside a Termina headline.
+**Character:** A typesetter's pairing. Geometric display that can go black (900) without looking like a logo font; a literary serif for sentences; a working mono for the desk tools. The Roboto Serif accent, in Sea Glass, is the only flourish inside a Termina headline, and it appears once on the whole site: the home hero.
 
 ### Hierarchy
 
-- **Display** (900, `clamp(34px, 7vw, 112px)`, line-height 1 / 0.88 on inner pages): Home hero, work, case, and 404 titles. About uses the same floor and a lower ceiling, `clamp(34px, 5.4vw, 76px)`, so the contact sheet can share a laptop screen.
+- **Display** (900, `clamp(34px, 7vw, 112px)`, line-height 1 / 0.88 on inner pages): Home hero, work, case, and 404 titles. Display heads carry `overflow-wrap: break-word; min-width: 0`. About uses the same floor and a lower ceiling, `clamp(34px, 5.4vw, 76px)`, so the contact sheet can share a laptop screen.
 - **Headline** (900, section titles `clamp(26px, 3.4vw, 44px)`; case splits `clamp(22px, 2.4vw, 32px)`): Section architecture. Sticky on case-study left columns.
 - **Title** (500–700, 17–23px, line-height ~1.12): Card titles, skill headings, job titles, contact values. Weight 500 at rest; 700 when the line has to hold — resume jobs, the home skill titles (on a full-bleed 1px ink rule), and the home invite values (on a 1px ink underline).
 - **Body** (400, 15–17.5px, line-height 1.45–1.62, measure ~46–70ch): Lede, about prose, case copy, skill items, job blurbs. Serif only — never Termina for paragraphs.
-- **Label** (400, 12px, letter-spacing 0.12–0.24em, uppercase): Kickers, nav-adjacent tools, card meta, footer, filter counts, resume section heads. Mono only.
+- **Label** (400, 12px, untracked, sentence case as written in the source): nav-adjacent tools, card meta, footer, filter counts, captions, resume section heads. Mono only, declared as `--font-outlier`. Never uppercase, never small caps, never letter-spaced; the face carries the tool voice on its own.
 
 ### Named Rules
 
-**The Three-Voice Rule.** Termina for structure and display. Roboto Serif for reading and the italic accent. Roboto Mono for tools. Do not add a fourth family.
+**The Three-Voice Rule.** Termina for structure and display. Roboto Serif for reading and the one serif accent. Roboto Mono for tools. Do not add a fourth family.
 
-**The Italic Accent Rule.** One italic Roboto Serif word may sit inside a Termina headline, in Sea Glass, at 1.18em, with the variable-font settle (`wght` 460 / `GRAD` 40 / `wdth` 122 → 400 / 0 / 100 over 4s). Use it as a stress, not a style for whole sentences.
+**The One Accent Rule.** One roman Roboto Serif phrase may sit inside a Termina headline, in Sea Glass, at 1.18em, with the variable-font settle (`wght` 460 / `GRAD` 40 / `wdth` 122 → 400 / 0 / 100 over 4s). It appears once on the site, "the gap" in the home hero. Every other headline is set one way: one face, one weight, one colour.
+
+**The Plain Label Rule.** Labels are mono at 12px, untracked, in the case the source writes them. No uppercase transforms, no letter-spacing, no eyebrow line above a heading that only announces it.
+
+**The Plain Link Rule.** Links and buttons say where they go in words. No arrows glued to the label (`→`, `←`), no middle dots joining meta strings (`Work · 2026`): set separate facts as separate spans with a gap, or join a byline with a comma.
 
 ## Layout
 
@@ -231,7 +235,7 @@ The page is a spread with a 1280px max (`--max-width`). Horizontal padding is `-
 
 Grids are `auto-fit` with mins around 230px (skills), 290–300px (work cards), 150px (meta cells). No 12-column overlay. Hairline rules (`1px solid line`, or `2px solid ink` under the resume name) do the sectioning.
 
-The mast is sticky. The wordmark returns home, so the nav is Work, About, and Resume. Below 640px the color controls sit above the mast and scroll away; the wordmark and nav stay fixed. From 641px the controls sit in the nav after a 1px vertical rule. Case-study headings stick below the mast.
+The mast is sticky. The wordmark returns home, so the nav is Work, About, and Resume. Below 640px the color controls sit above the mast and scroll away; the wordmark and nav stay fixed. `html` and `body` both carry `overflow-x: clip` (never `hidden`, which breaks the sticky mast). From 641px the controls sit in the nav after a 1px vertical rule. Case-study headings stick below the mast.
 
 Resume is a narrower measure (max 980px). Case body maxes at 1100px. About is a two-column auto-fit (copy + portrait/contact).
 
@@ -264,7 +268,7 @@ Refined and restrained: soft actions, square surfaces. Chrome stays quiet so typ
 - **Shape:** Full pill (999px). Termina 500, 14px, padding 13px 22px, gap 10px.
 - **Primary:** Sea Glass fill, on-sea-glass text. The light fill is `#1b6680` so the 14px label stays above 4.5:1, including the brightened hover. Night keeps `#17c3b2`. Hover brightens (`filter: brightness(1.1)`) and lifts 2px. Do not default this fill to Vermilion.
 - **Ghost:** Transparent, 1px `line` stroke, ink text. Hover stroke goes to ink.
-- **Hover / Focus:** Shared 0.3s `cubic-bezier(0.2, 0.8, 0.2, 1)` lift. Production has no custom `:focus-visible` yet; add a 2px Sea Glass or Ink ring (offset ~3px) before inventing any other focus language. No shadow on focus.
+- **Hover / Focus:** Shared 0.3s `cubic-bezier(0.2, 0.8, 0.2, 1)` lift. Focus is the global `:focus-visible` ring: 2px Sea Glass outline, 3px offset, shown instantly. Do not invent any other focus language. No shadow on focus.
 
 ### Chips
 
@@ -288,15 +292,15 @@ None in the shipped UI. Contact is mailto/tel rows, not a form. Do not invent a 
 
 - Wordmark: Termina 900, `clamp(17px, 4.4vw, 19px)`, ink, no underline.
 - Links: Termina 500, ~13.5px, min-height 44px, padding 0 11px. Rest color is mute; hover and current are ink. Do not fade the link with opacity. Current page draws a 2px Sea Glass underline that scales in from the left.
-- Theme controls: paired transparent, mono 12px uppercase controls with 44px minimum targets and mute → ink hover. Light/dark retains its Vermilion 8px dot. The season control sits directly beside it, exposes `aria-pressed`, and shows the active season's 11px emoji icon pair from the registry ("off" at rest, "on" when pressed, e.g. 🍂 → 🍁). It renders nothing when no season is live.
+- Theme controls: paired transparent, mono 12px sentence-case controls (11px below 370px) with 44px minimum targets, `white-space: nowrap` and mute → ink hover. Light/dark retains its Vermilion 8px dot, which shows state (hollow in light, filled in dark). The season control sits directly beside it, exposes `aria-pressed`, and draws the active season's 12px SVG mark from the registry in Vermilion Ink: an outline at rest, filled when pressed. Never an emoji. It renders nothing when no season is live.
 
 ### Empty image frame (signature)
 
-When `src` is missing, the frame is a dashed 1.5px ink mix, centered uppercase mono hint, mute. Do not replace with stock photography or a fake screenshot.
+When `src` is missing, the frame is a dashed 1.5px ink mix, centered sentence-case mono hint, mute. Do not replace with stock photography or a fake screenshot.
 
-### Italic accent (signature)
+### Serif accent (signature)
 
-Inline Roboto Serif italic in Sea Glass, 1.18em, tight line-height 0.9, one-shot variable-font settle after 1.4s. Reduced motion shows the settled variation immediately.
+Inline roman Roboto Serif in Sea Glass, 1.18em, tight line-height 0.9, one-shot variable-font settle after 1.4s. Used once, on "the gap" in the home hero h1. Reduced motion shows the settled variation immediately.
 
 ### Inverted band / pull (signature)
 
@@ -308,7 +312,7 @@ Ink ground, paper type, 4px radius. Philosophy band and case pull quotes. Vermil
 
 - **Do** keep the three voices in their jobs: Termina structure, serif reading, mono tools.
 - **Do** set pages on Cream Laid with the print-pattern grain and the documented blend modes.
-- **Do** use Sea Glass for primary fills, links, and the italic accent.
+- **Do** use Sea Glass for primary fills, links, and the one serif accent.
 - **Do** leave empty frames dashed and labeled until a real asset exists.
 - **Do** honor `prefers-reduced-motion`: drop spatial animation (entrances, lifts, the caret, scroll-linked rises) and keep color and border transitions that show state. Keep the 44px nav/filter targets.
 - **Do** section with hairline `line` rules (and the 2px ink rule under the resume name only).
@@ -321,3 +325,8 @@ Ink ground, paper type, 4px radius. Philosophy band and case pull quotes. Vermil
 - **Don't** set paragraphs in Termina or headlines in mono.
 - **Don't** hide placeholder work or missing portraits behind invented images.
 - **Don't** treat the hover lift as permission to build an elevation scale.
+- **Don't** set labels in uppercase, small caps or letter-spaced type, or put an eyebrow line above a heading.
+- **Don't** glue arrows to link text or join meta with middle dots.
+- **Don't** use an emoji as an icon; draw a small SVG mark or use type.
+- **Don't** repeat the serif accent on inner-page titles.
+- **Don't** use em dashes in prose; use commas, colons or parentheses. En dashes stay in date ranges.

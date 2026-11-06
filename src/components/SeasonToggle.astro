@@ -17,12 +17,10 @@ const { class: className } = Astro.props;
       data-season-id={ACTIVE_SEASON.id}
       aria-pressed="false"
     >
-      <span class="season-toggle-icon season-toggle-icon--on" aria-hidden="true">
-        {ACTIVE_SEASON.icon.on}
-      </span>
-      <span class="season-toggle-icon season-toggle-icon--off" aria-hidden="true">
-        {ACTIVE_SEASON.icon.off}
-      </span>
+      <svg class="season-toggle-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false">
+        <path class="season-toggle-shape" d={ACTIVE_SEASON.icon.shape} />
+        {ACTIVE_SEASON.icon.detail && <path class="season-toggle-detail" d={ACTIVE_SEASON.icon.detail} />}
+      </svg>
       <span>{ACTIVE_SEASON.label}</span>
     </button>
   )

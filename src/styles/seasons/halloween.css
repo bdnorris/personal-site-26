@@ -7,40 +7,70 @@
  * Keep all text pairs at WCAG 2.2 AA.
  */
 
+/* Halloween primitives. The stock blocks below map them onto the semantic tokens. */
+:root {
+  --halloween-ink: #2f1a10;
+  --halloween-paper: #fbefd9;
+  --halloween-mute: #6e4a34;
+  --halloween-line: rgba(47, 26, 16, 0.18);
+  --halloween-card: #fff8ea;
+  --halloween-acc: #b34200;
+  --halloween-acc-fill: #9a3800;
+  --halloween-acc2: #c96f00;
+  --halloween-onacc: #fff3dc;
+  --halloween-acc2ink: #7a4a00;
+  --halloween-acc2soft: #fde3b0;
+  --halloween-onacc2: #2f1a10;
+  --halloween-band-acc: #ffc94a;
+  --halloween-ink-night: #ece6d8;
+  --halloween-paper-night: #0d1220;
+  --halloween-mute-night: #a9b0c4;
+  --halloween-line-night: rgba(236, 230, 216, 0.18);
+  --halloween-card-night: #161d30;
+  --halloween-acc-night: #ff9238;
+  --halloween-acc-fill-night: #ff9238;
+  --halloween-acc2-night: #f5d06b;
+  --halloween-onacc-night: #0d1220;
+  --halloween-acc2ink-night: #f8dc8c;
+  --halloween-acc2soft-night: #2a2614;
+  --halloween-onacc2-night: #0d1220;
+  --halloween-band-acc-night: #9a3800;
+}
+
 /* Halloween light — Jack-o'-Lantern: carved pumpkin and candle flame. */
 :root[data-season="halloween"][data-theme="light"] {
   color-scheme: light;
-  --ink: #2f1a10;
-  --paper: #fbefd9;
-  --mute: #6e4a34;
-  --line: rgba(47, 26, 16, 0.18);
-  --card: #fff8ea;
-  --acc: #b34200;
-  --acc-fill: #9a3800;
-  --acc2: #c96f00;
-  --onacc: #fff3dc;
-  --acc2ink: #7a4a00;
-  --acc2soft: #fde3b0;
-  --onacc2: #2f1a10;
-  --band-acc: #ffc94a;
+  --ink: var(--halloween-ink);
+  --paper: var(--halloween-paper);
+  --mute: var(--halloween-mute);
+  --line: var(--halloween-line);
+  --card: var(--halloween-card);
+  --acc: var(--halloween-acc);
+  --acc-fill: var(--halloween-acc-fill);
+  --acc2: var(--halloween-acc2);
+  --onacc: var(--halloween-onacc);
+  --acc2ink: var(--halloween-acc2ink);
+  --acc2soft: var(--halloween-acc2soft);
+  --onacc2: var(--halloween-onacc2);
+  --band-acc: var(--halloween-band-acc);
   --texblend: luminosity;
 }
 
 /* Halloween dark — Midnight: pumpkin and harvest moon against a night sky. */
 :root[data-season="halloween"][data-theme="dark"] {
   color-scheme: dark;
-  --ink: #ece6d8;
-  --paper: #0d1220;
-  --mute: #a9b0c4;
-  --line: rgba(236, 230, 216, 0.18);
-  --card: #161d30;
-  --acc: #ff9238;
-  --acc-fill: #ff9238;
-  --acc2: #f5d06b;
-  --onacc: #0d1220;
-  --acc2ink: #f8dc8c;
-  --acc2soft: #2a2614;
-  --onacc2: #0d1220;
-  --band-acc: #9a3800;
+  --ink: var(--halloween-ink-night);
+  --paper: var(--halloween-paper-night);
+  --mute: var(--halloween-mute-night);
+  --line: var(--halloween-line-night);
+  --card: var(--halloween-card-night);
+  --acc: var(--halloween-acc-night);
+  --acc-fill: var(--halloween-acc-fill-night);
+  --acc2: var(--halloween-acc2-night);
+  --onacc: var(--halloween-onacc-night);
+  --acc2ink: var(--halloween-acc2ink-night);
+  --acc2soft: var(--halloween-acc2soft-night);
+  --onacc2: var(--halloween-onacc2-night);
+  --band-acc: var(--halloween-band-acc-night);
   --texblend: soft-light;
 }

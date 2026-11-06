@@ -49,7 +49,7 @@ const heroAlt = workHeroAlt(item);
 <BaseLayout title={`${item.title} · Brian Norris`} description={item.blurb}>
   <div class="wipe">
     <section class="case-hero">
-      <a class="link-quiet" href="/work">← All work</a>
+      <a class="link-quiet" href="/work">All work</a>
       <h1>{item.title}</h1>
       <p class="case-lede">{c?.lede ?? item.blurb}</p>
       <dl class="meta-grid">
@@ -87,7 +87,6 @@ const heroAlt = workHeroAlt(item);
                     target={external ? "_blank" : undefined}
                   >
                     {link.label}
-                    {external ? <span aria-hidden="true">→</span> : null}
                   </a>
                 </li>
               );
@@ -273,7 +272,7 @@ const heroAlt = workHeroAlt(item);
           {next && next.id !== item.id ? (
             <div class="next-row">
               <span class="link-quiet">Next case study</span>
-              <a href={`/work/${next.id}`}>{next.title} →</a>
+              <a href={`/work/${next.id}`}>{next.title}</a>
             </div>
           ) : null}
         </article>
@@ -285,7 +284,7 @@ const heroAlt = workHeroAlt(item);
         <article class="case-body">
           <div class="next-row">
             <span class="link-quiet">Next case study</span>
-            <a href={`/work/${next.id}`}>{next.title} →</a>
+            <a href={`/work/${next.id}`}>{next.title}</a>
           </div>
         </article>
       ) : null

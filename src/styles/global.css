@@ -1,3 +1,17 @@
+/* Hallmark · checked: 2026-11-05 · genre: editorial (inferred)
+ * floor: 0 FAIL · fixed: 13 (19, 30a, 34, 38iii, 48, 50, 54, 63, 67, 75, F1, F26, 25) · structural: 6 printed (44c, 58, 59, 77, 78, 79)
+ * built: the project · redesign: polish · v2.0.0 */
+/* Hallmark · waive 64 · Roboto Mono is declared as --font-outlier, the third voice of the Typesetter Studio · labels, meta and code names stay mono, now untracked and in sentence case */
+/* Hallmark · waive 38iii · the serif accent appears once, in the home hero h1 · the gap is the one stress word on the site, set in Roboto Serif as the DESIGN.md signature */
+/* Hallmark · waive 26b · no form controls and no aria-disabled anywhere on the site · contact is mailto and tel links, so a disabled state has nothing to style */
+/* Hallmark · waive 49b · the next case study link is the project title, a real name that cannot shorten · Product and Recipe Filters wraps to two lines at 320 and no further */
+/* Hallmark · dropped "user experience · accessibility · performance" · 54 names the eyebrow above the home h1; What I bring carries the same three topics */
+/* Hallmark · reworded "Hello, I’m Brian" with a typographic apostrophe, and Brian no longer in the accent span · F1 and 38iii */
+/* Hallmark · dismissed 41 · the code block sits on --card, which swaps with --ink in both stocks, so its text follows the theme */
+/* Hallmark · dismissed 25 · the pull quote, the 404 line and the commented-out about band are short statements, not running prose */
+/* Hallmark · dismissed F2 · the three periods on about.astro line 22 are a JavaScript spread over the contacts, not prose */
+/* Hallmark · answered F19 · Termina runs 500 for nav and titles, 700 for held titles and 900 for display, per DESIGN.md; the serif is 400 */
+/* Hallmark · answered F8 · the skill, featured and filter rises are one scroll-linked rise applied to three lists, and reduced motion removes all of it */
 @import "./seasons/halloween.css";
 @import "./seasons/autumn.css";
 
@@ -31,6 +45,7 @@
   --font-sans: "termina", system-ui, sans-serif;
   --font-serif: "Roboto Serif", Georgia, serif;
   --font-mono: "Roboto Mono", monospace;
+  --font-outlier: var(--font-mono);
   --max-width: 1280px;
   --page-inline: max(1.5rem, calc((100vw - var(--max-width)) / 2));
   --syntax-comment: var(--mute);
@@ -91,10 +106,12 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
@@ -137,6 +154,8 @@ h1, h2, h3 {
 
 h1, h2 {
   margin: 0;
+  min-width: 0;
+  overflow-wrap: break-word;
   font-family: var(--font-sans);
   font-weight: 900;
 }
@@ -388,8 +407,7 @@ h1, h2 {
   color: var(--mute);
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
   transition: color 0.25s ease;
 }
@@ -421,21 +439,25 @@ h1, h2 {
 
 .season-toggle-icon {
   flex: 0 0 auto;
-  display: none;
-  font-size: 11px;
-  line-height: 1;
+  width: 12px;
+  height: 12px;
+  overflow: visible;
 }
 
-.season-toggle .season-toggle-icon--off {
-  display: inline;
+.season-toggle-icon path {
+  fill: none;
+  stroke: var(--acc2ink);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.season-toggle[aria-pressed="true"] .season-toggle-icon--off {
-  display: none;
+.season-toggle[aria-pressed="true"] .season-toggle-shape {
+  fill: var(--acc2ink);
 }
 
-.season-toggle[aria-pressed="true"] .season-toggle-icon--on {
-  display: inline;
+.season-toggle[aria-pressed="true"] .season-toggle-detail {
+  stroke: var(--paper);
 }
 
 @media (max-width: 370px) {
@@ -443,8 +465,7 @@ h1, h2 {
   .season-toggle {
     gap: 4px;
     padding-inline: 2px;
-    font-size: 9.5px;
-    letter-spacing: 0.04em;
+    font-size: 11px;
   }
 }
 
@@ -521,8 +542,6 @@ h1, h2 {
 .mono-label {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -539,8 +558,6 @@ h1, h2 {
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -588,24 +605,6 @@ h1, h2 {
   padding-block: clamp(40px, 8vw, 96px) clamp(16px, 4vw, 56px);
   padding-inline: var(--page-inline);
   border-bottom: 1px solid var(--line);
-}
-
-.kicker {
-  margin: 0 0 clamp(18px, 3vw, 30px);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--mute);
-  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.kicker .dot {
-  color: var(--acc2ink);
-}
-
-.kicker-phrase {
-  white-space: nowrap;
 }
 
 .hero h1 {
@@ -698,8 +697,6 @@ h1, h2 {
 .link-quiet {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   text-decoration: none;
   color: var(--mute);
 }
@@ -782,10 +779,11 @@ h1, h2 {
 }
 
 .card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25em;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--acc2ink);
 }
 
@@ -821,7 +819,6 @@ h1, h2 {
   border-radius: 3px;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.06em;
   color: var(--mute);
 }
 
@@ -864,8 +861,6 @@ h1, h2 {
   color: var(--card);
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .skills {
@@ -1005,8 +1000,6 @@ h1, h2 {
 .invite-links .k {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -1220,8 +1213,6 @@ h1, h2 {
   display: block;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--acc);
   margin-bottom: 12px;
 }
@@ -1274,8 +1265,6 @@ h1, h2 {
 .meta-cell dt {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--mute);
   margin-bottom: 7px;
 }
@@ -1443,7 +1432,6 @@ h1, h2 {
 .case-decision .n {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.14em;
   color: var(--acc2ink);
   font-variant-numeric: tabular-nums;
   flex: none;
@@ -1484,8 +1472,6 @@ h1, h2 {
 .compare-label {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -1500,8 +1486,6 @@ h1, h2 {
 .compare figcaption {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -1542,8 +1526,6 @@ h1, h2 {
 .shots figcaption {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -1575,7 +1557,6 @@ h1, h2 {
   overflow-wrap: anywhere;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.1em;
   color: var(--mute);
 }
 
@@ -1791,7 +1772,7 @@ h1, h2 {
 .about .prose {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.14s both;
   display: flow-root;
-  max-width: 98ch;
+  max-width: 72ch;
   font-family: var(--font-serif);
 }
 
@@ -1847,8 +1828,6 @@ h1, h2 {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -1864,7 +1843,6 @@ h1, h2 {
 .portrait .frame-empty {
   color: var(--mute);
   padding: 8px;
-  letter-spacing: 0.04em;
   overflow-wrap: normal;
 }
 
@@ -1941,8 +1919,6 @@ h1, h2 {
 .contact-row .k {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -1971,8 +1947,6 @@ h1, h2 {
   display: block;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
   opacity: 0.55;
   margin-bottom: 16px;
 }
@@ -2004,7 +1978,6 @@ h1, h2 {
 .philo-row .n {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.14em;
   color: var(--band-acc);
   flex: none;
 }
@@ -2055,8 +2028,6 @@ h1, h2 {
   margin: 10px 0 0;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--mute);
 }
 
@@ -2104,8 +2075,6 @@ h1, h2 {
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 12px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
   color: var(--acc);
 }
 
