@@ -1,0 +1,142 @@
+render tier: 25 screenshots in /Users/briannorris/Documents/Repos/personal-site-2026/.hallmark/shots (1280x800, 1440x900, 1920x1080 folds; 1440 and 375 full pages)
+src/layouts/BaseLayout.astro
+  FAIL 34 :1 no overflow-x: clip on html and body | fix: overflow-x: clip on both html and body
+  WAIVER 26b :1 waiver on 26b REJECTED (reason shares no word with the page) | fix: Fix the gate, or satisfy the guard and say why in the page's own words
+  WAIVER 38iii :1 waiver on 38iii REJECTED (reason shares no word with the page) | fix: Fix the gate, or satisfy the guard and say why in the page's own words
+  WAIVER 49b :1 waiver on 49b REJECTED (reason shares no word with the page) | fix: Fix the gate, or satisfy the guard and say why in the page's own words
+  WAIVER 64 :1 waiver on 64 REJECTED (guard: none of --font-display, --font-body or --… | fix: Fix the gate, or satisfy the guard and say why in the page's own words
+src/pages/work/[id].astro
+  FAIL 50 :166 display header word "{c.visualsHeading?.trim()" with no overflow-wrap | fix: Add overflow-wrap: break-word and min-width: 0
+  WAIVER 38iii :1 waiver on 38iii REJECTED (reason shares no word with the page)
+  WAIVER 49b :1 waiver on 49b REJECTED (reason shares no word with the page)
+  WAIVER 64 :1 waiver on 64 REJECTED (guard: none of --font-display, --font-body or --…
+src/pages/404.astro
+  WAIVER 26b :1 waiver on 26b REJECTED (reason shares no word with the page)
+  WAIVER 49b :1 waiver on 49b REJECTED (reason shares no word with the page)
+  WAIVER 64 :1 waiver on 64 REJECTED (guard: none of --font-display, --font-body or --…
+src/styles/global.css
+  WAIVER 26b :1 waiver on 26b REJECTED (reason shares no word with the page)
+  WAIVER 38iii :1 waiver on 38iii REJECTED (reason shares no word with the page)
+  WAIVER 49b :1 waiver on 49b REJECTED (reason shares no word with the page)
+  ANSWERED F8 :959 3 scroll-choreography patterns on one page (skill, featured, filters)
+  DISMISSED 25 :1400 measure 34ch on .pull p (45-75ch range)
+  DISMISSED 25 :1954 measure 26ch on .band-inner > div:first-child p (45-75ch range)
+  DISMISSED 25 :2187 measure 40ch on .missing p (45-75ch range)
+  DISMISSED 41 :1536 dark surface (L 31%) on .code-block sets no text colour
+  NOTE 24b :236 padding: 8px 14px (off the 4px scale) on .skip | fix: Use the 4px spacing scale
+  NOTE 24b :291 padding: 10px var(--page-inline) 14px (off the 4px scale) on .mast-row
+  NOTE 24b :296 padding: 10px var(--page-inline) (off the 4px scale) on .mast-row
+  NOTE 24b :328 margin-right: -11px (off the 4px scale) on .nav
+  NOTE 24b :353 padding: 0 11px (off the 4px scale) on .nav-link
+  NOTE 24b :394 margin: 0 4px 0 10px (off the 4px scale) on .nav-rule
+  NOTE 24b :402 gap: 7px (off the 4px scale) on .theme-toggle, .season-toggle
+  NOTE 24b :404 padding: 4px 10px (off the 4px scale) on .theme-toggle, .season-toggle
+  NOTE 24b :537 gap: 14px (off the 4px scale) on .site-foot
+  NOTE 24b :568 gap: 10px (off the 4px scale) on .btn
+  NOTE 24b :569 padding: 13px 22px (off the 4px scale) on .btn
+  NOTE 24b :642 gap: clamp(20px, 3vw, 38px) (off the 4px scale) on .hero-row
+  NOTE 24b :660 gap: 10px (off the 4px scale) on .hero-actions
+  NOTE 24b :679 margin-bottom: clamp(22px, 3vw, 40px) (off the 4px scale) on .section-head
+  NOTE 24b :688 margin-bottom: clamp(22px, 3vw, 40px) (off the 4px scale) on .bring h2
+  NOTE 24b :770 padding: 18px 18px 20px (off the 4px scale) on .card-body
+  NOTE 24b :773 gap: 9px (off the 4px scale) on .card-body
+  NOTE 24b :812 gap: 6px (off the 4px scale) on .stack
+  NOTE 24b :817 padding: 3px 8px (off the 4px scale) on .stack span
+  NOTE 24b :869 gap: clamp(12px, 1.4vw, 18px) (off the 4px scale) on .skills
+  NOTE 24b :906 padding: clamp(20px, 2.4vw, 30px) (off the 4px scale) on .skill
+  NOTE 24b :913 margin: calc(clamp(20px, 2.4vw, 30p… (off the 4px scale) on .skill h3
+  NOTE 24b :915 padding: clamp(18px, 2.2vw, 26px) cl… (off the 4px scale) on .skill h3
+  NOTE 24b :945 gap: 11px (off the 4px scale) on .skill ul
+  NOTE 24b :994 gap: 6px (off the 4px scale) on .invite-links a
+  NOTE 24b :1023 padding: clamp(34px, 5vw, 72px) var(… (off the 4px scale) on .work-page
+  NOTE 24b :1034 margin: 14px 0 clamp(26px, 4vw, 44p… (off the 4px scale) on .work-page .intro
+  NOTE 24b :1053 padding: 9px 16px (off the 4px scale) on .filter
+  NOTE 24b :1068 gap: 6px (off the 4px scale) on .filter
+  NOTE 24b :1106 gap: clamp(16px, 2vw, 26px) (off the 4px scale) on .work-grid
+  NOTE 24b :1107 margin-top: clamp(22px, 3vw, 36px) (off the 4px scale) on .work-grid
+  NOTE 24b :1120 margin: 10px 0 14px (off the 4px scale) on .work-page .intro
+  NOTE 24b :1159 padding: 16px 16px 18px (off the 4px scale) on .work-grid .card-body
+  NOTE 24b :1179 gap: 12px 18px (off the 4px scale) on .work-empty
+  NOTE 24b :1180 margin: clamp(22px, 3vw, 36px) 0 0 (off the 4px scale) on .work-empty
+  NOTE 24b :1230 margin: 18px 0 0 (off the 4px scale) on .case-lede
+  NOTE 24b :1242 margin: clamp(26px, 4vw, 46px) 0 0 (off the 4px scale) on .meta-grid
+  NOTE 24b :1256 padding: 16px 18px (off the 4px scale) on .meta-cell
+  NOTE 24b :1261 padding: 14px 12px (off the 4px scale) on .meta-cell
+  NOTE 24b :1269 margin-bottom: 7px (off the 4px scale) on .meta-cell dt
+  NOTE 24b :1297 gap: 10px (off the 4px scale) on .case-links
+  NOTE 24b :1366 gap: 22px (off the 4px scale) on .case-copy:has(.shots), .case-copy:has(.code-block), .case-copy:has(.snippet-block), .…
+  NOTE 24b :1382 gap: 9px (off the 4px scale) on .case-copy ul
+  NOTE 24b :1417 gap: 14px (off the 4px scale) on .case-decision
+  NOTE 24b :1419 padding: 18px 0 (off the 4px scale) on .case-decision
+  NOTE 24b :1456 gap: 11px (off the 4px scale) on .compare
+  NOTE 24b :1496 gap: 11px (off the 4px scale) on .shots
+  NOTE 24b :1543 padding: 9px 13px (off the 4px scale) on .code-bar
+  NOTE 24b :1565 padding: 16px 18px (off the 4px scale) on .code-block pre
+  NOTE 24b :1581 padding: 16px 18px 18px (off the 4px scale) on .snippet-body
+  NOTE 24b :1607 gap: 9px (off the 4px scale) on .snippet-body ol, .snippet-body ul
+  NOTE 24b :1704 gap: clamp(10px, 1.2vw, 14px) (off the 4px scale) on .stats
+  NOTE 24b :1711 padding: 20px 18px (off the 4px scale) on .stat
+  NOTE 24b :1724 margin-top: 7px (off the 4px scale) on .stat-l
+  NOTE 24b :1757 padding-block: clamp(34px, 5vw, 72px) clam… (off the 4px scale) on .about
+  NOTE 24b :1856 padding: 13px 16px (off the 4px scale) on .contact-row
+  NOTE 24b :1938 padding: clamp(26px, 4vw, 56px) (off the 4px scale) on .band-inner
+  NOTE 24b :1941 gap: clamp(22px, 3vw, 48px) (off the 4px scale) on .band-inner
+  NOTE 24b :1964 gap: 18px (off the 4px scale) on .philo
+  NOTE 24b :1970 gap: 14px (off the 4px scale) on .philo-row
+  NOTE 24b :1984 margin: 0 0 6px (off the 4px scale) on .philo-row h3
+  NOTE 24b :2002 padding: clamp(34px, 5vw, 72px) clam… (off the 4px scale) on .resume
+  NOTE 24b :2009 gap: 18px (off the 4px scale) on .resume-head
+  NOTE 24b :2026 margin: 10px 0 0 (off the 4px scale) on .resume-head p
+  NOTE 24b :2062 padding: clamp(26px, 4vw, 44px) 0 (off the 4px scale) on .resume-block
+  NOTE 24b :2072 margin: 0 0 clamp(18px, 2.4vw, 28px) (off the 4px scale) on .resume-block h2
+  NOTE 24b :2082 gap: clamp(20px, 2.6vw, 30px) (off the 4px scale) on .jobs
+  NOTE 24b :2089 gap: 6px clamp(14px, 2.5vw, 36px) (off the 4px scale) on .job, .edu
+  NOTE 24b :2127 margin: 9px 0 0 (off the 4px scale) on .job p, .edu p
+  NOTE 24b :2146 padding-bottom: 9px (off the 4px scale) on .resume-skills h3
+  NOTE 24b :2156 gap: 9px (off the 4px scale) on .resume-skills ul
+  NOTE 24b :2182 margin-bottom: 18px (off the 4px scale) on .missing h1
+  NOTE 24b :2197 gap: 10px (off the 4px scale) on .missing-actions
+src/components/CodeBlock.astro
+  WAIVER 38iii :1 waiver on 38iii REJECTED (reason shares no word with the page)
+  WAIVER 64 :1 waiver on 64 REJECTED (guard: none of --font-display, --font-body or --…
+  WAIVED 26b :1 no :disabled styling anywhere
+src/components/SeasonToggle.astro
+  WARN 49 :13 long clickable label "{ACTIVE_SEASON.icon.detail && } {AC…" without nowrap | fix: Shorten the label or set nowrap
+http://localhost:4391/work
+  WARN F20 :1 [1440px] div.work-grid leaves one item alone on its last row (4 + 4 + 4 + 1) | fix: Change the count or the columns so the last row is not an orphan
+  NOTE 44c :1 [1440px] hero ends at 58px of a 900px screen | fix: Fill the first screen with the visual or the headline, not with copy
+  NOTE 58 :1 [1440px] 160 words on one screen (from y=750) | fix: One idea per screen: cut to about 80 words, make the section an object
+  NOTE 77 :1 [1440px] 2 sections, hero and footer included | fix: A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)
+  NOTE 78 :1 [1440px] section heads render at 20px under a 104px hero head | fix: h2 at --text-section (about 52px at 1440), item titles at --text-title (layout.md § 2)
+.hallmark/before.json
+  WARN kept :1 headings gone or reworded since the before record: hello, i'm brian | fix: Restore it, or record it in the stamp: /* Hallmark · reworded "<old>" to "<new>" · <the gate that named it> */ or dropped <item> · <the reason>
+  WARN kept :1 not compared, because this run did not read them: src/snippets/allspreads/clock.vue, src/snippets/filters/filter-app.vue | fix: Run --kept on the same target as --before
+http://localhost:4391/work/allspreads
+  WAIVED 49b :1 [320px] link "Product & Recipe Filters" wraps to 2 lines (a)
+  NOTE 58 :1 [1440px] 224 words on one screen (from y=1650)
+  NOTE 77 :1 [1440px] 2 sections, hero and footer included
+http://localhost:4391/
+  ANSWERED F19 :1 [1440px] 4 font weights in running use (400, 500, 700, 900)
+  NOTE 44c :1 [1440px] hero ends at 709px of a 900px screen
+  NOTE 58 :1 [1440px] 140 words on one screen (from y=1050)
+  NOTE 59 :1 [1440px] smallest gap between sections is 97px (gaps: 97) | fix: 120px or more between sections, by the --section-gap steps
+  NOTE 77 :1 [1440px] 2 sections, hero and footer included
+  NOTE 79 :1 [1440px] 249px of nothing between the hero's last content (y 652) and the fold | fix: Centre the content in the screen and grow the visual or the head (layout.md § 6); never fill it with copy
+src/pages/about.astro
+  DISMISSED F2 :22 three-period ellipsis in prose x2
+http://localhost:4391/resume
+  NOTE 44c :1 [1440px] hero ends at 58px of a 900px screen
+  NOTE 58 :1 [1440px] 189 words on one screen (from y=1000)
+  NOTE 77 :1 [1440px] 2 sections, hero and footer included
+  NOTE 77 :1 [1440px] 1 thin section: "Work experience" (67% wide) | fix: Widen the body to ten of twelve columns and give it mass: a visual 300px tall or more, a set of three across, rows, or a statement (layout.md § 4 and § 5)
+  NOTE 78 :1 [1440px] section heads render at 12px under a 78px hero head
+http://localhost:4391/about
+  NOTE 58 :1 [1440px] 107 words on one screen (from y=0)
+  NOTE 58 :1 [1440px] hero carries 3 text blocks before its actions | fix: Headline, one sentence, actions; delete the rest
+  NOTE 77 :1 [1440px] 2 sections, hero and footer included
+src/pages/index.astro
+  NOTE 58 :14 h1 runs 8 words ("Where design meets code, I close the gap") | fix: Seven words or fewer, 50 characters or fewer
+  NOTE 58 :20 hero paragraph runs 23 words | fix: One sentence, twelve words or fewer
+sloplint: 2 FAIL, 4 WARN, 2 WAIVED, 15 REJECTED, 2 ANSWERED, 5 DISMISSED, 94 NOTE across 18 file(s) and 5 URL(s).
+kept: links 31/31, headings 42/43, figures 14/14; before 87 FAIL, 91 REFLEX, now 2 FAIL, 0 REFLEX
+compare: .hallmark/compare.html shows before and after side by side

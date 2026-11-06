@@ -1,0 +1,15 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "polish",
+  "scope": "site",
+  "prompt": "polish make suggested changes and update the DESIGN.md file",
+  "waived": [
+   "64",
+   "38iii",
+   "26b",
+   "49b"
+  ],
+  "date": "2026-11-06"
+ }
+]
